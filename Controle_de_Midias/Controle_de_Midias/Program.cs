@@ -15,7 +15,7 @@ namespace Controle_de_Midias
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new fm_Principal());
         }
     }
 }

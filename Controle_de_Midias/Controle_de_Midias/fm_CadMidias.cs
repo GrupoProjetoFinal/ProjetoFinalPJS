@@ -9,23 +9,11 @@ using System.Windows.Forms;
 
 namespace Controle_de_Midias
 {
-    public partial class fm_Principal : Form
+    public partial class fm_CadMidias : Form
     {
-        public fm_Principal()
+        public fm_CadMidias()
         {
             InitializeComponent();
         }
-
-        private void fm_Principal_Load(object sender, EventArgs e)
-        {
-            //painel
-        }
-
-        private void gb_Midias_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }
