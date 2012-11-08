@@ -34,7 +34,7 @@
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bt_Alterar = new System.Windows.Forms.Button();
+            this.bt_Devolver = new System.Windows.Forms.Button();
             this.bt_Emprestar = new System.Windows.Forms.Button();
             this.bt_Pesquisa = new System.Windows.Forms.Button();
             this.bt_NovoAmigo = new System.Windows.Forms.Button();
@@ -45,16 +45,20 @@
             this.cl_imagem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Música = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tp_Amigos = new System.Windows.Forms.TabPage();
-            this.lv_Amigos = new System.Windows.Forms.ListView();
+            this.cl_Obeservacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Nota = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_Obeservacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tp_Amigos = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.lv_Amigos = new System.Windows.Forms.ListView();
+            this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -63,7 +67,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bt_Alterar);
+            this.groupBox1.Controls.Add(this.bt_Devolver);
             this.groupBox1.Controls.Add(this.bt_Emprestar);
             this.groupBox1.Controls.Add(this.bt_Pesquisa);
             this.groupBox1.Controls.Add(this.bt_NovoAmigo);
@@ -75,14 +79,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             // 
-            // bt_Alterar
+            // bt_Devolver
             // 
-            this.bt_Alterar.Location = new System.Drawing.Point(4, 178);
-            this.bt_Alterar.Name = "bt_Alterar";
-            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Alterar.TabIndex = 4;
-            this.bt_Alterar.Text = "Emprestar";
-            this.bt_Alterar.UseVisualStyleBackColor = true;
+            this.bt_Devolver.Location = new System.Drawing.Point(4, 178);
+            this.bt_Devolver.Name = "bt_Devolver";
+            this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
+            this.bt_Devolver.TabIndex = 4;
+            this.bt_Devolver.Text = "&Devolver";
+            this.bt_Devolver.UseVisualStyleBackColor = true;
             // 
             // bt_Emprestar
             // 
@@ -192,6 +196,12 @@
             this.cl_Interprete.Text = "Intérprete";
             this.cl_Interprete.Width = 91;
             // 
+            // cl_Origem
+            // 
+            this.cl_Origem.DisplayIndex = 8;
+            this.cl_Origem.Text = "Origem";
+            this.cl_Origem.Width = 94;
+            // 
             // cl_Autor
             // 
             this.cl_Autor.DisplayIndex = 3;
@@ -204,25 +214,11 @@
             this.cl_Música.Text = "Música";
             this.cl_Música.Width = 137;
             // 
-            // tp_Amigos
+            // cl_Obeservacao
             // 
-            this.tp_Amigos.Controls.Add(this.listView1);
-            this.tp_Amigos.Controls.Add(this.lv_Amigos);
-            this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
-            this.tp_Amigos.Name = "tp_Amigos";
-            this.tp_Amigos.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_Amigos.Size = new System.Drawing.Size(1088, 412);
-            this.tp_Amigos.TabIndex = 1;
-            this.tp_Amigos.Text = "Amigos";
-            this.tp_Amigos.UseVisualStyleBackColor = true;
-            // 
-            // lv_Amigos
-            // 
-            this.lv_Amigos.Location = new System.Drawing.Point(6, 12);
-            this.lv_Amigos.Name = "lv_Amigos";
-            this.lv_Amigos.Size = new System.Drawing.Size(1076, 389);
-            this.lv_Amigos.TabIndex = 1;
-            this.lv_Amigos.UseCompatibleStateImageBehavior = false;
+            this.cl_Obeservacao.DisplayIndex = 9;
+            this.cl_Obeservacao.Text = "Observação";
+            this.cl_Obeservacao.Width = 117;
             // 
             // cl_Nota
             // 
@@ -242,25 +238,59 @@
             this.cl_DataCompra.Text = "Data da Compra";
             this.cl_DataCompra.Width = 116;
             // 
-            // cl_Origem
+            // tp_Amigos
             // 
-            this.cl_Origem.DisplayIndex = 8;
-            this.cl_Origem.Text = "Origem";
-            this.cl_Origem.Width = 94;
-            // 
-            // cl_Obeservacao
-            // 
-            this.cl_Obeservacao.DisplayIndex = 9;
-            this.cl_Obeservacao.Text = "Observação";
-            this.cl_Obeservacao.Width = 117;
+            this.tp_Amigos.Controls.Add(this.listView1);
+            this.tp_Amigos.Controls.Add(this.lv_Amigos);
+            this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
+            this.tp_Amigos.Name = "tp_Amigos";
+            this.tp_Amigos.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_Amigos.Size = new System.Drawing.Size(1088, 412);
+            this.tp_Amigos.TabIndex = 1;
+            this.tp_Amigos.Text = "Amigos";
+            this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cl_Nome,
+            this.cl_Telefone,
+            this.cl_Email,
+            this.cl_Obs});
             this.listView1.Location = new System.Drawing.Point(15, 23);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(1043, 366);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // lv_Amigos
+            // 
+            this.lv_Amigos.Location = new System.Drawing.Point(6, 12);
+            this.lv_Amigos.Name = "lv_Amigos";
+            this.lv_Amigos.Size = new System.Drawing.Size(1076, 389);
+            this.lv_Amigos.TabIndex = 1;
+            this.lv_Amigos.UseCompatibleStateImageBehavior = false;
+            // 
+            // cl_Nome
+            // 
+            this.cl_Nome.Text = "Nome";
+            this.cl_Nome.Width = 247;
+            // 
+            // cl_Telefone
+            // 
+            this.cl_Telefone.Text = "Telefone";
+            this.cl_Telefone.Width = 93;
+            // 
+            // cl_Email
+            // 
+            this.cl_Email.Text = "E-mail";
+            this.cl_Email.Width = 265;
+            // 
+            // cl_Obs
+            // 
+            this.cl_Obs.Text = "Observação";
+            this.cl_Obs.Width = 257;
             // 
             // fm_Principal
             // 
@@ -290,7 +320,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tp_Midias;
         private System.Windows.Forms.TabPage tp_Amigos;
-        private System.Windows.Forms.Button bt_Alterar;
+        private System.Windows.Forms.Button bt_Devolver;
         private System.Windows.Forms.ListView lv_Midias;
         private System.Windows.Forms.ColumnHeader cl_imagem;
         private System.Windows.Forms.ColumnHeader cl_Album;
@@ -304,6 +334,10 @@
         private System.Windows.Forms.ColumnHeader cl_DataAlbum;
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader cl_Nome;
+        private System.Windows.Forms.ColumnHeader cl_Telefone;
+        private System.Windows.Forms.ColumnHeader cl_Email;
+        private System.Windows.Forms.ColumnHeader cl_Obs;
 
     }
 }

@@ -9,13 +9,15 @@ using System.Windows.Forms;
 
 namespace Controle_de_Midias
 {
+
+
     public partial class fm_Principal : Form
     {
         public fm_Principal()
         {
             InitializeComponent();
         }
-
+        
         private void fm_Principal_Load(object sender, EventArgs e)
         {
             //painel
@@ -26,6 +28,5 @@ namespace Controle_de_Midias
 
         }
 
-       
     }
 }
