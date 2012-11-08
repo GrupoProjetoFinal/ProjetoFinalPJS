@@ -34,21 +34,27 @@
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_Alterar = new System.Windows.Forms.Button();
             this.bt_Emprestar = new System.Windows.Forms.Button();
             this.bt_Pesquisa = new System.Windows.Forms.Button();
             this.bt_NovoAmigo = new System.Windows.Forms.Button();
             this.bt_NovaMidia = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_Midias = new System.Windows.Forms.TabPage();
-            this.tp_Amigos = new System.Windows.Forms.TabPage();
-            this.bt_Alterar = new System.Windows.Forms.Button();
             this.lv_Midias = new System.Windows.Forms.ListView();
-            this.lv_Amigos = new System.Windows.Forms.ListView();
-            this.cl_Imagem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_imagem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Música = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tp_Amigos = new System.Windows.Forms.TabPage();
+            this.lv_Amigos = new System.Windows.Forms.ListView();
+            this.cl_Nota = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_DataAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Obeservacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -69,13 +75,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             // 
+            // bt_Alterar
+            // 
+            this.bt_Alterar.Location = new System.Drawing.Point(4, 178);
+            this.bt_Alterar.Name = "bt_Alterar";
+            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Alterar.TabIndex = 4;
+            this.bt_Alterar.Text = "Emprestar";
+            this.bt_Alterar.UseVisualStyleBackColor = true;
+            // 
             // bt_Emprestar
             // 
             this.bt_Emprestar.Location = new System.Drawing.Point(4, 139);
             this.bt_Emprestar.Name = "bt_Emprestar";
             this.bt_Emprestar.Size = new System.Drawing.Size(75, 23);
             this.bt_Emprestar.TabIndex = 3;
-            this.bt_Emprestar.Text = "Emprestar";
+            this.bt_Emprestar.Text = "&Emprestar";
             this.bt_Emprestar.UseVisualStyleBackColor = true;
             // 
             // bt_Pesquisa
@@ -112,7 +127,7 @@
             this.tabControl1.Location = new System.Drawing.Point(98, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(604, 438);
+            this.tabControl1.Size = new System.Drawing.Size(1096, 438);
             this.tabControl1.TabIndex = 1;
             // 
             // tp_Midias
@@ -121,39 +136,24 @@
             this.tp_Midias.Location = new System.Drawing.Point(4, 22);
             this.tp_Midias.Name = "tp_Midias";
             this.tp_Midias.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_Midias.Size = new System.Drawing.Size(596, 412);
+            this.tp_Midias.Size = new System.Drawing.Size(1088, 412);
             this.tp_Midias.TabIndex = 0;
             this.tp_Midias.Text = "Mídias";
             this.tp_Midias.UseVisualStyleBackColor = true;
             // 
-            // tp_Amigos
-            // 
-            this.tp_Amigos.Controls.Add(this.lv_Amigos);
-            this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
-            this.tp_Amigos.Name = "tp_Amigos";
-            this.tp_Amigos.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_Amigos.Size = new System.Drawing.Size(596, 412);
-            this.tp_Amigos.TabIndex = 1;
-            this.tp_Amigos.Text = "Amigos";
-            this.tp_Amigos.UseVisualStyleBackColor = true;
-            // 
-            // bt_Alterar
-            // 
-            this.bt_Alterar.Location = new System.Drawing.Point(4, 178);
-            this.bt_Alterar.Name = "bt_Alterar";
-            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Alterar.TabIndex = 4;
-            this.bt_Alterar.Text = "Emprestar";
-            this.bt_Alterar.UseVisualStyleBackColor = true;
-            // 
             // lv_Midias
             // 
             this.lv_Midias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cl_Imagem,
+            this.cl_imagem,
             this.cl_Album,
             this.cl_Interprete,
+            this.cl_Origem,
             this.cl_Autor,
-            this.cl_Música});
+            this.cl_Música,
+            this.cl_Obeservacao,
+            this.cl_Nota,
+            this.cl_DataAlbum,
+            this.cl_DataCompra});
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";
@@ -170,45 +170,103 @@
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_Midias.Location = new System.Drawing.Point(6, 17);
+            this.lv_Midias.Location = new System.Drawing.Point(6, 6);
             this.lv_Midias.Name = "lv_Midias";
-            this.lv_Midias.Size = new System.Drawing.Size(584, 389);
+            this.lv_Midias.Size = new System.Drawing.Size(1026, 389);
             this.lv_Midias.TabIndex = 0;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
+            this.lv_Midias.View = System.Windows.Forms.View.Details;
+            // 
+            // cl_imagem
+            // 
+            this.cl_imagem.Text = "Visualização";
+            this.cl_imagem.Width = 86;
+            // 
+            // cl_Album
+            // 
+            this.cl_Album.Text = "Álbum";
+            this.cl_Album.Width = 80;
+            // 
+            // cl_Interprete
+            // 
+            this.cl_Interprete.Text = "Intérprete";
+            this.cl_Interprete.Width = 91;
+            // 
+            // cl_Autor
+            // 
+            this.cl_Autor.DisplayIndex = 3;
+            this.cl_Autor.Text = "Autor";
+            this.cl_Autor.Width = 102;
+            // 
+            // cl_Música
+            // 
+            this.cl_Música.DisplayIndex = 4;
+            this.cl_Música.Text = "Música";
+            this.cl_Música.Width = 137;
+            // 
+            // tp_Amigos
+            // 
+            this.tp_Amigos.Controls.Add(this.listView1);
+            this.tp_Amigos.Controls.Add(this.lv_Amigos);
+            this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
+            this.tp_Amigos.Name = "tp_Amigos";
+            this.tp_Amigos.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_Amigos.Size = new System.Drawing.Size(1088, 412);
+            this.tp_Amigos.TabIndex = 1;
+            this.tp_Amigos.Text = "Amigos";
+            this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
             // lv_Amigos
             // 
             this.lv_Amigos.Location = new System.Drawing.Point(6, 12);
             this.lv_Amigos.Name = "lv_Amigos";
-            this.lv_Amigos.Size = new System.Drawing.Size(584, 389);
+            this.lv_Amigos.Size = new System.Drawing.Size(1076, 389);
             this.lv_Amigos.TabIndex = 1;
             this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             // 
-            // cl_Imagem
+            // cl_Nota
             // 
-            this.cl_Imagem.Text = "Álbum";
+            this.cl_Nota.DisplayIndex = 5;
+            this.cl_Nota.Text = "Nota";
+            this.cl_Nota.Width = 107;
             // 
-            // cl_Album
+            // cl_DataAlbum
             // 
-            this.cl_Album.Text = "Álbum";
+            this.cl_DataAlbum.DisplayIndex = 6;
+            this.cl_DataAlbum.Text = "Data do Álbum";
+            this.cl_DataAlbum.Width = 109;
             // 
-            // cl_Interprete
+            // cl_DataCompra
             // 
-            this.cl_Interprete.Text = "Intérprete";
+            this.cl_DataCompra.DisplayIndex = 7;
+            this.cl_DataCompra.Text = "Data da Compra";
+            this.cl_DataCompra.Width = 116;
             // 
-            // cl_Autor
+            // cl_Origem
             // 
-            this.cl_Autor.Text = "Autor";
+            this.cl_Origem.DisplayIndex = 8;
+            this.cl_Origem.Text = "Origem";
+            this.cl_Origem.Width = 94;
             // 
-            // cl_Música
+            // cl_Obeservacao
             // 
-            this.cl_Música.Text = "Música";
+            this.cl_Obeservacao.DisplayIndex = 9;
+            this.cl_Obeservacao.Text = "Observação";
+            this.cl_Obeservacao.Width = 117;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(15, 23);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1043, 366);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // fm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 462);
+            this.ClientSize = new System.Drawing.Size(1206, 462);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Name = "fm_Principal";
@@ -234,12 +292,18 @@
         private System.Windows.Forms.TabPage tp_Amigos;
         private System.Windows.Forms.Button bt_Alterar;
         private System.Windows.Forms.ListView lv_Midias;
-        private System.Windows.Forms.ColumnHeader cl_Imagem;
+        private System.Windows.Forms.ColumnHeader cl_imagem;
         private System.Windows.Forms.ColumnHeader cl_Album;
         private System.Windows.Forms.ColumnHeader cl_Interprete;
         private System.Windows.Forms.ColumnHeader cl_Autor;
         private System.Windows.Forms.ColumnHeader cl_Música;
         private System.Windows.Forms.ListView lv_Amigos;
+        private System.Windows.Forms.ColumnHeader cl_Origem;
+        private System.Windows.Forms.ColumnHeader cl_Obeservacao;
+        private System.Windows.Forms.ColumnHeader cl_Nota;
+        private System.Windows.Forms.ColumnHeader cl_DataAlbum;
+        private System.Windows.Forms.ColumnHeader cl_DataCompra;
+        private System.Windows.Forms.ListView listView1;
 
     }
 }
