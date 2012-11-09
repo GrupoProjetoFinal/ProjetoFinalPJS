@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Controle_de_Midias
 {
-    public partial class fm_CadMidias : Form
+    public partial class fm_NovoAmigo : Form
     {
-        public fm_CadMidias()
+        public fm_NovoAmigo()
         {
             InitializeComponent();
         }
