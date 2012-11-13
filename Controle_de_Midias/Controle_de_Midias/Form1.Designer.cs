@@ -54,11 +54,11 @@
             this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lv_Amigos = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -96,6 +96,7 @@
             this.bt_Emprestar.TabIndex = 3;
             this.bt_Emprestar.Text = "&Emprestar";
             this.bt_Emprestar.UseVisualStyleBackColor = true;
+            this.bt_Emprestar.Click += new System.EventHandler(this.bt_Emprestar_Click);
             // 
             // bt_Pesquisa
             // 
@@ -114,6 +115,7 @@
             this.bt_NovoAmigo.TabIndex = 1;
             this.bt_NovoAmigo.Text = "Novo &Amigo";
             this.bt_NovoAmigo.UseVisualStyleBackColor = true;
+            this.bt_NovoAmigo.Click += new System.EventHandler(this.bt_NovoAmigo_Click);
             // 
             // bt_NovaMidia
             // 
@@ -184,7 +186,7 @@
             // cl_imagem
             // 
             this.cl_imagem.Text = "Visualização";
-            this.cl_imagem.Width = 86;
+            this.cl_imagem.Width = 80;
             // 
             // cl_Album
             // 
@@ -198,43 +200,36 @@
             // 
             // cl_Origem
             // 
-            this.cl_Origem.DisplayIndex = 8;
             this.cl_Origem.Text = "Origem";
             this.cl_Origem.Width = 94;
             // 
             // cl_Autor
             // 
-            this.cl_Autor.DisplayIndex = 3;
             this.cl_Autor.Text = "Autor";
             this.cl_Autor.Width = 102;
             // 
             // cl_Música
             // 
-            this.cl_Música.DisplayIndex = 4;
             this.cl_Música.Text = "Música";
             this.cl_Música.Width = 137;
             // 
             // cl_Obeservacao
             // 
-            this.cl_Obeservacao.DisplayIndex = 9;
             this.cl_Obeservacao.Text = "Observação";
             this.cl_Obeservacao.Width = 117;
             // 
             // cl_Nota
             // 
-            this.cl_Nota.DisplayIndex = 5;
             this.cl_Nota.Text = "Nota";
             this.cl_Nota.Width = 107;
             // 
             // cl_DataAlbum
             // 
-            this.cl_DataAlbum.DisplayIndex = 6;
             this.cl_DataAlbum.Text = "Data do Álbum";
             this.cl_DataAlbum.Width = 109;
             // 
             // cl_DataCompra
             // 
-            this.cl_DataCompra.DisplayIndex = 7;
             this.cl_DataCompra.Text = "Data da Compra";
             this.cl_DataCompra.Width = 116;
             // 
@@ -264,14 +259,6 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // lv_Amigos
-            // 
-            this.lv_Amigos.Location = new System.Drawing.Point(6, 12);
-            this.lv_Amigos.Name = "lv_Amigos";
-            this.lv_Amigos.Size = new System.Drawing.Size(1076, 389);
-            this.lv_Amigos.TabIndex = 1;
-            this.lv_Amigos.UseCompatibleStateImageBehavior = false;
-            // 
             // cl_Nome
             // 
             this.cl_Nome.Text = "Nome";
@@ -291,6 +278,14 @@
             // 
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
+            // 
+            // lv_Amigos
+            // 
+            this.lv_Amigos.Location = new System.Drawing.Point(6, 12);
+            this.lv_Amigos.Name = "lv_Amigos";
+            this.lv_Amigos.Size = new System.Drawing.Size(1076, 389);
+            this.lv_Amigos.TabIndex = 1;
+            this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             // 
             // fm_Principal
             // 

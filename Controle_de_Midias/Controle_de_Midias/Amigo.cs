@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Controle_de_Midias
 {
-    class Amigo
+    public class Amigo
     {
-        string nome;
-        string telefone;
-        string email;
-        string observacao;
+        public string nome;
+        public string telefone;
+        public string email;
+        public string observacao;
     }
 }

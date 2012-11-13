@@ -17,6 +17,8 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
+
+        fm_Emprestimo emprestimo = new fm_Emprestimo();
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
@@ -26,6 +28,17 @@ namespace Controle_de_Midias
         private void gb_Midias_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void bt_Emprestar_Click(object sender, EventArgs e)
+        {
+            emprestimo.ShowDialog();
+        }
+
+        private void bt_NovoAmigo_Click(object sender, EventArgs e)
+        {
+            fm_NovoAmigo Adicionar = new fm_NovoAmigo();
+            Adicionar.ShowDialog();
         }
 
     }

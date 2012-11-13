@@ -48,6 +48,18 @@
   <ItemGroup>
     <Compile Include="Amigo.cs" />
     <Compile Include="Emprestimo.cs" />
+    <Compile Include="fm_CadMidias.cs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_CadMidias.cs.Designer.cs">
+      <DependentUpon>fm_CadMidias.cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fm_Emprestimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_Emprestimo.Designer.cs">
+      <DependentUpon>fm_Emprestimo.cs</DependentUpon>
+    </Compile>
     <Compile Include="fm_NovoAmigo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +76,12 @@
     <Compile Include="Midia.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fm_CadMidias.cs.resx">
+      <DependentUpon>fm_CadMidias.cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fm_Emprestimo.resx">
+      <DependentUpon>fm_Emprestimo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fm_NovoAmigo.resx">
       <DependentUpon>fm_NovoAmigo.cs</DependentUpon>
     </EmbeddedResource>
