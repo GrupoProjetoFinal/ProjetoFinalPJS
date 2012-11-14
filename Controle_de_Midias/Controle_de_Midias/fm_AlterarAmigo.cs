@@ -25,25 +25,15 @@ namespace Controle_de_Midias
             novoAmigo.email = tb_EmailAlt.Text;
             novoAmigo.observacao = rtb_ObservacaoAlt.Text;
 
-            // Faz a inserção do dados do novoAmigo para o banco de dados
-            string sql = "UPDATE Amigos SET Nome = @nome,TTelefone = @telefone, Email = @email, Observacao = @observacao" +
-                         "WHERE ([Nome] = @nome)";
-            SqlCommand comando = null;
-            GerenciadorDeBanco inserirDadosAmigo = new GerenciadorDeBanco();
+            GerenciadorDeBanco GBD = new GerenciadorDeBanco();
 
             //verifica se a conecção foi aberta, se sim insere os dados
-            if (inserirDadosAmigo.AbrirConexao())
+            if (GBD.AbrirConexao())
             {
-                comando = new SqlCommand(sql, inserirDadosAmigo.conexao);
-                comando.Parameters.Add(new SqlParameter("@nome", novoAmigo.nome));
-                comando.Parameters.Add(new SqlParameter("@telefone", novoAmigo.telefone));
-                comando.Parameters.Add(new SqlParameter("@email", novoAmigo.email));
-                comando.Parameters.Add(new SqlParameter("@observacao", novoAmigo.observacao));
 
-                comando.ExecuteNonQuery();
-
+                GBD.AlteraAmigo(novoAmigo);
                 //Fecha a coneção
-                inserirDadosAmigo.FecharConexao();
+                GBD.FecharConexao();
 
                 //Limpa os textBox
                 tb_NomeAlt.Clear();
