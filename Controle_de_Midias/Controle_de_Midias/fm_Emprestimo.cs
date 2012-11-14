@@ -34,8 +34,6 @@ namespace Controle_de_Midias
         {
             List<string> dadosAmigo = new List<string>();
             string nome = tb_NomeEM.Text;
-            string email = tb_Email.Text;
-            string tel = mtb_Telefone.Text;
 
             if (GBD.AbrirConexao())
             {
@@ -58,13 +56,15 @@ namespace Controle_de_Midias
             GBD.AbrirConexao();
 
             NomesAmigos = GBD.ColetarNomes();
-
+            GBD.PreencherLvMidias(lv_Midias);
             GBD.FecharConexao();
 
             foreach(string nome in NomesAmigos)
             {
                 tb_NomeEM.AutoCompleteCustomSource.Add(nome);
             }
+
+            
         }
 
         private void gr_Amigo_Enter(object sender, EventArgs e)

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bt_Devolver = new System.Windows.Forms.Button();
             this.bt_Emprestar = new System.Windows.Forms.Button();
@@ -42,7 +42,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_Midias = new System.Windows.Forms.TabPage();
             this.lv_Midias = new System.Windows.Forms.ListView();
-            this.cl_imagem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,12 +52,11 @@
             this.cl_DataAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lv_Amigos = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -150,7 +148,6 @@
             // lv_Midias
             // 
             this.lv_Midias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cl_imagem,
             this.cl_Album,
             this.cl_Interprete,
             this.cl_Origem,
@@ -160,33 +157,28 @@
             this.cl_Nota,
             this.cl_DataAlbum,
             this.cl_DataCompra});
-            listViewGroup1.Header = "Vinil";
-            listViewGroup1.Name = "Gp_Vinil";
-            listViewGroup2.Header = "K7";
-            listViewGroup2.Name = "Gp_k7";
-            listViewGroup3.Header = "CD";
-            listViewGroup3.Name = "Gp_Cd";
-            listViewGroup4.Header = "DVD";
-            listViewGroup4.Name = "Gp_Dvd";
-            listViewGroup5.Header = "Digital";
-            listViewGroup5.Name = "Gp_Digital";
+            listViewGroup6.Header = "Vinil";
+            listViewGroup6.Name = "Gp_Vinil";
+            listViewGroup7.Header = "K7";
+            listViewGroup7.Name = "Gp_k7";
+            listViewGroup8.Header = "CD";
+            listViewGroup8.Name = "Gp_Cd";
+            listViewGroup9.Header = "DVD";
+            listViewGroup9.Name = "Gp_Dvd";
+            listViewGroup10.Header = "Digital";
+            listViewGroup10.Name = "Gp_Digital";
             this.lv_Midias.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4,
-            listViewGroup5});
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9,
+            listViewGroup10});
             this.lv_Midias.Location = new System.Drawing.Point(6, 6);
             this.lv_Midias.Name = "lv_Midias";
             this.lv_Midias.Size = new System.Drawing.Size(1026, 389);
             this.lv_Midias.TabIndex = 0;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
-            // 
-            // cl_imagem
-            // 
-            this.cl_imagem.Text = "Visualização";
-            this.cl_imagem.Width = 80;
             // 
             // cl_Album
             // 
@@ -235,7 +227,6 @@
             // 
             // tp_Amigos
             // 
-            this.tp_Amigos.Controls.Add(this.listView1);
             this.tp_Amigos.Controls.Add(this.lv_Amigos);
             this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
             this.tp_Amigos.Name = "tp_Amigos";
@@ -245,19 +236,19 @@
             this.tp_Amigos.Text = "Amigos";
             this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // lv_Amigos
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lv_Amigos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cl_Nome,
             this.cl_Telefone,
             this.cl_Email,
             this.cl_Obs});
-            this.listView1.Location = new System.Drawing.Point(15, 23);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1043, 366);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lv_Amigos.Location = new System.Drawing.Point(3, 29);
+            this.lv_Amigos.Name = "lv_Amigos";
+            this.lv_Amigos.Size = new System.Drawing.Size(1043, 366);
+            this.lv_Amigos.TabIndex = 2;
+            this.lv_Amigos.UseCompatibleStateImageBehavior = false;
+            this.lv_Amigos.View = System.Windows.Forms.View.Details;
             // 
             // cl_Nome
             // 
@@ -278,14 +269,6 @@
             // 
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
-            // 
-            // lv_Amigos
-            // 
-            this.lv_Amigos.Location = new System.Drawing.Point(6, 12);
-            this.lv_Amigos.Name = "lv_Amigos";
-            this.lv_Amigos.Size = new System.Drawing.Size(1076, 389);
-            this.lv_Amigos.TabIndex = 1;
-            this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             // 
             // fm_Principal
             // 
@@ -317,18 +300,16 @@
         private System.Windows.Forms.TabPage tp_Amigos;
         private System.Windows.Forms.Button bt_Devolver;
         private System.Windows.Forms.ListView lv_Midias;
-        private System.Windows.Forms.ColumnHeader cl_imagem;
         private System.Windows.Forms.ColumnHeader cl_Album;
         private System.Windows.Forms.ColumnHeader cl_Interprete;
         private System.Windows.Forms.ColumnHeader cl_Autor;
         private System.Windows.Forms.ColumnHeader cl_Música;
-        private System.Windows.Forms.ListView lv_Amigos;
         private System.Windows.Forms.ColumnHeader cl_Origem;
         private System.Windows.Forms.ColumnHeader cl_Obeservacao;
         private System.Windows.Forms.ColumnHeader cl_Nota;
         private System.Windows.Forms.ColumnHeader cl_DataAlbum;
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lv_Amigos;
         private System.Windows.Forms.ColumnHeader cl_Nome;
         private System.Windows.Forms.ColumnHeader cl_Telefone;
         private System.Windows.Forms.ColumnHeader cl_Email;

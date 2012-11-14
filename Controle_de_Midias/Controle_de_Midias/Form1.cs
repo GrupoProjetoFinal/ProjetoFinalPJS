@@ -17,12 +17,15 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
-
+        GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         fm_Emprestimo emprestimo = new fm_Emprestimo();
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
-            //painel
+            GBD.AbrirConexao();
+            GBD.PreencherLvMidias(lv_Midias);
+            GBD.PreecherLvAmigos(lv_Amigos);
+            GBD.FecharConexao();
         }
 
         private void gb_Midias_Enter(object sender, EventArgs e)
