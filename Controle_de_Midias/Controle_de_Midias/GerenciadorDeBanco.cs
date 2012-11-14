@@ -64,7 +64,5 @@ namespace Controle_de_Midias
         //    cmdSQL = "SELECTXÇ";
 
         //}
-
-        PUBLIC
     }
 }

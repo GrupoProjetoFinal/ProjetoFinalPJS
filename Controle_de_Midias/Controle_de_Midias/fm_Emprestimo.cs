@@ -34,8 +34,6 @@ namespace Controle_de_Midias
         {
             List<string> dadosAmigo = new List<string>();
             string nome = tb_NomeEM.Text;
-            string email = tb_Email.Text;
-            string tel = mtb_Telefone.Text;
 
             if (GBD.AbrirConexao())
             {

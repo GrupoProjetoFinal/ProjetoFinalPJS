@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Amigo.cs" />
     <Compile Include="Emprestimo.cs" />
+    <Compile Include="fm_AlterarAmigo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_AlterarAmigo.Designer.cs">
+      <DependentUpon>fm_AlterarAmigo.cs</DependentUpon>
+    </Compile>
     <Compile Include="fm_CadMidias.cs.cs">
       <SubType>Form</SubType>
     </Compile>
