@@ -59,6 +59,19 @@ namespace Controle_de_Midias
 
         }
 
+        public void AlteraAmigo(Amigo altAmigo)
+        {
+            cmdSQL = "UPDATE Amigos SET Nome = @nome,TTelefone = @telefone, Email = @email, Observacao = @observacao" +
+                     "WHERE ([Nome] = @nome)";
+            cmd = new SqlCommand(cmdSQL, conexao);
+            cmd.Parameters.Add(new SqlParameter("@nome", altAmigo.nome));
+            cmd.Parameters.Add(new SqlParameter("@telefone", altAmigo.telefone));
+            cmd.Parameters.Add(new SqlParameter("@email", altAmigo.email));
+            cmd.Parameters.Add(new SqlParameter("@observacao", altAmigo.observacao));
+
+            cmd.ExecuteNonQuery();
+        }
+
         //public List<string> ProcuarAmigo()
         //{
 
