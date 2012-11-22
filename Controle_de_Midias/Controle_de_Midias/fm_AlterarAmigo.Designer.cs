@@ -38,6 +38,7 @@
             this.rtb_ObservacaoAlt = new System.Windows.Forms.RichTextBox();
             this.gb_menu = new System.Windows.Forms.GroupBox();
             this.bt_Alterar = new System.Windows.Forms.Button();
+            this.bt_Excluir = new System.Windows.Forms.Button();
             this.gb_menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +109,7 @@
             // 
             // gb_menu
             // 
+            this.gb_menu.Controls.Add(this.bt_Excluir);
             this.gb_menu.Controls.Add(this.bt_Alterar);
             this.gb_menu.Location = new System.Drawing.Point(9, 12);
             this.gb_menu.Name = "gb_menu";
@@ -125,6 +127,16 @@
             this.bt_Alterar.Text = "&Alterar";
             this.bt_Alterar.UseVisualStyleBackColor = true;
             this.bt_Alterar.Click += new System.EventHandler(this.bt_Adicionar_Click);
+            // 
+            // bt_Excluir
+            // 
+            this.bt_Excluir.Location = new System.Drawing.Point(5, 52);
+            this.bt_Excluir.Name = "bt_Excluir";
+            this.bt_Excluir.Size = new System.Drawing.Size(75, 23);
+            this.bt_Excluir.TabIndex = 1;
+            this.bt_Excluir.Text = "&Excluir";
+            this.bt_Excluir.UseVisualStyleBackColor = true;
+            this.bt_Excluir.Click += new System.EventHandler(this.bt_Excluir_Click);
             // 
             // fm_AlterarAmigo
             // 
@@ -160,5 +172,6 @@
         private System.Windows.Forms.RichTextBox rtb_ObservacaoAlt;
         private System.Windows.Forms.GroupBox gb_menu;
         private System.Windows.Forms.Button bt_Alterar;
+        private System.Windows.Forms.Button bt_Excluir;
     }
 }

@@ -82,6 +82,9 @@
     <Compile Include="Midia.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fm_AlterarAmigo.resx">
+      <DependentUpon>fm_AlterarAmigo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fm_CadMidias.cs.resx">
       <DependentUpon>fm_CadMidias.cs.cs</DependentUpon>
     </EmbeddedResource>

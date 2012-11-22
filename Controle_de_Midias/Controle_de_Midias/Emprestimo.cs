@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Controle_de_Midias
 {
-    class Emprestimo
+    public class Emprestimo
     {
-        int idMidia;
-        int idAmigo;
-        DateTime data;
-        int quantidadeDias;
+        public int idMidia;
+        public int idAmigo;
+        public DateTime data;
+        public int quantidadeDias;
     }
 }

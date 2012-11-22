@@ -44,5 +44,30 @@ namespace Controle_de_Midias
             Adicionar.ShowDialog();
         }
 
+        private void lv_Amigos_DoubleClick(object sender, EventArgs e)
+        {
+            //int DadosModificar;
+
+            Amigo ModificaAmigo = new Amigo();
+            foreach (ListViewItem item in lv_Amigos.SelectedItems)
+            {
+                ModificaAmigo.nome = item.Text;
+                ModificaAmigo.telefone = item.SubItems[1].Text;
+                ModificaAmigo.email = item.SubItems[2].Text;
+                ModificaAmigo.observacao = item.SubItems[3].Text;
+                ModificaAmigo.anterior.Add(item.Text);
+                ModificaAmigo.anterior.Add(item.SubItems[1].Text);
+                ModificaAmigo.anterior.Add( item.SubItems[2].Text);
+                ModificaAmigo.anterior.Add(item.SubItems[3].Text);
+
+
+            }
+            fm_AlterarAmigo Alterar = new fm_AlterarAmigo();
+            Alterar.Preencher(ModificaAmigo);
+            Alterar.ShowDialog();
+
+           
+        }
+
     }
 }

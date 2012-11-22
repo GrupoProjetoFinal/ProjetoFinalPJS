@@ -59,39 +59,69 @@ namespace Controle_de_Midias
 
         }
 
+        public int ProcuraIdentificador(Amigo selecionado)
+        {
+            int idAmigo;
+            cmdSQL = "SELECT Id_Amigo FROM Amigos WHERE Nome = @nome AND Telefone = @telefone AND Email = @email and Observacao = @observacao ";
+            cmd = new SqlCommand(cmdSQL, conexao);
+            cmd.Parameters.Add(new SqlParameter("@nome", selecionado.anterior[0]));
+            cmd.Parameters.Add(new SqlParameter("@telefone", selecionado.anterior[1]));
+            cmd.Parameters.Add(new SqlParameter("@email", selecionado.anterior[2]));
+            cmd.Parameters.Add(new SqlParameter("@observacao", selecionado.anterior[3]));
+
+            idAmigo = (int)cmd.ExecuteScalar();
+
+            return idAmigo;
+            
+        }
         public void AlteraAmigo(Amigo altAmigo)
         {
-            cmdSQL = "UPDATE Amigos SET Nome = @nome,TTelefone = @telefone, Email = @email, Observacao = @observacao" +
-                     "WHERE ([Nome] = @nome)";
+            int id = ProcuraIdentificador(altAmigo);
+            //Faz a atualização dados do amigo no banco de dados
+            cmdSQL = "UPDATE Amigos SET Nome = @nome,Telefone = @telefone, Email = @email, Observacao = @observacao WHERE Nome = @id";
             cmd = new SqlCommand(cmdSQL, conexao);
             cmd.Parameters.Add(new SqlParameter("@nome", altAmigo.nome));
             cmd.Parameters.Add(new SqlParameter("@telefone", altAmigo.telefone));
             cmd.Parameters.Add(new SqlParameter("@email", altAmigo.email));
             cmd.Parameters.Add(new SqlParameter("@observacao", altAmigo.observacao));
+            cmd.Parameters.Add(new SqlParameter("@id", id));
+
+            cmd.ExecuteNonQuery();
+            
+        }
+
+        public void Remover(Amigo removeAmigo)
+        {
+            // Remove o amigo do banco de dados
+            cmdSQL = "DELETE FROM Amigos WHERE Nome = @nome";
+            cmd = new SqlCommand(cmdSQL, conexao);
+            cmd.Parameters.Add(new SqlParameter("@nome", removeAmigo.nome));
 
             cmd.ExecuteNonQuery();
         }
-
-        //public List<string> ProcuarAmigo()
-        //{
-
-        //    cmdSQL = "SELECTXÇ";
-
-        //}
 
         public void PreencherLvMidias(ListView lv_Midias)
         {
 
             // Professor fez esta errado
-            if (!Leitor.IsClosed)
-                Leitor.Close();
-
+            //if (!Leitor.IsClosed)
+            //Leitor.Close();
+           
             cmdSQL = "SELECT * FROM Midias";
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
 
+            lv_Midias.Clear();
+            lv_Midias.View = View.Details;
+            lv_Midias.LabelEdit = true;
+            lv_Midias.AllowColumnReorder = true;
+            lv_Midias.CheckBoxes = true;
+            lv_Midias.FullRowSelect = true;
+            lv_Midias.GridLines = true;
+
             while (Leitor.Read())
             {
+                
                 item = new ListViewItem(Leitor["Nome_Album"].ToString());
                 item.Group = lv_Midias.Groups[Leitor["Tipo_Midia"].ToString()];
                 lv_Midias.Items.Add(item);
@@ -104,15 +134,18 @@ namespace Controle_de_Midias
                 item.SubItems.Add(Leitor["Data_Album"].ToString());
                 item.SubItems.Add(Leitor["Data_Compra"].ToString());
             }
-            Leitor.Close();
-            
+            Leitor.Close();    
         }
+
         public void PreecherLvAmigos(ListView lv_Amigos)
         {
             Leitor.Close();
             cmdSQL = "SELECT * FROM Amigos";
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
+
+            lv_Amigos.FullRowSelect = true;
+            lv_Amigos.GridLines = true;
 
             while (Leitor.Read())
             {
