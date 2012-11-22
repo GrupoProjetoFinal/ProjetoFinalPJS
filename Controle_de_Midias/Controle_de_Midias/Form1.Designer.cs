@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bt_Devolver = new System.Windows.Forms.Button();
             this.bt_Emprestar = new System.Windows.Forms.Button();
@@ -85,6 +85,7 @@
             this.bt_Devolver.TabIndex = 4;
             this.bt_Devolver.Text = "&Devolver";
             this.bt_Devolver.UseVisualStyleBackColor = true;
+            this.bt_Devolver.Click += new System.EventHandler(this.bt_Devolver_Click);
             // 
             // bt_Emprestar
             // 
@@ -157,22 +158,22 @@
             this.cl_Nota,
             this.cl_DataAlbum,
             this.cl_DataCompra});
-            listViewGroup6.Header = "Vinil";
-            listViewGroup6.Name = "Gp_Vinil";
-            listViewGroup7.Header = "K7";
-            listViewGroup7.Name = "Gp_k7";
-            listViewGroup8.Header = "CD";
-            listViewGroup8.Name = "Gp_Cd";
-            listViewGroup9.Header = "DVD";
-            listViewGroup9.Name = "Gp_Dvd";
-            listViewGroup10.Header = "Digital";
-            listViewGroup10.Name = "Gp_Digital";
+            listViewGroup1.Header = "Vinil";
+            listViewGroup1.Name = "Gp_Vinil";
+            listViewGroup2.Header = "K7";
+            listViewGroup2.Name = "Gp_k7";
+            listViewGroup3.Header = "CD";
+            listViewGroup3.Name = "Gp_Cd";
+            listViewGroup4.Header = "DVD";
+            listViewGroup4.Name = "Gp_Dvd";
+            listViewGroup5.Header = "Digital";
+            listViewGroup5.Name = "Gp_Digital";
             this.lv_Midias.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8,
-            listViewGroup9,
-            listViewGroup10});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4,
+            listViewGroup5});
             this.lv_Midias.Location = new System.Drawing.Point(6, 6);
             this.lv_Midias.Name = "lv_Midias";
             this.lv_Midias.Size = new System.Drawing.Size(1026, 389);
@@ -249,6 +250,7 @@
             this.lv_Amigos.TabIndex = 2;
             this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             this.lv_Amigos.View = System.Windows.Forms.View.Details;
+            this.lv_Amigos.DoubleClick += new System.EventHandler(this.lv_Amigos_DoubleClick);
             // 
             // cl_Nome
             // 
