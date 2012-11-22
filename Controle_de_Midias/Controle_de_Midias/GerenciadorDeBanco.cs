@@ -14,7 +14,7 @@ namespace Controle_de_Midias
         SqlDataReader Leitor;
         public SqlConnection conexao = new SqlConnection();
         SqlCommand cmd;
-        List<string> NomesAmigos = new List<string>();
+        List<string> DadosAmigos = new List<string>();
         ListViewItem item = new ListViewItem();
         string cmdSQL;
         public bool AbrirConexao()
@@ -52,10 +52,10 @@ namespace Controle_de_Midias
 
             while (Leitor.Read())
             {
-                NomesAmigos.Add(Leitor["Nome"].ToString());
+                DadosAmigos.Add(Leitor["Nome"].ToString());
             }
-
-            return NomesAmigos;
+            Leitor.Close();
+            return DadosAmigos;
 
         }
 
@@ -90,6 +90,7 @@ namespace Controle_de_Midias
             
         }
 
+
         public void Remover(Amigo removeAmigo)
         {
             // Remove o amigo do banco de dados
@@ -100,12 +101,31 @@ namespace Controle_de_Midias
             cmd.ExecuteNonQuery();
         }
 
+        public List<string> ProcuarAmigo(string Nome)
+        {
+            DadosAmigos.Clear();
+
+            cmdSQL = "SELECT * FROM Amigos WHERE Nome = @Nome";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@Nome", Nome));
+            Leitor = cmd.ExecuteReader();
+
+            while (Leitor.Read())
+            {
+                DadosAmigos.Add(Leitor["Nome"].ToString());
+                DadosAmigos.Add(Leitor["Telefone"].ToString());
+                DadosAmigos.Add(Leitor["Email"].ToString());
+                DadosAmigos.Add(Leitor["Observacao"].ToString());
+                DadosAmigos.Add(Leitor["Id_Amigo"].ToString());
+            }
+            Leitor.Close();
+            return DadosAmigos;
+        }
+
         public void PreencherLvMidias(ListView lv_Midias)
         {
-
-            // Professor fez esta errado
-            //if (!Leitor.IsClosed)
-            //Leitor.Close();
            
             cmdSQL = "SELECT * FROM Midias";
             cmd = new SqlCommand(cmdSQL, conexao);
@@ -139,7 +159,6 @@ namespace Controle_de_Midias
 
         public void PreecherLvAmigos(ListView lv_Amigos)
         {
-            Leitor.Close();
             cmdSQL = "SELECT * FROM Amigos";
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
@@ -157,6 +176,27 @@ namespace Controle_de_Midias
                 item.SubItems.Add(Leitor["Observacao"].ToString());
             }
             Leitor.Close();
+        }
+
+        public void EmprestarMidia(string idAmigo, List<string> DadosMidias)
+        {
+
+            int idMidia;
+
+            // perguntar para o professor se a uma maneira melhor ....
+            cmdSQL = "SELECT Id_Midia FROM Midias WHERE Nome_Album = '" + DadosMidias[0] + "' AND Nome_Interprete ='" + DadosMidias[1] + "' AND Origem_Compra = kk AND Nome_autor = kk AND Nome_Musica kk AND Observacao = kkk Nota = kk AND Dta = KK AND data = Kkk";
+            cmd = new SqlCommand(cmdSQL, conexao);
+            idMidia = (int)cmd.ExecuteScalar();
+
+            cmdSQL = "INSERT INTO Emprestimos VALUES ('"+idMidia+"', '"+idAmigo+"', GETDATE(),0)";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            //cmd.Parameters.Add(new SqlParameter("@Id_Midia",idmidia));
+            //cmd.Parameters.Add(new SqlParameter("@Id_Amigo", idamigo));
+
+            cmd.ExecuteNonQuery();
+            
         }
     }
 }
