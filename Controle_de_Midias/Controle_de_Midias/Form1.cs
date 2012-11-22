@@ -19,6 +19,7 @@ namespace Controle_de_Midias
         }
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         fm_Emprestimo emprestimo = new fm_Emprestimo();
+        fm_Devolver devolver = new fm_Devolver();
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
@@ -26,6 +27,11 @@ namespace Controle_de_Midias
             GBD.PreencherLvMidias(lv_Midias);
             GBD.PreecherLvAmigos(lv_Amigos);
             GBD.FecharConexao();
+
+
+
+            //retorna a diferença de dias de duas datas
+            string cmdSQL = " SELECT DATEDIFF ( DAY , '11/20/2012' , GETDATE())";
         }
 
         private void gb_Midias_Enter(object sender, EventArgs e)
@@ -42,6 +48,11 @@ namespace Controle_de_Midias
         {
             fm_NovoAmigo Adicionar = new fm_NovoAmigo();
             Adicionar.ShowDialog();
+        }
+
+        private void bt_Devolver_Click(object sender, EventArgs e)
+        {
+            devolver.ShowDialog();
         }
 
     }
