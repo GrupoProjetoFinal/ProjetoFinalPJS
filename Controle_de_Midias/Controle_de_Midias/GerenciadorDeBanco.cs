@@ -42,6 +42,29 @@ namespace Controle_de_Midias
             conexao.Close();
         }
 
+        public void CadastroMidia(Midia midia)
+        {
+            cmdSQL = "Insert into midias (Interprete, autor, musica, album, data_album, data_Compra, compra, tipo, observacao) values (@Interprete, @autor, @musica, @album, @data_album, @data_Compra, @compra, @tipo, @observacao)";
+
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@Interprete", midia.interprete));
+            cmd.Parameters.Add(new SqlParameter("@autor", midia.autor));
+            cmd.Parameters.Add(new SqlParameter("@musica", midia.musica));
+            cmd.Parameters.Add(new SqlParameter("@album", midia.album));
+            cmd.Parameters.Add(new SqlParameter("@data_album", midia.dataAlbum));
+            cmd.Parameters.Add(new SqlParameter("@data_compra", midia.dataCompra));
+            cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
+            cmd.Parameters.Add(new SqlParameter("@tipo", midia.observacao));
+
+            cmd.ExecuteNonQuery();
+            
+            
+            
+
+        }
+
         public List<string> ColetarNomes()
         {
            
@@ -54,7 +77,7 @@ namespace Controle_de_Midias
             {
                 NomesAmigos.Add(Leitor["Nome"].ToString());
             }
-
+            Leitor.Close();
             return NomesAmigos;
 
         }
@@ -82,10 +105,7 @@ namespace Controle_de_Midias
         public void PreencherLvMidias(ListView lv_Midias)
         {
 
-            // Professor fez esta errado
-            if (!Leitor.IsClosed)
-                Leitor.Close();
-
+            
             cmdSQL = "SELECT * FROM Midias";
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
@@ -109,7 +129,7 @@ namespace Controle_de_Midias
         }
         public void PreecherLvAmigos(ListView lv_Amigos)
         {
-            Leitor.Close();
+           
             cmdSQL = "SELECT * FROM Amigos";
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
@@ -124,6 +144,7 @@ namespace Controle_de_Midias
                 item.SubItems.Add(Leitor["Observacao"].ToString());
             }
             Leitor.Close();
+            
         }
     }
 }

@@ -5,18 +5,18 @@ using System.Text;
 
 namespace Controle_de_Midias
 {
-    class Midia
+   public class Midia
     {
         //image foto?;
-        string interprete;
-        string autor;
-        string musica;
-        string album;
-        DateTime dataAlbum;
-        DateTime dataCompra;
-        string compra;
-        string tipo;
-        string observacao;
+      public  string interprete;
+      public string autor;
+      public string musica;
+      public string album;
+      public DateTime dataAlbum;
+      public DateTime dataCompra;
+      public string compra;
+      public string tipo;
+      public string observacao;
 
     }
 }
