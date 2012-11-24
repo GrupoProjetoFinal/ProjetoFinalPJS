@@ -158,6 +158,8 @@
             this.cl_Nota,
             this.cl_DataAlbum,
             this.cl_DataCompra});
+            this.lv_Midias.FullRowSelect = true;
+            this.lv_Midias.GridLines = true;
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";

@@ -42,4 +42,43 @@ CREATE TABLE Emprestimos
 	FOREIGN KEY(Id_Amigo) REFERENCES Amigos (Id_Amigo)
 )
 GO
+   item = new ListViewItem(Leitor["Nome_Album"].ToString());
+                item.Group = lv_Midias.Groups[Leitor["Tipo_Midia"].ToString()];
+                lv_Midias.Items.Add(item);
+                item.SubItems.Add(Leitor["Nome_Interprete"].ToString());
+                item.SubItems.Add(Leitor["Origem_Compra"].ToString());
+                item.SubItems.Add(Leitor["Nome_Autor"].ToString());
+                item.SubItems.Add(Leitor["Nome_Musica"].ToString());
+                item.SubItems.Add(Leitor["Observacao"].ToString());
+                item.SubItems.Add(Leitor["Nota"].ToString());
+                item.SubItems.Add(Leitor["Data_Album"].ToString());
+                item.SubItems.Add(Leitor["Data_Compra"].ToString());
 
+
+
+
+SELECT Nome_Fornecedor       AS [Fornecedor], CNPJ,
+		   Telefone, Email   AS [E-mail],
+		   Endereco          AS [Endereço],
+		   Numero            AS [Numero], Bairro,
+		   Cidade.nom_cidade AS [Cidade]
+	FROM fornecedores
+	INNER JOIN Cidade
+	ON Fornecedores.cod_cidade = Cidade.cod_cidade
+	WHERE Fornecedores.cod_cidade = @codigo
+	
+	
+	SELECT Midias.Nome_Album,
+                            Midias.Nome_Interprete, 
+                            Midias.Origem_Compra,  
+                            Midias.Nome_Autor,   
+                            Midias.Nome_Musica,   
+                            Midias.Observacao,   
+                            Midias.Nota,   
+                            Midias.Data_Album,   
+                            Midias.Data_Compra,   
+                            Midias.Tipo_Midia
+                        FROM Emprestimos   
+                        INNER JOIN Midias  
+                        ON Emprestimos.Id_Midia = Midias.Id_Midia  
+                        WHERE Emprestimos.Id_Amigo = 1

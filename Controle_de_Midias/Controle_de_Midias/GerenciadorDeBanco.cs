@@ -17,6 +17,7 @@ namespace Controle_de_Midias
         List<string> DadosAmigos = new List<string>();
         ListViewItem item = new ListViewItem();
         string cmdSQL;
+
         public bool AbrirConexao()
         {
             conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\ProjetoFinalPJS\Controle_de_Midias\Base de dados\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
@@ -78,11 +79,8 @@ namespace Controle_de_Midias
                 DadosAmigos.Add(Leitor["Nome"].ToString());
             }
             Leitor.Close();
-<<<<<<< .merge_file_a06452
-            return NomesAmigos;
-=======
+
             return DadosAmigos;
->>>>>>> .merge_file_a04264
 
         }
 
@@ -101,6 +99,7 @@ namespace Controle_de_Midias
             return idAmigo;
             
         }
+
         public void AlteraAmigo(Amigo altAmigo)
         {
             int id = ProcuraIdentificador(altAmigo);
@@ -117,7 +116,6 @@ namespace Controle_de_Midias
             
         }
 
-
         public void Remover(Amigo removeAmigo)
         {
             // Remove o amigo do banco de dados
@@ -128,7 +126,7 @@ namespace Controle_de_Midias
             cmd.ExecuteNonQuery();
         }
 
-        public List<string> ProcuarAmigo(string Nome)
+        public List<string> ProcurarAmigo(string Nome)
         {
             DadosAmigos.Clear();
 
@@ -152,20 +150,32 @@ namespace Controle_de_Midias
             return DadosAmigos;
         }
 
-        public void PreencherLvMidias(ListView lv_Midias)
+        public int ProcurarAmigo(Amigo amigo)
         {
-           
-            cmdSQL = "SELECT * FROM Midias";
-            cmd = new SqlCommand(cmdSQL, conexao);
-            Leitor = cmd.ExecuteReader();
+            int id_amigo;
 
-            lv_Midias.Clear();
-            lv_Midias.View = View.Details;
-            lv_Midias.LabelEdit = true;
-            lv_Midias.AllowColumnReorder = true;
-            lv_Midias.CheckBoxes = true;
-            lv_Midias.FullRowSelect = true;
-            lv_Midias.GridLines = true;
+            cmdSQL = "SELECT id_Amigo FROM Amigos WHERE Nome = @Nome AND Email = @Email AND Telefone = @Telefone AND Observacao = @Observacao";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@Nome",amigo.nome));
+            cmd.Parameters.Add(new SqlParameter("@Telefone", amigo.telefone));
+            cmd.Parameters.Add(new SqlParameter("@Email",amigo.email));
+            cmd.Parameters.Add(new SqlParameter("@Observacao",amigo.observacao));
+
+            return id_amigo = (int)cmd.ExecuteScalar(); 
+            
+        }
+        public void PreencherLvMidias(ListView lv_Midias, int id_Amigo)
+        {
+           if(id_Amigo == 0)
+               cmdSQL = "SELECT * FROM Midias";
+           else
+               cmdSQL = "SELECT Midias.Nome_Album, Midias.Nome_Interprete, Midias.Origem_Compra,  Midias.Nome_Autor, Midias.Nome_Musica, Midias.Observacao, Midias.Nota, Midias.Data_Album, Midias.Data_Compra,Midias.Tipo_Midia FROM Emprestimos  INNER JOIN Midias ON Emprestimos.Id_Midia = Midias.Id_Midia WHERE Emprestimos.Id_Amigo = @Id_Amigo";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+            cmd.Parameters.Add(new SqlParameter("@Id_Amigo",id_Amigo));
+            Leitor = cmd.ExecuteReader();
 
             while (Leitor.Read())
             {
@@ -183,12 +193,18 @@ namespace Controle_de_Midias
                 item.SubItems.Add(Leitor["Data_Compra"].ToString());
             }
             Leitor.Close();    
-        }
+        } 
 
-        public void PreecherLvAmigos(ListView lv_Amigos)
+        public void PreecherLvAmigos(ListView lv_Amigos, string verificador)
         {
+            if (verificador == "fm_Principal")
+                cmdSQL = "SELECT * FROM Amigos";
+            else
+                cmdSQL = "SELECT Amigos.Nome, Amigos.Email, Amigos.Telefone, Amigos.Observacao " + 
+                         "FROM Emprestimos " + 
+                         "INNER JOIN Amigos " + 
+                         "ON Emprestimos.Id_Amigo = Amigos.Id_Amigo";
 
-            cmdSQL = "SELECT * FROM Amigos";
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
 
@@ -213,20 +229,47 @@ namespace Controle_de_Midias
 
             int idMidia;
 
-            // perguntar para o professor se a uma maneira melhor ....
-            cmdSQL = "SELECT Id_Midia FROM Midias WHERE Nome_Album = '" + DadosMidias[0] + "' AND Nome_Interprete ='" + DadosMidias[1] + "' AND Origem_Compra = kk AND Nome_autor = kk AND Nome_Musica kk AND Observacao = kkk Nota = kk AND Dta = KK AND data = Kkk";
+            // Comando para obter o indificador da midia
+            cmdSQL = "SELECT Id_Midia FROM Midias WHERE Nome_Album = @Nome_Album AND Nome_Interprete = @Nome_Interprete AND Origem_Compra =  @Origem_Compra AND Nome_autor = @Nome_autor AND Nome_Musica = @Nome_Musica AND Observacao = @Observacao AND Nota = @Nota AND Data_Compra = @Data_Compra AND Data_Album = @Data_Album";
+
             cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@Nome_Album", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Observacao", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Nota", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Data_Compra", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Data_Album", DadosMidias[0]));
+
             idMidia = (int)cmd.ExecuteScalar();
 
-            cmdSQL = "INSERT INTO Emprestimos VALUES ('"+idMidia+"', '"+idAmigo+"', GETDATE(),0)";
+            // Armazana os indificadores de Amigos e Midias com a data atual da Maquina e a qtd de dias que sempre inicia com zero.
+  
+            cmdSQL = "INSERT INTO Emprestimos VALUES ( @id_Amigo , @id_Midia, GETDATE(),0)";
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
-            //cmd.Parameters.Add(new SqlParameter("@Id_Midia",idmidia));
-            //cmd.Parameters.Add(new SqlParameter("@Id_Amigo", idamigo));
+
+            cmd.Parameters.Add(new SqlParameter("@id_Amigo", idAmigo));
+            cmd.Parameters.Add(new SqlParameter("@id_Midia", idMidia));
 
             cmd.ExecuteNonQuery();
             
         }
+
+        public void AcrecentaDias()
+        {
+
+            cmdSQL = "UPDATE Emprestimos SET Quantidade_Dias =  DATEDIFF ( DAY , Data_Emprestimo , GETDATE()) from Emprestimos ";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.ExecuteNonQuery();
+
+        }
+
     }
 }

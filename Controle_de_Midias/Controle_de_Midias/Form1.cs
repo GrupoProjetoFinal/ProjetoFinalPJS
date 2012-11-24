@@ -9,8 +9,6 @@ using System.Windows.Forms;
 
 namespace Controle_de_Midias
 {
-
-
     public partial class fm_Principal : Form
     {
         public fm_Principal()
@@ -24,14 +22,10 @@ namespace Controle_de_Midias
         private void fm_Principal_Load(object sender, EventArgs e)
         {
             GBD.AbrirConexao();
-            GBD.PreencherLvMidias(lv_Midias);
-            GBD.PreecherLvAmigos(lv_Amigos);
+            GBD.PreencherLvMidias(lv_Midias,0);
+            GBD.PreecherLvAmigos(lv_Amigos, "fm_Principal");
+            GBD.AcrecentaDias();
             GBD.FecharConexao();
-
-
-
-            //retorna a diferença de dias de duas datas
-            string cmdSQL = " SELECT DATEDIFF ( DAY , '11/20/2012' , GETDATE())";
         }
 
         private void gb_Midias_Enter(object sender, EventArgs e)

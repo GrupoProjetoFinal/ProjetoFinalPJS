@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup13 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup14 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup15 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.lv_AmigosD = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gr_AmigoE = new System.Windows.Forms.GroupBox();
-            this.lb_ObsP = new System.Windows.Forms.Label();
+            this.lb_ObsD = new System.Windows.Forms.Label();
             this.bt_CancelarE = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.bt_Emprestar = new System.Windows.Forms.Button();
-            this.lb_EmailP = new System.Windows.Forms.Label();
-            this.lb_nomeP = new System.Windows.Forms.Label();
-            this.lb_TelP = new System.Windows.Forms.Label();
+            this.lb_EmailD = new System.Windows.Forms.Label();
+            this.lb_nomeD = new System.Windows.Forms.Label();
+            this.lb_TelD = new System.Windows.Forms.Label();
             this.lv_MidiasD = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -96,13 +96,13 @@
             // 
             // gr_AmigoE
             // 
-            this.gr_AmigoE.Controls.Add(this.lb_ObsP);
+            this.gr_AmigoE.Controls.Add(this.lb_ObsD);
             this.gr_AmigoE.Controls.Add(this.bt_CancelarE);
             this.gr_AmigoE.Controls.Add(this.label5);
             this.gr_AmigoE.Controls.Add(this.bt_Emprestar);
-            this.gr_AmigoE.Controls.Add(this.lb_EmailP);
-            this.gr_AmigoE.Controls.Add(this.lb_nomeP);
-            this.gr_AmigoE.Controls.Add(this.lb_TelP);
+            this.gr_AmigoE.Controls.Add(this.lb_EmailD);
+            this.gr_AmigoE.Controls.Add(this.lb_nomeD);
+            this.gr_AmigoE.Controls.Add(this.lb_TelD);
             this.gr_AmigoE.Location = new System.Drawing.Point(2, 0);
             this.gr_AmigoE.Name = "gr_AmigoE";
             this.gr_AmigoE.Size = new System.Drawing.Size(203, 323);
@@ -110,13 +110,13 @@
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
             // 
-            // lb_ObsP
+            // lb_ObsD
             // 
-            this.lb_ObsP.AutoSize = true;
-            this.lb_ObsP.Location = new System.Drawing.Point(8, 144);
-            this.lb_ObsP.Name = "lb_ObsP";
-            this.lb_ObsP.Size = new System.Drawing.Size(0, 13);
-            this.lb_ObsP.TabIndex = 13;
+            this.lb_ObsD.AutoSize = true;
+            this.lb_ObsD.Location = new System.Drawing.Point(8, 144);
+            this.lb_ObsD.Name = "lb_ObsD";
+            this.lb_ObsD.Size = new System.Drawing.Size(0, 13);
+            this.lb_ObsD.TabIndex = 13;
             // 
             // bt_CancelarE
             // 
@@ -146,31 +146,31 @@
             this.bt_Emprestar.Text = "&Devolver";
             this.bt_Emprestar.UseVisualStyleBackColor = true;
             // 
-            // lb_EmailP
+            // lb_EmailD
             // 
-            this.lb_EmailP.AutoSize = true;
-            this.lb_EmailP.Location = new System.Drawing.Point(6, 65);
-            this.lb_EmailP.Name = "lb_EmailP";
-            this.lb_EmailP.Size = new System.Drawing.Size(87, 13);
-            this.lb_EmailP.TabIndex = 6;
-            this.lb_EmailP.Text = "Não possui email";
+            this.lb_EmailD.AutoSize = true;
+            this.lb_EmailD.Location = new System.Drawing.Point(6, 65);
+            this.lb_EmailD.Name = "lb_EmailD";
+            this.lb_EmailD.Size = new System.Drawing.Size(87, 13);
+            this.lb_EmailD.TabIndex = 6;
+            this.lb_EmailD.Text = "Não possui email";
             // 
-            // lb_nomeP
+            // lb_nomeD
             // 
-            this.lb_nomeP.AutoSize = true;
-            this.lb_nomeP.Location = new System.Drawing.Point(6, 42);
-            this.lb_nomeP.Name = "lb_nomeP";
-            this.lb_nomeP.Size = new System.Drawing.Size(0, 13);
-            this.lb_nomeP.TabIndex = 3;
+            this.lb_nomeD.AutoSize = true;
+            this.lb_nomeD.Location = new System.Drawing.Point(6, 42);
+            this.lb_nomeD.Name = "lb_nomeD";
+            this.lb_nomeD.Size = new System.Drawing.Size(0, 13);
+            this.lb_nomeD.TabIndex = 3;
             // 
-            // lb_TelP
+            // lb_TelD
             // 
-            this.lb_TelP.AutoSize = true;
-            this.lb_TelP.Location = new System.Drawing.Point(6, 88);
-            this.lb_TelP.Name = "lb_TelP";
-            this.lb_TelP.Size = new System.Drawing.Size(101, 13);
-            this.lb_TelP.TabIndex = 8;
-            this.lb_TelP.Text = "Não possui telefone";
+            this.lb_TelD.AutoSize = true;
+            this.lb_TelD.Location = new System.Drawing.Point(6, 88);
+            this.lb_TelD.Name = "lb_TelD";
+            this.lb_TelD.Size = new System.Drawing.Size(101, 13);
+            this.lb_TelD.TabIndex = 8;
+            this.lb_TelD.Text = "Não possui telefone";
             // 
             // lv_MidiasD
             // 
@@ -184,22 +184,22 @@
             this.cl_Nota,
             this.cl_DataAlbum,
             this.cl_DataCompra});
-            listViewGroup11.Header = "Vinil";
-            listViewGroup11.Name = "Gp_Vinil";
-            listViewGroup12.Header = "K7";
-            listViewGroup12.Name = "Gp_k7";
-            listViewGroup13.Header = "CD";
-            listViewGroup13.Name = "Gp_Cd";
-            listViewGroup14.Header = "DVD";
-            listViewGroup14.Name = "Gp_Dvd";
-            listViewGroup15.Header = "Digital";
-            listViewGroup15.Name = "Gp_Digital";
+            listViewGroup1.Header = "Vinil";
+            listViewGroup1.Name = "Gp_Vinil";
+            listViewGroup2.Header = "K7";
+            listViewGroup2.Name = "Gp_k7";
+            listViewGroup3.Header = "CD";
+            listViewGroup3.Name = "Gp_Cd";
+            listViewGroup4.Header = "DVD";
+            listViewGroup4.Name = "Gp_Dvd";
+            listViewGroup5.Header = "Digital";
+            listViewGroup5.Name = "Gp_Digital";
             this.lv_MidiasD.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup11,
-            listViewGroup12,
-            listViewGroup13,
-            listViewGroup14,
-            listViewGroup15});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4,
+            listViewGroup5});
             this.lv_MidiasD.Location = new System.Drawing.Point(211, 0);
             this.lv_MidiasD.Name = "lv_MidiasD";
             this.lv_MidiasD.Size = new System.Drawing.Size(526, 323);
@@ -277,13 +277,13 @@
         private System.Windows.Forms.ColumnHeader cl_Email;
         private System.Windows.Forms.ColumnHeader cl_Obs;
         private System.Windows.Forms.GroupBox gr_AmigoE;
-        private System.Windows.Forms.Label lb_ObsP;
+        private System.Windows.Forms.Label lb_ObsD;
         private System.Windows.Forms.Button bt_CancelarE;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button bt_Emprestar;
-        private System.Windows.Forms.Label lb_EmailP;
-        private System.Windows.Forms.Label lb_nomeP;
-        private System.Windows.Forms.Label lb_TelP;
+        private System.Windows.Forms.Label lb_EmailD;
+        private System.Windows.Forms.Label lb_nomeD;
+        private System.Windows.Forms.Label lb_TelD;
         private System.Windows.Forms.ListView lv_MidiasD;
         private System.Windows.Forms.ColumnHeader cl_Album;
         private System.Windows.Forms.ColumnHeader cl_Interprete;

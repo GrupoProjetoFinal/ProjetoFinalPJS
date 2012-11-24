@@ -48,7 +48,7 @@ namespace Controle_de_Midias
 
             if (GBD.AbrirConexao())
             {
-                DadosAmigos = GBD.ProcuarAmigo(nome);
+                DadosAmigos = GBD.ProcurarAmigo(nome);
 
                 GBD.FecharConexao();
 
@@ -76,7 +76,7 @@ namespace Controle_de_Midias
 
             DadosAmigos = GBD.ColetarNomes();
 
-            GBD.PreencherLvMidias(lv_Midias);
+            GBD.PreencherLvMidias(lv_Midias, 0);
 
             GBD.FecharConexao();
 
