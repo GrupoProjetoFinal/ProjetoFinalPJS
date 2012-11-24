@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Controle_de_Midias
 {
@@ -17,76 +16,58 @@ namespace Controle_de_Midias
             InitializeComponent();
         }
 
+        private GerenciadorDeBanco GBD = new GerenciadorDeBanco();
+
+        private int idAmigo;
+
+        //Preenche os TextBox com o item selecionado no ListView do fm_Principal.
         public void Preencher(Amigo rescrever)
         {
             tb_NomeAlt.Text = rescrever.nome;
             tb_TelefoneAlt.Text = rescrever.telefone;
             tb_EmailAlt.Text = rescrever.email;
             rtb_ObservacaoAlt.Text = rescrever.observacao;
+
+            GBD.AbrirConexao();
+            idAmigo = GBD.ProcuraIdentificador(rescrever);
+            GBD.FecharConexao();
         }
 
         private void bt_Adicionar_Click(object sender, EventArgs e)
         {
-            GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-
-            //verifica se a conecção foi aberta, se sim insere os dados
+            //verifica se a conecção foi aberta, se sim executa o comando SQL no GErenciadorDeBAnco.
             if (GBD.AbrirConexao())
             {
-
                 GBD.AlteraAmigo(enviaParaObjeto());
-                //Fecha a coneção
                 GBD.FecharConexao();
-
-                //Limpa os textBox
-                tb_NomeAlt.Clear();
-                tb_TelefoneAlt.Clear();
-                tb_EmailAlt.Clear();
-                rtb_ObservacaoAlt.Clear();
-
             }
             else
-            {
-                MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                GBD.MensagemDeErro();
             this.Close();
         }
 
         private void bt_Excluir_Click(object sender, EventArgs e)
         {
-            GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-
-            //verifica se a conecção foi aberta, se sim insere os dados
+            //Verifica se a conecção foi aberta, se sim executa o comando SLQ no GerenciadorDeBanco.
             if (GBD.AbrirConexao())
             {
-
                 GBD.Remover(enviaParaObjeto());
-                //Fecha a coneção
                 GBD.FecharConexao();
-
-                //Limpa os textBox
-                tb_NomeAlt.Clear();
-                tb_TelefoneAlt.Clear();
-                tb_EmailAlt.Clear();
-                rtb_ObservacaoAlt.Clear();
-
             }
             else
-            {
-                MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                GBD.MensagemDeErro();
             this.Close();
         }
 
         private Amigo enviaParaObjeto()
         {
-            // O conteúdo dos textBox são parrados para o objeto Amigo.
+            // O conteúdo dos TextBox são passados para o objeto Amigo.
             Amigo AlteraAmigo = new Amigo();
-
-
             AlteraAmigo.nome = tb_NomeAlt.Text;
             AlteraAmigo.telefone = tb_TelefoneAlt.Text;
             AlteraAmigo.email = tb_EmailAlt.Text;
             AlteraAmigo.observacao = rtb_ObservacaoAlt.Text;
+            AlteraAmigo.id = idAmigo;
 
             return AlteraAmigo;
         }
