@@ -42,12 +42,12 @@ namespace Controle_de_Midias
         {
             fm_NovoAmigo Adicionar = new fm_NovoAmigo();
             Adicionar.ShowDialog();
+            Rescrever();
         }
 
         private void lv_Amigos_DoubleClick(object sender, EventArgs e)
         {
-            //int DadosModificar;
-
+            // Os dados selecionados no ListView são passados para o objeto Amigo.
             Amigo ModificaAmigo = new Amigo();
             foreach (ListViewItem item in lv_Amigos.SelectedItems)
             {
@@ -55,18 +55,24 @@ namespace Controle_de_Midias
                 ModificaAmigo.telefone = item.SubItems[1].Text;
                 ModificaAmigo.email = item.SubItems[2].Text;
                 ModificaAmigo.observacao = item.SubItems[3].Text;
-                ModificaAmigo.anterior.Add(item.Text);
-                ModificaAmigo.anterior.Add(item.SubItems[1].Text);
-                ModificaAmigo.anterior.Add( item.SubItems[2].Text);
-                ModificaAmigo.anterior.Add(item.SubItems[3].Text);
-
-
             }
+
+            // Chama o método Preecher do Form fm_AlterarAmigo, em seguida abre-o.
             fm_AlterarAmigo Alterar = new fm_AlterarAmigo();
             Alterar.Preencher(ModificaAmigo);
             Alterar.ShowDialog();
-
+            Rescrever();
         }
+
+        public void Rescrever()
+        {
+            //Reescreve os itens do ListView lv_Amigo com os dados atualizados do banco.
+            lv_Amigos.Items.Clear();
+            GBD.AbrirConexao();
+            GBD.PreecherLvAmigos(lv_Amigos, "Rodrigo de uma olhada");
+            GBD.FecharConexao();
+        }
+
         private void bt_Devolver_Click(object sender, EventArgs e)
         {
             devolver.ShowDialog();

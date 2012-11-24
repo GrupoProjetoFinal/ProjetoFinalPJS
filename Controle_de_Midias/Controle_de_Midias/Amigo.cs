@@ -7,10 +7,10 @@ namespace Controle_de_Midias
 {
     public class Amigo
     {
+        public int id;
         public string nome;
         public string telefone;
         public string email;
         public string observacao;
-        public List<string> anterior = new List<string>();
     }
 }

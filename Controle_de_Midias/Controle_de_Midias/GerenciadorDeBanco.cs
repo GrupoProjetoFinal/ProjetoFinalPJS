@@ -84,44 +84,39 @@ namespace Controle_de_Midias
 
         }
 
-        public int ProcuraIdentificador(Amigo selecionado)
+        public void InserirAmigo(Amigo novoAmigo)
         {
-            int idAmigo;
-            cmdSQL = "SELECT Id_Amigo FROM Amigos WHERE Nome = @nome AND Telefone = @telefone AND Email = @email and Observacao = @observacao ";
-            cmd = new SqlCommand(cmdSQL, conexao);
-            cmd.Parameters.Add(new SqlParameter("@nome", selecionado.anterior[0]));
-            cmd.Parameters.Add(new SqlParameter("@telefone", selecionado.anterior[1]));
-            cmd.Parameters.Add(new SqlParameter("@email", selecionado.anterior[2]));
-            cmd.Parameters.Add(new SqlParameter("@observacao", selecionado.anterior[3]));
+            // Faz a inserção do dados do novoAmigo para o banco de dados
+            string sql = "INSERT INTO Amigos([Nome],[Telefone],[Email],[Observacao]) VALUES(@nome,@telefone,@email,@observacao)";
+            cmd = new SqlCommand(sql, conexao);
+            cmd.Parameters.Add(new SqlParameter("@nome", novoAmigo.nome));
+            cmd.Parameters.Add(new SqlParameter("@telefone", novoAmigo.telefone));
+            cmd.Parameters.Add(new SqlParameter("@email", novoAmigo.email));
+            cmd.Parameters.Add(new SqlParameter("@observacao", novoAmigo.observacao));
 
-            idAmigo = (int)cmd.ExecuteScalar();
-
-            return idAmigo;
-            
+            cmd.ExecuteNonQuery();
         }
 
         public void AlteraAmigo(Amigo altAmigo)
         {
-            int id = ProcuraIdentificador(altAmigo);
-            //Faz a atualização dados do amigo no banco de dados
-            cmdSQL = "UPDATE Amigos SET Nome = @nome,Telefone = @telefone, Email = @email, Observacao = @observacao WHERE Nome = @id";
+            //Faz a atualização dos dados do amigo no banco de dados
+            cmdSQL = "UPDATE Amigos SET Nome = @nome,Telefone = @telefone, Email = @email, Observacao = @observacao WHERE Id_Amigo = @id";
             cmd = new SqlCommand(cmdSQL, conexao);
             cmd.Parameters.Add(new SqlParameter("@nome", altAmigo.nome));
             cmd.Parameters.Add(new SqlParameter("@telefone", altAmigo.telefone));
             cmd.Parameters.Add(new SqlParameter("@email", altAmigo.email));
             cmd.Parameters.Add(new SqlParameter("@observacao", altAmigo.observacao));
-            cmd.Parameters.Add(new SqlParameter("@id", id));
+            cmd.Parameters.Add(new SqlParameter("@id", altAmigo.id));
 
-            cmd.ExecuteNonQuery();
-            
+            cmd.ExecuteNonQuery(); 
         }
 
         public void Remover(Amigo removeAmigo)
         {
             // Remove o amigo do banco de dados
-            cmdSQL = "DELETE FROM Amigos WHERE Nome = @nome";
+            cmdSQL = "DELETE FROM Amigos WHERE Id_Amigo = @id";
             cmd = new SqlCommand(cmdSQL, conexao);
-            cmd.Parameters.Add(new SqlParameter("@nome", removeAmigo.nome));
+            cmd.Parameters.Add(new SqlParameter("@id", removeAmigo.id));
 
             cmd.ExecuteNonQuery();
         }
@@ -166,6 +161,7 @@ namespace Controle_de_Midias
             return id_amigo = (int)cmd.ExecuteScalar(); 
             
         }
+
         public void PreencherLvMidias(ListView lv_Midias, int id_Amigo)
         {
            if(id_Amigo == 0)
@@ -271,5 +267,9 @@ namespace Controle_de_Midias
 
         }
 
+        public void MensagemDeErro()
+        {
+            MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

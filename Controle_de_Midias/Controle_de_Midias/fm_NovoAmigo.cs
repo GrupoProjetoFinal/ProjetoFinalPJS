@@ -27,25 +27,14 @@ namespace Controle_de_Midias
             novoAmigo.email = tb_Email.Text;
             novoAmigo.observacao = rtb_Observacao.Text;
 
-            // Faz a inserção do dados do novoAmigo para o banco de dados
-            string sql = "INSERT INTO Amigos([Nome],[Telefone],[Email],[Observacao])" +
-                         "VALUES(@nome,@telefone,@email,@observacao)"; 
-            SqlCommand comando = null;
-            GerenciadorDeBanco inserirDadosAmigo = new GerenciadorDeBanco();
+            
+            GerenciadorDeBanco GBD = new GerenciadorDeBanco();
 
             //verifica se a conecção foi aberta, se sim insere os dados
-            if (inserirDadosAmigo.AbrirConexao())
+            if (GBD.AbrirConexao())
             {
-                comando = new SqlCommand(sql, inserirDadosAmigo.conexao);
-                comando.Parameters.Add(new SqlParameter("@nome", novoAmigo.nome));
-                comando.Parameters.Add(new SqlParameter("@telefone", novoAmigo.telefone));
-                comando.Parameters.Add(new SqlParameter("@email", novoAmigo.email));
-                comando.Parameters.Add(new SqlParameter("@observacao", novoAmigo.observacao));
-
-                comando.ExecuteNonQuery();
-
-                //Fecha a coneção
-                inserirDadosAmigo.FecharConexao();
+                GBD.InserirAmigo(novoAmigo);
+                GBD.FecharConexao();
 
                 //Limpa os textBox
                 tb_Nome.Clear();
