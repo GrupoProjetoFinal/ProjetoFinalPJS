@@ -20,7 +20,7 @@ namespace Controle_de_Midias
 
         public bool AbrirConexao()
         {
-            conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\ProjetoFinalPJS\Controle_de_Midias\Base de dados\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
+            conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=F:\ProjetoFinalPJS\Controle_de_Midias\Base de dados\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
 
             try
             {
@@ -45,23 +45,25 @@ namespace Controle_de_Midias
 
         public void CadastroMidia(Midia midia)
         {
-            cmdSQL = "Insert into midias (Interprete, autor, musica, album, data_album, data_Compra, compra, tipo, observacao) values (@Interprete, @autor, @musica, @album, @data_album, @data_Compra, @compra, @tipo, @observacao)";
+            cmdSQL = "Insert into midias (Nome_Interprete, Nome_Autor, Nome_Musica, Nome_Album, Data_album, Data_Compra, Origem_Compra, Tipo_Midia, Observacao, Nota) values (@Nome_Interprete, @Nome_Autor, @Nome_Musica, @Nome_Album, @Data_album, @Data_Compra, @Origem_Compra, @Tipo_Midia, @Observacao, @Nota)";
 
-
+            
             cmd = new SqlCommand(cmdSQL, conexao);
 
-            cmd.Parameters.Add(new SqlParameter("@Interprete", midia.interprete));
-            cmd.Parameters.Add(new SqlParameter("@autor", midia.autor));
-            cmd.Parameters.Add(new SqlParameter("@musica", midia.musica));
-            cmd.Parameters.Add(new SqlParameter("@album", midia.album));
-            cmd.Parameters.Add(new SqlParameter("@data_album", midia.dataAlbum));
-            cmd.Parameters.Add(new SqlParameter("@data_compra", midia.dataCompra));
-            cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
-            cmd.Parameters.Add(new SqlParameter("@tipo", midia.observacao));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", midia.interprete));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", midia.autor));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", midia.musica));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Album", midia.album));
+            cmd.Parameters.Add(new SqlParameter("@Data_Album", midia.dataAlbum));
+            cmd.Parameters.Add(new SqlParameter("@Data_Compra", midia.dataCompra));
+            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", midia.compra));
+            cmd.Parameters.Add(new SqlParameter("@Tipo_Midia", midia.Nota));
+            cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
+            cmd.Parameters.Add(new SqlParameter("@Nota", midia.Nota));
 
             cmd.ExecuteNonQuery();
             
-            
+           
             
 
         }

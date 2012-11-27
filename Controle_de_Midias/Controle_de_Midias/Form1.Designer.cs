@@ -124,6 +124,7 @@
             this.bt_NovaMidia.TabIndex = 0;
             this.bt_NovaMidia.Text = "Nova &Mídia";
             this.bt_NovaMidia.UseVisualStyleBackColor = true;
+            this.bt_NovaMidia.Click += new System.EventHandler(this.bt_NovaMidia_Click);
             // 
             // tabControl1
             // 

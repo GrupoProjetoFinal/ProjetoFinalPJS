@@ -78,5 +78,11 @@ namespace Controle_de_Midias
             devolver.ShowDialog();
         }
 
+        private void bt_NovaMidia_Click(object sender, EventArgs e)
+        {
+            fm_CadMidias Cadastro_Midia = new fm_CadMidias();
+            Cadastro_Midia.ShowDialog();
+        }
+
     }
 }
