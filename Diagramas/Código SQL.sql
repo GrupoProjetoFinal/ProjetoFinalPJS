@@ -7,7 +7,6 @@ GO
 CREATE TABLE Midias 
 (
 	Id_Midia INT PRIMARY KEY IDENTITY(1,1),
-	Foto_Album IMAGE,
 	Nome_Interprete VARCHAR(50),
 	Nome_Autor VARCHAR(200),
 	Nome_Musica VARCHAR(50),
@@ -20,7 +19,9 @@ CREATE TABLE Midias
 	Nota VARCHAR(3)
 )
 GO
-
+insert into midias values
+('Diego','Deig germano','Sometimes you','naumm sei','2005-02-02','2005-02-02','JDSKHFKSJD','carchar','jcdshfdkf','02');
+go
 CREATE TABLE Amigos 
 (
 	Id_Amigo INT IDENTITY(1,1) PRIMARY KEY,
@@ -42,43 +43,31 @@ CREATE TABLE Emprestimos
 	FOREIGN KEY(Id_Amigo) REFERENCES Amigos (Id_Amigo)
 )
 GO
-   item = new ListViewItem(Leitor["Nome_Album"].ToString());
-                item.Group = lv_Midias.Groups[Leitor["Tipo_Midia"].ToString()];
-                lv_Midias.Items.Add(item);
-                item.SubItems.Add(Leitor["Nome_Interprete"].ToString());
-                item.SubItems.Add(Leitor["Origem_Compra"].ToString());
-                item.SubItems.Add(Leitor["Nome_Autor"].ToString());
-                item.SubItems.Add(Leitor["Nome_Musica"].ToString());
-                item.SubItems.Add(Leitor["Observacao"].ToString());
-                item.SubItems.Add(Leitor["Nota"].ToString());
-                item.SubItems.Add(Leitor["Data_Album"].ToString());
-                item.SubItems.Add(Leitor["Data_Compra"].ToString());
+SELECT	  Midias.Nome_Album,
+		  Midias.Nome_Interprete, 
+		  Midias.Origem_Compra,  
+		  Midias.Nome_Autor, 
+		  Midias.Nome_Musica, 
+		  Midias.Observacao, 
+		  Midias.Nota, 
+		  Midias.Data_Album, 
+		  Midias.Data_Compra,
+		  Midias.Tipo_Midia
+FROM Emprestimos  
+INNER JOIN Midias 
+ON Emprestimos.Id_Midia = Midias.Id_Midia 
+WHERE Emprestimos.Id_Amigo = 8
+ORDER BY 
 
 
+INSERT INTO Amigos([Nome],[Telefone],[Email],[Observacao]) VALUES('diego','teste@skdsf.com','(12)-3645-3832','Naumm temmm');
+go
 
+INSERT INTO Emprestimos VALUES ( 11 , 19, GETDATE(),0)
 
-SELECT Nome_Fornecedor       AS [Fornecedor], CNPJ,
-		   Telefone, Email   AS [E-mail],
-		   Endereco          AS [Endereço],
-		   Numero            AS [Numero], Bairro,
-		   Cidade.nom_cidade AS [Cidade]
-	FROM fornecedores
-	INNER JOIN Cidade
-	ON Fornecedores.cod_cidade = Cidade.cod_cidade
-	WHERE Fornecedores.cod_cidade = @codigo
-	
-	
-	SELECT Midias.Nome_Album,
-                            Midias.Nome_Interprete, 
-                            Midias.Origem_Compra,  
-                            Midias.Nome_Autor,   
-                            Midias.Nome_Musica,   
-                            Midias.Observacao,   
-                            Midias.Nota,   
-                            Midias.Data_Album,   
-                            Midias.Data_Compra,   
-                            Midias.Tipo_Midia
-                        FROM Emprestimos   
-                        INNER JOIN Midias  
-                        ON Emprestimos.Id_Midia = Midias.Id_Midia  
-                        WHERE Emprestimos.Id_Amigo = 1
+select * from Emprestimos
+
+select * from Midias
+
+select * from Midias
+

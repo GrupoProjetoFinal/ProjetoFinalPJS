@@ -111,12 +111,16 @@ namespace Controle_de_Midias
             cmd.ExecuteNonQuery(); 
         }
 
+
+        //  ATENÇÃOOOOOOOO            REMOVER ESTA COM BUG !!!!!!!!!!!!!!!!! 
+
+
         public void Remover(Amigo removeAmigo)
         {
             // Remove o amigo do banco de dados
-            cmdSQL = "DELETE FROM Amigos WHERE Id_Amigo = @id";
+            cmdSQL = "DELETE FROM Amigos WHERE Id_Amigo = @Id_Amigo";
             cmd = new SqlCommand(cmdSQL, conexao);
-            cmd.Parameters.Add(new SqlParameter("@id", removeAmigo.id));
+            cmd.Parameters.Add(new SqlParameter("@Id_Amigo", removeAmigo.id));
 
             cmd.ExecuteNonQuery();
         }
@@ -180,26 +184,50 @@ namespace Controle_de_Midias
                 item.Group = lv_Midias.Groups[Leitor["Tipo_Midia"].ToString()];
                 lv_Midias.Items.Add(item);
                 item.SubItems.Add(Leitor["Nome_Interprete"].ToString());
-                item.SubItems.Add(Leitor["Origem_Compra"].ToString());
                 item.SubItems.Add(Leitor["Nome_Autor"].ToString());
                 item.SubItems.Add(Leitor["Nome_Musica"].ToString());
-                item.SubItems.Add(Leitor["Observacao"].ToString());
                 item.SubItems.Add(Leitor["Nota"].ToString());
-                item.SubItems.Add(Leitor["Data_Album"].ToString());
-                item.SubItems.Add(Leitor["Data_Compra"].ToString());
+                item.SubItems.Add(Leitor["Data_Compra"].ToString());  
+                item.SubItems.Add(Leitor["Data_Album"].ToString());              
+                item.SubItems.Add(Leitor["Origem_Compra"].ToString());        
+                item.SubItems.Add(Leitor["Observacao"].ToString());
             }
             Leitor.Close();    
-        } 
+        }
 
-        public void PreecherLvAmigos(ListView lv_Amigos, string verificador)
+
+        public void VerificaDevedores(ListView lv_amigos)
         {
-            if (verificador == "fm_Principal")
-                cmdSQL = "SELECT * FROM Amigos";
+
+            cmdSQL = "SELECT Amigos.Nome, Amigos.Telefone, Amigos.Email, Amigos.Observacao FROM Emprestimos INNER JOIN Amigos ON Emprestimos.Id_Amigo = Amigos.Id_Amigo WHERE Emprestimos.Quantidade_Dias > 5 ORDER BY Amigos.Nome";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+            Leitor = cmd.ExecuteReader();
+
+            while(Leitor.Read())
+                foreach(ListViewItem item in lv_amigos.Items)
+                if(Leitor["Nome"].ToString()       == item.SubItems[0].Text &&
+                   Leitor["Telefone"].ToString()   == item.SubItems[1].Text &&
+                   Leitor["Email"].ToString()      == item.SubItems[2].Text &&
+                   Leitor["Observacao"].ToString() == item.SubItems[3].Text)
+                        item.ForeColor = System.Drawing.Color.Red;
+            Leitor.Close();
+
+        }
+        public void PreecherLvAmigos(ListView lv_Amigos, string frm)
+        {
+
+            if (frm == "fm_Principal")
+                cmdSQL = "SELECT * FROM Amigos ORDER BY Nome";
+
+                                  //////                 akiiiiIIIIIIIIIIIIIIIIIII                                          ///////////////////////////
+            // FALTA PENSAR UM JEITO DE QUE ESSE LISTVIEW SEJA PPREENCHIDO UM DETERMINADO NOME UMA VEZ
+            // EX SE FULANO DE TAL ALUNO 10 MIDIAS ELE VAI APARECER 10X SENDO QUE O CORRETO É APARECER UMA VEZ
             else
                 cmdSQL = "SELECT Amigos.Nome, Amigos.Email, Amigos.Telefone, Amigos.Observacao " + 
                          "FROM Emprestimos " + 
-                         "INNER JOIN Amigos " + 
-                         "ON Emprestimos.Id_Amigo = Amigos.Id_Amigo";
+                         "INNER JOIN Amigos " +
+                         "ON Emprestimos.Id_Amigo = Amigos.Id_Amigo ORDER BY Amigos.Nome";
 
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
@@ -210,17 +238,19 @@ namespace Controle_de_Midias
             while (Leitor.Read())
             {
                 item = new ListViewItem(Leitor["Nome"].ToString());
-                
                 lv_Amigos.Items.Add(item);
                 item.SubItems.Add(Leitor["Telefone"].ToString());
                 item.SubItems.Add(Leitor["Email"].ToString());
                 item.SubItems.Add(Leitor["Observacao"].ToString());
+                
             }
             Leitor.Close();
+            VerificaDevedores(lv_Amigos);
+           
             
         }
 
-        public void EmprestarMidia(string idAmigo, List<string> DadosMidias)
+        public void EmprestarOuDevolverMidia(int idAmigo, List<string> DadosMidias, string Verificador)
         {
 
             int idMidia;
@@ -231,26 +261,29 @@ namespace Controle_de_Midias
             cmd = new SqlCommand(cmdSQL, conexao);
 
             cmd.Parameters.Add(new SqlParameter("@Nome_Album", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Observacao", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Nota", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Data_Compra", DadosMidias[0]));
-            cmd.Parameters.Add(new SqlParameter("@Data_Album", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", DadosMidias[1]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", DadosMidias[2]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", DadosMidias[3]));
+            cmd.Parameters.Add(new SqlParameter("@Nota", DadosMidias[4]));
+            cmd.Parameters.Add(new SqlParameter("@Data_Compra", DadosMidias[5]));
+            cmd.Parameters.Add(new SqlParameter("@Data_Album", DadosMidias[6]));
+            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", DadosMidias[7]));
+            cmd.Parameters.Add(new SqlParameter("@Observacao", DadosMidias[8]));
 
             idMidia = (int)cmd.ExecuteScalar();
 
             // Armazana os indificadores de Amigos e Midias com a data atual da Maquina e a qtd de dias que sempre inicia com zero.
-  
-            cmdSQL = "INSERT INTO Emprestimos VALUES ( @id_Amigo , @id_Midia, GETDATE(),0)";
 
+            if (Verificador == "fm_Emprestimo")
+                cmdSQL = "INSERT INTO Emprestimos VALUES ( @id_Midia,@id_Amigo,  GETDATE(),0)";
+            else
+                cmdSQL = "DELETE FROM Emprestimos WHERE id_Amigo = @id_Amigo AND id_Midia = @id_Midia";
             cmd = new SqlCommand(cmdSQL, conexao);
 
 
-            cmd.Parameters.Add(new SqlParameter("@id_Amigo", idAmigo));
             cmd.Parameters.Add(new SqlParameter("@id_Midia", idMidia));
+            cmd.Parameters.Add(new SqlParameter("@id_Amigo", idAmigo));
+            
 
             cmd.ExecuteNonQuery();
             
@@ -271,5 +304,6 @@ namespace Controle_de_Midias
         {
             MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
     }
 }

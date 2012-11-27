@@ -37,8 +37,8 @@
             this.lb_observacao = new System.Windows.Forms.Label();
             this.rtb_ObservacaoAlt = new System.Windows.Forms.RichTextBox();
             this.gb_menu = new System.Windows.Forms.GroupBox();
-            this.bt_Alterar = new System.Windows.Forms.Button();
             this.bt_Excluir = new System.Windows.Forms.Button();
+            this.bt_Alterar = new System.Windows.Forms.Button();
             this.gb_menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,16 +118,6 @@
             this.gb_menu.TabStop = false;
             this.gb_menu.Text = "menu";
             // 
-            // bt_Alterar
-            // 
-            this.bt_Alterar.Location = new System.Drawing.Point(6, 17);
-            this.bt_Alterar.Name = "bt_Alterar";
-            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Alterar.TabIndex = 0;
-            this.bt_Alterar.Text = "&Alterar";
-            this.bt_Alterar.UseVisualStyleBackColor = true;
-            this.bt_Alterar.Click += new System.EventHandler(this.bt_Adicionar_Click);
-            // 
             // bt_Excluir
             // 
             this.bt_Excluir.Location = new System.Drawing.Point(5, 52);
@@ -137,6 +127,16 @@
             this.bt_Excluir.Text = "&Excluir";
             this.bt_Excluir.UseVisualStyleBackColor = true;
             this.bt_Excluir.Click += new System.EventHandler(this.bt_Excluir_Click);
+            // 
+            // bt_Alterar
+            // 
+            this.bt_Alterar.Location = new System.Drawing.Point(6, 17);
+            this.bt_Alterar.Name = "bt_Alterar";
+            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Alterar.TabIndex = 0;
+            this.bt_Alterar.Text = "&Alterar";
+            this.bt_Alterar.UseVisualStyleBackColor = true;
+            this.bt_Alterar.Click += new System.EventHandler(this.bt_Adicionar_Click);
             // 
             // fm_AlterarAmigo
             // 
@@ -154,6 +154,7 @@
             this.Controls.Add(this.lb_Nome);
             this.Name = "fm_AlterarAmigo";
             this.Text = "Alterar dados do amigo";
+            this.Load += new System.EventHandler(this.fm_AlterarAmigo_Load);
             this.gb_menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

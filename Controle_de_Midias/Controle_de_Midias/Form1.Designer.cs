@@ -44,13 +44,13 @@
             this.lv_Midias = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Música = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_Obeservacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Nota = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
             this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -79,7 +79,7 @@
             // 
             // bt_Devolver
             // 
-            this.bt_Devolver.Location = new System.Drawing.Point(4, 178);
+            this.bt_Devolver.Location = new System.Drawing.Point(4, 177);
             this.bt_Devolver.Name = "bt_Devolver";
             this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
             this.bt_Devolver.TabIndex = 4;
@@ -151,15 +151,13 @@
             this.lv_Midias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cl_Album,
             this.cl_Interprete,
-            this.cl_Origem,
             this.cl_Autor,
             this.cl_Música,
-            this.cl_Obeservacao,
             this.cl_Nota,
             this.cl_DataAlbum,
-            this.cl_DataCompra});
-            this.lv_Midias.FullRowSelect = true;
-            this.lv_Midias.GridLines = true;
+            this.cl_DataCompra,
+            this.cl_Origem,
+            this.cl_Observacao});
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";
@@ -176,10 +174,10 @@
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_Midias.Location = new System.Drawing.Point(6, 6);
+            this.lv_Midias.Location = new System.Drawing.Point(6, 17);
             this.lv_Midias.Name = "lv_Midias";
-            this.lv_Midias.Size = new System.Drawing.Size(1026, 389);
-            this.lv_Midias.TabIndex = 0;
+            this.lv_Midias.Size = new System.Drawing.Size(1056, 389);
+            this.lv_Midias.TabIndex = 2;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
             // 
@@ -193,40 +191,46 @@
             this.cl_Interprete.Text = "Intérprete";
             this.cl_Interprete.Width = 91;
             // 
-            // cl_Origem
-            // 
-            this.cl_Origem.Text = "Origem";
-            this.cl_Origem.Width = 94;
-            // 
             // cl_Autor
             // 
+            this.cl_Autor.DisplayIndex = 3;
             this.cl_Autor.Text = "Autor";
             this.cl_Autor.Width = 102;
             // 
             // cl_Música
             // 
+            this.cl_Música.DisplayIndex = 4;
             this.cl_Música.Text = "Música";
             this.cl_Música.Width = 137;
             // 
-            // cl_Obeservacao
-            // 
-            this.cl_Obeservacao.Text = "Observação";
-            this.cl_Obeservacao.Width = 117;
-            // 
             // cl_Nota
             // 
+            this.cl_Nota.DisplayIndex = 5;
             this.cl_Nota.Text = "Nota";
-            this.cl_Nota.Width = 107;
+            this.cl_Nota.Width = 117;
             // 
             // cl_DataAlbum
             // 
+            this.cl_DataAlbum.DisplayIndex = 6;
             this.cl_DataAlbum.Text = "Data do Álbum";
-            this.cl_DataAlbum.Width = 109;
+            this.cl_DataAlbum.Width = 107;
             // 
             // cl_DataCompra
             // 
+            this.cl_DataCompra.DisplayIndex = 7;
             this.cl_DataCompra.Text = "Data da Compra";
-            this.cl_DataCompra.Width = 116;
+            this.cl_DataCompra.Width = 109;
+            // 
+            // cl_Origem
+            // 
+            this.cl_Origem.DisplayIndex = 2;
+            this.cl_Origem.Text = "Origem";
+            this.cl_Origem.Width = 94;
+            // 
+            // cl_Observacao
+            // 
+            this.cl_Observacao.Text = "Observação";
+            this.cl_Observacao.Width = 116;
             // 
             // tp_Amigos
             // 
@@ -303,21 +307,21 @@
         private System.Windows.Forms.TabPage tp_Midias;
         private System.Windows.Forms.TabPage tp_Amigos;
         private System.Windows.Forms.Button bt_Devolver;
-        private System.Windows.Forms.ListView lv_Midias;
-        private System.Windows.Forms.ColumnHeader cl_Album;
-        private System.Windows.Forms.ColumnHeader cl_Interprete;
-        private System.Windows.Forms.ColumnHeader cl_Autor;
-        private System.Windows.Forms.ColumnHeader cl_Música;
-        private System.Windows.Forms.ColumnHeader cl_Origem;
-        private System.Windows.Forms.ColumnHeader cl_Obeservacao;
-        private System.Windows.Forms.ColumnHeader cl_Nota;
-        private System.Windows.Forms.ColumnHeader cl_DataAlbum;
-        private System.Windows.Forms.ColumnHeader cl_DataCompra;
         private System.Windows.Forms.ListView lv_Amigos;
         private System.Windows.Forms.ColumnHeader cl_Nome;
         private System.Windows.Forms.ColumnHeader cl_Telefone;
         private System.Windows.Forms.ColumnHeader cl_Email;
         private System.Windows.Forms.ColumnHeader cl_Obs;
+        private System.Windows.Forms.ListView lv_Midias;
+        private System.Windows.Forms.ColumnHeader cl_Album;
+        private System.Windows.Forms.ColumnHeader cl_Interprete;
+        private System.Windows.Forms.ColumnHeader cl_Autor;
+        private System.Windows.Forms.ColumnHeader cl_Música;
+        private System.Windows.Forms.ColumnHeader cl_Nota;
+        private System.Windows.Forms.ColumnHeader cl_DataAlbum;
+        private System.Windows.Forms.ColumnHeader cl_DataCompra;
+        private System.Windows.Forms.ColumnHeader cl_Origem;
+        private System.Windows.Forms.ColumnHeader cl_Observacao;
 
     }
 }

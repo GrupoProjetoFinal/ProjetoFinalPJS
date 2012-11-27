@@ -42,20 +42,20 @@
             this.lb_ObsD = new System.Windows.Forms.Label();
             this.bt_CancelarE = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.bt_Emprestar = new System.Windows.Forms.Button();
+            this.bt_Devolver = new System.Windows.Forms.Button();
             this.lb_EmailD = new System.Windows.Forms.Label();
             this.lb_nomeD = new System.Windows.Forms.Label();
             this.lb_TelD = new System.Windows.Forms.Label();
             this.lv_MidiasD = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Música = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_Obeservacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Nota = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gr_AmigoE.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +72,7 @@
             this.lv_AmigosD.TabIndex = 3;
             this.lv_AmigosD.UseCompatibleStateImageBehavior = false;
             this.lv_AmigosD.View = System.Windows.Forms.View.Details;
-            this.lv_AmigosD.SelectedIndexChanged += new System.EventHandler(this.lv_Amigos_SelectedIndexChanged);
+            this.lv_AmigosD.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lv_AmigosD_MouseDoubleClick);
             // 
             // cl_Nome
             // 
@@ -99,7 +99,7 @@
             this.gr_AmigoE.Controls.Add(this.lb_ObsD);
             this.gr_AmigoE.Controls.Add(this.bt_CancelarE);
             this.gr_AmigoE.Controls.Add(this.label5);
-            this.gr_AmigoE.Controls.Add(this.bt_Emprestar);
+            this.gr_AmigoE.Controls.Add(this.bt_Devolver);
             this.gr_AmigoE.Controls.Add(this.lb_EmailD);
             this.gr_AmigoE.Controls.Add(this.lb_nomeD);
             this.gr_AmigoE.Controls.Add(this.lb_TelD);
@@ -137,14 +137,15 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Oberservações";
             // 
-            // bt_Emprestar
+            // bt_Devolver
             // 
-            this.bt_Emprestar.Location = new System.Drawing.Point(124, 225);
-            this.bt_Emprestar.Name = "bt_Emprestar";
-            this.bt_Emprestar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Emprestar.TabIndex = 10;
-            this.bt_Emprestar.Text = "&Devolver";
-            this.bt_Emprestar.UseVisualStyleBackColor = true;
+            this.bt_Devolver.Location = new System.Drawing.Point(124, 225);
+            this.bt_Devolver.Name = "bt_Devolver";
+            this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
+            this.bt_Devolver.TabIndex = 10;
+            this.bt_Devolver.Text = "&Devolver";
+            this.bt_Devolver.UseVisualStyleBackColor = true;
+            this.bt_Devolver.Click += new System.EventHandler(this.bt_Devolver_Click);
             // 
             // lb_EmailD
             // 
@@ -177,13 +178,13 @@
             this.lv_MidiasD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cl_Album,
             this.cl_Interprete,
-            this.cl_Origem,
             this.cl_Autor,
             this.cl_Música,
-            this.cl_Obeservacao,
             this.cl_Nota,
             this.cl_DataAlbum,
-            this.cl_DataCompra});
+            this.cl_DataCompra,
+            this.cl_Origem,
+            this.cl_Observacao});
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";
@@ -217,46 +218,52 @@
             this.cl_Interprete.Text = "Intérprete";
             this.cl_Interprete.Width = 91;
             // 
-            // cl_Origem
-            // 
-            this.cl_Origem.Text = "Origem";
-            this.cl_Origem.Width = 94;
-            // 
             // cl_Autor
             // 
+            this.cl_Autor.DisplayIndex = 3;
             this.cl_Autor.Text = "Autor";
             this.cl_Autor.Width = 102;
             // 
             // cl_Música
             // 
+            this.cl_Música.DisplayIndex = 4;
             this.cl_Música.Text = "Música";
             this.cl_Música.Width = 137;
             // 
-            // cl_Obeservacao
-            // 
-            this.cl_Obeservacao.Text = "Observação";
-            this.cl_Obeservacao.Width = 117;
-            // 
             // cl_Nota
             // 
+            this.cl_Nota.DisplayIndex = 5;
             this.cl_Nota.Text = "Nota";
-            this.cl_Nota.Width = 107;
+            this.cl_Nota.Width = 117;
             // 
             // cl_DataAlbum
             // 
+            this.cl_DataAlbum.DisplayIndex = 6;
             this.cl_DataAlbum.Text = "Data do Álbum";
-            this.cl_DataAlbum.Width = 109;
+            this.cl_DataAlbum.Width = 107;
             // 
             // cl_DataCompra
             // 
+            this.cl_DataCompra.DisplayIndex = 7;
             this.cl_DataCompra.Text = "Data da Compra";
-            this.cl_DataCompra.Width = 116;
+            this.cl_DataCompra.Width = 109;
+            // 
+            // cl_Origem
+            // 
+            this.cl_Origem.DisplayIndex = 2;
+            this.cl_Origem.Text = "Origem";
+            this.cl_Origem.Width = 94;
+            // 
+            // cl_Observacao
+            // 
+            this.cl_Observacao.Text = "Observação";
+            this.cl_Observacao.Width = 116;
             // 
             // fm_Devolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 325);
+            this.ClientSize = new System.Drawing.Size(731, 325);
             this.Controls.Add(this.lv_MidiasD);
             this.Controls.Add(this.gr_AmigoE);
             this.Controls.Add(this.lv_AmigosD);
@@ -280,19 +287,19 @@
         private System.Windows.Forms.Label lb_ObsD;
         private System.Windows.Forms.Button bt_CancelarE;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button bt_Emprestar;
+        private System.Windows.Forms.Button bt_Devolver;
         private System.Windows.Forms.Label lb_EmailD;
         private System.Windows.Forms.Label lb_nomeD;
         private System.Windows.Forms.Label lb_TelD;
         private System.Windows.Forms.ListView lv_MidiasD;
         private System.Windows.Forms.ColumnHeader cl_Album;
         private System.Windows.Forms.ColumnHeader cl_Interprete;
-        private System.Windows.Forms.ColumnHeader cl_Origem;
         private System.Windows.Forms.ColumnHeader cl_Autor;
         private System.Windows.Forms.ColumnHeader cl_Música;
-        private System.Windows.Forms.ColumnHeader cl_Obeservacao;
         private System.Windows.Forms.ColumnHeader cl_Nota;
         private System.Windows.Forms.ColumnHeader cl_DataAlbum;
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
+        private System.Windows.Forms.ColumnHeader cl_Origem;
+        private System.Windows.Forms.ColumnHeader cl_Observacao;
     }
 }
