@@ -16,8 +16,11 @@ namespace Controle_de_Midias
             InitializeComponent();
         }
 
-        private GerenciadorDeBanco GBD = new GerenciadorDeBanco();
 
+        public bool alterar = false;
+        public bool excluir = false;
+        private GerenciadorDeBanco GBD = new GerenciadorDeBanco();
+        public Amigo NovoAmigo = new Amigo();
         private int idAmigo;
 
         //Preenche os TextBox com o item selecionado no ListView do fm_Principal.
@@ -40,10 +43,14 @@ namespace Controle_de_Midias
             {
                 GBD.AlteraAmigo(enviaParaObjeto());
                 GBD.FecharConexao();
+                alterar = true;
             }
             else
                 GBD.MensagemDeErro();
+
             this.Close();
+            
+            
         }
 
         private void bt_Excluir_Click(object sender, EventArgs e)
@@ -53,23 +60,32 @@ namespace Controle_de_Midias
             {
                 GBD.Remover(enviaParaObjeto());
                 GBD.FecharConexao();
+                excluir = true;
             }
             else
                 GBD.MensagemDeErro();
+
             this.Close();
+           
+            
         }
 
         private Amigo enviaParaObjeto()
         {
-            // O conteúdo dos TextBox são passados para o objeto Amigo.
-            Amigo AlteraAmigo = new Amigo();
-            AlteraAmigo.nome = tb_NomeAlt.Text;
-            AlteraAmigo.telefone = tb_TelefoneAlt.Text;
-            AlteraAmigo.email = tb_EmailAlt.Text;
-            AlteraAmigo.observacao = rtb_ObservacaoAlt.Text;
-            AlteraAmigo.id = idAmigo;
+            NovoAmigo.nome = tb_NomeAlt.Text;
+            NovoAmigo.telefone = tb_TelefoneAlt.Text;
+            NovoAmigo.email = tb_EmailAlt.Text;
+            NovoAmigo.observacao = rtb_ObservacaoAlt.Text;
+            NovoAmigo.id = idAmigo;
 
-            return AlteraAmigo;
+            // O conteúdo dos TextBox são passados para o objeto Amigo.
+            
+            return NovoAmigo;
+        }
+
+        private void fm_AlterarAmigo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

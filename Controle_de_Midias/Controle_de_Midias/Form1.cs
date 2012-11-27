@@ -15,9 +15,11 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
+
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         fm_Emprestimo emprestimo = new fm_Emprestimo();
         fm_Devolver devolver = new fm_Devolver();
+        fm_AlterarAmigo AlterarAmigo = new fm_AlterarAmigo();
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
@@ -26,11 +28,6 @@ namespace Controle_de_Midias
             GBD.PreecherLvAmigos(lv_Amigos, "fm_Principal");
             GBD.AcrecentaDias();
             GBD.FecharConexao();
-        }
-
-        private void gb_Midias_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void bt_Emprestar_Click(object sender, EventArgs e)
@@ -42,7 +39,7 @@ namespace Controle_de_Midias
         {
             fm_NovoAmigo Adicionar = new fm_NovoAmigo();
             Adicionar.ShowDialog();
-            Rescrever();
+         
         }
 
         private void lv_Amigos_DoubleClick(object sender, EventArgs e)
@@ -58,19 +55,22 @@ namespace Controle_de_Midias
             }
 
             // Chama o método Preecher do Form fm_AlterarAmigo, em seguida abre-o.
-            fm_AlterarAmigo Alterar = new fm_AlterarAmigo();
-            Alterar.Preencher(ModificaAmigo);
-            Alterar.ShowDialog();
-            Rescrever();
-        }
+            AlterarAmigo.Preencher(ModificaAmigo);
+            AlterarAmigo.ShowDialog();
 
-        public void Rescrever()
-        {
-            //Reescreve os itens do ListView lv_Amigo com os dados atualizados do banco.
-            lv_Amigos.Items.Clear();
-            GBD.AbrirConexao();
-            GBD.PreecherLvAmigos(lv_Amigos, "Rodrigo de uma olhada");
-            GBD.FecharConexao();
+
+            //Caso o amigo for alterado retorna verdadeiro e altera Listview caso não ele é excluido
+            if (AlterarAmigo.alterar)
+                foreach (ListViewItem item in lv_Amigos.SelectedItems)
+                {
+                    item.Text = AlterarAmigo.NovoAmigo.nome;
+                    item.SubItems[1].Text = AlterarAmigo.NovoAmigo.telefone;
+                    item.SubItems[2].Text = AlterarAmigo.NovoAmigo.email;
+                    item.SubItems[3].Text = AlterarAmigo.NovoAmigo.observacao;
+                }
+            else if(AlterarAmigo.excluir)
+                foreach (ListViewItem item in lv_Amigos.SelectedItems)
+                    item.Remove();
         }
 
         private void bt_Devolver_Click(object sender, EventArgs e)

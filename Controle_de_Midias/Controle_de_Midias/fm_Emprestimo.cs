@@ -9,13 +9,15 @@ using System.Windows.Forms;
 
 namespace Controle_de_Midias
 {
+    // ******************************************************************************   MELHORAR FORMULARIO PESQUISA RUIM 
+    // ******************************************************************************   DEVE SER POSSIVEL ACHAR AMIGO FACILMEMTE
     public partial class fm_Emprestimo : Form
     {
         public fm_Emprestimo()
         {
             InitializeComponent();
         }
-
+        const string verificador = "fm_Emprestimo";
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         List<string> DadosAmigos = new List<string>();
         List<string> DadosMidias = new List<string>();
@@ -30,8 +32,8 @@ namespace Controle_de_Midias
                     DadosMidias.Add(Midia.SubItems[i].Text);
             GBD.AbrirConexao();
 
-            GBD.EmprestarMidia(DadosAmigos[4], DadosMidias);
-
+            GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, verificador);
+            img_Sucesso.Visible = true;
             GBD.FecharConexao();
         }
 
@@ -70,6 +72,9 @@ namespace Controle_de_Midias
 
         private void fm_Emprestimo_Load(object sender, EventArgs e)
         {
+            img_erro.Visible = false;
+            img_Sucesso.Visible = false;
+
             DadosAmigos.Clear();
 
             GBD.AbrirConexao();
