@@ -58,7 +58,7 @@ namespace Controle_de_Midias
             }
             else
             {
-                //Iremos tratar melhor a parti de erro 
+                //arrumar como apresentar o tratamento de erro
                 MessageBox.Show("Erro ao cadastrar");
 
             }
