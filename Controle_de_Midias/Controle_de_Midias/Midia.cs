@@ -22,6 +22,7 @@ namespace Controle_de_Midias
        /// </summary>
       public string tipo;
       public string observacao;
+      public string nota;
 
     }
 }
