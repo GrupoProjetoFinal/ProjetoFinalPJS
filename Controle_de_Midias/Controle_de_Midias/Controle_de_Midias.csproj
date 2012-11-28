@@ -54,6 +54,12 @@
     <Compile Include="fm_AlterarAmigo.Designer.cs">
       <DependentUpon>fm_AlterarAmigo.cs</DependentUpon>
     </Compile>
+    <Compile Include="fm_AlterarMidia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_AlterarMidia.Designer.cs">
+      <DependentUpon>fm_AlterarMidia.cs</DependentUpon>
+    </Compile>
     <Compile Include="fm_CadMidias.cs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fm_AlterarAmigo.resx">
       <DependentUpon>fm_AlterarAmigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fm_AlterarMidia.resx">
+      <DependentUpon>fm_AlterarMidia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fm_CadMidias.cs.resx">
       <DependentUpon>fm_CadMidias.cs.cs</DependentUpon>

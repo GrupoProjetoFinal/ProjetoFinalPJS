@@ -57,7 +57,7 @@ namespace Controle_de_Midias
             cmd.Parameters.Add(new SqlParameter("@data_album", midia.dataAlbum));
             cmd.Parameters.Add(new SqlParameter("@data_compra", midia.dataCompra));
             cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
-            cmd.Parameters.Add(new SqlParameter("@tipo", midia.observacao));
+            cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
 
             cmd.ExecuteNonQuery();
             

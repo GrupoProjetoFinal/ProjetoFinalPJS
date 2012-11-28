@@ -17,6 +17,7 @@ namespace Controle_de_Midias
       public string compra;
       public string tipo;
       public string observacao;
+      public string nota;
 
     }
 }

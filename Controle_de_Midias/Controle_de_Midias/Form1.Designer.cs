@@ -124,6 +124,7 @@
             this.bt_NovaMidia.TabIndex = 0;
             this.bt_NovaMidia.Text = "Nova &Mídia";
             this.bt_NovaMidia.UseVisualStyleBackColor = true;
+            this.bt_NovaMidia.Click += new System.EventHandler(this.bt_NovaMidia_Click);
             // 
             // tabControl1
             // 
@@ -180,6 +181,7 @@
             this.lv_Midias.TabIndex = 2;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
+            this.lv_Midias.DoubleClick += new System.EventHandler(this.lv_Midias_DoubleClick);
             // 
             // cl_Album
             // 
