@@ -78,6 +78,12 @@
     <Compile Include="fm_NovoAmigo.Designer.cs">
       <DependentUpon>fm_NovoAmigo.cs</DependentUpon>
     </Compile>
+    <Compile Include="fm_Pesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_Pesquisa.Designer.cs">
+      <DependentUpon>fm_Pesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fm_NovoAmigo.resx">
       <DependentUpon>fm_NovoAmigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fm_Pesquisa.resx">
+      <DependentUpon>fm_Pesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

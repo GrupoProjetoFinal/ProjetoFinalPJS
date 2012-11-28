@@ -166,6 +166,18 @@ namespace Controle_de_Midias
             
         }
 
+
+        // PODE USAR O MÉTODO ABAIXO PARA DIMINUIR O CÓDIGO
+        public void ProcurarMidia(ListView lv_Midias,Midia midia)
+        {
+
+            //  FASE DE TESTE .......
+
+            //cmdSQL = "";
+
+            //if(midia.interprete != string.Empty && !midia.interprete.Contains(midia.interprete) || midia.musica != string.Empty && !midia.musica.Contains(midia.musica) || midia.album != string.Empty && midia.album.Contains(midia.album) || midia.autor != string.Empty && !midia.autor.Contains(midia.autor) || midia.compra != string.Empty && !midia.compra.Contains(midia.compra) ||  
+        }
+
         public void PreencherLvMidias(ListView lv_Midias, int id_Amigo)
         {
            if(id_Amigo == 0)
@@ -195,7 +207,6 @@ namespace Controle_de_Midias
             Leitor.Close();    
         }
 
-
         public void VerificaDevedores(ListView lv_amigos)
         {
 
@@ -214,6 +225,7 @@ namespace Controle_de_Midias
             Leitor.Close();
 
         }
+
         public void PreecherLvAmigos(ListView lv_Amigos, string frm)
         {
 

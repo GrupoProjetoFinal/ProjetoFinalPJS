@@ -15,6 +15,11 @@ namespace Controle_de_Midias
       public DateTime dataAlbum;
       public DateTime dataCompra;
       public string compra;
+
+
+       /// <summary>
+       /// trocar string por INT para pegar indicesss
+       /// </summary>
       public string tipo;
       public string observacao;
 

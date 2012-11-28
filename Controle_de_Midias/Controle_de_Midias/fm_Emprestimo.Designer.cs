@@ -52,8 +52,6 @@
             this.pn_Emprestar = new System.Windows.Forms.Panel();
             this.pn_Principal = new System.Windows.Forms.Panel();
             this.gr_AmigoE = new System.Windows.Forms.GroupBox();
-            this.img_Sucesso = new System.Windows.Forms.Panel();
-            this.img_erro = new System.Windows.Forms.Panel();
             this.lb_ObsP = new System.Windows.Forms.Label();
             this.bt_CancelarE = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,6 +60,8 @@
             this.lb_nomeP = new System.Windows.Forms.Label();
             this.lb_TelP = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.img_Sucesso = new System.Windows.Forms.Panel();
+            this.img_erro = new System.Windows.Forms.Panel();
             this.gr_Amigo.SuspendLayout();
             this.pn_Emprestar.SuspendLayout();
             this.pn_Principal.SuspendLayout();
@@ -172,6 +172,7 @@
             this.tb_NomeEM.Name = "tb_NomeEM";
             this.tb_NomeEM.Size = new System.Drawing.Size(218, 20);
             this.tb_NomeEM.TabIndex = 5;
+            this.tb_NomeEM.TextChanged += new System.EventHandler(this.tb_NomeEM_TextChanged);
             // 
             // gr_Amigo
             // 
@@ -228,23 +229,6 @@
             this.gr_AmigoE.TabIndex = 10;
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
-            // 
-            // img_Sucesso
-            // 
-            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.VistoVerde;
-            this.img_Sucesso.Controls.Add(this.img_erro);
-            this.img_Sucesso.Location = new System.Drawing.Point(202, 254);
-            this.img_Sucesso.Name = "img_Sucesso";
-            this.img_Sucesso.Size = new System.Drawing.Size(26, 21);
-            this.img_Sucesso.TabIndex = 11;
-            // 
-            // img_erro
-            // 
-            this.img_erro.BackgroundImage = global::Controle_de_Midias.Properties.Resources.x_vermelho;
-            this.img_erro.Location = new System.Drawing.Point(3, 0);
-            this.img_erro.Name = "img_erro";
-            this.img_erro.Size = new System.Drawing.Size(19, 19);
-            this.img_erro.TabIndex = 12;
             // 
             // lb_ObsP
             // 
@@ -314,6 +298,23 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "VistoVerde.gif");
+            // 
+            // img_Sucesso
+            // 
+            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.VistoVerde;
+            this.img_Sucesso.Controls.Add(this.img_erro);
+            this.img_Sucesso.Location = new System.Drawing.Point(202, 254);
+            this.img_Sucesso.Name = "img_Sucesso";
+            this.img_Sucesso.Size = new System.Drawing.Size(26, 21);
+            this.img_Sucesso.TabIndex = 11;
+            // 
+            // img_erro
+            // 
+            this.img_erro.BackgroundImage = global::Controle_de_Midias.Properties.Resources.x_vermelho;
+            this.img_erro.Location = new System.Drawing.Point(3, 0);
+            this.img_erro.Name = "img_erro";
+            this.img_erro.Size = new System.Drawing.Size(19, 19);
+            this.img_erro.TabIndex = 12;
             // 
             // fm_Emprestimo
             // 

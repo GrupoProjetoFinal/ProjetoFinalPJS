@@ -89,5 +89,10 @@ namespace Controle_de_Midias
                 tb_NomeEM.AutoCompleteCustomSource.Add(nome);
         }
 
+        private void tb_NomeEM_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
