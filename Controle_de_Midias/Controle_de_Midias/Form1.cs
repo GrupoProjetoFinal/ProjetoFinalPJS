@@ -107,6 +107,9 @@ namespace Controle_de_Midias
             //fm_AlterarMidia ModificarMidia = new fm_AlterarMidia();
             //ModificarMidia.(modificaMidia);
             //ModificarMidia.ShowDialog();
+
+            fm_CadMidias Cadastro_Midia = new fm_CadMidias();
+            Cadastro_Midia.ShowDialog();
         }
 
     }

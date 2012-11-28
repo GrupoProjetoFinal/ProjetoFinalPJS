@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gb_Midias = new System.Windows.Forms.GroupBox();
+            this.lb_Observacao = new System.Windows.Forms.Label();
+            this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
             this.bt_Limpar = new System.Windows.Forms.Button();
             this.bt_Salvar = new System.Windows.Forms.Button();
             this.lb_Nota = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.tb_Interprete = new System.Windows.Forms.TextBox();
             this.lb_Autor = new System.Windows.Forms.Label();
             this.lb_Interprete = new System.Windows.Forms.Label();
-            this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
-            this.lb_Observacao = new System.Windows.Forms.Label();
             this.gb_Midias.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +84,23 @@
             this.gb_Midias.Size = new System.Drawing.Size(550, 420);
             this.gb_Midias.TabIndex = 3;
             this.gb_Midias.TabStop = false;
-            this.gb_Midias.Text = "Características";
+            
+            // lb_Observacao
+            // 
+            this.lb_Observacao.AutoSize = true;
+            this.lb_Observacao.Location = new System.Drawing.Point(7, 267);
+            this.lb_Observacao.Name = "lb_Observacao";
+            this.lb_Observacao.Size = new System.Drawing.Size(65, 13);
+            this.lb_Observacao.TabIndex = 30;
+            this.lb_Observacao.Text = "Observação";
+            // 
+            // rtb_Observacao
+            // 
+            this.rtb_Observacao.Location = new System.Drawing.Point(10, 283);
+            this.rtb_Observacao.Name = "rtb_Observacao";
+            this.rtb_Observacao.Size = new System.Drawing.Size(533, 96);
+            this.rtb_Observacao.TabIndex = 29;
+            this.rtb_Observacao.Text = "";
             // 
             // bt_Limpar
             // 
@@ -116,6 +132,7 @@
             // 
             // cb_Nota
             // 
+            this.cb_Nota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Nota.FormattingEnabled = true;
             this.cb_Nota.Items.AddRange(new object[] {
             "0",
@@ -169,9 +186,10 @@
             // 
             // cb_Tipomidia
             // 
+            this.cb_Tipomidia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Tipomidia.FormattingEnabled = true;
             this.cb_Tipomidia.Items.AddRange(new object[] {
-            "Selecione...",
+            "Selecione",
             "Vinil",
             "K7",
             "CD",
@@ -272,23 +290,6 @@
             this.lb_Interprete.TabIndex = 0;
             this.lb_Interprete.Text = "Intérprete";
             // 
-            // rtb_Observacao
-            // 
-            this.rtb_Observacao.Location = new System.Drawing.Point(10, 283);
-            this.rtb_Observacao.Name = "rtb_Observacao";
-            this.rtb_Observacao.Size = new System.Drawing.Size(533, 96);
-            this.rtb_Observacao.TabIndex = 29;
-            this.rtb_Observacao.Text = "";
-            // 
-            // lb_Observacao
-            // 
-            this.lb_Observacao.AutoSize = true;
-            this.lb_Observacao.Location = new System.Drawing.Point(7, 267);
-            this.lb_Observacao.Name = "lb_Observacao";
-            this.lb_Observacao.Size = new System.Drawing.Size(65, 13);
-            this.lb_Observacao.TabIndex = 30;
-            this.lb_Observacao.Text = "Observação";
-            // 
             // fm_CadMidias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,7 +297,8 @@
             this.ClientSize = new System.Drawing.Size(567, 437);
             this.Controls.Add(this.gb_Midias);
             this.Name = "fm_CadMidias";
-            this.Text = "fm_CadMidias";
+            this.Text = "Cadastro mídias";
+            this.Load += new System.EventHandler(this.fm_CadMidias_Load);
             this.gb_Midias.ResumeLayout(false);
             this.gb_Midias.PerformLayout();
             this.ResumeLayout(false);
