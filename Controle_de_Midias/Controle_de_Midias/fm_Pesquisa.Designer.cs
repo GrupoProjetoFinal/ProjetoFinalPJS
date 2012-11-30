@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.lv_MidiasP = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,26 +46,28 @@
             this.gb_Midias = new System.Windows.Forms.GroupBox();
             this.lb_Observacao = new System.Windows.Forms.Label();
             this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
+            this.lb_Autor = new System.Windows.Forms.Label();
             this.bt_Limpar = new System.Windows.Forms.Button();
+            this.tb_Autor = new System.Windows.Forms.TextBox();
             this.bt_Salvar = new System.Windows.Forms.Button();
             this.lb_Nota = new System.Windows.Forms.Label();
             this.cb_Nota = new System.Windows.Forms.ComboBox();
             this.lb_Origemcompra = new System.Windows.Forms.Label();
             this.tb_Origemcompra = new System.Windows.Forms.TextBox();
-            this.dtp_DataAlbum = new System.Windows.Forms.DateTimePicker();
+            this.dtp_DataAlbum_DE = new System.Windows.Forms.DateTimePicker();
             this.lb_Dataalbum = new System.Windows.Forms.Label();
             this.cb_Tipomidia = new System.Windows.Forms.ComboBox();
             this.lb_Tipomidia = new System.Windows.Forms.Label();
             this.lb_Datacompra = new System.Windows.Forms.Label();
-            this.dtp_DataCompra = new System.Windows.Forms.DateTimePicker();
+            this.dtp_DataCompra_DE = new System.Windows.Forms.DateTimePicker();
             this.tb_Nomemusica = new System.Windows.Forms.TextBox();
             this.tb_Album = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lb_Album = new System.Windows.Forms.Label();
-            this.tb_Autor = new System.Windows.Forms.TextBox();
             this.tb_Interprete = new System.Windows.Forms.TextBox();
-            this.lb_Autor = new System.Windows.Forms.Label();
             this.lb_Interprete = new System.Windows.Forms.Label();
+            this.dtp_DataCompra_ATE = new System.Windows.Forms.DateTimePicker();
+            this.dtp_DataAlbum_ATE = new System.Windows.Forms.DateTimePicker();
             this.gb_Midias.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,25 +83,25 @@
             this.cl_DataCompra,
             this.cl_Origem,
             this.cl_Observacao});
-            listViewGroup1.Header = "Vinil";
-            listViewGroup1.Name = "Gp_Vinil";
-            listViewGroup2.Header = "K7";
-            listViewGroup2.Name = "Gp_k7";
-            listViewGroup3.Header = "CD";
-            listViewGroup3.Name = "Gp_Cd";
-            listViewGroup4.Header = "DVD";
-            listViewGroup4.Name = "Gp_Dvd";
-            listViewGroup5.Header = "Digital";
-            listViewGroup5.Name = "Gp_Digital";
+            listViewGroup6.Header = "Vinil";
+            listViewGroup6.Name = "Gp_Vinil";
+            listViewGroup7.Header = "K7";
+            listViewGroup7.Name = "Gp_k7";
+            listViewGroup8.Header = "CD";
+            listViewGroup8.Name = "Gp_Cd";
+            listViewGroup9.Header = "DVD";
+            listViewGroup9.Name = "Gp_Dvd";
+            listViewGroup10.Header = "Digital";
+            listViewGroup10.Name = "Gp_Digital";
             this.lv_MidiasP.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4,
-            listViewGroup5});
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9,
+            listViewGroup10});
             this.lv_MidiasP.Location = new System.Drawing.Point(289, -1);
             this.lv_MidiasP.Name = "lv_MidiasP";
-            this.lv_MidiasP.Size = new System.Drawing.Size(450, 474);
+            this.lv_MidiasP.Size = new System.Drawing.Size(450, 526);
             this.lv_MidiasP.TabIndex = 3;
             this.lv_MidiasP.UseCompatibleStateImageBehavior = false;
             this.lv_MidiasP.View = System.Windows.Forms.View.Details;
@@ -158,6 +160,8 @@
             // gb_Midias
             // 
             this.gb_Midias.BackColor = System.Drawing.Color.Transparent;
+            this.gb_Midias.Controls.Add(this.dtp_DataAlbum_ATE);
+            this.gb_Midias.Controls.Add(this.dtp_DataCompra_ATE);
             this.gb_Midias.Controls.Add(this.lb_Observacao);
             this.gb_Midias.Controls.Add(this.rtb_Observacao);
             this.gb_Midias.Controls.Add(this.lb_Autor);
@@ -168,12 +172,12 @@
             this.gb_Midias.Controls.Add(this.cb_Nota);
             this.gb_Midias.Controls.Add(this.lb_Origemcompra);
             this.gb_Midias.Controls.Add(this.tb_Origemcompra);
-            this.gb_Midias.Controls.Add(this.dtp_DataAlbum);
+            this.gb_Midias.Controls.Add(this.dtp_DataAlbum_DE);
             this.gb_Midias.Controls.Add(this.lb_Dataalbum);
             this.gb_Midias.Controls.Add(this.cb_Tipomidia);
             this.gb_Midias.Controls.Add(this.lb_Tipomidia);
             this.gb_Midias.Controls.Add(this.lb_Datacompra);
-            this.gb_Midias.Controls.Add(this.dtp_DataCompra);
+            this.gb_Midias.Controls.Add(this.dtp_DataCompra_DE);
             this.gb_Midias.Controls.Add(this.tb_Nomemusica);
             this.gb_Midias.Controls.Add(this.tb_Album);
             this.gb_Midias.Controls.Add(this.label1);
@@ -182,7 +186,7 @@
             this.gb_Midias.Controls.Add(this.lb_Interprete);
             this.gb_Midias.Location = new System.Drawing.Point(3, 5);
             this.gb_Midias.Name = "gb_Midias";
-            this.gb_Midias.Size = new System.Drawing.Size(280, 461);
+            this.gb_Midias.Size = new System.Drawing.Size(280, 532);
             this.gb_Midias.TabIndex = 4;
             this.gb_Midias.TabStop = false;
             this.gb_Midias.Text = "Características";
@@ -190,7 +194,7 @@
             // lb_Observacao
             // 
             this.lb_Observacao.AutoSize = true;
-            this.lb_Observacao.Location = new System.Drawing.Point(7, 311);
+            this.lb_Observacao.Location = new System.Drawing.Point(10, 362);
             this.lb_Observacao.Name = "lb_Observacao";
             this.lb_Observacao.Size = new System.Drawing.Size(65, 13);
             this.lb_Observacao.TabIndex = 30;
@@ -198,24 +202,40 @@
             // 
             // rtb_Observacao
             // 
-            this.rtb_Observacao.Location = new System.Drawing.Point(6, 327);
+            this.rtb_Observacao.Location = new System.Drawing.Point(6, 378);
             this.rtb_Observacao.Name = "rtb_Observacao";
             this.rtb_Observacao.Size = new System.Drawing.Size(263, 96);
             this.rtb_Observacao.TabIndex = 29;
             this.rtb_Observacao.Text = "";
             // 
+            // lb_Autor
+            // 
+            this.lb_Autor.AutoSize = true;
+            this.lb_Autor.Location = new System.Drawing.Point(7, 143);
+            this.lb_Autor.Name = "lb_Autor";
+            this.lb_Autor.Size = new System.Drawing.Size(32, 13);
+            this.lb_Autor.TabIndex = 1;
+            this.lb_Autor.Text = "Autor";
+            // 
             // bt_Limpar
             // 
-            this.bt_Limpar.Location = new System.Drawing.Point(115, 432);
+            this.bt_Limpar.Location = new System.Drawing.Point(113, 480);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
             this.bt_Limpar.TabIndex = 28;
             this.bt_Limpar.Text = "&Limpar";
             this.bt_Limpar.UseVisualStyleBackColor = true;
             // 
+            // tb_Autor
+            // 
+            this.tb_Autor.Location = new System.Drawing.Point(10, 159);
+            this.tb_Autor.Name = "tb_Autor";
+            this.tb_Autor.Size = new System.Drawing.Size(259, 20);
+            this.tb_Autor.TabIndex = 11;
+            // 
             // bt_Salvar
             // 
-            this.bt_Salvar.Location = new System.Drawing.Point(196, 432);
+            this.bt_Salvar.Location = new System.Drawing.Point(194, 480);
             this.bt_Salvar.Name = "bt_Salvar";
             this.bt_Salvar.Size = new System.Drawing.Size(75, 23);
             this.bt_Salvar.TabIndex = 26;
@@ -268,18 +288,18 @@
             this.tb_Origemcompra.Size = new System.Drawing.Size(259, 20);
             this.tb_Origemcompra.TabIndex = 22;
             // 
-            // dtp_DataAlbum
+            // dtp_DataAlbum_DE
             // 
-            this.dtp_DataAlbum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataAlbum.Location = new System.Drawing.Point(115, 282);
-            this.dtp_DataAlbum.Name = "dtp_DataAlbum";
-            this.dtp_DataAlbum.Size = new System.Drawing.Size(101, 20);
-            this.dtp_DataAlbum.TabIndex = 21;
+            this.dtp_DataAlbum_DE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataAlbum_DE.Location = new System.Drawing.Point(13, 328);
+            this.dtp_DataAlbum_DE.Name = "dtp_DataAlbum_DE";
+            this.dtp_DataAlbum_DE.Size = new System.Drawing.Size(101, 20);
+            this.dtp_DataAlbum_DE.TabIndex = 21;
             // 
             // lb_Dataalbum
             // 
             this.lb_Dataalbum.AutoSize = true;
-            this.lb_Dataalbum.Location = new System.Drawing.Point(112, 266);
+            this.lb_Dataalbum.Location = new System.Drawing.Point(10, 312);
             this.lb_Dataalbum.Name = "lb_Dataalbum";
             this.lb_Dataalbum.Size = new System.Drawing.Size(61, 13);
             this.lb_Dataalbum.TabIndex = 20;
@@ -289,7 +309,6 @@
             // 
             this.cb_Tipomidia.FormattingEnabled = true;
             this.cb_Tipomidia.Items.AddRange(new object[] {
-            "Selecione...",
             "Vinil",
             "K7",
             "CD",
@@ -318,13 +337,13 @@
             this.lb_Datacompra.TabIndex = 17;
             this.lb_Datacompra.Text = "Data compra";
             // 
-            // dtp_DataCompra
+            // dtp_DataCompra_DE
             // 
-            this.dtp_DataCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataCompra.Location = new System.Drawing.Point(10, 282);
-            this.dtp_DataCompra.Name = "dtp_DataCompra";
-            this.dtp_DataCompra.Size = new System.Drawing.Size(99, 20);
-            this.dtp_DataCompra.TabIndex = 16;
+            this.dtp_DataCompra_DE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataCompra_DE.Location = new System.Drawing.Point(10, 282);
+            this.dtp_DataCompra_DE.Name = "dtp_DataCompra_DE";
+            this.dtp_DataCompra_DE.Size = new System.Drawing.Size(99, 20);
+            this.dtp_DataCompra_DE.TabIndex = 16;
             // 
             // tb_Nomemusica
             // 
@@ -358,28 +377,12 @@
             this.lb_Album.TabIndex = 12;
             this.lb_Album.Text = "Álbum";
             // 
-            // tb_Autor
-            // 
-            this.tb_Autor.Location = new System.Drawing.Point(10, 159);
-            this.tb_Autor.Name = "tb_Autor";
-            this.tb_Autor.Size = new System.Drawing.Size(259, 20);
-            this.tb_Autor.TabIndex = 11;
-            // 
             // tb_Interprete
             // 
             this.tb_Interprete.Location = new System.Drawing.Point(10, 37);
             this.tb_Interprete.Name = "tb_Interprete";
             this.tb_Interprete.Size = new System.Drawing.Size(259, 20);
             this.tb_Interprete.TabIndex = 9;
-            // 
-            // lb_Autor
-            // 
-            this.lb_Autor.AutoSize = true;
-            this.lb_Autor.Location = new System.Drawing.Point(7, 143);
-            this.lb_Autor.Name = "lb_Autor";
-            this.lb_Autor.Size = new System.Drawing.Size(32, 13);
-            this.lb_Autor.TabIndex = 1;
-            this.lb_Autor.Text = "Autor";
             // 
             // lb_Interprete
             // 
@@ -390,11 +393,27 @@
             this.lb_Interprete.TabIndex = 0;
             this.lb_Interprete.Text = "Intérprete";
             // 
+            // dtp_DataCompra_ATE
+            // 
+            this.dtp_DataCompra_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataCompra_ATE.Location = new System.Drawing.Point(146, 283);
+            this.dtp_DataCompra_ATE.Name = "dtp_DataCompra_ATE";
+            this.dtp_DataCompra_ATE.Size = new System.Drawing.Size(99, 20);
+            this.dtp_DataCompra_ATE.TabIndex = 31;
+            // 
+            // dtp_DataAlbum_ATE
+            // 
+            this.dtp_DataAlbum_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataAlbum_ATE.Location = new System.Drawing.Point(146, 328);
+            this.dtp_DataAlbum_ATE.Name = "dtp_DataAlbum_ATE";
+            this.dtp_DataAlbum_ATE.Size = new System.Drawing.Size(101, 20);
+            this.dtp_DataAlbum_ATE.TabIndex = 32;
+            // 
             // fm_Pesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 485);
+            this.ClientSize = new System.Drawing.Size(742, 537);
             this.Controls.Add(this.gb_Midias);
             this.Controls.Add(this.lv_MidiasP);
             this.Name = "fm_Pesquisa";
@@ -427,12 +446,12 @@
         private System.Windows.Forms.ComboBox cb_Nota;
         private System.Windows.Forms.Label lb_Origemcompra;
         private System.Windows.Forms.TextBox tb_Origemcompra;
-        private System.Windows.Forms.DateTimePicker dtp_DataAlbum;
+        private System.Windows.Forms.DateTimePicker dtp_DataAlbum_DE;
         private System.Windows.Forms.Label lb_Dataalbum;
         private System.Windows.Forms.ComboBox cb_Tipomidia;
         private System.Windows.Forms.Label lb_Tipomidia;
         private System.Windows.Forms.Label lb_Datacompra;
-        private System.Windows.Forms.DateTimePicker dtp_DataCompra;
+        private System.Windows.Forms.DateTimePicker dtp_DataCompra_DE;
         private System.Windows.Forms.TextBox tb_Nomemusica;
         private System.Windows.Forms.TextBox tb_Album;
         private System.Windows.Forms.Label label1;
@@ -441,5 +460,7 @@
         private System.Windows.Forms.TextBox tb_Interprete;
         private System.Windows.Forms.Label lb_Autor;
         private System.Windows.Forms.Label lb_Interprete;
+        private System.Windows.Forms.DateTimePicker dtp_DataAlbum_ATE;
+        private System.Windows.Forms.DateTimePicker dtp_DataCompra_ATE;
     }
 }

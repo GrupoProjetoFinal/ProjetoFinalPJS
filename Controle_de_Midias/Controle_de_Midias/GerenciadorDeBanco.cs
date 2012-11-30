@@ -151,6 +151,11 @@ namespace Controle_de_Midias
             return DadosAmigos;
         }
 
+        //public void PesquisaAmigo(ListView lv_Amigos, string pesquisa)
+        //{
+           
+        //}
+
         public int ProcurarAmigo(Amigo amigo)
         {
             int id_amigo;
@@ -170,14 +175,57 @@ namespace Controle_de_Midias
 
 
         // PODE USAR O MÉTODO ABAIXO PARA DIMINUIR O CÓDIGO
-        public void ProcurarMidia(ListView lv_Midias,Midia midia)
+        public void ProcurarMidia(ListView lv_Midias,Midia midia,DateTime dataCompraFIM, DateTime dataAlbumFIM)
+       {
+            cmdSQL = "SELECT * FROM Midias "+
+                     "WHERE (@interprete = '' OR Nome_Interprete  LIKE('%@interprete%'))        AND" +
+                     "      (@musica     = '' OR Nome_Musica      LIKE('%@musica%'))            AND" +
+                     "      (@album      = '' OR Nome_Album       LIKE('%@album%'))             AND" + 
+                     "      (@autor      = '' OR Nome_Autor       LIKE('%@autor%'))             AND" +
+                     "      (@compra     = '' OR Origem_Compra    LIKE('%@compra%'))            AND" +
+                     "      (@observacao = '' OR Observacao       LIKE('%@observacao%'))        AND" +
+                     "      (@nota       = Nota)                                                AND" +
+                     "      (@tipo       = Tipo_Midia)                                          AND" +
+                     "      (Data_Album  >= @dataAlbumInicio AND Data_Album <= @dataAlbumFIM)   AND" +
+                     "      (Data_Compra >= @dataCompraInicio AND Data_Album <= @dataCompraFIM)     ";
+
+            cmd = new SqlCommand(cmdSQL,conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@interprete", midia.interprete));
+            cmd.Parameters.Add(new SqlParameter("@musica", midia.musica));
+            cmd.Parameters.Add(new SqlParameter("@album", midia.album));
+            cmd.Parameters.Add(new SqlParameter("@autor", midia.autor));
+            cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
+            cmd.Parameters.Add(new SqlParameter("@tipo", midia.tipo));
+            cmd.Parameters.Add(new SqlParameter("@nota", midia.nota));
+            cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
+            cmd.Parameters.Add(new SqlParameter("@dataAlbumInicio", midia.dataAlbum));
+            cmd.Parameters.Add(new SqlParameter("@dataAlbumFIM", dataAlbumFIM));
+            cmd.Parameters.Add(new SqlParameter("@dataCompraInicio", midia.dataCompra));
+            cmd.Parameters.Add(new SqlParameter("@dataCompraFIM", dataCompraFIM));
+            Leitor = cmd.ExecuteReader();
+
+            PreencherListView(lv_Midias, Leitor);
+}
+
+        private void PreencherListView(ListView lv ,SqlDataReader Leitor)
         {
+            while (Leitor.Read())
+            {
 
-            //  FASE DE TESTE .......
-
-            //cmdSQL = "";
-
-            //if(midia.interprete != string.Empty && !midia.interprete.Contains(midia.interprete) || midia.musica != string.Empty && !midia.musica.Contains(midia.musica) || midia.album != string.Empty && midia.album.Contains(midia.album) || midia.autor != string.Empty && !midia.autor.Contains(midia.autor) || midia.compra != string.Empty && !midia.compra.Contains(midia.compra) ||  
+                item = new ListViewItem(Leitor["Nome_Album"].ToString());
+                item.Group = lv.Groups[int.Parse(Leitor["Tipo_Midia"].ToString())];
+                lv.Items.Add(item);
+                item.SubItems.Add(Leitor["Nome_Interprete"].ToString());
+                item.SubItems.Add(Leitor["Nome_Autor"].ToString());
+                item.SubItems.Add(Leitor["Nome_Musica"].ToString());
+                item.SubItems.Add(Leitor["Nota"].ToString());
+                item.SubItems.Add(Leitor["Data_Compra"].ToString());
+                item.SubItems.Add(Leitor["Data_Album"].ToString());
+                item.SubItems.Add(Leitor["Origem_Compra"].ToString());
+                item.SubItems.Add(Leitor["Observacao"].ToString());
+            }
+            Leitor.Close();
         }
 
         public void PreencherLvMidias(ListView lv_Midias, int id_Amigo)
@@ -190,23 +238,8 @@ namespace Controle_de_Midias
             cmd = new SqlCommand(cmdSQL, conexao);
             cmd.Parameters.Add(new SqlParameter("@Id_Amigo",id_Amigo));
             Leitor = cmd.ExecuteReader();
-
-            while (Leitor.Read())
-            {
+            PreencherListView(lv_Midias, Leitor);
                 
-                item = new ListViewItem(Leitor["Nome_Album"].ToString());
-                item.Group = lv_Midias.Groups[Leitor["Tipo_Midia"].ToString()];
-                lv_Midias.Items.Add(item);
-                item.SubItems.Add(Leitor["Nome_Interprete"].ToString());
-                item.SubItems.Add(Leitor["Nome_Autor"].ToString());
-                item.SubItems.Add(Leitor["Nome_Musica"].ToString());
-                item.SubItems.Add(Leitor["Nota"].ToString());
-                item.SubItems.Add(Leitor["Data_Compra"].ToString());  
-                item.SubItems.Add(Leitor["Data_Album"].ToString());              
-                item.SubItems.Add(Leitor["Origem_Compra"].ToString());        
-                item.SubItems.Add(Leitor["Observacao"].ToString());
-            }
-            Leitor.Close();    
         }
 
         public void VerificaDevedores(ListView lv_amigos)

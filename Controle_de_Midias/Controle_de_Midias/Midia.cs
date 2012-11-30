@@ -20,7 +20,7 @@ namespace Controle_de_Midias
        /// <summary>
        /// trocar string por INT para pegar indicesss
        /// </summary>
-      public string tipo;
+      public int tipo;
       public string observacao;
       public string nota;
 

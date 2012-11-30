@@ -57,6 +57,8 @@
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -105,6 +107,7 @@
             this.bt_Pesquisa.TabIndex = 2;
             this.bt_Pesquisa.Text = "&Pesquisa";
             this.bt_Pesquisa.UseVisualStyleBackColor = true;
+            this.bt_Pesquisa.Click += new System.EventHandler(this.bt_Pesquisa_Click);
             // 
             // bt_NovoAmigo
             // 
@@ -236,6 +239,8 @@
             // 
             // tp_Amigos
             // 
+            this.tp_Amigos.Controls.Add(this.label1);
+            this.tp_Amigos.Controls.Add(this.textBox1);
             this.tp_Amigos.Controls.Add(this.lv_Amigos);
             this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
             this.tp_Amigos.Name = "tp_Amigos";
@@ -254,7 +259,7 @@
             this.cl_Obs});
             this.lv_Amigos.Location = new System.Drawing.Point(3, 29);
             this.lv_Amigos.Name = "lv_Amigos";
-            this.lv_Amigos.Size = new System.Drawing.Size(1043, 366);
+            this.lv_Amigos.Size = new System.Drawing.Size(1082, 366);
             this.lv_Amigos.TabIndex = 2;
             this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             this.lv_Amigos.View = System.Windows.Forms.View.Details;
@@ -280,6 +285,23 @@
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(972, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(916, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Pesquisa";
+            // 
             // fm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +316,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tp_Midias.ResumeLayout(false);
             this.tp_Amigos.ResumeLayout(false);
+            this.tp_Amigos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -324,6 +347,8 @@
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
         private System.Windows.Forms.ColumnHeader cl_Origem;
         private System.Windows.Forms.ColumnHeader cl_Observacao;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }

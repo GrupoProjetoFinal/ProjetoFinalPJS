@@ -20,6 +20,9 @@ namespace Controle_de_Midias
         fm_Emprestimo emprestimo = new fm_Emprestimo();
         fm_Devolver devolver = new fm_Devolver();
         fm_AlterarAmigo AlterarAmigo = new fm_AlterarAmigo();
+        fm_Pesquisa pesquisa = new fm_Pesquisa();
+
+        // como faz para uma string assumir um valor inicial so na primeira vez em um metodo ex
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
@@ -110,6 +113,42 @@ namespace Controle_de_Midias
 
             fm_CadMidias Cadastro_Midia = new fm_CadMidias();
             Cadastro_Midia.ShowDialog();
+        }
+
+        private void bt_Pesquisa_Click(object sender, EventArgs e)
+        {
+            pesquisa.ShowDialog();
+        }
+        private int i = 0;
+        string nome = null;
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //char[] teste = new char[50];
+            //List<char> teste2 = new List<char>();
+            //while (textBox1.Text.Count() > 0)
+            //{
+            //    teste2.Add(textBox1.Text[textBox1.Text.Count()]);
+            //}
+            //while (i <= (teste2.Count() - 1))
+            //{
+            //    nome += teste2[i];
+            //    ++i;
+            //}
+
+            if (textBox1.Text == nome)
+            {
+                GBD.AbrirConexao();
+                GBD.PreecherLvAmigos(lv_Amigos, "fm_Principal");
+                foreach (ListViewItem item in lv_Amigos.Items)
+                    if (!item.Text.Contains(textBox1.Text))
+                        item.Remove();
+            }
+            foreach (ListViewItem item in lv_Amigos.Items)
+                if (!item.Text.Contains(textBox1.Text))
+                    item.Remove();
+
+        //    
+   
         }
 
     }
