@@ -34,7 +34,7 @@ namespace Controle_de_Midias
             midia.dataAlbum = dtp_DataAlbum.Value;
             midia.dataCompra = dtp_DataCompra.Value;
             midia.compra = tb_Origemcompra.Text;
-            midia.tipo = cb_Tipomidia.Text;
+            midia.tipo = cb_Tipomidia.SelectedIndex;
             midia.observacao = rtb_Observacao.Text;
 
             GBD.AbrirConexao();

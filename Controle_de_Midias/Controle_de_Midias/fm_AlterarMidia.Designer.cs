@@ -120,6 +120,7 @@
             this.bt_Alterar.TabIndex = 26;
             this.bt_Alterar.Text = "&Alterar";
             this.bt_Alterar.UseVisualStyleBackColor = true;
+            this.bt_Alterar.Click += new System.EventHandler(this.bt_Alterar_Click);
             // 
             // lb_Nota
             // 

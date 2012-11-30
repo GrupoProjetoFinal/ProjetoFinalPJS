@@ -20,6 +20,7 @@ namespace Controle_de_Midias
         fm_Emprestimo emprestimo = new fm_Emprestimo();
         fm_Devolver devolver = new fm_Devolver();
         fm_AlterarAmigo AlterarAmigo = new fm_AlterarAmigo();
+        fm_AlterarMidia ModificarMidia = new fm_AlterarMidia();
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
@@ -87,29 +88,25 @@ namespace Controle_de_Midias
         private void lv_Midias_DoubleClick(object sender, EventArgs e)
         {
             // Os dados selecionados no ListView são passados para o objeto Midia.
-            fm_AlterarMidia ModificarMidia = new fm_AlterarMidia();
-
             Midia modificaMidia = new Midia();
-            foreach (ListViewItem item in lv_Amigos.SelectedItems)
+            
+            foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
-                modificaMidia.autor = item.Text;
+                modificaMidia.album = item.Text;
                 modificaMidia.interprete = item.SubItems[1].Text;
-                modificaMidia.compra = item.SubItems[2].Text;
-                modificaMidia.autor = item.SubItems[3].Text;
-                modificaMidia.musica = item.SubItems[4].Text;
-                modificaMidia.nota = item.SubItems[5].Text;
-                modificaMidia.dataAlbum = DateTime.Parse(item.SubItems[6].Text);
-                modificaMidia.dataCompra = DateTime.Parse(item.SubItems[7].Text);
+                modificaMidia.autor = item.SubItems[2].Text;
+                modificaMidia.musica = item.SubItems[3].Text;
+                modificaMidia.nota = item.SubItems[4].Text;
+                modificaMidia.dataAlbum = DateTime.Parse(item.SubItems[5].Text);
+                modificaMidia.dataCompra = DateTime.Parse(item.SubItems[6].Text);
+                modificaMidia.compra = item.SubItems[7].Text;
                 modificaMidia.observacao = item.SubItems[8].Text;
+                modificaMidia.tipo = lv_Midias.Groups.IndexOf(item.Group);
             }
 
             // Chama o método Preecher do Form fm_AlterarAmigo, em seguida abre-o.
-            //fm_AlterarMidia ModificarMidia = new fm_AlterarMidia();
-            //ModificarMidia.(modificaMidia);
-            //ModificarMidia.ShowDialog();
-
-            fm_CadMidias Cadastro_Midia = new fm_CadMidias();
-            Cadastro_Midia.ShowDialog();
+            ModificarMidia.Preencher(modificaMidia);
+            ModificarMidia.ShowDialog();
         }
 
     }
