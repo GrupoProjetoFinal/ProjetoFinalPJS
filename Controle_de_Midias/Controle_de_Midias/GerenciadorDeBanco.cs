@@ -173,6 +173,28 @@ namespace Controle_de_Midias
             
         }
 
+        public int PegaIdentificador(Midia midia)
+        {
+
+            int id_midia;
+
+            cmdSQL = "SELECT Id_Midia FROM Midias WHERE Nome_Album = @Nome_Album AND Nome_Interprete = @Nome_Interprete AND Origem_Compra =  @Origem_Compra AND Nome_autor = @Nome_autor AND Nome_Musica = @Nome_Musica AND Observacao = @Observacao AND Nota = @Nota AND Data_Compra = @Data_Compra AND Data_Album = @Data_Album";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@Nome_Album", midia.album));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Interprete",midia.interprete));
+            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", midia.compra));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", midia.autor));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", midia.musica));
+            cmd.Parameters.Add(new SqlParameter("@Observacao", midia.observacao));
+            cmd.Parameters.Add(new SqlParameter("@Nota", midia.nota));
+            cmd.Parameters.Add(new SqlParameter("@Data_Compra", midia.dataAlbum));
+            cmd.Parameters.Add(new SqlParameter("@Data_Album", midia.dataCompra));
+            
+
+            return id_midia = (int)cmd.ExecuteScalar();
+        }
 
         // PODE USAR O MÉTODO ABAIXO PARA DIMINUIR O CÓDIGO
         public void ProcurarMidia(ListView lv_Midias,Midia midia,DateTime dataCompraFIM, DateTime dataAlbumFIM)
@@ -352,5 +374,24 @@ namespace Controle_de_Midias
             MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+
+        public void AlterarMidia(Midia emAlteracao)
+        {
+            cmdSQL = "UPDATE Midias SET Nome_Album = @Nome_Album, Nome_Interprete = @Nome_Interprete, Origem_Compra =  @Origem_Compra, Nome_autor = @Nome_autor, Nome_Musica = @Nome_Musica, Observacao = @Observacao, Nota = @Nota, Data_Compra = @Data_Compra, Data_Album = @Data_Album";
+
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            cmd.Parameters.Add(new SqlParameter("@Nome_Album", emAlteracao.album));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", emAlteracao.interprete));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", emAlteracao.autor));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", emAlteracao.musica));
+            cmd.Parameters.Add(new SqlParameter("@Nota", emAlteracao.nota));
+            cmd.Parameters.Add(new SqlParameter("@Data_Compra", emAlteracao.dataCompra));
+            cmd.Parameters.Add(new SqlParameter("@Data_Album", emAlteracao.dataAlbum));
+            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", emAlteracao.compra));
+            cmd.Parameters.Add(new SqlParameter("@Observacao", emAlteracao.observacao));
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
