@@ -32,7 +32,7 @@ namespace Controle_de_Midias
             rtb_ObservacaoAlt.Text = rescrever.observacao;
 
             GBD.AbrirConexao();
-            idAmigo = GBD.PegarIdentificadorAmigo(rescrever);
+            idAmigo = GBD.PegarIdentificadorAmigo(rescrever); 
             GBD.FecharConexao();
         }
 
@@ -49,8 +49,7 @@ namespace Controle_de_Midias
                 GBD.MensagemDeErro();
 
             this.Close();
-            
-            
+         
         }
 
         private void bt_Excluir_Click(object sender, EventArgs e)
@@ -65,9 +64,7 @@ namespace Controle_de_Midias
             else
                 GBD.MensagemDeErro();
 
-            this.Close();
-           
-            
+            this.Close();  
         }
 
         private Amigo enviaParaObjeto()
@@ -81,11 +78,6 @@ namespace Controle_de_Midias
             // O conteúdo dos TextBox são passados para o objeto Amigo.
             
             return NovoAmigo;
-        }
-
-        private void fm_AlterarAmigo_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

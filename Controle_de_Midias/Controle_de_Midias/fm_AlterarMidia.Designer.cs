@@ -111,6 +111,7 @@
             this.bt_Apagar.TabIndex = 28;
             this.bt_Apagar.Text = "&Apagar";
             this.bt_Apagar.UseVisualStyleBackColor = true;
+            this.bt_Apagar.Click += new System.EventHandler(this.bt_Apagar_Click);
             // 
             // bt_Alterar
             // 

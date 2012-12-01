@@ -7,7 +7,7 @@ namespace Controle_de_Midias
 {
    public class Midia
     {
-        //image foto?;
+
       public  string interprete;
       public string autor;
       public string musica;
@@ -16,11 +16,6 @@ namespace Controle_de_Midias
       public DateTime dataCompra;
       public string compra;
       public int id;
-
-
-       /// <summary>
-       /// trocar string por INT para pegar indicesss
-       /// </summary>
       public int tipo;
       public string observacao;
       public string nota;

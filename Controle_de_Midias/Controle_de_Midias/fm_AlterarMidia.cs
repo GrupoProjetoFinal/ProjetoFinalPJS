@@ -55,6 +55,21 @@ namespace Controle_de_Midias
             this.Close();
         }
 
+        private void bt_Apagar_Click(object sender, EventArgs e)
+        {
+            //Verifica se a conecção foi aberta, se sim executa o comando SLQ no GerenciadorDeBanco.
+            if (GBD.AbrirConexao())
+            {
+                GBD.ExcluirMidia(enviaParaObjeto());
+                GBD.FecharConexao();
+                excluir = true;
+            }
+            else
+                GBD.MensagemDeErro();
+
+            this.Close();
+        }
+
         private Midia enviaParaObjeto()
         {
             NovaMidia.id = idMidia;

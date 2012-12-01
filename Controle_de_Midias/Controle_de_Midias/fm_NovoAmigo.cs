@@ -6,15 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-
 
 namespace Controle_de_Midias
 {
     public partial class fm_NovoAmigo : Form
     {
-        public fm_NovoAmigo()
+        ListView lvAmigo;
+        public fm_NovoAmigo(ListView fmAmigoLista)
         {
+            //Recebe a referencia do listView vinda do fm_pricipal e passa para o listview lvMidias
+            lvAmigo = fmAmigoLista;
             InitializeComponent();
         }
 
@@ -27,7 +28,6 @@ namespace Controle_de_Midias
             novoAmigo.email = tb_Email.Text;
             novoAmigo.observacao = rtb_Observacao.Text;
 
-            
             GerenciadorDeBanco GBD = new GerenciadorDeBanco();
 
             //verifica se a conecção foi aberta, se sim insere os dados
@@ -41,6 +41,16 @@ namespace Controle_de_Midias
                 tb_Telefone.Clear();
                 tb_Email.Clear();
                 rtb_Observacao.Clear();
+
+                //Adiciona a nova midia no ListView lvMidias.
+                ListViewItem item;
+
+                item = new ListViewItem(novoAmigo.nome);
+                lvAmigo.Items.Add(item);
+                item.SubItems.Add(novoAmigo.telefone);
+                item.SubItems.Add(novoAmigo.email);
+                item.SubItems.Add(novoAmigo.observacao);
+
             }
             else
             {

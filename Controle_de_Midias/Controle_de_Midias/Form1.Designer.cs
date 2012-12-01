@@ -53,7 +53,7 @@
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
             this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -242,7 +242,7 @@
             // tp_Amigos
             // 
             this.tp_Amigos.Controls.Add(this.label1);
-            this.tp_Amigos.Controls.Add(this.textBox1);
+            this.tp_Amigos.Controls.Add(this.tb_PesquisaParcial);
             this.tp_Amigos.Controls.Add(this.lv_Amigos);
             this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
             this.tp_Amigos.Name = "tp_Amigos";
@@ -261,13 +261,13 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Pesquisa";
             // 
-            // textBox1
+            // tb_PesquisaParcial
             // 
-            this.textBox1.Location = new System.Drawing.Point(972, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tb_PesquisaParcial.Location = new System.Drawing.Point(972, 6);
+            this.tb_PesquisaParcial.Name = "tb_PesquisaParcial";
+            this.tb_PesquisaParcial.Size = new System.Drawing.Size(110, 20);
+            this.tb_PesquisaParcial.TabIndex = 3;
+            this.tb_PesquisaParcial.TextChanged += new System.EventHandler(this.PesquisaParcial_TextChanged);
             // 
             // lv_Amigos
             // 
@@ -352,7 +352,7 @@
         private System.Windows.Forms.ColumnHeader cl_Origem;
         private System.Windows.Forms.ColumnHeader cl_Observacao;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_PesquisaParcial;
 
     }
 }

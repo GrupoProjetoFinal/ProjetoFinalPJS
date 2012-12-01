@@ -154,7 +154,6 @@
             this.Controls.Add(this.lb_Nome);
             this.Name = "fm_AlterarAmigo";
             this.Text = "Alterar dados do amigo";
-            this.Load += new System.EventHandler(this.fm_AlterarAmigo_Load);
             this.gb_menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

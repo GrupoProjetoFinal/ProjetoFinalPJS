@@ -170,12 +170,8 @@ namespace Controle_de_Midias
 
             if (frm == "fm_Principal")
                 cmdSQL = "SELECT * FROM Amigos ORDER BY Nome";
-
-                                  //////                 akiiiiIIIIIIIIIIIIIIIIIII                                          ///////////////////////////
-            // FALTA PENSAR UM JEITO DE QUE ESSE LISTVIEW SEJA PPREENCHIDO UM DETERMINADO NOME UMA VEZ
-            // EX SE FULANO DE TAL ALUNO 10 MIDIAS ELE VAI APARECER 10X SENDO QUE O CORRETO É APARECER UMA VEZ
             else
-                cmdSQL = "SELECT Amigos.Nome, Amigos.Email, Amigos.Telefone, Amigos.Observacao " +
+                cmdSQL = "SELECT DISTINCT Amigos.Nome, Amigos.Email, Amigos.Telefone, Amigos.Observacao " +
                          "FROM Emprestimos " +
                          "INNER JOIN Amigos " +
                          "ON Emprestimos.Id_Amigo = Amigos.Id_Amigo ORDER BY Amigos.Nome";
