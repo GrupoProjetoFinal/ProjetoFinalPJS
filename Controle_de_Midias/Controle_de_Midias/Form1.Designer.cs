@@ -52,13 +52,13 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -162,6 +162,8 @@
             this.cl_DataCompra,
             this.cl_Origem,
             this.cl_Observacao});
+            this.lv_Midias.FullRowSelect = true;
+            this.lv_Midias.GridLines = true;
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";
@@ -250,6 +252,23 @@
             this.tp_Amigos.Text = "Amigos";
             this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(916, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Pesquisa";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(972, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // lv_Amigos
             // 
             this.lv_Amigos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -257,6 +276,8 @@
             this.cl_Telefone,
             this.cl_Email,
             this.cl_Obs});
+            this.lv_Amigos.FullRowSelect = true;
+            this.lv_Amigos.GridLines = true;
             this.lv_Amigos.Location = new System.Drawing.Point(3, 29);
             this.lv_Amigos.Name = "lv_Amigos";
             this.lv_Amigos.Size = new System.Drawing.Size(1082, 366);
@@ -284,23 +305,6 @@
             // 
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(972, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(916, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Pesquisa";
             // 
             // fm_Principal
             // 

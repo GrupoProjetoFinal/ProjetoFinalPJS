@@ -17,13 +17,8 @@ namespace Controle_de_Midias
         }
 
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-        fm_Emprestimo emprestimo = new fm_Emprestimo();
-        fm_Devolver devolver = new fm_Devolver();
-        fm_AlterarAmigo AlterarAmigo = new fm_AlterarAmigo();
-        fm_Pesquisa pesquisa = new fm_Pesquisa();
 
         // como faz para uma string assumir um valor inicial so na primeira vez em um metodo ex
-        fm_AlterarMidia ModificarMidia = new fm_AlterarMidia();
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
@@ -36,14 +31,19 @@ namespace Controle_de_Midias
 
         private void bt_Emprestar_Click(object sender, EventArgs e)
         {
+            fm_Emprestimo emprestimo = new fm_Emprestimo();
             emprestimo.ShowDialog();
         }
 
         private void bt_NovoAmigo_Click(object sender, EventArgs e)
         {
-            fm_NovoAmigo Adicionar = new fm_NovoAmigo();
+            fm_NovoAmigo Adicionar = new fm_NovoAmigo(lv_Amigos);
             Adicionar.ShowDialog();
-         
+
+
+            // -------------- PREENCHER NÃO ESTA FINCIONANDO ------------------
+            //fm_NovoAmigo infAmigo = new fm_NovoAmigo();
+            //lv_Amigos.Items.Add(infAmigo.OutroAmigo);
         }
 
         private void lv_Amigos_DoubleClick(object sender, EventArgs e)
@@ -59,9 +59,9 @@ namespace Controle_de_Midias
             }
 
             // Chama o método Preecher do Form fm_AlterarAmigo, em seguida abre-o.
+            fm_AlterarAmigo AlterarAmigo = new fm_AlterarAmigo();
             AlterarAmigo.Preencher(ModificaAmigo);
             AlterarAmigo.ShowDialog();
-
 
             //Caso o amigo for alterado retorna verdadeiro e altera Listview caso não ele é excluido
             if (AlterarAmigo.alterar)
@@ -79,41 +79,62 @@ namespace Controle_de_Midias
 
         private void bt_Devolver_Click(object sender, EventArgs e)
         {
+            fm_Devolver devolver = new fm_Devolver();
             devolver.ShowDialog();
         }
 
         private void bt_NovaMidia_Click(object sender, EventArgs e)
         {
-            fm_CadMidias novaMidia = new fm_CadMidias();
+            fm_CadMidias novaMidia = new fm_CadMidias(lv_Midias);
             novaMidia.ShowDialog();
         }
 
         private void lv_Midias_DoubleClick(object sender, EventArgs e)
         {
             // Os dados selecionados no ListView são passados para o objeto Midia.
-            Midia modificaMidia = new Midia();
+            Midia infMidia = new Midia();
             
             foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
-                modificaMidia.album = item.Text;
-                modificaMidia.interprete = item.SubItems[1].Text;
-                modificaMidia.autor = item.SubItems[2].Text;
-                modificaMidia.musica = item.SubItems[3].Text;
-                modificaMidia.nota = item.SubItems[4].Text;
-                modificaMidia.dataAlbum = DateTime.Parse(item.SubItems[5].Text);
-                modificaMidia.dataCompra = DateTime.Parse(item.SubItems[6].Text);
-                modificaMidia.compra = item.SubItems[7].Text;
-                modificaMidia.observacao = item.SubItems[8].Text;
-                modificaMidia.tipo = lv_Midias.Groups.IndexOf(item.Group);
+                infMidia.album = item.Text;
+                infMidia.interprete = item.SubItems[1].Text;
+                infMidia.autor = item.SubItems[2].Text;
+                infMidia.musica = item.SubItems[3].Text;
+                infMidia.nota = item.SubItems[4].Text;
+                infMidia.dataCompra = DateTime.Parse(item.SubItems[5].Text);
+                infMidia.dataAlbum = DateTime.Parse(item.SubItems[6].Text);
+                infMidia.compra = item.SubItems[7].Text;
+                infMidia.observacao = item.SubItems[8].Text;
+                infMidia.tipo = lv_Midias.Groups.IndexOf(item.Group);
             }
 
-            // Chama o método Preecher do Form fm_AlterarAmigo, em seguida abre-o.
-            ModificarMidia.Preencher(modificaMidia);
+            // Chama o método Preecher do Form fm_AlterarMidia, em seguida abre-o.
+            fm_AlterarMidia ModificarMidia = new fm_AlterarMidia();
+            ModificarMidia.Preencher(infMidia);
             ModificarMidia.ShowDialog();
+
+            //Caso o amigo for alterado retorna verdadeiro e altera Listview caso não ele é excluido
+            if (ModificarMidia.alterar)
+                foreach (ListViewItem item in lv_Midias.SelectedItems)
+                {
+                    item.Text = ModificarMidia.NovaMidia.album;
+                    item.SubItems[1].Text = ModificarMidia.NovaMidia.interprete;
+                    item.SubItems[2].Text = ModificarMidia.NovaMidia.autor;
+                    item.SubItems[3].Text = ModificarMidia.NovaMidia.musica;
+                    item.SubItems[4].Text = ModificarMidia.NovaMidia.nota;
+                    item.SubItems[5].Text = ModificarMidia.NovaMidia.dataCompra.ToString();
+                    item.SubItems[6].Text = ModificarMidia.NovaMidia.dataAlbum.ToString();
+                    item.SubItems[7].Text = ModificarMidia.NovaMidia.compra;
+                    item.SubItems[8].Text = ModificarMidia.NovaMidia.observacao;
+                }
+            else if (ModificarMidia.excluir)
+                foreach (ListViewItem item in lv_Midias.SelectedItems)
+                    item.Remove();
         }
 
         private void bt_Pesquisa_Click(object sender, EventArgs e)
         {
+             fm_Pesquisa pesquisa = new fm_Pesquisa();
             pesquisa.ShowDialog();
         }
         private int i = 0;
@@ -147,6 +168,5 @@ namespace Controle_de_Midias
         //    
    
         }
-
     }
 }

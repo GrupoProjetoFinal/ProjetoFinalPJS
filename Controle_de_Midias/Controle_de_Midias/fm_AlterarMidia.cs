@@ -17,7 +17,7 @@ namespace Controle_de_Midias
         }
 
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-        private Midia NovaMidia = new Midia();
+        public Midia NovaMidia = new Midia();
         private int idMidia;
         public bool alterar = false;
         public bool excluir = false;
@@ -37,7 +37,7 @@ namespace Controle_de_Midias
             cb_altTipomidia.SelectedIndex = rescrever.tipo;
 
             GBD.AbrirConexao();
-            idMidia = GBD.PegaIdentificador(rescrever);
+            idMidia = GBD.PegaIdentificadorMidias(rescrever);
             GBD.FecharConexao();
         }
 
@@ -55,8 +55,24 @@ namespace Controle_de_Midias
             this.Close();
         }
 
+        private void bt_Apagar_Click(object sender, EventArgs e)
+        {
+            //Verifica se a conecção foi aberta, se sim executa o comando SLQ no GerenciadorDeBanco.
+            if (GBD.AbrirConexao())
+            {
+                GBD.ExcluirMidia(enviaParaObjeto());
+                GBD.FecharConexao();
+                excluir = true;
+            }
+            else
+                GBD.MensagemDeErro();
+
+            this.Close();
+        }
+
         private Midia enviaParaObjeto()
         {
+            NovaMidia.id = idMidia;
             NovaMidia.autor = tb_altAutor.Text;
             NovaMidia.interprete = tb_altInterprete.Text; 
             NovaMidia.compra = tb_altOrigemcompra.Text;

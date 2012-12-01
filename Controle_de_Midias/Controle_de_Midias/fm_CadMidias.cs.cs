@@ -11,9 +11,14 @@ namespace Controle_de_Midias
 {
     public partial class fm_CadMidias : Form
     {
-        public fm_CadMidias()
+        ListView lvMidias;
+        public fm_CadMidias(ListView fmMidiasLista)
         {
+
             InitializeComponent();
+        
+            //Recebe a referencia do listView vinda do fm_pricipal e passa para o listview lvMidias
+            lvMidias = fmMidiasLista;
             cb_Nota.SelectedIndex = 0;
             cb_Tipomidia.SelectedIndex = 0;
         }
@@ -45,6 +50,21 @@ namespace Controle_de_Midias
 
                 GBD.FecharConexao();
 
+
+                //Adiciona a nova midia no ListView lvMidias.
+                ListViewItem item;
+
+                item = new ListViewItem(midia.album);
+                item.Group = lvMidias.Groups[midia.tipo];
+                lvMidias.Items.Add(item);
+                item.SubItems.Add(midia.interprete);
+                item.SubItems.Add(midia.autor);
+                item.SubItems.Add(midia.musica);
+                item.SubItems.Add(midia.nota);
+                item.SubItems.Add(midia.dataCompra.ToShortDateString());
+                item.SubItems.Add(midia.dataAlbum.ToLongDateString());
+                item.SubItems.Add(midia.compra);
+                item.SubItems.Add(midia.observacao);
 
                 //Limpar campos apos a inserção
                 tb_Interprete.Text = "";
