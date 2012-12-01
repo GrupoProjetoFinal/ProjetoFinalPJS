@@ -32,7 +32,7 @@ namespace Controle_de_Midias
             rtb_ObservacaoAlt.Text = rescrever.observacao;
 
             GBD.AbrirConexao();
-            idAmigo = GBD.ProcurarAmigo(rescrever); 
+            idAmigo = GBD.PegarIdentificadorAmigo(rescrever);
             GBD.FecharConexao();
         }
 

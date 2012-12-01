@@ -86,7 +86,7 @@ namespace Controle_de_Midias
             }
 
             GBD.AbrirConexao();
-            idAmigo = GBD.ProcurarAmigo(amigo);
+            idAmigo = GBD.PegarIdentificadorAmigo(amigo);
             lv_MidiasD.Items.Clear();
             GBD.PreencherLvMidias(lv_MidiasD, idAmigo);
             GBD.FecharConexao();

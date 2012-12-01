@@ -15,6 +15,7 @@ namespace Controle_de_Midias
       public DateTime dataAlbum;
       public DateTime dataCompra;
       public string compra;
+      public int id;
 
 
        /// <summary>

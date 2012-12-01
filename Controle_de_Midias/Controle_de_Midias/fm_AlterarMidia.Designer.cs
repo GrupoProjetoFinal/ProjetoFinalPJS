@@ -188,7 +188,6 @@
             // 
             this.cb_altTipomidia.FormattingEnabled = true;
             this.cb_altTipomidia.Items.AddRange(new object[] {
-            "Selecione...",
             "Vinil",
             "K7",
             "CD",
