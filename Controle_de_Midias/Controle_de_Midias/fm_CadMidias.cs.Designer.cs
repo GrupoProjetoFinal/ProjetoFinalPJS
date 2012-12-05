@@ -84,7 +84,7 @@
             this.gb_Midias.Size = new System.Drawing.Size(550, 420);
             this.gb_Midias.TabIndex = 3;
             this.gb_Midias.TabStop = false;
-            
+            // 
             // lb_Observacao
             // 
             this.lb_Observacao.AutoSize = true;
@@ -189,7 +189,6 @@
             this.cb_Tipomidia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Tipomidia.FormattingEnabled = true;
             this.cb_Tipomidia.Items.AddRange(new object[] {
-            "Selecione",
             "Vinil",
             "K7",
             "CD",

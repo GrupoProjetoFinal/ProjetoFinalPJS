@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lb_Nome = new System.Windows.Forms.Label();
             this.tb_Nome = new System.Windows.Forms.TextBox();
             this.tb_Telefone = new System.Windows.Forms.TextBox();
@@ -38,7 +39,10 @@
             this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
             this.gb_menu = new System.Windows.Forms.GroupBox();
             this.bt_Adicionar = new System.Windows.Forms.Button();
+            this.Erro = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lb_InfoUsuario = new System.Windows.Forms.Label();
             this.gb_menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Erro)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_Nome
@@ -56,6 +60,7 @@
             this.tb_Nome.Name = "tb_Nome";
             this.tb_Nome.Size = new System.Drawing.Size(300, 20);
             this.tb_Nome.TabIndex = 1;
+            this.tb_Nome.Enter += new System.EventHandler(this.tb_Nome_Enter);
             // 
             // tb_Telefone
             // 
@@ -126,11 +131,25 @@
             this.bt_Adicionar.UseVisualStyleBackColor = true;
             this.bt_Adicionar.Click += new System.EventHandler(this.bt_Adicionar_Click);
             // 
+            // Erro
+            // 
+            this.Erro.ContainerControl = this;
+            // 
+            // lb_InfoUsuario
+            // 
+            this.lb_InfoUsuario.AutoSize = true;
+            this.lb_InfoUsuario.Location = new System.Drawing.Point(6, 253);
+            this.lb_InfoUsuario.Name = "lb_InfoUsuario";
+            this.lb_InfoUsuario.Size = new System.Drawing.Size(146, 13);
+            this.lb_InfoUsuario.TabIndex = 10;
+            this.lb_InfoUsuario.Text = "O campo nome é obrigatório !";
+            // 
             // fm_NovoAmigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 247);
+            this.ClientSize = new System.Drawing.Size(413, 245);
+            this.Controls.Add(this.lb_InfoUsuario);
             this.Controls.Add(this.gb_menu);
             this.Controls.Add(this.rtb_Observacao);
             this.Controls.Add(this.lb_observacao);
@@ -141,8 +160,10 @@
             this.Controls.Add(this.tb_Nome);
             this.Controls.Add(this.lb_Nome);
             this.Name = "fm_NovoAmigo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo Amigo";
             this.gb_menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Erro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +181,7 @@
         private System.Windows.Forms.RichTextBox rtb_Observacao;
         private System.Windows.Forms.GroupBox gb_menu;
         private System.Windows.Forms.Button bt_Adicionar;
+        private System.Windows.Forms.ErrorProvider Erro;
+        private System.Windows.Forms.Label lb_InfoUsuario;
     }
 }

@@ -7,8 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+# region Teste para listview parar de se redesenhar
+//using System.Runtime.InteropServices;
+//   private const int WM_SETREDRAW = 0x000B;
+//        private const int WM_USER = 0x400;
+//        private const int EM_GETEVENTMASK = (WM_USER + 59);
+//        private const int EM_SETEVENTMASK = (WM_USER + 69);
+
+//        [DllImport ("user32", CharSet = CharSet.Auto)]
+//        private extern IntPtr estática SendMessage (IntPtr hWnd, int msg, int wParam, IntPtr lParam);
+
+//        IntPtr EventMask = IntPtr.Zero;
+
+//    StopDrawing public void()
+//        {
+//            if (drawStopCount == 0)
+//            {
+//                / / Pare de redesenhar:
+//                SendMessage (this.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+//                / / Parar o envio de eventos:
+//                EventMask = SendMessage (this.Handle, EM_GETEVENTMASK, 0, IntPtr.Zero);
+//            }
+//            drawStopCount + +;
+//        }
+
+//        StartDrawing public void ()
+//        {
+//            drawStopCount -;
+//            if (drawStopCount == 0)
+//            {
+//                / / Ativar eventos
+//                SendMessage (this.Handle, EM_SETEVENTMASK, 0, EventMask);
+
+//                / / Ligar redesenhar
+//                SendMessage (this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+
+//                Invalidar ();
+//                Refresh ();
+//            }
+//        }
+#endregion
+        
+
 namespace Controle_de_Midias
 {
+     
     public partial class fm_Principal : Form
     {
         public fm_Principal()
@@ -17,7 +60,6 @@ namespace Controle_de_Midias
         }
 
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-
         // como faz para uma string assumir um valor inicial so na primeira vez em um metodo ex
         
         private void fm_Principal_Load(object sender, EventArgs e)
@@ -134,47 +176,121 @@ namespace Controle_de_Midias
                 foreach (ListViewItem item in lv_Midias.SelectedItems)
                     item.Remove();
         }
-
+        //ARUURUA<A<A<AMSMMSS   ARRUMAR ISSOOO
         private void bt_Pesquisa_Click(object sender, EventArgs e)
         {
              fm_Pesquisa pesquisa = new fm_Pesquisa();
             pesquisa.ShowDialog();
         }
         private int qtd_AnteriorCaracter = 0;
-        List<ListViewItem> amigos = new List<ListViewItem>();
 
-        private void PesquisaParcial_TextChanged(object sender, EventArgs e)
+        List<ListViewItem> amigos = new List<ListViewItem>();
+        List<ListViewItem> midias = new List<ListViewItem>();
+
+        public void PesquisaParcial_TextChanged(object sender, EventArgs e)
         {
-            lv_Amigos.BeginUpdate();
-//            lv_Amigos.SuspendLayout();
+
+            PesquisaParcialAmigo(lv_Amigos, sender.ToString());
+
+        }
+
+        private void tb_PesquisaParcialM_TextChanged(object sender, EventArgs e)
+        {
+
+            PesquisaParcialMidia(lv_Midias, sender.ToString());
+        }
+
+        public void PesquisaParcialAmigo(ListView lv, string tecla)
+        {
+
             if (qtd_AnteriorCaracter > tb_PesquisaParcial.Text.Count())
             {
                 List<ListViewItem> lixeira = new List<ListViewItem>();
                 foreach (ListViewItem item in amigos)
-                {
                     if (item.Text.Contains(tb_PesquisaParcial.Text))
                     {
-                        lv_Amigos.Items.Add(item.Text);
+                        lv_Amigos.Items.Add(item);
                         lixeira.Add(item);
                     }
-                }
                 foreach (ListViewItem item in lixeira)
                     amigos.Remove(item);
             }
             else
-            {
                 foreach (ListViewItem item in lv_Amigos.Items)
-                {
                     if (!item.Text.Contains(tb_PesquisaParcial.Text))
                     {
                         amigos.Add(item);
                         item.Remove();
                     }
+
+            qtd_AnteriorCaracter = tb_PesquisaParcial.Text.Count();
+        }
+        public void PesquisaParcialMidia(ListView lv, string tecla)
+        {
+            // ?????
+            lv_Midias.BeginUpdate();
+            //      lv_Amigos.SuspendLayout();
+
+            //Se quantidade anterior de caracter for maior que a atual o usuário apertou Backspace
+            if (qtd_AnteriorCaracter > tb_PesquisaParcialM.Text.Count())
+            {
+                List<ListViewItem> lixeira = new List<ListViewItem>();
+
+                foreach (ListViewItem item in midias)
+                    if (
+                        item.SubItems[0].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[1].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[2].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[3].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[4].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[5].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[6].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[7].Text.Contains(tb_PesquisaParcialM.Text) ||
+                        item.SubItems[8].Text.Contains(tb_PesquisaParcialM.Text))
+                    {
+                        item.Group = lv_Midias.Groups[item.Tag.ToString()];
+                        lv_Midias.Items.Add(item);
+                        lixeira.Add(item);
+                    }
+
+
+                foreach (ListViewItem item in lixeira)
+                {
+                    midias.Remove(item);
                 }
             }
-            qtd_AnteriorCaracter = tb_PesquisaParcial.Text.Count();
-//            lv_Amigos.ResumeLayout(true);
-            lv_Amigos.EndUpdate();
+            else
+            {
+                foreach (ListViewItem item in lv_Midias.Items)
+                {
+                    if (
+                           !(
+                           item.Group.Name.Contains(tb_PesquisaParcialM.Text)        ||
+                           item.SubItems[0].Text.Contains(tb_PesquisaParcialM.Text)  ||
+                            item.SubItems[1].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[2].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[3].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[4].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[5].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[6].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[7].Text.Contains(tb_PesquisaParcialM.Text) ||
+                            item.SubItems[8].Text.Contains(tb_PesquisaParcialM.Text)))
+                    {
+                        item.Tag = item.Group.Name;
+                        midias.Add(item);
+                        item.Remove();
+                    }
+                }
+            }
+            qtd_AnteriorCaracter = tb_PesquisaParcialM.Text.Count();
+            //            lv_Amigos.ResumeLayout(true);
+            lv_Midias.EndUpdate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fm_Configurar configurar = new fm_Configurar();
+            configurar.ShowDialog();
         }
     }
-}
+ }

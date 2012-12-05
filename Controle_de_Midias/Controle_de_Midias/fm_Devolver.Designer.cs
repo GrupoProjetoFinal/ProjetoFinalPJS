@@ -268,6 +268,7 @@
             this.Controls.Add(this.gr_AmigoE);
             this.Controls.Add(this.lv_AmigosD);
             this.Name = "fm_Devolver";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fm_Devolver";
             this.Load += new System.EventHandler(this.fm_Devolver_Load);
             this.gr_AmigoE.ResumeLayout(false);

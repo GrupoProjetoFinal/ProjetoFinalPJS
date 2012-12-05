@@ -296,6 +296,7 @@
             this.ClientSize = new System.Drawing.Size(567, 437);
             this.Controls.Add(this.gb_Midias);
             this.Name = "fm_AlterarMidia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fm_AlterarMidia";
             this.gb_Midias.ResumeLayout(false);
             this.gb_Midias.PerformLayout();

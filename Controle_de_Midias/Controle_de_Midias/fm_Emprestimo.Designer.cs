@@ -45,28 +45,25 @@
             this.cl_DataCompra = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lb_Nome = new System.Windows.Forms.Label();
-            this.tb_NomeEM = new System.Windows.Forms.TextBox();
-            this.gr_Amigo = new System.Windows.Forms.GroupBox();
-            this.bt_Procurar = new System.Windows.Forms.Button();
-            this.pn_Emprestar = new System.Windows.Forms.Panel();
-            this.pn_Principal = new System.Windows.Forms.Panel();
             this.gr_AmigoE = new System.Windows.Forms.GroupBox();
             this.lb_ObsP = new System.Windows.Forms.Label();
             this.bt_CancelarE = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.bt_Emprestar = new System.Windows.Forms.Button();
             this.lb_EmailP = new System.Windows.Forms.Label();
             this.lb_nomeP = new System.Windows.Forms.Label();
             this.lb_TelP = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.img_Sucesso = new System.Windows.Forms.Panel();
+            this.lv_AmigosE = new System.Windows.Forms.ListView();
+            this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
             this.img_erro = new System.Windows.Forms.Panel();
-            this.gr_Amigo.SuspendLayout();
-            this.pn_Emprestar.SuspendLayout();
-            this.pn_Principal.SuspendLayout();
+            this.img_Sucesso = new System.Windows.Forms.Panel();
             this.gr_AmigoE.SuspendLayout();
-            this.img_Sucesso.SuspendLayout();
             this.SuspendLayout();
             // 
             // lv_Midias
@@ -97,9 +94,9 @@
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_Midias.Location = new System.Drawing.Point(260, 0);
+            this.lv_Midias.Location = new System.Drawing.Point(254, 26);
             this.lv_Midias.Name = "lv_Midias";
-            this.lv_Midias.Size = new System.Drawing.Size(1002, 389);
+            this.lv_Midias.Size = new System.Drawing.Size(503, 354);
             this.lv_Midias.TabIndex = 1;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
@@ -155,77 +152,21 @@
             this.cl_Observacao.Text = "Observação";
             this.cl_Observacao.Width = 116;
             // 
-            // lb_Nome
-            // 
-            this.lb_Nome.AutoSize = true;
-            this.lb_Nome.Location = new System.Drawing.Point(6, 31);
-            this.lb_Nome.Name = "lb_Nome";
-            this.lb_Nome.Size = new System.Drawing.Size(35, 13);
-            this.lb_Nome.TabIndex = 3;
-            this.lb_Nome.Text = "Nome";
-            // 
-            // tb_NomeEM
-            // 
-            this.tb_NomeEM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.tb_NomeEM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.tb_NomeEM.Location = new System.Drawing.Point(9, 62);
-            this.tb_NomeEM.Name = "tb_NomeEM";
-            this.tb_NomeEM.Size = new System.Drawing.Size(218, 20);
-            this.tb_NomeEM.TabIndex = 5;
-            this.tb_NomeEM.TextChanged += new System.EventHandler(this.tb_NomeEM_TextChanged);
-            // 
-            // gr_Amigo
-            // 
-            this.gr_Amigo.Controls.Add(this.bt_Procurar);
-            this.gr_Amigo.Controls.Add(this.lb_Nome);
-            this.gr_Amigo.Controls.Add(this.tb_NomeEM);
-            this.gr_Amigo.Location = new System.Drawing.Point(5, 3);
-            this.gr_Amigo.Name = "gr_Amigo";
-            this.gr_Amigo.Size = new System.Drawing.Size(246, 378);
-            this.gr_Amigo.TabIndex = 10;
-            this.gr_Amigo.TabStop = false;
-            this.gr_Amigo.Text = "Amigo";
-            // 
-            // bt_Procurar
-            // 
-            this.bt_Procurar.Location = new System.Drawing.Point(149, 141);
-            this.bt_Procurar.Name = "bt_Procurar";
-            this.bt_Procurar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Procurar.TabIndex = 10;
-            this.bt_Procurar.Text = "&Procurar";
-            this.bt_Procurar.UseVisualStyleBackColor = true;
-            this.bt_Procurar.Click += new System.EventHandler(this.bt_Procurar_Click_1);
-            // 
-            // pn_Emprestar
-            // 
-            this.pn_Emprestar.Controls.Add(this.pn_Principal);
-            this.pn_Emprestar.Controls.Add(this.gr_AmigoE);
-            this.pn_Emprestar.Location = new System.Drawing.Point(0, -6);
-            this.pn_Emprestar.Name = "pn_Emprestar";
-            this.pn_Emprestar.Size = new System.Drawing.Size(253, 381);
-            this.pn_Emprestar.TabIndex = 12;
-            // 
-            // pn_Principal
-            // 
-            this.pn_Principal.Controls.Add(this.gr_Amigo);
-            this.pn_Principal.Location = new System.Drawing.Point(3, 8);
-            this.pn_Principal.Name = "pn_Principal";
-            this.pn_Principal.Size = new System.Drawing.Size(254, 387);
-            this.pn_Principal.TabIndex = 13;
-            // 
             // gr_AmigoE
             // 
-            this.gr_AmigoE.Controls.Add(this.img_Sucesso);
+            this.gr_AmigoE.BackColor = System.Drawing.SystemColors.Control;
+            this.gr_AmigoE.Controls.Add(this.img_erro);
             this.gr_AmigoE.Controls.Add(this.lb_ObsP);
             this.gr_AmigoE.Controls.Add(this.bt_CancelarE);
+            this.gr_AmigoE.Controls.Add(this.label1);
             this.gr_AmigoE.Controls.Add(this.label5);
             this.gr_AmigoE.Controls.Add(this.bt_Emprestar);
             this.gr_AmigoE.Controls.Add(this.lb_EmailP);
             this.gr_AmigoE.Controls.Add(this.lb_nomeP);
             this.gr_AmigoE.Controls.Add(this.lb_TelP);
-            this.gr_AmigoE.Location = new System.Drawing.Point(8, 8);
+            this.gr_AmigoE.Location = new System.Drawing.Point(1, 1);
             this.gr_AmigoE.Name = "gr_AmigoE";
-            this.gr_AmigoE.Size = new System.Drawing.Size(240, 378);
+            this.gr_AmigoE.Size = new System.Drawing.Size(252, 386);
             this.gr_AmigoE.TabIndex = 10;
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
@@ -247,6 +188,15 @@
             this.bt_CancelarE.Text = "&Cancelar";
             this.bt_CancelarE.UseVisualStyleBackColor = true;
             this.bt_CancelarE.Click += new System.EventHandler(this.bt_CancelarE_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(60, 172);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Pesquisa";
             // 
             // label5
             // 
@@ -299,41 +249,87 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "VistoVerde.gif");
             // 
-            // img_Sucesso
+            // lv_AmigosE
             // 
-            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.VistoVerde;
-            this.img_Sucesso.Controls.Add(this.img_erro);
-            this.img_Sucesso.Location = new System.Drawing.Point(202, 254);
-            this.img_Sucesso.Name = "img_Sucesso";
-            this.img_Sucesso.Size = new System.Drawing.Size(26, 21);
-            this.img_Sucesso.TabIndex = 11;
+            this.lv_AmigosE.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cl_Nome,
+            this.cl_Telefone,
+            this.cl_Email,
+            this.cl_Obs});
+            this.lv_AmigosE.FullRowSelect = true;
+            this.lv_AmigosE.GridLines = true;
+            this.lv_AmigosE.Location = new System.Drawing.Point(254, 26);
+            this.lv_AmigosE.Name = "lv_AmigosE";
+            this.lv_AmigosE.Size = new System.Drawing.Size(503, 361);
+            this.lv_AmigosE.TabIndex = 13;
+            this.lv_AmigosE.UseCompatibleStateImageBehavior = false;
+            this.lv_AmigosE.View = System.Windows.Forms.View.Details;
+            this.lv_AmigosE.SelectedIndexChanged += new System.EventHandler(this.lv_AmigosE_SelectedIndexChanged);
+            this.lv_AmigosE.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lv_AmigosE_MouseDoubleClick);
+            // 
+            // cl_Nome
+            // 
+            this.cl_Nome.Text = "Nome";
+            this.cl_Nome.Width = 247;
+            // 
+            // cl_Telefone
+            // 
+            this.cl_Telefone.Text = "Telefone";
+            this.cl_Telefone.Width = 93;
+            // 
+            // cl_Email
+            // 
+            this.cl_Email.Text = "E-mail";
+            this.cl_Email.Width = 73;
+            // 
+            // cl_Obs
+            // 
+            this.cl_Obs.Text = "Observação";
+            this.cl_Obs.Width = 236;
+            // 
+            // tb_PesquisaParcial
+            // 
+            this.tb_PesquisaParcial.Location = new System.Drawing.Point(614, 4);
+            this.tb_PesquisaParcial.Name = "tb_PesquisaParcial";
+            this.tb_PesquisaParcial.Size = new System.Drawing.Size(110, 20);
+            this.tb_PesquisaParcial.TabIndex = 14;
+            this.tb_PesquisaParcial.TextChanged += new System.EventHandler(this.tb_PesquisaParcial_TextChanged);
             // 
             // img_erro
             // 
             this.img_erro.BackgroundImage = global::Controle_de_Midias.Properties.Resources.x_vermelho;
-            this.img_erro.Location = new System.Drawing.Point(3, 0);
+            this.img_erro.Location = new System.Drawing.Point(153, 256);
             this.img_erro.Name = "img_erro";
             this.img_erro.Size = new System.Drawing.Size(19, 19);
             this.img_erro.TabIndex = 12;
+            // 
+            // img_Sucesso
+            // 
+            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
+            this.img_Sucesso.Location = new System.Drawing.Point(722, 5);
+            this.img_Sucesso.Name = "img_Sucesso";
+            this.img_Sucesso.Size = new System.Drawing.Size(23, 18);
+            this.img_Sucesso.TabIndex = 11;
             // 
             // fm_Emprestimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1304, 387);
-            this.Controls.Add(this.pn_Emprestar);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(757, 387);
+            this.Controls.Add(this.gr_AmigoE);
+            this.Controls.Add(this.tb_PesquisaParcial);
+            this.Controls.Add(this.img_Sucesso);
+            this.Controls.Add(this.lv_AmigosE);
             this.Controls.Add(this.lv_Midias);
             this.Name = "fm_Emprestimo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Emprestar Midia";
             this.Load += new System.EventHandler(this.fm_Emprestimo_Load);
-            this.gr_Amigo.ResumeLayout(false);
-            this.gr_Amigo.PerformLayout();
-            this.pn_Emprestar.ResumeLayout(false);
-            this.pn_Principal.ResumeLayout(false);
             this.gr_AmigoE.ResumeLayout(false);
             this.gr_AmigoE.PerformLayout();
-            this.img_Sucesso.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -349,11 +345,6 @@
         private System.Windows.Forms.ColumnHeader cl_DataAlbum;
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
         private System.Windows.Forms.ColumnHeader cl_Observacao;
-        private System.Windows.Forms.Label lb_Nome;
-        private System.Windows.Forms.TextBox tb_NomeEM;
-        private System.Windows.Forms.GroupBox gr_Amigo;
-        private System.Windows.Forms.Button bt_Procurar;
-        private System.Windows.Forms.Panel pn_Emprestar;
         private System.Windows.Forms.GroupBox gr_AmigoE;
         private System.Windows.Forms.Label lb_ObsP;
         private System.Windows.Forms.Button bt_CancelarE;
@@ -362,9 +353,15 @@
         private System.Windows.Forms.Label lb_EmailP;
         private System.Windows.Forms.Label lb_nomeP;
         private System.Windows.Forms.Label lb_TelP;
-        private System.Windows.Forms.Panel pn_Principal;
         private System.Windows.Forms.Panel img_erro;
         private System.Windows.Forms.Panel img_Sucesso;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ListView lv_AmigosE;
+        private System.Windows.Forms.ColumnHeader cl_Nome;
+        private System.Windows.Forms.ColumnHeader cl_Telefone;
+        private System.Windows.Forms.ColumnHeader cl_Email;
+        private System.Windows.Forms.ColumnHeader cl_Obs;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_PesquisaParcial;
     }
 }

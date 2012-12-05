@@ -66,6 +66,12 @@
     <Compile Include="fm_CadMidias.cs.Designer.cs">
       <DependentUpon>fm_CadMidias.cs.cs</DependentUpon>
     </Compile>
+    <Compile Include="fm_Configurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_Configurar.Designer.cs">
+      <DependentUpon>fm_Configurar.cs</DependentUpon>
+    </Compile>
     <Compile Include="fm_Devolver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="fm_Emprestimo.Designer.cs">
       <DependentUpon>fm_Emprestimo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fm_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fm_login.Designer.cs">
+      <DependentUpon>fm_login.cs</DependentUpon>
     </Compile>
     <Compile Include="fm_NovoAmigo.cs">
       <SubType>Form</SubType>
@@ -109,11 +121,17 @@
     <EmbeddedResource Include="fm_CadMidias.cs.resx">
       <DependentUpon>fm_CadMidias.cs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fm_Configurar.resx">
+      <DependentUpon>fm_Configurar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fm_Devolver.resx">
       <DependentUpon>fm_Devolver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fm_Emprestimo.resx">
       <DependentUpon>fm_Emprestimo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fm_login.resx">
+      <DependentUpon>fm_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fm_NovoAmigo.resx">
       <DependentUpon>fm_NovoAmigo.cs</DependentUpon>
@@ -150,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\x_vermelho.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icone_pesquisar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconePesquisar.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

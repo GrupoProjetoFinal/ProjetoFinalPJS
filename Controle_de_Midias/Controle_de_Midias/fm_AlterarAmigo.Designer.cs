@@ -153,6 +153,7 @@
             this.Controls.Add(this.tb_NomeAlt);
             this.Controls.Add(this.lb_Nome);
             this.Name = "fm_AlterarAmigo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alterar dados do amigo";
             this.gb_menu.ResumeLayout(false);
             this.ResumeLayout(false);

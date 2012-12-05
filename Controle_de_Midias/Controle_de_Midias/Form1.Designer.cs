@@ -41,6 +41,7 @@
             this.bt_NovaMidia = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_Midias = new System.Windows.Forms.TabPage();
+            this.tb_PesquisaParcialM = new System.Windows.Forms.TextBox();
             this.lv_Midias = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,13 +53,15 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
             this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
+            this.img_Sucesso = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -67,6 +70,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.bt_Devolver);
             this.groupBox1.Controls.Add(this.bt_Emprestar);
             this.groupBox1.Controls.Add(this.bt_Pesquisa);
@@ -74,7 +78,7 @@
             this.groupBox1.Controls.Add(this.bt_NovaMidia);
             this.groupBox1.Location = new System.Drawing.Point(8, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(84, 438);
+            this.groupBox1.Size = new System.Drawing.Size(84, 407);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
@@ -133,22 +137,32 @@
             // 
             this.tabControl1.Controls.Add(this.tp_Midias);
             this.tabControl1.Controls.Add(this.tp_Amigos);
-            this.tabControl1.Location = new System.Drawing.Point(98, 12);
+            this.tabControl1.Location = new System.Drawing.Point(98, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1096, 438);
+            this.tabControl1.Size = new System.Drawing.Size(783, 423);
             this.tabControl1.TabIndex = 1;
             // 
             // tp_Midias
             // 
+            this.tp_Midias.Controls.Add(this.img_Sucesso);
+            this.tp_Midias.Controls.Add(this.tb_PesquisaParcialM);
             this.tp_Midias.Controls.Add(this.lv_Midias);
             this.tp_Midias.Location = new System.Drawing.Point(4, 22);
             this.tp_Midias.Name = "tp_Midias";
             this.tp_Midias.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_Midias.Size = new System.Drawing.Size(1088, 412);
+            this.tp_Midias.Size = new System.Drawing.Size(775, 397);
             this.tp_Midias.TabIndex = 0;
             this.tp_Midias.Text = "Mídias";
             this.tp_Midias.UseVisualStyleBackColor = true;
+            // 
+            // tb_PesquisaParcialM
+            // 
+            this.tb_PesquisaParcialM.Location = new System.Drawing.Point(637, 6);
+            this.tb_PesquisaParcialM.Name = "tb_PesquisaParcialM";
+            this.tb_PesquisaParcialM.Size = new System.Drawing.Size(110, 20);
+            this.tb_PesquisaParcialM.TabIndex = 5;
+            this.tb_PesquisaParcialM.TextChanged += new System.EventHandler(this.tb_PesquisaParcialM_TextChanged);
             // 
             // lv_Midias
             // 
@@ -165,24 +179,24 @@
             this.lv_Midias.FullRowSelect = true;
             this.lv_Midias.GridLines = true;
             listViewGroup1.Header = "Vinil";
-            listViewGroup1.Name = "Gp_Vinil";
+            listViewGroup1.Name = "Vinil";
             listViewGroup2.Header = "K7";
-            listViewGroup2.Name = "Gp_k7";
+            listViewGroup2.Name = "K7";
             listViewGroup3.Header = "CD";
-            listViewGroup3.Name = "Gp_Cd";
+            listViewGroup3.Name = "CD";
             listViewGroup4.Header = "DVD";
-            listViewGroup4.Name = "Gp_Dvd";
+            listViewGroup4.Name = "CD";
             listViewGroup5.Header = "Digital";
-            listViewGroup5.Name = "Gp_Digital";
+            listViewGroup5.Name = "Digital";
             this.lv_Midias.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_Midias.Location = new System.Drawing.Point(6, 17);
+            this.lv_Midias.Location = new System.Drawing.Point(3, 30);
             this.lv_Midias.Name = "lv_Midias";
-            this.lv_Midias.Size = new System.Drawing.Size(1056, 389);
+            this.lv_Midias.Size = new System.Drawing.Size(769, 366);
             this.lv_Midias.TabIndex = 2;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
@@ -241,29 +255,20 @@
             // 
             // tp_Amigos
             // 
-            this.tp_Amigos.Controls.Add(this.label1);
+            this.tp_Amigos.Controls.Add(this.panel1);
             this.tp_Amigos.Controls.Add(this.tb_PesquisaParcial);
             this.tp_Amigos.Controls.Add(this.lv_Amigos);
             this.tp_Amigos.Location = new System.Drawing.Point(4, 22);
             this.tp_Amigos.Name = "tp_Amigos";
             this.tp_Amigos.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_Amigos.Size = new System.Drawing.Size(1088, 412);
+            this.tp_Amigos.Size = new System.Drawing.Size(775, 397);
             this.tp_Amigos.TabIndex = 1;
             this.tp_Amigos.Text = "Amigos";
             this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(916, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Pesquisa";
-            // 
             // tb_PesquisaParcial
             // 
-            this.tb_PesquisaParcial.Location = new System.Drawing.Point(972, 6);
+            this.tb_PesquisaParcial.Location = new System.Drawing.Point(637, 6);
             this.tb_PesquisaParcial.Name = "tb_PesquisaParcial";
             this.tb_PesquisaParcial.Size = new System.Drawing.Size(110, 20);
             this.tb_PesquisaParcial.TabIndex = 3;
@@ -278,9 +283,9 @@
             this.cl_Obs});
             this.lv_Amigos.FullRowSelect = true;
             this.lv_Amigos.GridLines = true;
-            this.lv_Amigos.Location = new System.Drawing.Point(3, 29);
+            this.lv_Amigos.Location = new System.Drawing.Point(3, 30);
             this.lv_Amigos.Name = "lv_Amigos";
-            this.lv_Amigos.Size = new System.Drawing.Size(1082, 366);
+            this.lv_Amigos.Size = new System.Drawing.Size(770, 366);
             this.lv_Amigos.TabIndex = 2;
             this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             this.lv_Amigos.View = System.Windows.Forms.View.Details;
@@ -306,19 +311,47 @@
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(4, 216);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "&Configurar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // img_Sucesso
+            // 
+            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
+            this.img_Sucesso.Location = new System.Drawing.Point(748, 6);
+            this.img_Sucesso.Name = "img_Sucesso";
+            this.img_Sucesso.Size = new System.Drawing.Size(23, 18);
+            this.img_Sucesso.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
+            this.panel1.Location = new System.Drawing.Point(748, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(23, 18);
+            this.panel1.TabIndex = 13;
+            // 
             // fm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 462);
+            this.ClientSize = new System.Drawing.Size(882, 422);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Name = "fm_Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Collectors medias";
             this.Load += new System.EventHandler(this.fm_Principal_Load);
             this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tp_Midias.ResumeLayout(false);
+            this.tp_Midias.PerformLayout();
             this.tp_Amigos.ResumeLayout(false);
             this.tp_Amigos.PerformLayout();
             this.ResumeLayout(false);
@@ -351,8 +384,11 @@
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
         private System.Windows.Forms.ColumnHeader cl_Origem;
         private System.Windows.Forms.ColumnHeader cl_Observacao;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_PesquisaParcial;
+        private System.Windows.Forms.TextBox tb_PesquisaParcialM;
+        private System.Windows.Forms.Panel img_Sucesso;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
 
     }
 }

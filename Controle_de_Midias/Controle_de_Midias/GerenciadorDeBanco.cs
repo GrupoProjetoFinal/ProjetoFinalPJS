@@ -65,7 +65,7 @@ namespace Controle_de_Midias
             cmd.Parameters.Add(new SqlParameter("@Data_Album", midia.dataAlbum));
             cmd.Parameters.Add(new SqlParameter("@Data_Compra", midia.dataCompra));
             cmd.Parameters.Add(new SqlParameter("@Origem_Compra", midia.compra));
-            cmd.Parameters.Add(new SqlParameter("@Tipo_Midia", midia.nota));
+            cmd.Parameters.Add(new SqlParameter("@Tipo_Midia", midia.tipo));
             cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
             cmd.Parameters.Add(new SqlParameter("@Nota", midia.nota));
 
@@ -179,8 +179,6 @@ namespace Controle_de_Midias
             cmd = new SqlCommand(cmdSQL, conexao);
             Leitor = cmd.ExecuteReader();
 
-            lv_Amigos.FullRowSelect = true;
-            lv_Amigos.GridLines = true;
 
             while (Leitor.Read())
             {
@@ -196,6 +194,7 @@ namespace Controle_de_Midias
 
 
         }
+
 
         private void PreencherListView(ListView lv, SqlDataReader Leitor)
         {
@@ -267,15 +266,18 @@ namespace Controle_de_Midias
         #region Métodos de Procura
         //----------------------------------------------------------------------------------------------
 
-        public List<string> ProcurarAmigo(string Nome)
+        public List<string> ProcurarAmigo(string Nome, string tel,string email,string obs)
         {
             DadosAmigos.Clear();
 
-            cmdSQL = "SELECT * FROM Amigos WHERE Nome = @Nome";
+            cmdSQL = "SELECT * FROM Amigos WHERE Nome = @Nome AND Telefone = @Telefone AND Email = @Email AND Observacao = @Observacao ";
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
             cmd.Parameters.Add(new SqlParameter("@Nome", Nome));
+            cmd.Parameters.Add(new SqlParameter("@Telefone", tel));
+            cmd.Parameters.Add(new SqlParameter("@Email", email));
+            cmd.Parameters.Add(new SqlParameter("@Observacao", obs));
             Leitor = cmd.ExecuteReader();
 
 
@@ -325,7 +327,6 @@ namespace Controle_de_Midias
         }
 
         #endregion
-
         public void VerificaDevedores(ListView lv_amigos)
         {
 
@@ -348,22 +349,36 @@ namespace Controle_de_Midias
         public void EmprestarOuDevolverMidia(int idAmigo, List<string> DadosMidias, string Verificador)
         {
 
+
             int idMidia;
 
             // Comando para obter o indificador da midia
-            cmdSQL = "SELECT Id_Midia FROM Midias WHERE Nome_Album = @Nome_Album AND Nome_Interprete = @Nome_Interprete AND Origem_Compra =  @Origem_Compra AND Nome_autor = @Nome_autor AND Nome_Musica = @Nome_Musica AND Observacao = @Observacao AND Nota = @Nota AND Data_Compra = @Data_Compra AND Data_Album = @Data_Album";
+            cmdSQL = "SELECT Id_Midia                              "+ 
+                    " FROM   Midias                                "+
+                     "WHERE Nome_Album      = @Nome_Album        AND "+
+                           "Nome_Interprete = @Nome_Interprete   AND "+
+                           "Origem_Compra   = @Origem_Compra     AND "+
+                           "Nome_autor      = @Nome_autor        AND "+
+                           "Nome_Musica     = @Nome_Musica       AND "+
+                           "Observacao      = @Observacao        AND "+
+                           "Nota            = @Nota              ";//AND "+
+                           //"Data_Compra     = @Data_Compra       AND "+ 
+                           //"Data_Album      = @Data_Album";
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
-            cmd.Parameters.Add(new SqlParameter("@Nome_Album", DadosMidias[0]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Album",      DadosMidias[0]));
             cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", DadosMidias[1]));
-            cmd.Parameters.Add(new SqlParameter("@Nome_Autor", DadosMidias[2]));
-            cmd.Parameters.Add(new SqlParameter("@Nome_Musica", DadosMidias[3]));
-            cmd.Parameters.Add(new SqlParameter("@Nota", DadosMidias[4]));
-            cmd.Parameters.Add(new SqlParameter("@Data_Compra", DadosMidias[5]));
-            cmd.Parameters.Add(new SqlParameter("@Data_Album", DadosMidias[6]));
-            cmd.Parameters.Add(new SqlParameter("@Origem_Compra", DadosMidias[7]));
-            cmd.Parameters.Add(new SqlParameter("@Observacao", DadosMidias[8]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Autor",      DadosMidias[2]));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Musica",     DadosMidias[3]));
+            cmd.Parameters.Add(new SqlParameter("@Nota",            DadosMidias[4]));
+            //cmd.Parameters.Add(new SqlParameter("@Data_Album",      DadosMidias[6]));
+            //cmd.Parameters.Add(new SqlParameter("@Data_Compra",     DadosMidias[5]));
+            cmd.Parameters.Add(new SqlParameter("@Origem_Compra",   DadosMidias[7]));
+            cmd.Parameters.Add(new SqlParameter("@Observacao",      DadosMidias[8]));
+
+
+            // A duas execçoes uma de conversão de data e/ou hora e outra de não retornar nada no select verificar campos das Midias List DadosMidias parametros etc....
 
             idMidia = (int)cmd.ExecuteScalar();
 
@@ -400,22 +415,28 @@ namespace Controle_de_Midias
             MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public List<string> ColetarNomes()
-        {
 
-            cmdSQL = "SELECT Nome FROM Amigos";
+        public bool VerificaLogin()
+        {
+            int abilitarLogin;
+            cmdSQL = "SELECT AbilitarLogin FROM Usuario";
+            cmd = new SqlCommand(cmdSQL, conexao);
+
+            abilitarLogin = (int)cmd.ExecuteScalar();
+
+            if (abilitarLogin == 1)
+                return false;
+            return true;
+        }
+        public void Configurar(int abilitarLogin)
+        {
+            
+            cmdSQL= "UPDATE Usuario SET AbilitarLogin = @AbilitarLogin";
 
             cmd = new SqlCommand(cmdSQL, conexao);
-            Leitor = cmd.ExecuteReader();
-
-            while (Leitor.Read())
-            {
-                DadosAmigos.Add(Leitor["Nome"].ToString());
-            }
-            Leitor.Close();
-
-            return DadosAmigos;
-
+            cmd.Parameters.Add(new SqlParameter("@AbilitarLogin",abilitarLogin));
+            cmd.ExecuteNonQuery();
         }
+
     }
 }

@@ -21,6 +21,15 @@ namespace Controle_de_Midias
 
         private void bt_Adicionar_Click(object sender, EventArgs e)
         {
+            if (tb_Nome.Text == string.Empty)
+            {
+                System.Media.SystemSounds.Hand.Play();
+                this.Height += 25;
+                Erro.SetError(lb_InfoUsuario, "O campo nome é obrigatório");
+
+                return;
+            }
+
             // O conteúdo dos textBox são parrados para o objeto Amigo.
             Amigo novoAmigo = new Amigo();
             novoAmigo.nome = tb_Nome.Text;
@@ -57,6 +66,18 @@ namespace Controle_de_Midias
                 MessageBox.Show("Não foi possivel se conectar com o banco de dados.","Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void tb_Nome_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void tb_Nome_Enter(object sender, EventArgs e)
+        {
+            if(this.Height != 283)
+                this.Height -= 25;
+        }
+
     }
 }
 

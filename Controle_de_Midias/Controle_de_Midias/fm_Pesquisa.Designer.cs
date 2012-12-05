@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.lv_MidiasP = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,6 +44,8 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gb_Midias = new System.Windows.Forms.GroupBox();
+            this.dtp_DataAlbum_ATE = new System.Windows.Forms.DateTimePicker();
+            this.dtp_DataCompra_ATE = new System.Windows.Forms.DateTimePicker();
             this.lb_Observacao = new System.Windows.Forms.Label();
             this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
             this.lb_Autor = new System.Windows.Forms.Label();
@@ -66,8 +68,6 @@
             this.lb_Album = new System.Windows.Forms.Label();
             this.tb_Interprete = new System.Windows.Forms.TextBox();
             this.lb_Interprete = new System.Windows.Forms.Label();
-            this.dtp_DataCompra_ATE = new System.Windows.Forms.DateTimePicker();
-            this.dtp_DataAlbum_ATE = new System.Windows.Forms.DateTimePicker();
             this.gb_Midias.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,25 +83,25 @@
             this.cl_DataCompra,
             this.cl_Origem,
             this.cl_Observacao});
-            listViewGroup6.Header = "Vinil";
-            listViewGroup6.Name = "Gp_Vinil";
-            listViewGroup7.Header = "K7";
-            listViewGroup7.Name = "Gp_k7";
-            listViewGroup8.Header = "CD";
-            listViewGroup8.Name = "Gp_Cd";
-            listViewGroup9.Header = "DVD";
-            listViewGroup9.Name = "Gp_Dvd";
-            listViewGroup10.Header = "Digital";
-            listViewGroup10.Name = "Gp_Digital";
+            listViewGroup1.Header = "Vinil";
+            listViewGroup1.Name = "Gp_Vinil";
+            listViewGroup2.Header = "K7";
+            listViewGroup2.Name = "Gp_k7";
+            listViewGroup3.Header = "CD";
+            listViewGroup3.Name = "Gp_Cd";
+            listViewGroup4.Header = "DVD";
+            listViewGroup4.Name = "Gp_Dvd";
+            listViewGroup5.Header = "Digital";
+            listViewGroup5.Name = "Gp_Digital";
             this.lv_MidiasP.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8,
-            listViewGroup9,
-            listViewGroup10});
-            this.lv_MidiasP.Location = new System.Drawing.Point(289, -1);
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4,
+            listViewGroup5});
+            this.lv_MidiasP.Location = new System.Drawing.Point(289, -3);
             this.lv_MidiasP.Name = "lv_MidiasP";
-            this.lv_MidiasP.Size = new System.Drawing.Size(450, 526);
+            this.lv_MidiasP.Size = new System.Drawing.Size(450, 528);
             this.lv_MidiasP.TabIndex = 3;
             this.lv_MidiasP.UseCompatibleStateImageBehavior = false;
             this.lv_MidiasP.View = System.Windows.Forms.View.Details;
@@ -190,6 +190,22 @@
             this.gb_Midias.TabIndex = 4;
             this.gb_Midias.TabStop = false;
             this.gb_Midias.Text = "Características";
+            // 
+            // dtp_DataAlbum_ATE
+            // 
+            this.dtp_DataAlbum_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataAlbum_ATE.Location = new System.Drawing.Point(146, 328);
+            this.dtp_DataAlbum_ATE.Name = "dtp_DataAlbum_ATE";
+            this.dtp_DataAlbum_ATE.Size = new System.Drawing.Size(101, 20);
+            this.dtp_DataAlbum_ATE.TabIndex = 32;
+            // 
+            // dtp_DataCompra_ATE
+            // 
+            this.dtp_DataCompra_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataCompra_ATE.Location = new System.Drawing.Point(146, 283);
+            this.dtp_DataCompra_ATE.Name = "dtp_DataCompra_ATE";
+            this.dtp_DataCompra_ATE.Size = new System.Drawing.Size(99, 20);
+            this.dtp_DataCompra_ATE.TabIndex = 31;
             // 
             // lb_Observacao
             // 
@@ -393,22 +409,6 @@
             this.lb_Interprete.TabIndex = 0;
             this.lb_Interprete.Text = "Intérprete";
             // 
-            // dtp_DataCompra_ATE
-            // 
-            this.dtp_DataCompra_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataCompra_ATE.Location = new System.Drawing.Point(146, 283);
-            this.dtp_DataCompra_ATE.Name = "dtp_DataCompra_ATE";
-            this.dtp_DataCompra_ATE.Size = new System.Drawing.Size(99, 20);
-            this.dtp_DataCompra_ATE.TabIndex = 31;
-            // 
-            // dtp_DataAlbum_ATE
-            // 
-            this.dtp_DataAlbum_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataAlbum_ATE.Location = new System.Drawing.Point(146, 328);
-            this.dtp_DataAlbum_ATE.Name = "dtp_DataAlbum_ATE";
-            this.dtp_DataAlbum_ATE.Size = new System.Drawing.Size(101, 20);
-            this.dtp_DataAlbum_ATE.TabIndex = 32;
-            // 
             // fm_Pesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +417,7 @@
             this.Controls.Add(this.gb_Midias);
             this.Controls.Add(this.lv_MidiasP);
             this.Name = "fm_Pesquisa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fm_Pesquisa";
             this.Load += new System.EventHandler(this.fm_Pesquisa_Load);
             this.gb_Midias.ResumeLayout(false);

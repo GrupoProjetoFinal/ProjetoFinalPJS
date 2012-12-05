@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Controle_de_Midias
 {
-    static class Program
+    public class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -13,9 +13,25 @@ namespace Controle_de_Midias
         [STAThread]
         static void Main()
         {
+            Program obj = new Program();
+            obj.Inicializacao();
+
+        }
+        public void Inicializacao()
+        {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fm_Principal());
+
+            //GerenciadorDeBanco GBD = new GerenciadorDeBanco();
+            //fm_login login = new fm_login();
+            //GBD.AbrirConexao();
+            //if (GBD.VerificaLogin())
+            //    login.ShowDialog();
+            //GBD.FecharConexao();
+            //if (login.logado)
+                Application.Run(new fm_Principal());
         }
     }
 }

@@ -60,6 +60,20 @@ namespace Controle_de_Midias.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icone_pesquisar {
+            get {
+                object obj = ResourceManager.GetObject("icone_pesquisar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconePesquisar {
+            get {
+                object obj = ResourceManager.GetObject("iconePesquisar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap VistoVerde {
             get {
                 object obj = ResourceManager.GetObject("VistoVerde", resourceCulture);

@@ -18,7 +18,7 @@ namespace Controle_de_Midias
         const string frm = "fm_Devolver";
         private int idAmigo;
         Amigo amigo = new Amigo();
-        List<string> DadosMidia = new List<string>();
+        List<string> DadosMidia;
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
        
         private void fm_Devolver_Load(object sender, EventArgs e)
@@ -56,13 +56,27 @@ namespace Controle_de_Midias
 
         private void bt_Devolver_Click(object sender, EventArgs e)
         {
+            DadosMidia = new List<string>();
+
             foreach (ListViewItem item in lv_MidiasD.SelectedItems)
-                for (int i = 0; i < 9;++i )
+            {
+                for (int i = 0; i < 9; ++i)
                     DadosMidia.Add(item.SubItems[i].Text);
+                item.Remove();
+                System.Media.SystemSounds.Asterisk.Play();
+            }
+
+            //Se lv_MidiasD estiver vazio apaga amigo do lv_AmigosD, pois ele não possui midia emprestado 
+            if (lv_MidiasD.Items.Count == 0)
+                foreach (ListViewItem item in lv_AmigosD.SelectedItems)
+                    item.Remove();
 
             GBD.AbrirConexao();
             GBD.EmprestarOuDevolverMidia(idAmigo, DadosMidia, null);
             GBD.FecharConexao();
+
+            if (lv_MidiasD.Items.Count == 0)
+                fm_Devolver_Load(null,e);
         }
 
         private void lv_AmigosD_MouseDoubleClick(object sender, MouseEventArgs e)
