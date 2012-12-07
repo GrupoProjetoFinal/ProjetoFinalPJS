@@ -20,6 +20,12 @@ namespace Controle_de_Midias
 
         private void fm_Configurar_Load(object sender, EventArgs e)
         {
+
+            GBD.AbrirConexao();
+
+            GBD.PreencherConfiguracoes(lb_qtdDias, lb_emailAntigo, lb_UsuarioAntigo, ck_DesabilitaLogin);
+            GBD.FecharConexao();
+
             tb_ConfirmaSenha.Visible = false;
             tb_EmailPadrao.Visible = false;
             tb_nomeUsuario.Visible = false;
@@ -32,37 +38,24 @@ namespace Controle_de_Midias
             lb_SenhaAtual.Visible = false;
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        List<string> dadosAmigos;
+        private void bt_ConfiguraOuOk_Click(object sender, EventArgs e)
         {
+            dadosAmigos = new List<string>();
+            dadosAmigos.Add(lb_UsuarioAntigo.Text);
+            dadosAmigos.Add(tb_SenhaAtual.Text);
+            dadosAmigos.Add(tb_EmailPadrao.Text);
+            dadosAmigos.Add(tb_qtdDias.Text);
+            if (ck_DesabilitaLogin.Checked)
+                dadosAmigos.Add("1");
+            else
+                dadosAmigos.Add("0");
 
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int abilitarLogin = 0;
-            if (button1.Text == "OK")
+      
+            if (bt_ConfiguraOuOk.Text == "OK")
             {
-                if (cb_DesabilitaLogin.Checked)
-                    abilitarLogin = 1;
-                GBD.AbrirConexao();
-                GBD.Configurar(abilitarLogin);
-                GBD.FecharConexao();
-                bt_Cancelar_Click(sender, e);
+                Alterar();
+                fm_Configurar_Load(null, null);
                 return;
             }
             if (this.Height != 312)
@@ -78,18 +71,45 @@ namespace Controle_de_Midias
                 lb_NovoNome.Visible = true;
                 lb_NovaSenha.Visible = true;
                 lb_SenhaAtual.Visible = true;
-                button1.Top += 121;
-                button1.Text = "OK";
+                bt_ConfiguraOuOk.Top += 121;
+                bt_ConfiguraOuOk.Text = "OK";
             }
             
+        }
+
+        private void Alterar()
+        {
+           
+            GBD.AbrirConexao();
+            dadosAmigos.Add(tb_nomeUsuario.Text);
+            dadosAmigos.Add(tb_NovaSenha.Text);
+            
+        
+            if (tb_qtdDias.Text != lb_qtdDias.Text && tb_qtdDias.Text != string.Empty)
+                GBD.Configurar(dadosAmigos, "AlterarQuantidadesDias");
+
+            if (tb_EmailPadrao.Text != string.Empty)
+                GBD.Configurar(dadosAmigos, "AlterarEmail");
+
+            if (tb_nomeUsuario.Text != string.Empty)
+                GBD.Configurar(dadosAmigos, "AlterarUsuario");
+
+            if (tb_NovaSenha.Text != string.Empty && tb_NovaSenha.Text == tb_ConfirmaSenha.Text)
+                GBD.Configurar(dadosAmigos, "TrocarSenha");
+
+            GBD.Configurar(dadosAmigos, "DesabilitarLogin");
+
+            GBD.FecharConexao();
+
+            bt_Cancelar_Click(null, null);
         }
 
         private void bt_Cancelar_Click(object sender, EventArgs e)
         {
             this.Height -= 125;
-            button1.Top -= 121;
+            bt_ConfiguraOuOk.Top -= 121;
             fm_Configurar_Load(sender, e);
-            button1.Text = "Configurar";
+            bt_ConfiguraOuOk.Text = "Configurar";
         }
     }
 }

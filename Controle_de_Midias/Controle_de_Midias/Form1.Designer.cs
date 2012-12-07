@@ -34,6 +34,8 @@
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_Alterar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.bt_Devolver = new System.Windows.Forms.Button();
             this.bt_Emprestar = new System.Windows.Forms.Button();
             this.bt_Pesquisa = new System.Windows.Forms.Button();
@@ -41,6 +43,7 @@
             this.bt_NovaMidia = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_Midias = new System.Windows.Forms.TabPage();
+            this.img_Sucesso = new System.Windows.Forms.Panel();
             this.tb_PesquisaParcialM = new System.Windows.Forms.TextBox();
             this.lv_Midias = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,15 +56,13 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
             this.lv_Amigos = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
-            this.img_Sucesso = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bt_Alterar);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.bt_Devolver);
             this.groupBox1.Controls.Add(this.bt_Emprestar);
@@ -83,9 +85,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             // 
+            // bt_Alterar
+            // 
+            this.bt_Alterar.Enabled = false;
+            this.bt_Alterar.Location = new System.Drawing.Point(3, 217);
+            this.bt_Alterar.Name = "bt_Alterar";
+            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Alterar.TabIndex = 6;
+            this.bt_Alterar.Text = "&Alterar";
+            this.bt_Alterar.UseVisualStyleBackColor = true;
+            this.bt_Alterar.Click += new System.EventHandler(this.bt_Alterar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(4, 256);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "&Configurar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // bt_Devolver
             // 
-            this.bt_Devolver.Location = new System.Drawing.Point(4, 177);
+            this.bt_Devolver.Location = new System.Drawing.Point(4, 178);
             this.bt_Devolver.Name = "bt_Devolver";
             this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
             this.bt_Devolver.TabIndex = 4;
@@ -156,6 +179,14 @@
             this.tp_Midias.Text = "Mídias";
             this.tp_Midias.UseVisualStyleBackColor = true;
             // 
+            // img_Sucesso
+            // 
+            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
+            this.img_Sucesso.Location = new System.Drawing.Point(748, 6);
+            this.img_Sucesso.Name = "img_Sucesso";
+            this.img_Sucesso.Size = new System.Drawing.Size(23, 18);
+            this.img_Sucesso.TabIndex = 12;
+            // 
             // tb_PesquisaParcialM
             // 
             this.tb_PesquisaParcialM.Location = new System.Drawing.Point(637, 6);
@@ -201,6 +232,7 @@
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
             this.lv_Midias.DoubleClick += new System.EventHandler(this.lv_Midias_DoubleClick);
+            this.lv_Midias.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lv_Midias_MouseClick);
             // 
             // cl_Album
             // 
@@ -266,6 +298,14 @@
             this.tp_Amigos.Text = "Amigos";
             this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
+            this.panel1.Location = new System.Drawing.Point(748, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(23, 18);
+            this.panel1.TabIndex = 13;
+            // 
             // tb_PesquisaParcial
             // 
             this.tb_PesquisaParcial.Location = new System.Drawing.Point(637, 6);
@@ -290,6 +330,7 @@
             this.lv_Amigos.UseCompatibleStateImageBehavior = false;
             this.lv_Amigos.View = System.Windows.Forms.View.Details;
             this.lv_Amigos.DoubleClick += new System.EventHandler(this.lv_Amigos_DoubleClick);
+            this.lv_Amigos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lv_Midias_MouseClick);
             // 
             // cl_Nome
             // 
@@ -310,32 +351,6 @@
             // 
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(4, 216);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "&Configurar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // img_Sucesso
-            // 
-            this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
-            this.img_Sucesso.Location = new System.Drawing.Point(748, 6);
-            this.img_Sucesso.Name = "img_Sucesso";
-            this.img_Sucesso.Size = new System.Drawing.Size(23, 18);
-            this.img_Sucesso.TabIndex = 12;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
-            this.panel1.Location = new System.Drawing.Point(748, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(23, 18);
-            this.panel1.TabIndex = 13;
             // 
             // fm_Principal
             // 
@@ -389,6 +404,7 @@
         private System.Windows.Forms.Panel img_Sucesso;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_Alterar;
 
     }
 }

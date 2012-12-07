@@ -29,10 +29,6 @@ namespace Controle_de_Midias
             {
                 conexao.Open();
 
-                //string codigo = "insert into Amigos(Nome,Telefone,Email,Observacao) values('Diego germano','diegjndkfvkvn','1236643832','nao temmmm')";
-                //cmd = new SqlCommand(codigo,conexao);
-                //cmd.ExecuteNonQuery();
-
                 return true;
             }
             catch (Exception)
@@ -151,6 +147,34 @@ namespace Controle_de_Midias
         #region Métodos de preenchimento
         //----------------------------------------------------------------------------------------------
 
+
+        //public void PreencherLvMidias(ListView lv_Midias)
+        //{
+        //    //cmdSQL = "SELECT " +
+        //    //               "Midias.Id_Midia, " +
+        //    //               "Midias.Nome_Album, " +
+        //    //               "Midias.Nome_Interprete, " +
+        //    //               "Midias.Origem_Compra, " +
+        //    //               "Midias.Nome_Autor, " +
+        //    //               "Midias.Nome_Musica, " +
+        //    //               "Midias.Observacao, " +
+        //    //               "Midias.Nota, " +
+        //    //               "Midias.Data_Album, " +
+        //    //               "Midias.Data_Compra, " +
+        //    //               "Midias.Tipo_Midia " +
+        //    //         "FROM Midias " +
+        //    //         "INNER JOIN Emprestimos " +
+        //    //         "ON Midias.Id_Midia <> Emprestimos.Id_Midia " +
+        //    //         "WHERE Midias.Id_Midia <> Emprestimos.Id_Midia";
+        //    cmdSQL = " SELECT Midias.Id_Midia, Midias.Nome_Album, Midias.Nome_Interprete,Midias.Origem_Compra, Midias.Nome_Autor, Midias.Nome_Musica, Midias.Observacao,Midias.Nota, Midias.Data_Album, Midias.Data_Compra,Midias.Tipo_Midia FROM Midias INNER JOIN Emprestimos ON Midias.Id_Midia <> Emprestimos.Id_Midia WHERE Midias.Id_Midia <> Emprestimos.Id_Midia ";
+
+        //    //cmdSQL = " select * from midias";
+
+ 
+        //    cmd = new SqlCommand(cmdSQL, conexao);
+        //    Leitor = cmd.ExecuteReader();
+        //    PreencherListView(lv_Midias, Leitor);
+        //}
         public void PreencherLvMidias(ListView lv_Midias, int id_Amigo)
         {
             if (id_Amigo == 0)
@@ -168,12 +192,12 @@ namespace Controle_de_Midias
         public void PreecherLvAmigos(ListView lv_Amigos, string frm)
         {
 
-            if (frm == "fm_Principal")
+            if (frm == "fm_Principal" || frm == "fm_Emprestimos")
                 cmdSQL = "SELECT * FROM Amigos ORDER BY Nome";
             else
                 cmdSQL = "SELECT DISTINCT Amigos.Nome, Amigos.Email, Amigos.Telefone, Amigos.Observacao " +
-                         "FROM Emprestimos " +
-                         "INNER JOIN Amigos " +
+                         "FROM Amigos " +
+                         "INNER JOIN Emprestimos " +
                          "ON Emprestimos.Id_Amigo = Amigos.Id_Amigo ORDER BY Amigos.Nome";
 
             cmd = new SqlCommand(cmdSQL, conexao);
@@ -293,36 +317,41 @@ namespace Controle_de_Midias
             return DadosAmigos;
         }
 
-        public void ProcurarMidia(ListView lv_Midias, Midia midia, DateTime dataCompraFIM, DateTime dataAlbumFIM)
+        public void ProcurarMidia(ListView lv_Midias, Midia midia, DateTime dataCompraFIM, DateTime dataAlbumFIM,bool qualquerData)
         {
-            cmdSQL = "SELECT * FROM Midias " +
-                     "WHERE (@interprete = '' OR Nome_Interprete  LIKE('%@interprete%'))        AND" +
-                     "      (@musica     = '' OR Nome_Musica      LIKE('%@musica%'))            AND" +
-                     "      (@album      = '' OR Nome_Album       LIKE('%@album%'))             AND" +
-                     "      (@autor      = '' OR Nome_Autor       LIKE('%@autor%'))             AND" +
-                     "      (@compra     = '' OR Origem_Compra    LIKE('%@compra%'))            AND" +
-                     "      (@observacao = '' OR Observacao       LIKE('%@observacao%'))        AND" +
-                     "      (@nota       = Nota)                                                AND" +
-                     "      (@tipo       = Tipo_Midia)                                          AND" +
-                     "      (Data_Album  >= @dataAlbumInicio AND Data_Album <= @dataAlbumFIM)   AND" +
-                     "      (Data_Compra >= @dataCompraInicio AND Data_Album <= @dataCompraFIM)     ";
+
+            if(qualquerData)
+                cmdSQL = "SELECT * FROM Midias  " +
+                         "WHERE    (Nome_Interprete  LIKE(@interprete))                                 AND" +
+                                  "(Nome_Musica      LIKE(@musica))                                     AND" +
+                                  "(Nome_Album       LIKE(@album))                                      AND" +
+                                  "(Nome_Autor       LIKE(@autor))                                      AND" +
+                                  "(Origem_Compra    LIKE(@compra))                                     AND" +
+                                  "(Observacao       LIKE(@observacao))                                 AND" +
+                                  "(@nota       = '0 - 10' OR @nota = Nota)                             AND" +
+                                  "(@tipo       = '-1' OR @tipo = Tipo_Midia)                               ";
+            else
+                cmdSQL += "AND (Data_Album  >= @dataAlbumInicio  AND Data_Album <= @dataAlbumFIM)       AND" +
+                              "(Data_Compra >= @dataCompraInicio AND Data_Album <= @dataCompraFIM)";
+      
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
-            cmd.Parameters.Add(new SqlParameter("@interprete", midia.interprete));
-            cmd.Parameters.Add(new SqlParameter("@musica", midia.musica));
-            cmd.Parameters.Add(new SqlParameter("@album", midia.album));
-            cmd.Parameters.Add(new SqlParameter("@autor", midia.autor));
-            cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
+            cmd.Parameters.Add(new SqlParameter("@interprete", "%"+midia.interprete+"%"));
+            cmd.Parameters.Add(new SqlParameter("@musica", "%" + midia.musica + "%"));
+            cmd.Parameters.Add(new SqlParameter("@album", "%" + midia.album + "%"));
+            cmd.Parameters.Add(new SqlParameter("@autor", "%" + midia.autor + "%"));
+            cmd.Parameters.Add(new SqlParameter("@compra", "%" + midia.compra + "%"));
             cmd.Parameters.Add(new SqlParameter("@tipo", midia.tipo));
             cmd.Parameters.Add(new SqlParameter("@nota", midia.nota));
-            cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
+            cmd.Parameters.Add(new SqlParameter("@observacao", "%" + midia.observacao + "%"));
             cmd.Parameters.Add(new SqlParameter("@dataAlbumInicio", midia.dataAlbum));
             cmd.Parameters.Add(new SqlParameter("@dataAlbumFIM", dataAlbumFIM));
             cmd.Parameters.Add(new SqlParameter("@dataCompraInicio", midia.dataCompra));
             cmd.Parameters.Add(new SqlParameter("@dataCompraFIM", dataCompraFIM));
             Leitor = cmd.ExecuteReader();
 
+            lv_Midias.Items.Clear();
             PreencherListView(lv_Midias, Leitor);
         }
 
@@ -345,9 +374,46 @@ namespace Controle_de_Midias
             Leitor.Close();
 
         }
+        public void VerificarMidiasEmprestadas(ListView lv_Midias)
+        {
+            cmdSQL = "SELECT " +
+                           "Midias.Id_Midia, " +
+                           "Midias.Nome_Album, " +
+                           "Midias.Nome_Interprete, " +
+                           "Midias.Origem_Compra, " +
+                           "Midias.Nome_Autor, " +
+                           "Midias.Nome_Musica, " +
+                           "Midias.Observacao, " +
+                           "Midias.Nota, " +
+                           "Midias.Data_Album, " +
+                           "Midias.Data_Compra, " +
+                           "Midias.Tipo_Midia " +
+                     "FROM Midias " +
+                     "INNER JOIN Emprestimos " +
+                     "ON Midias.Id_Midia = Emprestimos.Id_Midia ";
+
+            cmd = new SqlCommand(cmdSQL,conexao);
+            Leitor = cmd.ExecuteReader();
+
+            while (Leitor.Read())
+                foreach (ListViewItem item in lv_Midias.Items)
+                    if (Leitor["Nome_Album"].ToString() == item.SubItems[0].Text &&
+                        Leitor["Nome_Interprete"].ToString() == item.SubItems[1].Text &&
+                        Leitor["Nome_Autor"].ToString() == item.SubItems[2].Text &&
+                        Leitor["Nome_Musica"].ToString() == item.SubItems[3].Text &&
+                        Leitor["Nota"].ToString() == item.SubItems[4].Text &&
+                        Leitor["Data_Album"].ToString() == item.SubItems[6].Text &&
+                        Leitor["Data_Compra"].ToString() == item.SubItems[5].Text &&
+                        Leitor["Origem_Compra"].ToString() == item.SubItems[7].Text &&
+                        Leitor["Observacao"].ToString() == item.SubItems[8].Text)
+                        item.Remove();            
+            
+            Leitor.Close();
+        }
      
         public void EmprestarOuDevolverMidia(int idAmigo, List<string> DadosMidias, string Verificador)
         {
+
 
 
             int idMidia;
@@ -361,9 +427,7 @@ namespace Controle_de_Midias
                            "Nome_autor      = @Nome_autor        AND "+
                            "Nome_Musica     = @Nome_Musica       AND "+
                            "Observacao      = @Observacao        AND "+
-                           "Nota            = @Nota              ";//AND "+
-                           //"Data_Compra     = @Data_Compra       AND "+ 
-                           //"Data_Album      = @Data_Album";
+                           "Nota            = @Nota              ";
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
@@ -372,20 +436,16 @@ namespace Controle_de_Midias
             cmd.Parameters.Add(new SqlParameter("@Nome_Autor",      DadosMidias[2]));
             cmd.Parameters.Add(new SqlParameter("@Nome_Musica",     DadosMidias[3]));
             cmd.Parameters.Add(new SqlParameter("@Nota",            DadosMidias[4]));
-            //cmd.Parameters.Add(new SqlParameter("@Data_Album",      DadosMidias[6]));
-            //cmd.Parameters.Add(new SqlParameter("@Data_Compra",     DadosMidias[5]));
             cmd.Parameters.Add(new SqlParameter("@Origem_Compra",   DadosMidias[7]));
             cmd.Parameters.Add(new SqlParameter("@Observacao",      DadosMidias[8]));
-
-
-            // A duas execçoes uma de conversão de data e/ou hora e outra de não retornar nada no select verificar campos das Midias List DadosMidias parametros etc....
-
+            
             idMidia = (int)cmd.ExecuteScalar();
 
             // Armazana os indificadores de Amigos e Midias com a data atual da Maquina e a qtd de dias que sempre inicia com zero.
-
-            if (Verificador == "fm_Emprestimo")
+            if (Verificador == "fm_Emprestimos")
+            {
                 cmdSQL = "INSERT INTO Emprestimos VALUES ( @id_Midia,@id_Amigo,  GETDATE(),0)";
+            }
             else
                 cmdSQL = "DELETE FROM Emprestimos WHERE id_Amigo = @id_Amigo AND id_Midia = @id_Midia";
             cmd = new SqlCommand(cmdSQL, conexao);
@@ -393,8 +453,7 @@ namespace Controle_de_Midias
 
             cmd.Parameters.Add(new SqlParameter("@id_Midia", idMidia));
             cmd.Parameters.Add(new SqlParameter("@id_Amigo", idAmigo));
-            
-
+           
             cmd.ExecuteNonQuery();
             
         }
@@ -410,9 +469,17 @@ namespace Controle_de_Midias
 
         }
 
+
         public void MensagemDeErro()
         {
             MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public int ContadarRegistros()
+        {
+            cmdSQL = "SELECT COUNT(*) FROM Emprestimos";
+            cmd = new SqlCommand(cmdSQL,conexao);
+            return (int)cmd.ExecuteScalar();
         }
 
 
@@ -428,14 +495,106 @@ namespace Controle_de_Midias
                 return false;
             return true;
         }
-        public void Configurar(int abilitarLogin)
+        public string PegarEmail()
         {
-            
-            cmdSQL= "UPDATE Usuario SET AbilitarLogin = @AbilitarLogin";
+            string email = "";
+            cmdSQL = "SELECT Email FROM Usuario";
 
             cmd = new SqlCommand(cmdSQL, conexao);
-            cmd.Parameters.Add(new SqlParameter("@AbilitarLogin",abilitarLogin));
-            cmd.ExecuteNonQuery();
+            Leitor = cmd.ExecuteReader();
+            while(Leitor.Read())
+                 email = Leitor["Email"].ToString();
+
+            Leitor.Close();
+            return email;
+        }
+        public bool VerificarSenha(string senha)
+        {
+            string senhaBanco;
+            cmdSQL = "SELECT senha FROM Usuario";
+
+            cmd = new SqlCommand(cmdSQL,conexao);
+            senhaBanco = (string)cmd.ExecuteScalar(); 
+            if (senhaBanco == senha)
+                return true;
+            return false;
+
+        }
+
+
+        public bool Configurar(List<string> alteracao,string operacao)
+        {
+
+            cmdSQL = "SELECT Senha FROM Usuario WHERE usuario = @usuario";
+            cmd = new SqlCommand(cmdSQL, conexao);
+            cmd.Parameters.Add(new SqlParameter("@usuario", alteracao[0]));
+            string teste = (string)cmd.ExecuteScalar();
+
+            if ((string)cmd.ExecuteScalar() == alteracao[1].ToString())
+            {
+                if (operacao == "TrocarSenha")
+                {
+                    cmdSQL = "UPDATE Usuario SET Senha = @NovaSenha";
+                    cmd = new SqlCommand(cmdSQL, conexao);
+                    cmd.Parameters.Add(new SqlParameter("@NovaSenha", alteracao[6]));
+                    cmd.ExecuteNonQuery();
+                }
+
+
+                if (operacao == "DesabilitarLogin")
+                {
+                    cmdSQL = "UPDATE Usuario SET AbilitarLogin = @AbilitarLogin";
+
+
+                    cmd = new SqlCommand(cmdSQL, conexao);
+                    cmd.Parameters.Add(new SqlParameter("@AbilitarLogin", alteracao[4]));
+                    cmd.ExecuteNonQuery();
+                }
+                if (operacao == "AlterarQuantidadesDias")
+                {
+                    cmdSQL = "UPDATE Usuario SET QtdDias = @QtdDias";
+                    cmd = new SqlCommand(cmdSQL, conexao);
+                    cmd.Parameters.Add(new SqlParameter("@QtdDias", alteracao[3]));
+                    cmd.ExecuteNonQuery();
+                }
+                if (operacao == "AlterarEmail")
+                {
+                    cmdSQL = "UPDATE Usuario SET Email = @Email";
+                    cmd = new SqlCommand(cmdSQL, conexao);
+                    cmd.Parameters.Add(new SqlParameter("@Email", alteracao[2]));
+                    cmd.ExecuteNonQuery();
+
+                }
+                if (operacao == "AlterarUsuario")
+                {
+                    cmdSQL = "UPDATE Usuario SET usuario = @usuario";
+                    cmd = new SqlCommand(cmdSQL, conexao);
+                    cmd.Parameters.Add(new SqlParameter("@usuario", alteracao[5]));
+                    cmd.ExecuteNonQuery();
+                    alteracao[0] = alteracao[5];
+                }
+                return true;
+            }
+            return false;
+        }
+        public void PreencherConfiguracoes(Label qtdDias, Label email, Label usuario, CheckBox DesabilitarLogin)
+        {
+            cmdSQL = "SELECT * FROM Usuario";
+
+            cmd = new SqlCommand(cmdSQL,conexao);
+
+            Leitor = cmd.ExecuteReader();
+
+            while (Leitor.Read())
+            {
+                qtdDias.Text = Leitor["QtdDias"].ToString();
+                email.Text = Leitor["Email"].ToString();
+                usuario.Text = Leitor["usuario"].ToString();
+                if (Leitor["AbilitarLogin"].ToString() == "1")
+                    DesabilitarLogin.Checked = true;
+            }
+
+            Leitor.Close();
         }
 
     }

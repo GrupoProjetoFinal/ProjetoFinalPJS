@@ -15,7 +15,9 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
-        const string verificador = "fm_Emprestimo";
+
+        public bool verificador = false;
+        const string formulario = "fm_Emprestimos";
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         List<string> DadosAmigos = new List<string>();
         List<string> DadosMidias;
@@ -23,24 +25,34 @@ namespace Controle_de_Midias
 
         private void bt_Emprestar_Click(object sender, EventArgs e)
         {
-            DadosMidias = new List<string>();
-
-            foreach (ListViewItem Midia in lv_Midias.SelectedItems)
+            foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
-                System.Media.SystemSounds.Asterisk.Play();
-                Midia.ForeColor = System.Drawing.Color.ForestGreen;
+                DadosMidias = new List<string>();
+                if (item.ForeColor == System.Drawing.Color.ForestGreen)
+                {
+                    item.Remove();
+                    lb_MidiaEmprestada.Visible = true;
+                    return;
+                }
+               
                 for (int i = 0; i < 9; ++i)
-                    DadosMidias.Add(Midia.SubItems[i].Text);
+                    DadosMidias.Add(item.SubItems[i].Text);
+
+                System.Media.SystemSounds.Asterisk.Play();
+                item.ForeColor = System.Drawing.Color.ForestGreen;
+                verificador = true;
+                GBD.AbrirConexao();
+                GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, formulario);
+                GBD.FecharConexao();
+        
             }
-            GBD.AbrirConexao();
+           }
 
-            GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, verificador);
-  
-            GBD.FecharConexao();
-        }
-
-        private void bt_CancelarE_Click(object sender, EventArgs e)
+        private void bt_Voltar_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in lv_Midias.SelectedItems)
+                if (item.ForeColor == System.Drawing.Color.ForestGreen)
+                    item.Remove();            
             lv_AmigosE.Dock = System.Windows.Forms.DockStyle.Bottom;
             lv_AmigosE.Visible = true;
             lv_Midias.Visible = false;
@@ -56,18 +68,16 @@ namespace Controle_de_Midias
             DadosAmigos.Clear();
 
             GBD.AbrirConexao();
-            GBD.PreecherLvAmigos(lv_AmigosE, "fm_Principal");
-        
-            GBD.PreencherLvMidias(lv_Midias, 0);
 
+            GBD.PreecherLvAmigos(lv_AmigosE, formulario);
+            
+            GBD.PreencherLvMidias(lv_Midias,0);
+            GBD.VerificarMidiasEmprestadas(lv_Midias);
+        
             GBD.FecharConexao();
 
         }
 
-        private void tb_NomeEM_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void lv_AmigosE_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -95,11 +105,6 @@ namespace Controle_de_Midias
             lb_EmailP.Text = DadosAmigos[2];
             lb_ObsP.Text = DadosAmigos[3];
              
-        }
-
-        private void lv_AmigosE_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         //perguntar ao Alvaro como declarar a varialvel dentro do método e ela iniciar com um valor somente no primeiro disparo
@@ -136,5 +141,7 @@ namespace Controle_de_Midias
             //qtd_AnteriorCaracter = tb_PesquisaParcial.Text.Count();
            
         }
+
+      
     }
 }

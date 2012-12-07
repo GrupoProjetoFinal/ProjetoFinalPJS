@@ -59,33 +59,38 @@ namespace Controle_de_Midias
             InitializeComponent();
         }
 
+        private int qtd_AnteriorCaracter = 0;
+        List<ListViewItem> amigos = new List<ListViewItem>();
+        List<ListViewItem> midias = new List<ListViewItem>();
+        const string formulario = "fm_Principal";
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-        // como faz para uma string assumir um valor inicial so na primeira vez em um metodo ex
         
         private void fm_Principal_Load(object sender, EventArgs e)
         {
+            int contador;
             GBD.AbrirConexao();
+            contador = GBD.ContadarRegistros();
             GBD.PreencherLvMidias(lv_Midias,0);
-            GBD.PreecherLvAmigos(lv_Amigos, "fm_Principal");
+            GBD.PreecherLvAmigos(lv_Amigos, formulario);
             GBD.AcrecentaDias();
             GBD.FecharConexao();
+            if (contador == 0)
+                bt_Devolver.Enabled = false;
         }
 
         private void bt_Emprestar_Click(object sender, EventArgs e)
         {
             fm_Emprestimo emprestimo = new fm_Emprestimo();
             emprestimo.ShowDialog();
+
+            if (emprestimo.verificador)
+                bt_Devolver.Enabled = true;
         }
 
         private void bt_NovoAmigo_Click(object sender, EventArgs e)
         {
             fm_NovoAmigo Adicionar = new fm_NovoAmigo(lv_Amigos);
             Adicionar.ShowDialog();
-
-
-            // -------------- PREENCHER NÃO ESTA FINCIONANDO ------------------
-            //fm_NovoAmigo infAmigo = new fm_NovoAmigo();
-            //lv_Amigos.Items.Add(infAmigo.OutroAmigo);
         }
 
         private void lv_Amigos_DoubleClick(object sender, EventArgs e)
@@ -123,6 +128,11 @@ namespace Controle_de_Midias
         {
             fm_Devolver devolver = new fm_Devolver();
             devolver.ShowDialog();
+
+            if (devolver.LvVazio)
+            {
+                bt_Devolver.Enabled = false;
+            }
         }
 
         private void bt_NovaMidia_Click(object sender, EventArgs e)
@@ -176,16 +186,12 @@ namespace Controle_de_Midias
                 foreach (ListViewItem item in lv_Midias.SelectedItems)
                     item.Remove();
         }
-        //ARUURUA<A<A<AMSMMSS   ARRUMAR ISSOOO
+        
         private void bt_Pesquisa_Click(object sender, EventArgs e)
         {
              fm_Pesquisa pesquisa = new fm_Pesquisa();
             pesquisa.ShowDialog();
         }
-        private int qtd_AnteriorCaracter = 0;
-
-        List<ListViewItem> amigos = new List<ListViewItem>();
-        List<ListViewItem> midias = new List<ListViewItem>();
 
         public void PesquisaParcial_TextChanged(object sender, EventArgs e)
         {
@@ -292,5 +298,29 @@ namespace Controle_de_Midias
             fm_Configurar configurar = new fm_Configurar();
             configurar.ShowDialog();
         }
+
+        private bool lvAtivado;
+
+        private void lv_Midias_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            if (sender == lv_Midias)
+                lvAtivado = true;
+            else
+                lvAtivado = false;
+
+            bt_Alterar.Enabled = true;
+
+            
+        }
+
+        private void bt_Alterar_Click(object sender, EventArgs e)
+        {
+            if (lvAtivado)
+                lv_Midias_DoubleClick(sender, e);
+            else
+                lv_Amigos_DoubleClick(sender, e);
+        }
+
     }
  }

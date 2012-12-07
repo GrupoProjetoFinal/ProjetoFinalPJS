@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_Emprestimo));
             this.lv_Midias = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,8 +46,11 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gr_AmigoE = new System.Windows.Forms.GroupBox();
+            this.lb_MidiaEmprestada = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lb_ObsP = new System.Windows.Forms.Label();
-            this.bt_CancelarE = new System.Windows.Forms.Button();
+            this.bt_Voltar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.bt_Emprestar = new System.Windows.Forms.Button();
@@ -61,7 +64,6 @@
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
-            this.img_erro = new System.Windows.Forms.Panel();
             this.img_Sucesso = new System.Windows.Forms.Panel();
             this.gr_AmigoE.SuspendLayout();
             this.SuspendLayout();
@@ -78,22 +80,23 @@
             this.cl_DataCompra,
             this.cl_Origem,
             this.cl_Observacao});
-            listViewGroup1.Header = "Vinil";
-            listViewGroup1.Name = "Gp_Vinil";
-            listViewGroup2.Header = "K7";
-            listViewGroup2.Name = "Gp_k7";
-            listViewGroup3.Header = "CD";
-            listViewGroup3.Name = "Gp_Cd";
-            listViewGroup4.Header = "DVD";
-            listViewGroup4.Name = "Gp_Dvd";
-            listViewGroup5.Header = "Digital";
-            listViewGroup5.Name = "Gp_Digital";
+            this.lv_Midias.FullRowSelect = true;
+            listViewGroup6.Header = "Vinil";
+            listViewGroup6.Name = "Gp_Vinil";
+            listViewGroup7.Header = "K7";
+            listViewGroup7.Name = "Gp_k7";
+            listViewGroup8.Header = "CD";
+            listViewGroup8.Name = "Gp_Cd";
+            listViewGroup9.Header = "DVD";
+            listViewGroup9.Name = "Gp_Dvd";
+            listViewGroup10.Header = "Digital";
+            listViewGroup10.Name = "Gp_Digital";
             this.lv_Midias.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4,
-            listViewGroup5});
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9,
+            listViewGroup10});
             this.lv_Midias.Location = new System.Drawing.Point(254, 26);
             this.lv_Midias.Name = "lv_Midias";
             this.lv_Midias.Size = new System.Drawing.Size(503, 354);
@@ -155,9 +158,11 @@
             // gr_AmigoE
             // 
             this.gr_AmigoE.BackColor = System.Drawing.SystemColors.Control;
-            this.gr_AmigoE.Controls.Add(this.img_erro);
+            this.gr_AmigoE.Controls.Add(this.lb_MidiaEmprestada);
+            this.gr_AmigoE.Controls.Add(this.label3);
+            this.gr_AmigoE.Controls.Add(this.label2);
             this.gr_AmigoE.Controls.Add(this.lb_ObsP);
-            this.gr_AmigoE.Controls.Add(this.bt_CancelarE);
+            this.gr_AmigoE.Controls.Add(this.bt_Voltar);
             this.gr_AmigoE.Controls.Add(this.label1);
             this.gr_AmigoE.Controls.Add(this.label5);
             this.gr_AmigoE.Controls.Add(this.bt_Emprestar);
@@ -171,6 +176,35 @@
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
             // 
+            // lb_MidiaEmprestada
+            // 
+            this.lb_MidiaEmprestada.AutoSize = true;
+            this.lb_MidiaEmprestada.ForeColor = System.Drawing.Color.Red;
+            this.lb_MidiaEmprestada.Location = new System.Drawing.Point(5, 343);
+            this.lb_MidiaEmprestada.Name = "lb_MidiaEmprestada";
+            this.lb_MidiaEmprestada.Size = new System.Drawing.Size(146, 13);
+            this.lb_MidiaEmprestada.TabIndex = 18;
+            this.lb_MidiaEmprestada.Text = "Essa midia ja foi emprestada !";
+            this.lb_MidiaEmprestada.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 321);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Selecione uma Midia";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(83, 187);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Não possui email";
+            // 
             // lb_ObsP
             // 
             this.lb_ObsP.AutoSize = true;
@@ -179,15 +213,15 @@
             this.lb_ObsP.Size = new System.Drawing.Size(0, 13);
             this.lb_ObsP.TabIndex = 13;
             // 
-            // bt_CancelarE
+            // bt_Voltar
             // 
-            this.bt_CancelarE.Location = new System.Drawing.Point(72, 281);
-            this.bt_CancelarE.Name = "bt_CancelarE";
-            this.bt_CancelarE.Size = new System.Drawing.Size(75, 23);
-            this.bt_CancelarE.TabIndex = 12;
-            this.bt_CancelarE.Text = "&Cancelar";
-            this.bt_CancelarE.UseVisualStyleBackColor = true;
-            this.bt_CancelarE.Click += new System.EventHandler(this.bt_CancelarE_Click);
+            this.bt_Voltar.Location = new System.Drawing.Point(72, 281);
+            this.bt_Voltar.Name = "bt_Voltar";
+            this.bt_Voltar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Voltar.TabIndex = 12;
+            this.bt_Voltar.Text = "&Voltar";
+            this.bt_Voltar.UseVisualStyleBackColor = true;
+            this.bt_Voltar.Click += new System.EventHandler(this.bt_Voltar_Click);
             // 
             // label1
             // 
@@ -257,14 +291,12 @@
             this.cl_Email,
             this.cl_Obs});
             this.lv_AmigosE.FullRowSelect = true;
-            this.lv_AmigosE.GridLines = true;
             this.lv_AmigosE.Location = new System.Drawing.Point(254, 26);
             this.lv_AmigosE.Name = "lv_AmigosE";
             this.lv_AmigosE.Size = new System.Drawing.Size(503, 361);
             this.lv_AmigosE.TabIndex = 13;
             this.lv_AmigosE.UseCompatibleStateImageBehavior = false;
             this.lv_AmigosE.View = System.Windows.Forms.View.Details;
-            this.lv_AmigosE.SelectedIndexChanged += new System.EventHandler(this.lv_AmigosE_SelectedIndexChanged);
             this.lv_AmigosE.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lv_AmigosE_MouseDoubleClick);
             // 
             // cl_Nome
@@ -294,14 +326,6 @@
             this.tb_PesquisaParcial.Size = new System.Drawing.Size(110, 20);
             this.tb_PesquisaParcial.TabIndex = 14;
             this.tb_PesquisaParcial.TextChanged += new System.EventHandler(this.tb_PesquisaParcial_TextChanged);
-            // 
-            // img_erro
-            // 
-            this.img_erro.BackgroundImage = global::Controle_de_Midias.Properties.Resources.x_vermelho;
-            this.img_erro.Location = new System.Drawing.Point(153, 256);
-            this.img_erro.Name = "img_erro";
-            this.img_erro.Size = new System.Drawing.Size(19, 19);
-            this.img_erro.TabIndex = 12;
             // 
             // img_Sucesso
             // 
@@ -347,13 +371,12 @@
         private System.Windows.Forms.ColumnHeader cl_Observacao;
         private System.Windows.Forms.GroupBox gr_AmigoE;
         private System.Windows.Forms.Label lb_ObsP;
-        private System.Windows.Forms.Button bt_CancelarE;
+        private System.Windows.Forms.Button bt_Voltar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button bt_Emprestar;
         private System.Windows.Forms.Label lb_EmailP;
         private System.Windows.Forms.Label lb_nomeP;
         private System.Windows.Forms.Label lb_TelP;
-        private System.Windows.Forms.Panel img_erro;
         private System.Windows.Forms.Panel img_Sucesso;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView lv_AmigosE;
@@ -363,5 +386,8 @@
         private System.Windows.Forms.ColumnHeader cl_Obs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_PesquisaParcial;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_MidiaEmprestada;
     }
 }

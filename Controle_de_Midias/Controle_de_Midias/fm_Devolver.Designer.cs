@@ -66,6 +66,7 @@
             this.cl_Telefone,
             this.cl_Email,
             this.cl_Obs});
+            this.lv_AmigosD.FullRowSelect = true;
             this.lv_AmigosD.Location = new System.Drawing.Point(211, 0);
             this.lv_AmigosD.Name = "lv_AmigosD";
             this.lv_AmigosD.Size = new System.Drawing.Size(526, 323);
@@ -201,7 +202,7 @@
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_MidiasD.Location = new System.Drawing.Point(211, 0);
+            this.lv_MidiasD.Location = new System.Drawing.Point(207, 0);
             this.lv_MidiasD.Name = "lv_MidiasD";
             this.lv_MidiasD.Size = new System.Drawing.Size(526, 323);
             this.lv_MidiasD.TabIndex = 12;

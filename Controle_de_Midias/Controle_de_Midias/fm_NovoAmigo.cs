@@ -23,14 +23,12 @@ namespace Controle_de_Midias
         {
             if (tb_Nome.Text == string.Empty)
             {
-                System.Media.SystemSounds.Hand.Play();
-                this.Height += 25;
+                lb_InfoUsuario.Visible = true;
                 Erro.SetError(lb_InfoUsuario, "O campo nome é obrigatório");
-
                 return;
             }
 
-            // O conteúdo dos textBox são parrados para o objeto Amigo.
+            // O conteúdo dos textBox são passados para o objeto Amigo.
             Amigo novoAmigo = new Amigo();
             novoAmigo.nome = tb_Nome.Text;
             novoAmigo.telefone = tb_Telefone.Text;
@@ -46,11 +44,7 @@ namespace Controle_de_Midias
                 GBD.FecharConexao();
 
                 //Limpa os textBox
-                tb_Nome.Clear();
-                tb_Telefone.Clear();
-                tb_Email.Clear();
-                rtb_Observacao.Clear();
-
+                bt_Limpar_Click(sender, e);
                 //Adiciona a nova midia no ListView lvMidias.
                 ListViewItem item;
 
@@ -59,23 +53,25 @@ namespace Controle_de_Midias
                 item.SubItems.Add(novoAmigo.telefone);
                 item.SubItems.Add(novoAmigo.email);
                 item.SubItems.Add(novoAmigo.observacao);
-
+                System.Media.SystemSounds.Asterisk.Play();
+                
             }
             else
             {
                 MessageBox.Show("Não foi possivel se conectar com o banco de dados.","Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void tb_Nome_DragEnter(object sender, DragEventArgs e)
-        {
-
-        }
-
         private void tb_Nome_Enter(object sender, EventArgs e)
         {
-            if(this.Height != 283)
-                this.Height -= 25;
+            lb_InfoUsuario.Visible = false;
+        }
+
+        private void bt_Limpar_Click(object sender, EventArgs e)
+        {
+            tb_Email.Clear();
+            tb_Nome.Clear();
+            tb_Telefone.Clear();
+            rtb_Observacao.Clear();
         }
 
     }

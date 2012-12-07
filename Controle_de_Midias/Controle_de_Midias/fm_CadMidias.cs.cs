@@ -27,9 +27,12 @@ namespace Controle_de_Midias
         Midia midia = new Midia();
 
         
-        private void bt_Salvar_Click(object sender, EventArgs e)
+        private void bt_Adicionar_Click(object sender, EventArgs e)
         {
-            if (tb_Album.Text != "" && cb_Tipomidia.SelectedIndex != 0)
+
+
+            // ARRUMAR TRATAMENTO DE OBRIGATORIEDADE DOS CAMPOS
+            if (tb_Album.Text != string.Empty)
             {
 
                 GBD.AbrirConexao();
@@ -67,20 +70,14 @@ namespace Controle_de_Midias
                 item.SubItems.Add(midia.observacao);
 
                 //Limpar campos apos a inserção
-                tb_Interprete.Text = "";
-                tb_Autor.Text = "";
-                tb_Album.Text = "";
-                tb_Nomemusica.Text = "";
-                tb_Origemcompra.Text = "";
-                cb_Nota.SelectedIndex = 0;
-                cb_Tipomidia.SelectedIndex = 0;
-                rtb_Observacao.Text = "";
+                bt_Limpar_Click(sender, e);
+                System.Media.SystemSounds.Asterisk.Play();
+                
             }
             else
             {
-                //arrumar como apresentar o tratamento de erro
-                MessageBox.Show("Erro ao cadastrar");
-
+                lb_InfoUsuario.Visible = true;
+                erroP.SetError(lb_InfoUsuario, "O campo é obrigatório");
             }
             
            
@@ -89,6 +86,18 @@ namespace Controle_de_Midias
         private void fm_CadMidias_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bt_Limpar_Click(object sender, EventArgs e)
+        {
+            tb_Interprete.Text = "";
+            tb_Autor.Text = "";
+            tb_Album.Text = "";
+            tb_Nomemusica.Text = "";
+            tb_Origemcompra.Text = "";
+            cb_Nota.SelectedIndex = 0;
+            cb_Tipomidia.SelectedIndex = 0;
+            rtb_Observacao.Text = "";
         }
 
      

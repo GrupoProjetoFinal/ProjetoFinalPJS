@@ -24,13 +24,13 @@ namespace Controle_de_Midias
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-            //fm_login login = new fm_login();
-            //GBD.AbrirConexao();
-            //if (GBD.VerificaLogin())
-            //    login.ShowDialog();
-            //GBD.FecharConexao();
-            //if (login.logado)
+            GerenciadorDeBanco GBD = new GerenciadorDeBanco();
+            fm_login login = new fm_login();
+            GBD.AbrirConexao();
+            if (GBD.VerificaLogin())
+                login.ShowDialog();
+            GBD.FecharConexao();
+            if (login.logado)
                 Application.Run(new fm_Principal());
         }
     }

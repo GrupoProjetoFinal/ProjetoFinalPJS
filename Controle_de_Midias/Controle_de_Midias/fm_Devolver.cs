@@ -15,7 +15,8 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
-        const string frm = "fm_Devolver";
+        public bool LvVazio = false;
+        const string formulario = "fm_Devolver";
         private int idAmigo;
         Amigo amigo = new Amigo();
         List<string> DadosMidia;
@@ -32,7 +33,7 @@ namespace Controle_de_Midias
             if (lv_AmigosD.Items.Count == 0)
             {
                 GBD.AbrirConexao();
-                GBD.PreecherLvAmigos(lv_AmigosD, frm);
+                GBD.PreecherLvAmigos(lv_AmigosD, formulario);
                 GBD.FecharConexao();
             }
             
@@ -56,12 +57,18 @@ namespace Controle_de_Midias
 
         private void bt_Devolver_Click(object sender, EventArgs e)
         {
-            DadosMidia = new List<string>();
-
+            
             foreach (ListViewItem item in lv_MidiasD.SelectedItems)
             {
+                DadosMidia = new List<string>();
+
                 for (int i = 0; i < 9; ++i)
                     DadosMidia.Add(item.SubItems[i].Text);
+                
+                GBD.AbrirConexao();
+                GBD.EmprestarOuDevolverMidia(idAmigo, DadosMidia, null);
+                GBD.FecharConexao();
+
                 item.Remove();
                 System.Media.SystemSounds.Asterisk.Play();
             }
@@ -71,12 +78,15 @@ namespace Controle_de_Midias
                 foreach (ListViewItem item in lv_AmigosD.SelectedItems)
                     item.Remove();
 
-            GBD.AbrirConexao();
-            GBD.EmprestarOuDevolverMidia(idAmigo, DadosMidia, null);
-            GBD.FecharConexao();
 
             if (lv_MidiasD.Items.Count == 0)
                 fm_Devolver_Load(null,e);
+
+            if (lv_AmigosD.Items.Count == 0)
+            {
+                LvVazio = true;
+                Close();
+            }
         }
 
         private void lv_AmigosD_MouseDoubleClick(object sender, MouseEventArgs e)
