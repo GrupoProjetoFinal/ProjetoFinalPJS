@@ -44,6 +44,11 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gb_Midias = new System.Windows.Forms.GroupBox();
+            this.ckb_QualquerData = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dtp_DataAlbum_ATE = new System.Windows.Forms.DateTimePicker();
             this.dtp_DataCompra_ATE = new System.Windows.Forms.DateTimePicker();
             this.lb_Observacao = new System.Windows.Forms.Label();
@@ -83,6 +88,7 @@
             this.cl_DataCompra,
             this.cl_Origem,
             this.cl_Observacao});
+            this.lv_MidiasP.FullRowSelect = true;
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";
@@ -99,12 +105,13 @@
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_MidiasP.Location = new System.Drawing.Point(289, -3);
+            this.lv_MidiasP.Location = new System.Drawing.Point(7, 205);
             this.lv_MidiasP.Name = "lv_MidiasP";
-            this.lv_MidiasP.Size = new System.Drawing.Size(450, 528);
+            this.lv_MidiasP.Size = new System.Drawing.Size(742, 239);
             this.lv_MidiasP.TabIndex = 3;
             this.lv_MidiasP.UseCompatibleStateImageBehavior = false;
             this.lv_MidiasP.View = System.Windows.Forms.View.Details;
+            this.lv_MidiasP.DoubleClick += new System.EventHandler(this.lv_MidiasP_DoubleClick);
             // 
             // cl_Album
             // 
@@ -160,6 +167,12 @@
             // gb_Midias
             // 
             this.gb_Midias.BackColor = System.Drawing.Color.Transparent;
+            this.gb_Midias.Controls.Add(this.ckb_QualquerData);
+            this.gb_Midias.Controls.Add(this.label4);
+            this.gb_Midias.Controls.Add(this.lv_MidiasP);
+            this.gb_Midias.Controls.Add(this.label5);
+            this.gb_Midias.Controls.Add(this.label3);
+            this.gb_Midias.Controls.Add(this.label2);
             this.gb_Midias.Controls.Add(this.dtp_DataAlbum_ATE);
             this.gb_Midias.Controls.Add(this.dtp_DataCompra_ATE);
             this.gb_Midias.Controls.Add(this.lb_Observacao);
@@ -184,17 +197,62 @@
             this.gb_Midias.Controls.Add(this.lb_Album);
             this.gb_Midias.Controls.Add(this.tb_Interprete);
             this.gb_Midias.Controls.Add(this.lb_Interprete);
-            this.gb_Midias.Location = new System.Drawing.Point(3, 5);
+            this.gb_Midias.Location = new System.Drawing.Point(4, 5);
             this.gb_Midias.Name = "gb_Midias";
-            this.gb_Midias.Size = new System.Drawing.Size(280, 532);
+            this.gb_Midias.Size = new System.Drawing.Size(755, 453);
             this.gb_Midias.TabIndex = 4;
             this.gb_Midias.TabStop = false;
-            this.gb_Midias.Text = "Características";
+            // 
+            // ckb_QualquerData
+            // 
+            this.ckb_QualquerData.AutoSize = true;
+            this.ckb_QualquerData.Location = new System.Drawing.Point(409, 180);
+            this.ckb_QualquerData.Name = "ckb_QualquerData";
+            this.ckb_QualquerData.Size = new System.Drawing.Size(95, 17);
+            this.ckb_QualquerData.TabIndex = 37;
+            this.ckb_QualquerData.Text = "Qualquer Data";
+            this.ckb_QualquerData.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(654, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Até";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(545, 134);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "De";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(406, 134);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Até";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(289, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "De";
             // 
             // dtp_DataAlbum_ATE
             // 
             this.dtp_DataAlbum_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataAlbum_ATE.Location = new System.Drawing.Point(146, 328);
+            this.dtp_DataAlbum_ATE.Location = new System.Drawing.Point(651, 150);
             this.dtp_DataAlbum_ATE.Name = "dtp_DataAlbum_ATE";
             this.dtp_DataAlbum_ATE.Size = new System.Drawing.Size(101, 20);
             this.dtp_DataAlbum_ATE.TabIndex = 32;
@@ -202,7 +260,7 @@
             // dtp_DataCompra_ATE
             // 
             this.dtp_DataCompra_ATE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataCompra_ATE.Location = new System.Drawing.Point(146, 283);
+            this.dtp_DataCompra_ATE.Location = new System.Drawing.Point(397, 150);
             this.dtp_DataCompra_ATE.Name = "dtp_DataCompra_ATE";
             this.dtp_DataCompra_ATE.Size = new System.Drawing.Size(99, 20);
             this.dtp_DataCompra_ATE.TabIndex = 31;
@@ -210,7 +268,7 @@
             // lb_Observacao
             // 
             this.lb_Observacao.AutoSize = true;
-            this.lb_Observacao.Location = new System.Drawing.Point(10, 362);
+            this.lb_Observacao.Location = new System.Drawing.Point(14, 102);
             this.lb_Observacao.Name = "lb_Observacao";
             this.lb_Observacao.Size = new System.Drawing.Size(65, 13);
             this.lb_Observacao.TabIndex = 30;
@@ -218,16 +276,16 @@
             // 
             // rtb_Observacao
             // 
-            this.rtb_Observacao.Location = new System.Drawing.Point(6, 378);
+            this.rtb_Observacao.Location = new System.Drawing.Point(10, 118);
             this.rtb_Observacao.Name = "rtb_Observacao";
-            this.rtb_Observacao.Size = new System.Drawing.Size(263, 96);
+            this.rtb_Observacao.Size = new System.Drawing.Size(273, 75);
             this.rtb_Observacao.TabIndex = 29;
             this.rtb_Observacao.Text = "";
             // 
             // lb_Autor
             // 
             this.lb_Autor.AutoSize = true;
-            this.lb_Autor.Location = new System.Drawing.Point(7, 143);
+            this.lb_Autor.Location = new System.Drawing.Point(10, 60);
             this.lb_Autor.Name = "lb_Autor";
             this.lb_Autor.Size = new System.Drawing.Size(32, 13);
             this.lb_Autor.TabIndex = 1;
@@ -235,7 +293,7 @@
             // 
             // bt_Limpar
             // 
-            this.bt_Limpar.Location = new System.Drawing.Point(113, 480);
+            this.bt_Limpar.Location = new System.Drawing.Point(584, 176);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
             this.bt_Limpar.TabIndex = 28;
@@ -244,14 +302,14 @@
             // 
             // tb_Autor
             // 
-            this.tb_Autor.Location = new System.Drawing.Point(10, 159);
+            this.tb_Autor.Location = new System.Drawing.Point(10, 76);
             this.tb_Autor.Name = "tb_Autor";
-            this.tb_Autor.Size = new System.Drawing.Size(259, 20);
+            this.tb_Autor.Size = new System.Drawing.Size(298, 20);
             this.tb_Autor.TabIndex = 11;
             // 
             // bt_Salvar
             // 
-            this.bt_Salvar.Location = new System.Drawing.Point(194, 480);
+            this.bt_Salvar.Location = new System.Drawing.Point(674, 176);
             this.bt_Salvar.Name = "bt_Salvar";
             this.bt_Salvar.Size = new System.Drawing.Size(75, 23);
             this.bt_Salvar.TabIndex = 26;
@@ -262,7 +320,7 @@
             // lb_Nota
             // 
             this.lb_Nota.AutoSize = true;
-            this.lb_Nota.Location = new System.Drawing.Point(184, 227);
+            this.lb_Nota.Location = new System.Drawing.Point(574, 59);
             this.lb_Nota.Name = "lb_Nota";
             this.lb_Nota.Size = new System.Drawing.Size(30, 13);
             this.lb_Nota.TabIndex = 25;
@@ -272,6 +330,7 @@
             // 
             this.cb_Nota.FormattingEnabled = true;
             this.cb_Nota.Items.AddRange(new object[] {
+            "0 - 10",
             "0",
             "1",
             "2",
@@ -283,7 +342,7 @@
             "8",
             "9",
             "10"});
-            this.cb_Nota.Location = new System.Drawing.Point(187, 243);
+            this.cb_Nota.Location = new System.Drawing.Point(577, 75);
             this.cb_Nota.Name = "cb_Nota";
             this.cb_Nota.Size = new System.Drawing.Size(82, 21);
             this.cb_Nota.TabIndex = 24;
@@ -291,7 +350,7 @@
             // lb_Origemcompra
             // 
             this.lb_Origemcompra.AutoSize = true;
-            this.lb_Origemcompra.Location = new System.Drawing.Point(7, 183);
+            this.lb_Origemcompra.Location = new System.Drawing.Point(311, 58);
             this.lb_Origemcompra.Name = "lb_Origemcompra";
             this.lb_Origemcompra.Size = new System.Drawing.Size(89, 13);
             this.lb_Origemcompra.TabIndex = 23;
@@ -299,7 +358,7 @@
             // 
             // tb_Origemcompra
             // 
-            this.tb_Origemcompra.Location = new System.Drawing.Point(10, 201);
+            this.tb_Origemcompra.Location = new System.Drawing.Point(314, 76);
             this.tb_Origemcompra.Name = "tb_Origemcompra";
             this.tb_Origemcompra.Size = new System.Drawing.Size(259, 20);
             this.tb_Origemcompra.TabIndex = 22;
@@ -307,7 +366,7 @@
             // dtp_DataAlbum_DE
             // 
             this.dtp_DataAlbum_DE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataAlbum_DE.Location = new System.Drawing.Point(13, 328);
+            this.dtp_DataAlbum_DE.Location = new System.Drawing.Point(544, 150);
             this.dtp_DataAlbum_DE.Name = "dtp_DataAlbum_DE";
             this.dtp_DataAlbum_DE.Size = new System.Drawing.Size(101, 20);
             this.dtp_DataAlbum_DE.TabIndex = 21;
@@ -315,7 +374,7 @@
             // lb_Dataalbum
             // 
             this.lb_Dataalbum.AutoSize = true;
-            this.lb_Dataalbum.Location = new System.Drawing.Point(10, 312);
+            this.lb_Dataalbum.Location = new System.Drawing.Point(616, 102);
             this.lb_Dataalbum.Name = "lb_Dataalbum";
             this.lb_Dataalbum.Size = new System.Drawing.Size(61, 13);
             this.lb_Dataalbum.TabIndex = 20;
@@ -325,20 +384,21 @@
             // 
             this.cb_Tipomidia.FormattingEnabled = true;
             this.cb_Tipomidia.Items.AddRange(new object[] {
+            "Todas",
             "Vinil",
             "K7",
             "CD",
             "DVD",
             "Digital"});
-            this.cb_Tipomidia.Location = new System.Drawing.Point(10, 243);
+            this.cb_Tipomidia.Location = new System.Drawing.Point(665, 75);
             this.cb_Tipomidia.Name = "cb_Tipomidia";
-            this.cb_Tipomidia.Size = new System.Drawing.Size(163, 21);
+            this.cb_Tipomidia.Size = new System.Drawing.Size(87, 21);
             this.cb_Tipomidia.TabIndex = 19;
             // 
             // lb_Tipomidia
             // 
             this.lb_Tipomidia.AutoSize = true;
-            this.lb_Tipomidia.Location = new System.Drawing.Point(7, 226);
+            this.lb_Tipomidia.Location = new System.Drawing.Point(662, 58);
             this.lb_Tipomidia.Name = "lb_Tipomidia";
             this.lb_Tipomidia.Size = new System.Drawing.Size(55, 13);
             this.lb_Tipomidia.TabIndex = 18;
@@ -347,7 +407,7 @@
             // lb_Datacompra
             // 
             this.lb_Datacompra.AutoSize = true;
-            this.lb_Datacompra.Location = new System.Drawing.Point(7, 265);
+            this.lb_Datacompra.Location = new System.Drawing.Point(359, 102);
             this.lb_Datacompra.Name = "lb_Datacompra";
             this.lb_Datacompra.Size = new System.Drawing.Size(68, 13);
             this.lb_Datacompra.TabIndex = 17;
@@ -356,29 +416,29 @@
             // dtp_DataCompra_DE
             // 
             this.dtp_DataCompra_DE.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_DataCompra_DE.Location = new System.Drawing.Point(10, 282);
+            this.dtp_DataCompra_DE.Location = new System.Drawing.Point(292, 150);
             this.dtp_DataCompra_DE.Name = "dtp_DataCompra_DE";
             this.dtp_DataCompra_DE.Size = new System.Drawing.Size(99, 20);
             this.dtp_DataCompra_DE.TabIndex = 16;
             // 
             // tb_Nomemusica
             // 
-            this.tb_Nomemusica.Location = new System.Drawing.Point(10, 76);
+            this.tb_Nomemusica.Location = new System.Drawing.Point(275, 37);
             this.tb_Nomemusica.Name = "tb_Nomemusica";
             this.tb_Nomemusica.Size = new System.Drawing.Size(259, 20);
             this.tb_Nomemusica.TabIndex = 15;
             // 
             // tb_Album
             // 
-            this.tb_Album.Location = new System.Drawing.Point(10, 120);
+            this.tb_Album.Location = new System.Drawing.Point(540, 37);
             this.tb_Album.Name = "tb_Album";
-            this.tb_Album.Size = new System.Drawing.Size(259, 20);
+            this.tb_Album.Size = new System.Drawing.Size(212, 20);
             this.tb_Album.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 60);
+            this.label1.Location = new System.Drawing.Point(272, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 13;
@@ -387,7 +447,7 @@
             // lb_Album
             // 
             this.lb_Album.AutoSize = true;
-            this.lb_Album.Location = new System.Drawing.Point(7, 101);
+            this.lb_Album.Location = new System.Drawing.Point(537, 18);
             this.lb_Album.Name = "lb_Album";
             this.lb_Album.Size = new System.Drawing.Size(36, 13);
             this.lb_Album.TabIndex = 12;
@@ -413,12 +473,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 537);
+            this.ClientSize = new System.Drawing.Size(765, 464);
             this.Controls.Add(this.gb_Midias);
-            this.Controls.Add(this.lv_MidiasP);
             this.Name = "fm_Pesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fm_Pesquisa";
+            this.Text = "Pesquisa";
             this.Load += new System.EventHandler(this.fm_Pesquisa_Load);
             this.gb_Midias.ResumeLayout(false);
             this.gb_Midias.PerformLayout();
@@ -463,5 +522,10 @@
         private System.Windows.Forms.Label lb_Interprete;
         private System.Windows.Forms.DateTimePicker dtp_DataAlbum_ATE;
         private System.Windows.Forms.DateTimePicker dtp_DataCompra_ATE;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox ckb_QualquerData;
     }
 }

@@ -46,6 +46,8 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gr_AmigoE = new System.Windows.Forms.GroupBox();
+            this.lb_SelecioneUmaMidia = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lb_ObsP = new System.Windows.Forms.Label();
             this.bt_CancelarE = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,9 +63,10 @@
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
-            this.img_erro = new System.Windows.Forms.Panel();
             this.img_Sucesso = new System.Windows.Forms.Panel();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.gr_AmigoE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // lv_Midias
@@ -100,6 +103,7 @@
             this.lv_Midias.TabIndex = 1;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
+            this.lv_Midias.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lv_Midias_MouseClick);
             // 
             // cl_Album
             // 
@@ -155,7 +159,8 @@
             // gr_AmigoE
             // 
             this.gr_AmigoE.BackColor = System.Drawing.SystemColors.Control;
-            this.gr_AmigoE.Controls.Add(this.img_erro);
+            this.gr_AmigoE.Controls.Add(this.lb_SelecioneUmaMidia);
+            this.gr_AmigoE.Controls.Add(this.label2);
             this.gr_AmigoE.Controls.Add(this.lb_ObsP);
             this.gr_AmigoE.Controls.Add(this.bt_CancelarE);
             this.gr_AmigoE.Controls.Add(this.label1);
@@ -170,6 +175,25 @@
             this.gr_AmigoE.TabIndex = 10;
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
+            // 
+            // lb_SelecioneUmaMidia
+            // 
+            this.lb_SelecioneUmaMidia.AutoSize = true;
+            this.lb_SelecioneUmaMidia.Location = new System.Drawing.Point(25, 327);
+            this.lb_SelecioneUmaMidia.Name = "lb_SelecioneUmaMidia";
+            this.lb_SelecioneUmaMidia.Size = new System.Drawing.Size(105, 13);
+            this.lb_SelecioneUmaMidia.TabIndex = 17;
+            this.lb_SelecioneUmaMidia.Text = "Selecione uma Midia";
+            this.lb_SelecioneUmaMidia.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(83, 187);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Não possui email";
             // 
             // lb_ObsP
             // 
@@ -295,14 +319,6 @@
             this.tb_PesquisaParcial.TabIndex = 14;
             this.tb_PesquisaParcial.TextChanged += new System.EventHandler(this.tb_PesquisaParcial_TextChanged);
             // 
-            // img_erro
-            // 
-            this.img_erro.BackgroundImage = global::Controle_de_Midias.Properties.Resources.x_vermelho;
-            this.img_erro.Location = new System.Drawing.Point(153, 256);
-            this.img_erro.Name = "img_erro";
-            this.img_erro.Size = new System.Drawing.Size(19, 19);
-            this.img_erro.TabIndex = 12;
-            // 
             // img_Sucesso
             // 
             this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
@@ -310,6 +326,10 @@
             this.img_Sucesso.Name = "img_Sucesso";
             this.img_Sucesso.Size = new System.Drawing.Size(23, 18);
             this.img_Sucesso.TabIndex = 11;
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
             // 
             // fm_Emprestimo
             // 
@@ -328,6 +348,7 @@
             this.Load += new System.EventHandler(this.fm_Emprestimo_Load);
             this.gr_AmigoE.ResumeLayout(false);
             this.gr_AmigoE.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,7 +374,6 @@
         private System.Windows.Forms.Label lb_EmailP;
         private System.Windows.Forms.Label lb_nomeP;
         private System.Windows.Forms.Label lb_TelP;
-        private System.Windows.Forms.Panel img_erro;
         private System.Windows.Forms.Panel img_Sucesso;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView lv_AmigosE;
@@ -363,5 +383,8 @@
         private System.Windows.Forms.ColumnHeader cl_Obs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_PesquisaParcial;
+        private System.Windows.Forms.Label lb_SelecioneUmaMidia;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

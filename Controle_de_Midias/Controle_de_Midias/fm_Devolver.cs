@@ -15,6 +15,7 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
+        public bool LvVazio = false;
         const string frm = "fm_Devolver";
         private int idAmigo;
         Amigo amigo = new Amigo();
@@ -77,6 +78,11 @@ namespace Controle_de_Midias
 
             if (lv_MidiasD.Items.Count == 0)
                 fm_Devolver_Load(null,e);
+            if (lv_AmigosD.Items.Count == 0)
+            {
+                LvVazio = true;
+                Close();
+            }
         }
 
         private void lv_AmigosD_MouseDoubleClick(object sender, MouseEventArgs e)

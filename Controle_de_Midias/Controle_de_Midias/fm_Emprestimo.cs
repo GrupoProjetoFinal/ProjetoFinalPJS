@@ -15,28 +15,44 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
-        const string verificador = "fm_Emprestimo";
+
+
+        public bool verificador = false;
+        const string formulario = "fm_Emprestimo";
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         List<string> DadosAmigos = new List<string>();
         List<string> DadosMidias;
 
-
         private void bt_Emprestar_Click(object sender, EventArgs e)
         {
-            DadosMidias = new List<string>();
+            //------------------------------------------------------------------------
 
-            foreach (ListViewItem Midia in lv_Midias.SelectedItems)
+            if(lv_Midias.SelectedItems.Count > 0)
             {
-                System.Media.SystemSounds.Asterisk.Play();
-                Midia.ForeColor = System.Drawing.Color.ForestGreen;
-                for (int i = 0; i < 9; ++i)
-                    DadosMidias.Add(Midia.SubItems[i].Text);
-            }
-            GBD.AbrirConexao();
+                DadosMidias = new List<string>();
 
-            GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, verificador);
-  
-            GBD.FecharConexao();
+                foreach (ListViewItem Midia in lv_Midias.SelectedItems)
+                {
+                    for (int i = 0; i < 9; ++i)
+                        DadosMidias.Add(Midia.SubItems[i].Text);
+
+                    System.Media.SystemSounds.Asterisk.Play();
+                    Midia.ForeColor = System.Drawing.Color.ForestGreen;
+                    verificador = true;
+                }
+                GBD.AbrirConexao();
+                GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, formulario);
+                GBD.FecharConexao();
+            }
+            else
+            {
+                lb_SelecioneUmaMidia.Visible = true;
+                lb_SelecioneUmaMidia.ForeColor = Color.Red;
+                System.Media.SystemSounds.Hand.Play();
+                errorP.SetError(lb_SelecioneUmaMidia,"Pelo menos uma midia tem que ser selecionada.");
+            }
+            //---------------------------------------------------------------------------
+            
         }
 
         private void bt_CancelarE_Click(object sender, EventArgs e)
@@ -58,7 +74,7 @@ namespace Controle_de_Midias
             GBD.AbrirConexao();
             GBD.PreecherLvAmigos(lv_AmigosE, "fm_Principal");
         
-            GBD.PreencherLvMidias(lv_Midias, 0);
+            GBD.PreencherLvMidias(lv_Midias);
 
             GBD.FecharConexao();
 
@@ -136,5 +152,13 @@ namespace Controle_de_Midias
             //qtd_AnteriorCaracter = tb_PesquisaParcial.Text.Count();
            
         }
+
+        //-----------------------------------------------------------------------------
+        private void lv_Midias_MouseClick(object sender, MouseEventArgs e)
+        {
+            lb_SelecioneUmaMidia.ForeColor = Color.Black;
+            lb_SelecioneUmaMidia.Visible = false;
+        }
+        //-----------------------------------------------------------------------------
     }
 }

@@ -29,10 +29,6 @@ namespace Controle_de_Midias
             {
                 conexao.Open();
 
-                //string codigo = "insert into Amigos(Nome,Telefone,Email,Observacao) values('Diego germano','diegjndkfvkvn','1236643832','nao temmmm')";
-                //cmd = new SqlCommand(codigo,conexao);
-                //cmd.ExecuteNonQuery();
-
                 return true;
             }
             catch (Exception)
@@ -151,6 +147,19 @@ namespace Controle_de_Midias
         #region Métodos de preenchimento
         //----------------------------------------------------------------------------------------------
 
+
+
+        // EM TESTE O LISTVIEW DO EMPRESTIMO CHAMA ESSE MÉTODO PARA PREENCHE-LO SOMENTE COM AS MIDIAS QUE ESTÃO DISPONIVEL OU SEJA QUE NAO ESTEJAM EMPRESTADAS
+        // DEVE SER ARRUMAR O SELECT PARA RETORNAR ESSA CONSULTA PODENDO ASSIM O USUARIO EMPRESTAR SOMENTE AS DISPONIVEIS.................
+        public void PreencherLvMidias(ListView lv_Midias)
+        {
+            //cmdSQL = "SELECT Midias.Nome_Album, Midias.Nome_Interprete, Midias.Origem_Compra,  Midias.Nome_Autor, Midias.Nome_Musica, Midias.Observacao, Midias.Nota, Midias.Data_Album, Midias.Data_Compra,Midias.Tipo_Midia FROM Emprestimos  INNER JOIN Midias ON Emprestimos.Id_Midia = Midias.Id_Midia WHERE Emprestimos.Id_Midia <> Midias.Id_Midia";
+            //cmdSQL = "SELECT Midias.Nome_Album, Midias.Nome_Interprete, Midias.Origem_Compra,  Midias.Nome_Autor, Midias.Nome_Musica, Midias.Observacao, Midias.Nota, Midias.Data_Album, Midias.Data_Compra,Midias.Tipo_Midia FROM Emprestimos  INNER JOIN Midias ON Emprestimos.Id_Midia = Midias.Id_Midia";
+            cmdSQL = "SELECT * FROM Midias"; 
+            cmd = new SqlCommand(cmdSQL, conexao);
+            Leitor = cmd.ExecuteReader();
+            PreencherListView(lv_Midias, Leitor);
+        }
         public void PreencherLvMidias(ListView lv_Midias, int id_Amigo)
         {
             if (id_Amigo == 0)
@@ -293,36 +302,51 @@ namespace Controle_de_Midias
             return DadosAmigos;
         }
 
-        public void ProcurarMidia(ListView lv_Midias, Midia midia, DateTime dataCompraFIM, DateTime dataAlbumFIM)
+        public void ProcurarMidia(ListView lv_Midias, Midia midia, DateTime dataCompraFIM, DateTime dataAlbumFIM,string qualquerData)
         {
-            cmdSQL = "SELECT * FROM Midias " +
-                     "WHERE (@interprete = '' OR Nome_Interprete  LIKE('%@interprete%'))        AND" +
-                     "      (@musica     = '' OR Nome_Musica      LIKE('%@musica%'))            AND" +
-                     "      (@album      = '' OR Nome_Album       LIKE('%@album%'))             AND" +
-                     "      (@autor      = '' OR Nome_Autor       LIKE('%@autor%'))             AND" +
-                     "      (@compra     = '' OR Origem_Compra    LIKE('%@compra%'))            AND" +
-                     "      (@observacao = '' OR Observacao       LIKE('%@observacao%'))        AND" +
-                     "      (@nota       = Nota)                                                AND" +
-                     "      (@tipo       = Tipo_Midia)                                          AND" +
-                     "      (Data_Album  >= @dataAlbumInicio AND Data_Album <= @dataAlbumFIM)   AND" +
-                     "      (Data_Compra >= @dataCompraInicio AND Data_Album <= @dataCompraFIM)     ";
+            //cmdSQL = "SELECT * FROM Midias " +
+            //         "WHERE (@interprete = 'null'  OR Nome_Interprete  LIKE('%@interprete%'))        AND" +
+            //         "      (@musica     = 'null'  OR Nome_Musica      LIKE('%@musica%'))            AND" +
+            //         "      (@album      = 'null'  OR Nome_Album       LIKE('%@album%'))             AND" +
+            //         "      (@autor      = 'null'  OR Nome_Autor       LIKE('%@autor%'))             AND" +
+            //         "      (@compra     = 'null'  OR Origem_Compra    LIKE('%@compra%'))            AND" +
+            //         "      (@observacao = 'null'  OR Observacao       LIKE('%@observacao%'))        AND" +
+            //         "      (@nota       = '-' OR @nota = Nota)                                  AND" +
+            //         "      (@tipo       = '11' OR @tipo = Tipo_Midia)                            AND" +
+            //         "      (Data_Album  >= @dataAlbumInicio AND Data_Album <= @dataAlbumFIM)    AND" +
+            //         "      (Data_Compra >= @dataCompraInicio AND Data_Album <= @dataCompraFIM)     ";
+
+
+            cmdSQL = "SELECT * FROM Midias  " +
+      "WHERE ('" + midia.interprete + "'       = ''  OR Nome_Interprete  LIKE('%" + midia.interprete + "%'))        AND" +
+      "('" + midia.musica + "'       = ''  OR Nome_Musica      LIKE('%" + midia.musica + "%'))            AND" +
+      "('" + midia.album + "'       = ''  OR Nome_Album       LIKE('%" + midia.album + "%'))             AND" +
+      "('" + midia.autor + "'      = ''  OR Nome_Autor        LIKE('%" + midia.autor + "%'))             AND" +
+      "('" + midia.compra + "'   = ''  OR Origem_Compra    LIKE('%" + midia.compra + "%'))            AND" +
+      "('" + midia.observacao + "'       = ''  OR Observacao       LIKE('%" + midia.observacao + "%'))        AND" +
+      "(@nota       = '0 - 10' OR @nota = Nota)                                  AND" +
+      "(@tipo       = '-1' OR @tipo = Tipo_Midia)                            AND" +
+      "(Data_Album  >= @dataAlbumInicio AND Data_Album <= @dataAlbumFIM)    AND" +
+      "(Data_Compra >= @dataCompraInicio AND Data_Album <= @dataCompraFIM)";     
+      
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
-            cmd.Parameters.Add(new SqlParameter("@interprete", midia.interprete));
-            cmd.Parameters.Add(new SqlParameter("@musica", midia.musica));
-            cmd.Parameters.Add(new SqlParameter("@album", midia.album));
-            cmd.Parameters.Add(new SqlParameter("@autor", midia.autor));
-            cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
+            //cmd.Parameters.Add(new SqlParameter("@interprete", midia.interprete));
+            //cmd.Parameters.Add(new SqlParameter("@musica", midia.musica));
+            //cmd.Parameters.Add(new SqlParameter("@album", midia.album));
+            //cmd.Parameters.Add(new SqlParameter("@autor", midia.autor));
+            //cmd.Parameters.Add(new SqlParameter("@compra", midia.compra));
             cmd.Parameters.Add(new SqlParameter("@tipo", midia.tipo));
             cmd.Parameters.Add(new SqlParameter("@nota", midia.nota));
-            cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
+            //cmd.Parameters.Add(new SqlParameter("@observacao", midia.observacao));
             cmd.Parameters.Add(new SqlParameter("@dataAlbumInicio", midia.dataAlbum));
             cmd.Parameters.Add(new SqlParameter("@dataAlbumFIM", dataAlbumFIM));
             cmd.Parameters.Add(new SqlParameter("@dataCompraInicio", midia.dataCompra));
             cmd.Parameters.Add(new SqlParameter("@dataCompraFIM", dataCompraFIM));
             Leitor = cmd.ExecuteReader();
 
+            lv_Midias.Items.Clear();
             PreencherListView(lv_Midias, Leitor);
         }
 
@@ -350,6 +374,7 @@ namespace Controle_de_Midias
         {
 
 
+
             int idMidia;
 
             // Comando para obter o indificador da midia
@@ -361,9 +386,7 @@ namespace Controle_de_Midias
                            "Nome_autor      = @Nome_autor        AND "+
                            "Nome_Musica     = @Nome_Musica       AND "+
                            "Observacao      = @Observacao        AND "+
-                           "Nota            = @Nota              ";//AND "+
-                           //"Data_Compra     = @Data_Compra       AND "+ 
-                           //"Data_Album      = @Data_Album";
+                           "Nota            = @Nota              ";
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
@@ -372,20 +395,16 @@ namespace Controle_de_Midias
             cmd.Parameters.Add(new SqlParameter("@Nome_Autor",      DadosMidias[2]));
             cmd.Parameters.Add(new SqlParameter("@Nome_Musica",     DadosMidias[3]));
             cmd.Parameters.Add(new SqlParameter("@Nota",            DadosMidias[4]));
-            //cmd.Parameters.Add(new SqlParameter("@Data_Album",      DadosMidias[6]));
-            //cmd.Parameters.Add(new SqlParameter("@Data_Compra",     DadosMidias[5]));
             cmd.Parameters.Add(new SqlParameter("@Origem_Compra",   DadosMidias[7]));
             cmd.Parameters.Add(new SqlParameter("@Observacao",      DadosMidias[8]));
-
-
-            // A duas execçoes uma de conversão de data e/ou hora e outra de não retornar nada no select verificar campos das Midias List DadosMidias parametros etc....
-
+            
             idMidia = (int)cmd.ExecuteScalar();
 
             // Armazana os indificadores de Amigos e Midias com a data atual da Maquina e a qtd de dias que sempre inicia com zero.
-
             if (Verificador == "fm_Emprestimo")
+            {
                 cmdSQL = "INSERT INTO Emprestimos VALUES ( @id_Midia,@id_Amigo,  GETDATE(),0)";
+            }
             else
                 cmdSQL = "DELETE FROM Emprestimos WHERE id_Amigo = @id_Amigo AND id_Midia = @id_Midia";
             cmd = new SqlCommand(cmdSQL, conexao);
@@ -393,8 +412,7 @@ namespace Controle_de_Midias
 
             cmd.Parameters.Add(new SqlParameter("@id_Midia", idMidia));
             cmd.Parameters.Add(new SqlParameter("@id_Amigo", idAmigo));
-            
-
+           
             cmd.ExecuteNonQuery();
             
         }
@@ -410,9 +428,17 @@ namespace Controle_de_Midias
 
         }
 
+
         public void MensagemDeErro()
         {
             MessageBox.Show("Não foi possivel se conectar com o banco de dados.", "Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public int ContadarRegistros()
+        {
+            cmdSQL = "SELECT COUNT(*) FROM Emprestimos";
+            cmd = new SqlCommand(cmdSQL,conexao);
+            return (int)cmd.ExecuteScalar();
         }
 
 
@@ -428,6 +454,8 @@ namespace Controle_de_Midias
                 return false;
             return true;
         }
+
+
         public void Configurar(int abilitarLogin)
         {
             
