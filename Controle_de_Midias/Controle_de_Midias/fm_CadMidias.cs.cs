@@ -29,7 +29,7 @@ namespace Controle_de_Midias
         
         private void bt_Salvar_Click(object sender, EventArgs e)
         {
-            if (tb_Album.Text != "" && cb_Tipomidia.SelectedIndex != 0)
+            if (tb_Album.Text != "")
             {
 
                 GBD.AbrirConexao();
@@ -62,7 +62,7 @@ namespace Controle_de_Midias
                 item.SubItems.Add(midia.musica);
                 item.SubItems.Add(midia.nota);
                 item.SubItems.Add(midia.dataCompra.ToShortDateString());
-                item.SubItems.Add(midia.dataAlbum.ToLongDateString());
+                item.SubItems.Add(midia.dataAlbum.ToShortDateString());
                 item.SubItems.Add(midia.compra);
                 item.SubItems.Add(midia.observacao);
 
