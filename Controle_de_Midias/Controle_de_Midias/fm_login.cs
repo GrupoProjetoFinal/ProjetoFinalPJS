@@ -21,21 +21,24 @@ namespace Controle_de_Midias
         MailMessage msg = new MailMessage();
         SmtpClient client = new SmtpClient();
 
+        //essa matriz armazena a senha e o email do banco de dados
+        private string[] senhaEmail = new string[2];
+        
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
+
+        //serve para verificar se o usuario digitou a senha correta ou não após o fechamento deste formulário
         public bool logado = true;
-        int contador = 0;
+
         public fm_login()
         {
             InitializeComponent();
+            
         }
 
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void VerificaSenha()
         {
-            ++contador;
-            if (contador == 6)
+            if (GBD.AbrirConexao())
             {
-                GBD.AbrirConexao();
 
                 if (GBD.VerificarSenha(tb_Senha.Text))
                 {
@@ -43,11 +46,19 @@ namespace Controle_de_Midias
                     Close();
                 }
                 else
-                    label2.Visible = true;
+                {
+                    tb_Senha.Clear();
+                    erroP.SetError(tb_Senha, "Senha Inválida");
+                    logado = false;
+                }
+                GBD.FecharConexao();
             }
+            else
+                GBD.MensagemDeErro();
+            
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void bt_EnviarEmail_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -57,6 +68,8 @@ namespace Controle_de_Midias
                 msg.IsBodyHtml = true;
                 smtp.EnableSsl = true;
 
+
+                // credenciais do usuario 
                 smtp.Credentials = new System.Net.NetworkCredential("collectors.medias@gmail.com", "projetoPJS");
 
                 smtp.Port = 587;
@@ -64,45 +77,78 @@ namespace Controle_de_Midias
 
                 smtp.Host = "smtp.gmail.com";
 
-                msg.From = new MailAddress("diego.germano.cj@gmail.com");
+                //quem enviara 
+                msg.From = new MailAddress("collectors.medias@gmail.com");
 
+                //pra quem sera enviado
                 msg.To.Add(tb_email.Text);
 
-                msg.Subject = "ESQUECEU DA SENHA ";
+                // Assunto da mesagem
+                msg.Subject = "Solicitação de Senha ! ";
 
-                msg.Body = "EXEMPLO DE SENHA";
+                //corpo da mensagem ou seja senha esquecida
+                msg.Body = senhaEmail[1];
                 
+                //enviar mensagem
                 smtp.Send(msg);
 
-                MessageBox.Show("Sua senha foi enviada para o seu email !!!!!", "SUCESSOOOOOO");
-
+                lb_Enviado.Visible = true;
+                lb_EmailIncorreto.Visible = false;
+                lb_ConectarInternet.Visible = false;
+                System.Media.SystemSounds.Asterisk.Play();
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                MessageBox.Show("EROORORORO", "EROROROOR");
+                if (err.Message == "Failure sending mail.")
+                {
+                    lb_ConectarInternet.Visible = true;
+                    lb_Enviado.Visible = false;
+                    lb_EmailIncorreto.Visible = false;
+                }
+                else
+                {
+                    lb_EmailIncorreto.Visible = true;
+                    lb_Enviado.Visible = false;
+                    lb_ConectarInternet.Visible = false;
+                }
+                System.Media.SystemSounds.Hand.Play();
             }
         }
 
         private void fm_login_Load(object sender, EventArgs e)
         {
+            tb_Senha.Select();
             pn_EnviaEmail.Visible = false;
             GBD.AbrirConexao();
-            tb_email.Text =  GBD.PegarEmail();
+            senhaEmail = GBD.PegarEmailSenha();
+            tb_email.Text = senhaEmail[0];
             GBD.FecharConexao();
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void esqueciSenha_Click(object sender, EventArgs e)
         {
+            erroP.Clear();
             pn_SolicitaSenha.Visible = false;
             pn_EnviaEmail.Visible = true;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void bt_Cancelar_Click(object sender, EventArgs e)
         {
             pn_SolicitaSenha.Visible = true;
             pn_EnviaEmail.Visible = false;
         }
 
+        private void fm_login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            VerificaSenha();
+        }
 
+        private void tb_Senha_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_Senha.Text.Count() == 6)
+                VerificaSenha();
+        }
+        
     }
 }

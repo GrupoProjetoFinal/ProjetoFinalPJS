@@ -15,7 +15,10 @@ namespace Controle_de_Midias
         {
             InitializeComponent();
         }
+
+        //caso LvVazio for verdadeiro o botão DEVOLVER no fm_principal sera desabilitado
         public bool LvVazio = false;
+        //essa constante é passada por paramentro para o método na classe GBD assim verifica qual ação deve ser tomada
         const string formulario = "fm_Devolver";
         private int idAmigo;
         Amigo amigo = new Amigo();
@@ -28,19 +31,17 @@ namespace Controle_de_Midias
             lv_MidiasD.Visible = false;
             gr_AmigoE.Visible = false;
 
-            //                                           VAI TER QUE ARRUMAR ISSO QUANDO EMPRESTA UMA MIDIA O COUNT DO LV_AMIGOS PODE SER > 1
-            //                                           ASSIM NAUM IRA ATUALIZA-LO
-            if (lv_AmigosD.Items.Count == 0)
+            if (GBD.AbrirConexao())
             {
-                GBD.AbrirConexao();
                 GBD.PreecherLvAmigos(lv_AmigosD, formulario);
                 GBD.FecharConexao();
+
+                //Maximiza listView
+                lv_AmigosD.Dock = System.Windows.Forms.DockStyle.Fill;
+                lv_AmigosD.SelectedItems.Clear();
             }
-            
-            //Maximiza listView
-            lv_AmigosD.Dock = System.Windows.Forms.DockStyle.Fill;
-            lv_MidiasD.Dock = System.Windows.Forms.DockStyle.Fill;
-            lv_AmigosD.SelectedItems.Clear();
+            else
+                GBD.MensagemDeErro();
         }
 
         private void bt_CancelarE_Click(object sender, EventArgs e)
@@ -51,7 +52,6 @@ namespace Controle_de_Midias
 
             //Maximiza listView
             lv_AmigosD.Dock = System.Windows.Forms.DockStyle.Fill;
-            lv_MidiasD.Dock = System.Windows.Forms.DockStyle.Fill;
             
         }
 
@@ -80,7 +80,10 @@ namespace Controle_de_Midias
 
 
             if (lv_MidiasD.Items.Count == 0)
-                fm_Devolver_Load(null,e);
+            {
+                lv_AmigosD.Items.Clear();
+                fm_Devolver_Load(null, null);
+            }
 
             if (lv_AmigosD.Items.Count == 0)
             {
@@ -89,6 +92,7 @@ namespace Controle_de_Midias
             }
         }
 
+        //Quando esse evento for disparado o Listview Midias e preenchido coma as Midias emprestadas pelo amigo selecionado.
         private void lv_AmigosD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //O listView Midias volta ao seu tamanho original a direita e fica visivel 
@@ -109,15 +113,15 @@ namespace Controle_de_Midias
                 amigo.observacao = item.SubItems[3].Text;
             }
 
-            GBD.AbrirConexao();
-            idAmigo = GBD.PegarIdentificadorAmigo(amigo);
-            lv_MidiasD.Items.Clear();
-            GBD.PreencherLvMidias(lv_MidiasD, idAmigo);
-            GBD.FecharConexao();
+            if (GBD.AbrirConexao())
+            {
+                idAmigo = GBD.PegarIdentificadorAmigo(amigo);
+                lv_MidiasD.Items.Clear();
+                GBD.PreencherLvMidias(lv_MidiasD, idAmigo);
+                GBD.FecharConexao();
+            }
+            else
+                GBD.MensagemDeErro();
         }
-
-    
-
-
     }
 }

@@ -12,12 +12,15 @@ namespace Controle_de_Midias
     public partial class fm_CadMidias : Form
     {
         ListView lvMidias;
+
+        //recebe o ListView do fm_principal por parâmetro assim ele é atualizado quando for adicionado uma nova mida.
+
         public fm_CadMidias(ListView fmMidiasLista)
         {
 
             InitializeComponent();
-        
-            //Recebe a referencia do listView vinda do fm_pricipal e passa para o listview lvMidias
+            
+            //lvMidias pega a referência do Listview do formulário principal;
             lvMidias = fmMidiasLista;
             cb_Nota.SelectedIndex = 0;
             cb_Tipomidia.SelectedIndex = 0;
@@ -26,7 +29,6 @@ namespace Controle_de_Midias
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         Midia midia = new Midia();
 
-        
         private void bt_Adicionar_Click(object sender, EventArgs e)
         {
 
@@ -35,23 +37,25 @@ namespace Controle_de_Midias
             if (tb_Album.Text != string.Empty)
             {
 
-                GBD.AbrirConexao();
+                if (GBD.AbrirConexao())
+                {
+                    // adiciona os atributos no objeto Midia
+                    midia.interprete = tb_Interprete.Text;
+                    midia.autor = tb_Autor.Text;
+                    midia.musica = tb_Nomemusica.Text;
+                    midia.album = tb_Album.Text;
+                    midia.dataAlbum = dtp_DataAlbum.Value;
+                    midia.dataCompra = dtp_DataCompra.Value;
+                    midia.compra = tb_Origemcompra.Text;
+                    midia.tipo = cb_Tipomidia.SelectedIndex;
+                    midia.observacao = rtb_Observacao.Text;
+                    midia.nota = cb_Nota.Text;
 
-                midia.interprete = tb_Interprete.Text;
-                midia.autor = tb_Autor.Text;
-                midia.musica = tb_Nomemusica.Text;
-                midia.album = tb_Album.Text;
-                midia.dataAlbum = dtp_DataAlbum.Value;
-                midia.dataCompra = dtp_DataCompra.Value;
-                midia.compra = tb_Origemcompra.Text;
-                midia.tipo = cb_Tipomidia.SelectedIndex;
-                midia.observacao = rtb_Observacao.Text;
-                midia.nota = cb_Nota.Text;
-
-                GBD.CadastroMidia(midia);
-
-
-                GBD.FecharConexao();
+                    GBD.CadastroMidia(midia);
+                    GBD.FecharConexao();
+                }
+                else
+                    GBD.MensagemDeErro();
 
 
                 //Adiciona a nova midia no ListView lvMidias.
@@ -83,25 +87,16 @@ namespace Controle_de_Midias
            
         }
 
-        private void fm_CadMidias_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void bt_Limpar_Click(object sender, EventArgs e)
         {
-            tb_Interprete.Text = "";
-            tb_Autor.Text = "";
-            tb_Album.Text = "";
-            tb_Nomemusica.Text = "";
-            tb_Origemcompra.Text = "";
+            tb_Interprete.Text = string.Empty;
+            tb_Autor.Text = string.Empty;
+            tb_Album.Text = string.Empty;
+            tb_Nomemusica.Text = string.Empty;
+            tb_Origemcompra.Text = string.Empty;
             cb_Nota.SelectedIndex = 0;
             cb_Tipomidia.SelectedIndex = 0;
-            rtb_Observacao.Text = "";
-        }
-
-     
-      
-       
+            rtb_Observacao.Text = string.Empty;
+        }       
     }
 }

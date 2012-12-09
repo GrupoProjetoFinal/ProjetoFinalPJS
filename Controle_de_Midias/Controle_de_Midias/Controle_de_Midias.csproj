@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amigo.cs" />
-    <Compile Include="Emprestimo.cs" />
     <Compile Include="fm_AlterarAmigo.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -17,7 +17,15 @@ namespace Controle_de_Midias
         }
 
         public bool verificador = false;
+
+        // caso lvAmigoVisivel for falso a pesquisa parcial sera feita no listview Midia
+        private bool lvAmigoVisivel = true;
+
+        //essa constante é passada por paramentro para o método na classe GBD assim verifica qual ação deve ser tomada
         const string formulario = "fm_Emprestimos";
+
+        int qtd_AnteriorCaracter = 0;
+
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         List<string> DadosAmigos = new List<string>();
         List<string> DadosMidias;
@@ -27,29 +35,36 @@ namespace Controle_de_Midias
         {
             foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
-                DadosMidias = new List<string>();
-                if (item.ForeColor == System.Drawing.Color.ForestGreen)
+                if (GBD.AbrirConexao())
                 {
-                    item.Remove();
-                    lb_MidiaEmprestada.Visible = true;
-                    return;
-                }
-               
-                for (int i = 0; i < 9; ++i)
-                    DadosMidias.Add(item.SubItems[i].Text);
+                    GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, formulario);
+                    GBD.FecharConexao();
 
-                System.Media.SystemSounds.Asterisk.Play();
-                item.ForeColor = System.Drawing.Color.ForestGreen;
-                verificador = true;
-                GBD.AbrirConexao();
-                GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, formulario);
-                GBD.FecharConexao();
-        
+                    DadosMidias = new List<string>();
+                    if (item.ForeColor == System.Drawing.Color.ForestGreen)
+                    {
+                        item.Remove();
+                        lb_MidiaEmprestada.Visible = true;
+                        return;
+                    }
+
+                    for (int i = 0; i < 9; ++i)
+                        DadosMidias.Add(item.SubItems[i].Text);
+
+                    System.Media.SystemSounds.Asterisk.Play();
+                    lb_MidiaEmprestada.Visible = false;
+                    lb_SelecioneMidia.Visible = false;
+                    item.ForeColor = System.Drawing.Color.ForestGreen;
+                    verificador = true;
+                }
+                else
+                    GBD.MensagemDeErro();
             }
            }
 
         private void bt_Voltar_Click(object sender, EventArgs e)
         {
+            // como a midia emprestada não esta masi disponivel ela é removida do listview
             foreach (ListViewItem item in lv_Midias.SelectedItems)
                 if (item.ForeColor == System.Drawing.Color.ForestGreen)
                     item.Remove();            
@@ -57,7 +72,10 @@ namespace Controle_de_Midias
             lv_AmigosE.Visible = true;
             lv_Midias.Visible = false;
             gr_AmigoE.Visible = false;
+            lvAmigoVisivel = true;
+            tb_PesquisaParcial.Text = string.Empty;
         }
+
         private void fm_Emprestimo_Load(object sender, EventArgs e)
         {
             gr_AmigoE.Visible = false;
@@ -67,24 +85,24 @@ namespace Controle_de_Midias
 
             DadosAmigos.Clear();
 
-            GBD.AbrirConexao();
-
-            GBD.PreecherLvAmigos(lv_AmigosE, formulario);
-            
-            GBD.PreencherLvMidias(lv_Midias,0);
-            GBD.VerificarMidiasEmprestadas(lv_Midias);
-        
-            GBD.FecharConexao();
-
+            if (GBD.AbrirConexao())
+            {
+                GBD.PreecherLvAmigos(lv_AmigosE, formulario);
+                GBD.PreencherLvMidias(lv_Midias, 0);
+                GBD.VerificarMidiasEmprestadas(lv_Midias);
+                GBD.FecharConexao();
+            }
+            else
+                GBD.MensagemDeErro();
         }
-
 
         private void lv_AmigosE_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            tb_PesquisaParcial.Text = string.Empty;
+            lvAmigoVisivel = false;
             DadosAmigos.Clear();
             
-            string nome= null, tel= null, email= null, obs= null;
+            string nome= string.Empty, tel= string.Empty, email= string.Empty, obs= string.Empty;
 
             foreach (ListViewItem item in lv_AmigosE.SelectedItems)
             {
@@ -96,9 +114,13 @@ namespace Controle_de_Midias
             lv_AmigosE.Visible = false;
             lv_Midias.Visible = true;
             gr_AmigoE.Visible = true;
-            GBD.AbrirConexao();
-            DadosAmigos = GBD.ProcurarAmigo(nome, tel, email, obs);
-            GBD.FecharConexao();
+            if (GBD.AbrirConexao())
+            {
+                DadosAmigos = GBD.ProcurarAmigo(nome, tel, email, obs);
+                GBD.FecharConexao();
+            }
+            else
+                GBD.MensagemDeErro();
 
             lb_nomeP.Text = DadosAmigos[0];
             lb_TelP.Text = DadosAmigos[1];
@@ -107,39 +129,12 @@ namespace Controle_de_Midias
              
         }
 
-        //perguntar ao Alvaro como declarar a varialvel dentro do método e ela iniciar com um valor somente no primeiro disparo
-        int qtd_AnteriorCaracter = 0;
-        List<ListViewItem> amigos = new List<ListViewItem>();
-
-        fm_Principal principal = new fm_Principal();
         private void tb_PesquisaParcial_TextChanged(object sender, EventArgs e)
         {
-
-
-        //    principal.PesquisaParcialAmigo(lv_AmigosE, sender.ToString(), qtd_AnteriorCaracter);
-        //    qtd_AnteriorCaracter = tb_PesquisaParcial.Text.Count();
-            //if (qtd_AnteriorCaracter > tb_PesquisaParcial.Text.Count())
-            //{
-            //    List<ListViewItem> lixeira = new List<ListViewItem>();
-            //    foreach (ListViewItem item in amigos)
-            //        if (item.Text.Contains(tb_PesquisaParcial.Text))
-            //        {
-            //            lv_AmigosE.Items.Add(item);
-            //            lixeira.Add(item);
-            //        }
-            //    foreach (ListViewItem item in lixeira)
-            //        amigos.Remove(item);
-            //}
-            //else
-            //    foreach (ListViewItem item in lv_AmigosE.Items)
-            //        if (!item.Text.Contains(tb_PesquisaParcial.Text))
-            //        {
-            //            amigos.Add(item);
-            //            item.Remove();
-            //        }
-
-            //qtd_AnteriorCaracter = tb_PesquisaParcial.Text.Count();
-           
+            if (lvAmigoVisivel)
+                qtd_AnteriorCaracter = GBD.PesquisaParcialAmigo(lv_AmigosE, tb_PesquisaParcial.Text, qtd_AnteriorCaracter);
+            else
+                qtd_AnteriorCaracter = GBD.PesquisaParcialMidia(lv_Midias, tb_PesquisaParcial.Text, qtd_AnteriorCaracter);
         }
 
       

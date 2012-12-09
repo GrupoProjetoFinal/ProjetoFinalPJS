@@ -19,6 +19,8 @@ namespace Controle_de_Midias
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         public Midia NovaMidia = new Midia();
         private int idMidia;
+
+        // São usadas para que no fm_principal saiba qual ação deve ser feita
         public bool alterar = false;
         public bool excluir = false;
 
@@ -36,31 +38,22 @@ namespace Controle_de_Midias
             rtb_altObservacao.Text = rescrever.observacao;
             cb_altTipomidia.SelectedIndex = rescrever.tipo;
 
-            GBD.AbrirConexao();
-            idMidia = GBD.PegaIdentificadorMidias(rescrever);
-            GBD.FecharConexao();
-        }
-
-        private void bt_Alterar_Click(object sender, EventArgs e)
-        {
             if (GBD.AbrirConexao())
             {
-                GBD.AlterarMidia(enviaParaObjeto());
+                idMidia = GBD.PegaIdentificadorMidias(rescrever);
                 GBD.FecharConexao();
-                alterar = true;
             }
             else
                 GBD.MensagemDeErro();
-
-            this.Close();
         }
+
 
         private void bt_Apagar_Click(object sender, EventArgs e)
         {
             //Verifica se a conecção foi aberta, se sim executa o comando SLQ no GerenciadorDeBanco.
             if (GBD.AbrirConexao())
             {
-                GBD.ExcluirMidia(enviaParaObjeto());
+                GBD.ExcluirMidia(InserirDados());
                 GBD.FecharConexao();
                 excluir = true;
             }
@@ -70,7 +63,7 @@ namespace Controle_de_Midias
             this.Close();
         }
 
-        private Midia enviaParaObjeto()
+        private Midia InserirDados()
         {
             NovaMidia.id = idMidia;
             NovaMidia.autor = tb_altAutor.Text;
@@ -84,8 +77,23 @@ namespace Controle_de_Midias
             NovaMidia.observacao = rtb_altObservacao.Text;
             NovaMidia.tipo = cb_altTipomidia.SelectedIndex;
 
-            // O conteúdo dos TextBox são passados para o objeto Amigo.
+            // O conteúdo dos TextBox são passados para o objeto NovaMidia.
             return NovaMidia;
+        }
+
+        private void bt_Alterar_Click_1(object sender, EventArgs e)
+        {
+
+            if (GBD.AbrirConexao())
+            {
+                GBD.AlterarMidia(InserirDados());
+                GBD.FecharConexao();
+                alterar = true;
+            }
+            else
+                GBD.MensagemDeErro();
+
+            this.Close();
         }
     }
 }

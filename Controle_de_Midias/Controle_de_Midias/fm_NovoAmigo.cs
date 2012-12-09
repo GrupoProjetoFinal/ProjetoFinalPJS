@@ -54,12 +54,10 @@ namespace Controle_de_Midias
                 item.SubItems.Add(novoAmigo.email);
                 item.SubItems.Add(novoAmigo.observacao);
                 System.Media.SystemSounds.Asterisk.Play();
-                
+
             }
             else
-            {
-                MessageBox.Show("Não foi possivel se conectar com o banco de dados.","Erro na conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                GBD.MensagemDeErro();
         }
         private void tb_Nome_Enter(object sender, EventArgs e)
         {
@@ -73,7 +71,6 @@ namespace Controle_de_Midias
             tb_Telefone.Clear();
             rtb_Observacao.Clear();
         }
-
     }
 }
 

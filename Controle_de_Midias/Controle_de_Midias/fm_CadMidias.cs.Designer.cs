@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gb_Midias = new System.Windows.Forms.GroupBox();
+            this.lb_InfoUsuario = new System.Windows.Forms.Label();
             this.lb_Observacao = new System.Windows.Forms.Label();
             this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
             this.bt_Limpar = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.tb_Interprete = new System.Windows.Forms.TextBox();
             this.lb_Autor = new System.Windows.Forms.Label();
             this.lb_Interprete = new System.Windows.Forms.Label();
-            this.lb_InfoUsuario = new System.Windows.Forms.Label();
             this.erroP = new System.Windows.Forms.ErrorProvider(this.components);
             this.gb_Midias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erroP)).BeginInit();
@@ -91,6 +91,17 @@
             this.gb_Midias.TabStop = false;
             this.gb_Midias.Text = "Midia";
             // 
+            // lb_InfoUsuario
+            // 
+            this.lb_InfoUsuario.AutoSize = true;
+            this.lb_InfoUsuario.ForeColor = System.Drawing.Color.Red;
+            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 284);
+            this.lb_InfoUsuario.Name = "lb_InfoUsuario";
+            this.lb_InfoUsuario.Size = new System.Drawing.Size(138, 13);
+            this.lb_InfoUsuario.TabIndex = 31;
+            this.lb_InfoUsuario.Text = "O campo <??> é obrigatório";
+            this.lb_InfoUsuario.Visible = false;
+            // 
             // lb_Observacao
             // 
             this.lb_Observacao.AutoSize = true;
@@ -105,7 +116,7 @@
             this.rtb_Observacao.Location = new System.Drawing.Point(9, 199);
             this.rtb_Observacao.Name = "rtb_Observacao";
             this.rtb_Observacao.Size = new System.Drawing.Size(289, 70);
-            this.rtb_Observacao.TabIndex = 29;
+            this.rtb_Observacao.TabIndex = 9;
             this.rtb_Observacao.Text = "";
             // 
             // bt_Limpar
@@ -113,7 +124,7 @@
             this.bt_Limpar.Location = new System.Drawing.Point(388, 246);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Limpar.TabIndex = 28;
+            this.bt_Limpar.TabIndex = 11;
             this.bt_Limpar.Text = "&Limpar";
             this.bt_Limpar.UseVisualStyleBackColor = true;
             this.bt_Limpar.Click += new System.EventHandler(this.bt_Limpar_Click);
@@ -123,7 +134,7 @@
             this.bt_Salvar.Location = new System.Drawing.Point(469, 246);
             this.bt_Salvar.Name = "bt_Salvar";
             this.bt_Salvar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Salvar.TabIndex = 26;
+            this.bt_Salvar.TabIndex = 10;
             this.bt_Salvar.Text = "&Adicionar";
             this.bt_Salvar.UseVisualStyleBackColor = true;
             this.bt_Salvar.Click += new System.EventHandler(this.bt_Adicionar_Click);
@@ -156,7 +167,7 @@
             this.cb_Nota.Location = new System.Drawing.Point(197, 153);
             this.cb_Nota.Name = "cb_Nota";
             this.cb_Nota.Size = new System.Drawing.Size(82, 21);
-            this.cb_Nota.TabIndex = 24;
+            this.cb_Nota.TabIndex = 8;
             // 
             // lb_Origemcompra
             // 
@@ -172,7 +183,7 @@
             this.tb_Origemcompra.Location = new System.Drawing.Point(9, 115);
             this.tb_Origemcompra.Name = "tb_Origemcompra";
             this.tb_Origemcompra.Size = new System.Drawing.Size(321, 20);
-            this.tb_Origemcompra.TabIndex = 22;
+            this.tb_Origemcompra.TabIndex = 4;
             // 
             // dtp_DataAlbum
             // 
@@ -180,7 +191,7 @@
             this.dtp_DataAlbum.Location = new System.Drawing.Point(443, 115);
             this.dtp_DataAlbum.Name = "dtp_DataAlbum";
             this.dtp_DataAlbum.Size = new System.Drawing.Size(101, 20);
-            this.dtp_DataAlbum.TabIndex = 21;
+            this.dtp_DataAlbum.TabIndex = 6;
             // 
             // lb_Dataalbum
             // 
@@ -204,7 +215,7 @@
             this.cb_Tipomidia.Location = new System.Drawing.Point(9, 153);
             this.cb_Tipomidia.Name = "cb_Tipomidia";
             this.cb_Tipomidia.Size = new System.Drawing.Size(182, 21);
-            this.cb_Tipomidia.TabIndex = 19;
+            this.cb_Tipomidia.TabIndex = 7;
             // 
             // lb_Tipomidia
             // 
@@ -230,21 +241,21 @@
             this.dtp_DataCompra.Location = new System.Drawing.Point(336, 115);
             this.dtp_DataCompra.Name = "dtp_DataCompra";
             this.dtp_DataCompra.Size = new System.Drawing.Size(99, 20);
-            this.dtp_DataCompra.TabIndex = 16;
+            this.dtp_DataCompra.TabIndex = 5;
             // 
             // tb_Nomemusica
             // 
             this.tb_Nomemusica.Location = new System.Drawing.Point(230, 75);
             this.tb_Nomemusica.Name = "tb_Nomemusica";
             this.tb_Nomemusica.Size = new System.Drawing.Size(314, 20);
-            this.tb_Nomemusica.TabIndex = 15;
+            this.tb_Nomemusica.TabIndex = 3;
             // 
             // tb_Album
             // 
             this.tb_Album.Location = new System.Drawing.Point(10, 75);
             this.tb_Album.Name = "tb_Album";
             this.tb_Album.Size = new System.Drawing.Size(214, 20);
-            this.tb_Album.TabIndex = 14;
+            this.tb_Album.TabIndex = 2;
             // 
             // label1
             // 
@@ -269,14 +280,15 @@
             this.tb_Autor.Location = new System.Drawing.Point(279, 37);
             this.tb_Autor.Name = "tb_Autor";
             this.tb_Autor.Size = new System.Drawing.Size(265, 20);
-            this.tb_Autor.TabIndex = 11;
+            this.tb_Autor.TabIndex = 1;
+            
             // 
             // tb_Interprete
             // 
             this.tb_Interprete.Location = new System.Drawing.Point(10, 37);
             this.tb_Interprete.Name = "tb_Interprete";
             this.tb_Interprete.Size = new System.Drawing.Size(263, 20);
-            this.tb_Interprete.TabIndex = 9;
+            this.tb_Interprete.TabIndex = 0;
             // 
             // lb_Autor
             // 
@@ -296,17 +308,6 @@
             this.lb_Interprete.TabIndex = 0;
             this.lb_Interprete.Text = "Intérprete";
             // 
-            // lb_InfoUsuario
-            // 
-            this.lb_InfoUsuario.AutoSize = true;
-            this.lb_InfoUsuario.ForeColor = System.Drawing.Color.Red;
-            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 284);
-            this.lb_InfoUsuario.Name = "lb_InfoUsuario";
-            this.lb_InfoUsuario.Size = new System.Drawing.Size(138, 13);
-            this.lb_InfoUsuario.TabIndex = 31;
-            this.lb_InfoUsuario.Text = "O campo <??> é obrigatório";
-            this.lb_InfoUsuario.Visible = false;
-            // 
             // erroP
             // 
             this.erroP.ContainerControl = this;
@@ -315,11 +316,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 318);
+            this.ClientSize = new System.Drawing.Size(575, 323);
             this.Controls.Add(this.gb_Midias);
             this.Name = "fm_CadMidias";
             this.Text = "Nova mídia";
-            this.Load += new System.EventHandler(this.fm_CadMidias_Load);
             this.gb_Midias.ResumeLayout(false);
             this.gb_Midias.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erroP)).EndInit();

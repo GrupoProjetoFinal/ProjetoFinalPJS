@@ -24,7 +24,6 @@ namespace Controle_de_Midias
             cb_Nota.SelectedIndex = 0;
             cb_Tipomidia.SelectedIndex = 0;
             ckb_QualquerData.Checked = true;
-
         }
 
         private void bt_Salvar_Click(object sender, EventArgs e)
@@ -52,9 +51,13 @@ namespace Controle_de_Midias
             midia.dataCompra = dtp_DataCompra_DE.Value;
             midia.compra = tb_Origemcompra.Text;
             midia.observacao = rtb_Observacao.Text;
-            GBD.AbrirConexao();
-            GBD.ProcurarMidia(lv_MidiasP,midia,dataCompraFIM,dataAlbumFIM,qualquerData);
-            GBD.FecharConexao();
+            if (GBD.AbrirConexao())
+            {
+                GBD.ProcurarMidia(lv_MidiasP, midia, dataCompraFIM, dataAlbumFIM, qualquerData);
+                GBD.FecharConexao();
+            }
+            else
+                GBD.MensagemDeErro();
 
         }
 

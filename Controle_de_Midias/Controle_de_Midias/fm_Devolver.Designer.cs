@@ -124,7 +124,7 @@
             this.bt_CancelarE.Location = new System.Drawing.Point(43, 225);
             this.bt_CancelarE.Name = "bt_CancelarE";
             this.bt_CancelarE.Size = new System.Drawing.Size(75, 23);
-            this.bt_CancelarE.TabIndex = 12;
+            this.bt_CancelarE.TabIndex = 0;
             this.bt_CancelarE.Text = "&Voltar";
             this.bt_CancelarE.UseVisualStyleBackColor = true;
             this.bt_CancelarE.Click += new System.EventHandler(this.bt_CancelarE_Click);
@@ -143,7 +143,7 @@
             this.bt_Devolver.Location = new System.Drawing.Point(124, 225);
             this.bt_Devolver.Name = "bt_Devolver";
             this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
-            this.bt_Devolver.TabIndex = 10;
+            this.bt_Devolver.TabIndex = 1;
             this.bt_Devolver.Text = "&Devolver";
             this.bt_Devolver.UseVisualStyleBackColor = true;
             this.bt_Devolver.Click += new System.EventHandler(this.bt_Devolver_Click);
@@ -186,6 +186,7 @@
             this.cl_DataCompra,
             this.cl_Origem,
             this.cl_Observacao});
+            this.lv_MidiasD.FullRowSelect = true;
             listViewGroup1.Header = "Vinil";
             listViewGroup1.Name = "Gp_Vinil";
             listViewGroup2.Header = "K7";

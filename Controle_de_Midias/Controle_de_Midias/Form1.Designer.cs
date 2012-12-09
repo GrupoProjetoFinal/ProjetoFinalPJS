@@ -35,7 +35,7 @@
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bt_Alterar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_Configurar = new System.Windows.Forms.Button();
             this.bt_Devolver = new System.Windows.Forms.Button();
             this.bt_Emprestar = new System.Windows.Forms.Button();
             this.bt_Pesquisa = new System.Windows.Forms.Button();
@@ -72,7 +72,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.bt_Alterar);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.bt_Configurar);
             this.groupBox1.Controls.Add(this.bt_Devolver);
             this.groupBox1.Controls.Add(this.bt_Emprestar);
             this.groupBox1.Controls.Add(this.bt_Pesquisa);
@@ -91,20 +91,20 @@
             this.bt_Alterar.Location = new System.Drawing.Point(3, 217);
             this.bt_Alterar.Name = "bt_Alterar";
             this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Alterar.TabIndex = 6;
+            this.bt_Alterar.TabIndex = 5;
             this.bt_Alterar.Text = "&Alterar";
             this.bt_Alterar.UseVisualStyleBackColor = true;
             this.bt_Alterar.Click += new System.EventHandler(this.bt_Alterar_Click);
             // 
-            // button1
+            // bt_Configurar
             // 
-            this.button1.Location = new System.Drawing.Point(4, 256);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "&Configurar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bt_Configurar.Location = new System.Drawing.Point(4, 256);
+            this.bt_Configurar.Name = "bt_Configurar";
+            this.bt_Configurar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Configurar.TabIndex = 6;
+            this.bt_Configurar.Text = "&Configurar";
+            this.bt_Configurar.UseVisualStyleBackColor = true;
+            this.bt_Configurar.Click += new System.EventHandler(this.bt_Configrar_Click);
             // 
             // bt_Devolver
             // 
@@ -210,15 +210,15 @@
             this.lv_Midias.FullRowSelect = true;
             this.lv_Midias.GridLines = true;
             listViewGroup1.Header = "Vinil";
-            listViewGroup1.Name = "Vinil";
+            listViewGroup1.Name = "VINIL";
             listViewGroup2.Header = "K7";
             listViewGroup2.Name = "K7";
             listViewGroup3.Header = "CD";
             listViewGroup3.Name = "CD";
             listViewGroup4.Header = "DVD";
-            listViewGroup4.Name = "CD";
+            listViewGroup4.Name = "DVD";
             listViewGroup5.Header = "Digital";
-            listViewGroup5.Name = "Digital";
+            listViewGroup5.Name = "DIGITAL";
             this.lv_Midias.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
@@ -403,7 +403,7 @@
         private System.Windows.Forms.TextBox tb_PesquisaParcialM;
         private System.Windows.Forms.Panel img_Sucesso;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_Configurar;
         private System.Windows.Forms.Button bt_Alterar;
 
     }

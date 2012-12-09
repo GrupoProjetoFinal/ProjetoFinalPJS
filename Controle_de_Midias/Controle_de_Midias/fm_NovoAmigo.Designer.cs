@@ -77,7 +77,7 @@
             this.tb_Email.Location = new System.Drawing.Point(6, 76);
             this.tb_Email.Name = "tb_Email";
             this.tb_Email.Size = new System.Drawing.Size(330, 20);
-            this.tb_Email.TabIndex = 5;
+            this.tb_Email.TabIndex = 2;
             // 
             // lb_email
             // 
@@ -102,7 +102,7 @@
             this.rtb_Observacao.Location = new System.Drawing.Point(6, 160);
             this.rtb_Observacao.Name = "rtb_Observacao";
             this.rtb_Observacao.Size = new System.Drawing.Size(207, 71);
-            this.rtb_Observacao.TabIndex = 8;
+            this.rtb_Observacao.TabIndex = 4;
             this.rtb_Observacao.Text = "";
             // 
             // gb_menu
@@ -141,7 +141,7 @@
             this.bt_Limpar.Location = new System.Drawing.Point(174, 261);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Limpar.TabIndex = 10;
+            this.bt_Limpar.TabIndex = 6;
             this.bt_Limpar.Text = "&Limpar";
             this.bt_Limpar.UseVisualStyleBackColor = true;
             this.bt_Limpar.Click += new System.EventHandler(this.bt_Limpar_Click);
@@ -151,7 +151,7 @@
             this.bt_Adicionar.Location = new System.Drawing.Point(255, 261);
             this.bt_Adicionar.Name = "bt_Adicionar";
             this.bt_Adicionar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Adicionar.TabIndex = 0;
+            this.bt_Adicionar.TabIndex = 5;
             this.bt_Adicionar.Text = "&Adiconar";
             this.bt_Adicionar.UseVisualStyleBackColor = true;
             this.bt_Adicionar.Click += new System.EventHandler(this.bt_Adicionar_Click);
@@ -162,7 +162,7 @@
             this.tb_Telefone.Mask = "(00) - 0000-0000";
             this.tb_Telefone.Name = "tb_Telefone";
             this.tb_Telefone.Size = new System.Drawing.Size(100, 20);
-            this.tb_Telefone.TabIndex = 9;
+            this.tb_Telefone.TabIndex = 3;
             // 
             // Erro
             // 
@@ -172,11 +172,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 329);
+            this.ClientSize = new System.Drawing.Size(370, 337);
             this.Controls.Add(this.gb_menu);
             this.Name = "fm_NovoAmigo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo Amigo";
+            
             this.gb_menu.ResumeLayout(false);
             this.gb_menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Erro)).EndInit();
