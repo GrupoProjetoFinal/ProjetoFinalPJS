@@ -33,12 +33,15 @@
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_Devolver));
             this.lv_AmigosD = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gr_AmigoE = new System.Windows.Forms.GroupBox();
+            this.pb_Amigo = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lb_ObsD = new System.Windows.Forms.Label();
             this.bt_CancelarE = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,6 +60,7 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gr_AmigoE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Amigo)).BeginInit();
             this.SuspendLayout();
             // 
             // lv_AmigosD
@@ -97,6 +101,8 @@
             // 
             // gr_AmigoE
             // 
+            this.gr_AmigoE.Controls.Add(this.pb_Amigo);
+            this.gr_AmigoE.Controls.Add(this.panel2);
             this.gr_AmigoE.Controls.Add(this.lb_ObsD);
             this.gr_AmigoE.Controls.Add(this.bt_CancelarE);
             this.gr_AmigoE.Controls.Add(this.label5);
@@ -106,22 +112,39 @@
             this.gr_AmigoE.Controls.Add(this.lb_TelD);
             this.gr_AmigoE.Location = new System.Drawing.Point(2, 0);
             this.gr_AmigoE.Name = "gr_AmigoE";
-            this.gr_AmigoE.Size = new System.Drawing.Size(203, 323);
+            this.gr_AmigoE.Size = new System.Drawing.Size(203, 373);
             this.gr_AmigoE.TabIndex = 11;
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
             // 
+            // pb_Amigo
+            // 
+            this.pb_Amigo.Location = new System.Drawing.Point(74, 12);
+            this.pb_Amigo.Name = "pb_Amigo";
+            this.pb_Amigo.Size = new System.Drawing.Size(123, 131);
+            this.pb_Amigo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Amigo.TabIndex = 21;
+            this.pb_Amigo.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
+            this.panel2.Location = new System.Drawing.Point(6, 328);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(33, 37);
+            this.panel2.TabIndex = 20;
+            // 
             // lb_ObsD
             // 
             this.lb_ObsD.AutoSize = true;
-            this.lb_ObsD.Location = new System.Drawing.Point(8, 144);
+            this.lb_ObsD.Location = new System.Drawing.Point(8, 198);
             this.lb_ObsD.Name = "lb_ObsD";
             this.lb_ObsD.Size = new System.Drawing.Size(0, 13);
             this.lb_ObsD.TabIndex = 13;
             // 
             // bt_CancelarE
             // 
-            this.bt_CancelarE.Location = new System.Drawing.Point(43, 225);
+            this.bt_CancelarE.Location = new System.Drawing.Point(43, 287);
             this.bt_CancelarE.Name = "bt_CancelarE";
             this.bt_CancelarE.Size = new System.Drawing.Size(75, 23);
             this.bt_CancelarE.TabIndex = 0;
@@ -132,7 +155,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 121);
+            this.label5.Location = new System.Drawing.Point(6, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 11;
@@ -140,7 +163,7 @@
             // 
             // bt_Devolver
             // 
-            this.bt_Devolver.Location = new System.Drawing.Point(124, 225);
+            this.bt_Devolver.Location = new System.Drawing.Point(124, 287);
             this.bt_Devolver.Name = "bt_Devolver";
             this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
             this.bt_Devolver.TabIndex = 1;
@@ -151,7 +174,7 @@
             // lb_EmailD
             // 
             this.lb_EmailD.AutoSize = true;
-            this.lb_EmailD.Location = new System.Drawing.Point(6, 65);
+            this.lb_EmailD.Location = new System.Drawing.Point(6, 185);
             this.lb_EmailD.Name = "lb_EmailD";
             this.lb_EmailD.Size = new System.Drawing.Size(87, 13);
             this.lb_EmailD.TabIndex = 6;
@@ -160,7 +183,7 @@
             // lb_nomeD
             // 
             this.lb_nomeD.AutoSize = true;
-            this.lb_nomeD.Location = new System.Drawing.Point(6, 42);
+            this.lb_nomeD.Location = new System.Drawing.Point(8, 151);
             this.lb_nomeD.Name = "lb_nomeD";
             this.lb_nomeD.Size = new System.Drawing.Size(0, 13);
             this.lb_nomeD.TabIndex = 3;
@@ -168,7 +191,7 @@
             // lb_TelD
             // 
             this.lb_TelD.AutoSize = true;
-            this.lb_TelD.Location = new System.Drawing.Point(6, 88);
+            this.lb_TelD.Location = new System.Drawing.Point(6, 208);
             this.lb_TelD.Name = "lb_TelD";
             this.lb_TelD.Size = new System.Drawing.Size(101, 13);
             this.lb_TelD.TabIndex = 8;
@@ -205,7 +228,7 @@
             listViewGroup5});
             this.lv_MidiasD.Location = new System.Drawing.Point(207, 0);
             this.lv_MidiasD.Name = "lv_MidiasD";
-            this.lv_MidiasD.Size = new System.Drawing.Size(526, 323);
+            this.lv_MidiasD.Size = new System.Drawing.Size(526, 373);
             this.lv_MidiasD.TabIndex = 12;
             this.lv_MidiasD.UseCompatibleStateImageBehavior = false;
             this.lv_MidiasD.View = System.Windows.Forms.View.Details;
@@ -265,16 +288,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 325);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(731, 372);
             this.Controls.Add(this.lv_MidiasD);
             this.Controls.Add(this.gr_AmigoE);
             this.Controls.Add(this.lv_AmigosD);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fm_Devolver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fm_Devolver";
             this.Load += new System.EventHandler(this.fm_Devolver_Load);
             this.gr_AmigoE.ResumeLayout(false);
             this.gr_AmigoE.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Amigo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,5 +330,7 @@
         private System.Windows.Forms.ColumnHeader cl_DataCompra;
         private System.Windows.Forms.ColumnHeader cl_Origem;
         private System.Windows.Forms.ColumnHeader cl_Observacao;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pb_Amigo;
     }
 }

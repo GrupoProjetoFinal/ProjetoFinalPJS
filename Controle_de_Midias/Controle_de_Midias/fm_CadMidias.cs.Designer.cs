@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_CadMidias));
             this.gb_Midias = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lb_InfoUsuario = new System.Windows.Forms.Label();
             this.lb_Observacao = new System.Windows.Forms.Label();
             this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
@@ -54,6 +56,7 @@
             this.lb_Autor = new System.Windows.Forms.Label();
             this.lb_Interprete = new System.Windows.Forms.Label();
             this.erroP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.menuOption1 = new CircularMenu.MenuOption();
             this.gb_Midias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erroP)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +64,11 @@
             // gb_Midias
             // 
             this.gb_Midias.BackColor = System.Drawing.Color.Transparent;
+            this.gb_Midias.Controls.Add(this.panel2);
+            this.gb_Midias.Controls.Add(this.tb_Autor);
+            this.gb_Midias.Controls.Add(this.lb_Autor);
+            this.gb_Midias.Controls.Add(this.tb_Album);
+            this.gb_Midias.Controls.Add(this.lb_Album);
             this.gb_Midias.Controls.Add(this.lb_InfoUsuario);
             this.gb_Midias.Controls.Add(this.lb_Observacao);
             this.gb_Midias.Controls.Add(this.rtb_Observacao);
@@ -77,25 +85,29 @@
             this.gb_Midias.Controls.Add(this.lb_Datacompra);
             this.gb_Midias.Controls.Add(this.dtp_DataCompra);
             this.gb_Midias.Controls.Add(this.tb_Nomemusica);
-            this.gb_Midias.Controls.Add(this.tb_Album);
             this.gb_Midias.Controls.Add(this.label1);
-            this.gb_Midias.Controls.Add(this.lb_Album);
-            this.gb_Midias.Controls.Add(this.tb_Autor);
             this.gb_Midias.Controls.Add(this.tb_Interprete);
-            this.gb_Midias.Controls.Add(this.lb_Autor);
             this.gb_Midias.Controls.Add(this.lb_Interprete);
-            this.gb_Midias.Location = new System.Drawing.Point(12, 12);
+            this.gb_Midias.Location = new System.Drawing.Point(4, 6);
             this.gb_Midias.Name = "gb_Midias";
-            this.gb_Midias.Size = new System.Drawing.Size(558, 303);
+            this.gb_Midias.Size = new System.Drawing.Size(566, 328);
             this.gb_Midias.TabIndex = 3;
             this.gb_Midias.TabStop = false;
             this.gb_Midias.Text = "Midia";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
+            this.panel2.Location = new System.Drawing.Point(6, 279);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(33, 37);
+            this.panel2.TabIndex = 32;
             // 
             // lb_InfoUsuario
             // 
             this.lb_InfoUsuario.AutoSize = true;
             this.lb_InfoUsuario.ForeColor = System.Drawing.Color.Red;
-            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 284);
+            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 303);
             this.lb_InfoUsuario.Name = "lb_InfoUsuario";
             this.lb_InfoUsuario.Size = new System.Drawing.Size(138, 13);
             this.lb_InfoUsuario.TabIndex = 31;
@@ -121,7 +133,7 @@
             // 
             // bt_Limpar
             // 
-            this.bt_Limpar.Location = new System.Drawing.Point(388, 246);
+            this.bt_Limpar.Location = new System.Drawing.Point(396, 268);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
             this.bt_Limpar.TabIndex = 11;
@@ -131,7 +143,7 @@
             // 
             // bt_Salvar
             // 
-            this.bt_Salvar.Location = new System.Drawing.Point(469, 246);
+            this.bt_Salvar.Location = new System.Drawing.Point(477, 268);
             this.bt_Salvar.Name = "bt_Salvar";
             this.bt_Salvar.Size = new System.Drawing.Size(75, 23);
             this.bt_Salvar.TabIndex = 10;
@@ -245,14 +257,14 @@
             // 
             // tb_Nomemusica
             // 
-            this.tb_Nomemusica.Location = new System.Drawing.Point(230, 75);
+            this.tb_Nomemusica.Location = new System.Drawing.Point(10, 75);
             this.tb_Nomemusica.Name = "tb_Nomemusica";
-            this.tb_Nomemusica.Size = new System.Drawing.Size(314, 20);
+            this.tb_Nomemusica.Size = new System.Drawing.Size(269, 20);
             this.tb_Nomemusica.TabIndex = 3;
             // 
             // tb_Album
             // 
-            this.tb_Album.Location = new System.Drawing.Point(10, 75);
+            this.tb_Album.Location = new System.Drawing.Point(10, 36);
             this.tb_Album.Name = "tb_Album";
             this.tb_Album.Size = new System.Drawing.Size(214, 20);
             this.tb_Album.TabIndex = 2;
@@ -260,7 +272,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(227, 59);
+            this.label1.Location = new System.Drawing.Point(7, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 13;
@@ -269,7 +281,7 @@
             // lb_Album
             // 
             this.lb_Album.AutoSize = true;
-            this.lb_Album.Location = new System.Drawing.Point(7, 58);
+            this.lb_Album.Location = new System.Drawing.Point(7, 19);
             this.lb_Album.Name = "lb_Album";
             this.lb_Album.Size = new System.Drawing.Size(36, 13);
             this.lb_Album.TabIndex = 12;
@@ -277,23 +289,22 @@
             // 
             // tb_Autor
             // 
-            this.tb_Autor.Location = new System.Drawing.Point(279, 37);
+            this.tb_Autor.Location = new System.Drawing.Point(285, 75);
             this.tb_Autor.Name = "tb_Autor";
-            this.tb_Autor.Size = new System.Drawing.Size(265, 20);
+            this.tb_Autor.Size = new System.Drawing.Size(259, 20);
             this.tb_Autor.TabIndex = 1;
-            
             // 
             // tb_Interprete
             // 
-            this.tb_Interprete.Location = new System.Drawing.Point(10, 37);
+            this.tb_Interprete.Location = new System.Drawing.Point(230, 36);
             this.tb_Interprete.Name = "tb_Interprete";
-            this.tb_Interprete.Size = new System.Drawing.Size(263, 20);
+            this.tb_Interprete.Size = new System.Drawing.Size(314, 20);
             this.tb_Interprete.TabIndex = 0;
             // 
             // lb_Autor
             // 
             this.lb_Autor.AutoSize = true;
-            this.lb_Autor.Location = new System.Drawing.Point(276, 21);
+            this.lb_Autor.Location = new System.Drawing.Point(282, 59);
             this.lb_Autor.Name = "lb_Autor";
             this.lb_Autor.Size = new System.Drawing.Size(32, 13);
             this.lb_Autor.TabIndex = 1;
@@ -302,7 +313,7 @@
             // lb_Interprete
             // 
             this.lb_Interprete.AutoSize = true;
-            this.lb_Interprete.Location = new System.Drawing.Point(7, 20);
+            this.lb_Interprete.Location = new System.Drawing.Point(227, 19);
             this.lb_Interprete.Name = "lb_Interprete";
             this.lb_Interprete.Size = new System.Drawing.Size(52, 13);
             this.lb_Interprete.TabIndex = 0;
@@ -312,13 +323,31 @@
             // 
             this.erroP.ContainerControl = this;
             // 
+            // menuOption1
+            // 
+            this.menuOption1.DisabledImage.DropShadow.ShadowColor = System.Drawing.Color.Black;
+            this.menuOption1.DisabledImage.Image = ((System.Drawing.Bitmap)(resources.GetObject("resource.Image")));
+            this.menuOption1.DisabledImage.TransparencyKey = System.Drawing.Color.White;
+            this.menuOption1.HoverImage.DropShadow.ShadowColor = System.Drawing.Color.Black;
+            this.menuOption1.HoverImage.Image = ((System.Drawing.Bitmap)(resources.GetObject("resource.Image1")));
+            this.menuOption1.HoverImage.TransparencyKey = System.Drawing.Color.White;
+            this.menuOption1.Image.DropShadow.ShadowColor = System.Drawing.Color.Black;
+            this.menuOption1.Image.Image = ((System.Drawing.Bitmap)(resources.GetObject("resource.Image2")));
+            this.menuOption1.Image.TransparencyKey = System.Drawing.Color.White;
+            this.menuOption1.PressedImage.DropShadow.ShadowColor = System.Drawing.Color.Black;
+            this.menuOption1.PressedImage.Image = ((System.Drawing.Bitmap)(resources.GetObject("resource.Image3")));
+            this.menuOption1.PressedImage.TransparencyKey = System.Drawing.Color.White;
+            // 
             // fm_CadMidias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 323);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(575, 339);
             this.Controls.Add(this.gb_Midias);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fm_CadMidias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nova mídia";
             this.gb_Midias.ResumeLayout(false);
             this.gb_Midias.PerformLayout();
@@ -354,5 +383,7 @@
         private System.Windows.Forms.RichTextBox rtb_Observacao;
         private System.Windows.Forms.Label lb_InfoUsuario;
         private System.Windows.Forms.ErrorProvider erroP;
+        private System.Windows.Forms.Panel panel2;
+        private CircularMenu.MenuOption menuOption1;
     }
 }

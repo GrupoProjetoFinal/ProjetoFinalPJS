@@ -109,5 +109,17 @@ namespace Controle_de_Midias
         
         }
 
+        private void bt_Limpar_Click(object sender, EventArgs e)
+        {
+            tb_Album.Text= string.Empty;
+            tb_Autor.Text = string.Empty;
+            tb_Interprete.Text = string.Empty;
+            tb_Nomemusica.Text = string.Empty;
+            tb_Origemcompra.Text = string.Empty;
+            cb_Nota.SelectedIndex = 0;
+            cb_Tipomidia.SelectedIndex = 0;
+          
+        }
+
     }
 }

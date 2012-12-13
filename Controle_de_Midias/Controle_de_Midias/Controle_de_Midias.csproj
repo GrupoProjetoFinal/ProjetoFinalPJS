@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CircularMenu">
+      <HintPath>..\..\..\Users\Diego\MenuCircular\CircMen\bin\Debug\CircularMenu.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amigo.cs" />
+    <Compile Include="BinaryReader.cs" />
+    <Compile Include="BinaryReader_2.cs" />
+    <Compile Include="FileStream.cs" />
     <Compile Include="fm_AlterarAmigo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconePesquisar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\musica.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\musica %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iCloud-256x256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\musica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loja-virtual-instalacao-gratis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico-ferramentas-36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icone_usuario_novo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lgn_usuario.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

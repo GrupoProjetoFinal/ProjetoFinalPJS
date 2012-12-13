@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_AlterarMidia));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lb_InfoUsuario = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rtb_altObservacao = new System.Windows.Forms.RichTextBox();
@@ -58,6 +60,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.lb_InfoUsuario);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.rtb_altObservacao);
@@ -83,16 +86,24 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 303);
+            this.groupBox1.Size = new System.Drawing.Size(558, 325);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Midia";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
+            this.panel2.Location = new System.Drawing.Point(6, 282);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(33, 37);
+            this.panel2.TabIndex = 32;
             // 
             // lb_InfoUsuario
             // 
             this.lb_InfoUsuario.AutoSize = true;
             this.lb_InfoUsuario.ForeColor = System.Drawing.Color.Red;
-            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 284);
+            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 296);
             this.lb_InfoUsuario.Name = "lb_InfoUsuario";
             this.lb_InfoUsuario.Size = new System.Drawing.Size(138, 13);
             this.lb_InfoUsuario.TabIndex = 31;
@@ -118,7 +129,7 @@
             // 
             // bt_Apagar
             // 
-            this.bt_Apagar.Location = new System.Drawing.Point(388, 246);
+            this.bt_Apagar.Location = new System.Drawing.Point(396, 270);
             this.bt_Apagar.Name = "bt_Apagar";
             this.bt_Apagar.Size = new System.Drawing.Size(75, 23);
             this.bt_Apagar.TabIndex = 11;
@@ -127,7 +138,7 @@
             // 
             // bt_Alterar
             // 
-            this.bt_Alterar.Location = new System.Drawing.Point(469, 246);
+            this.bt_Alterar.Location = new System.Drawing.Point(477, 270);
             this.bt_Alterar.Name = "bt_Alterar";
             this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
             this.bt_Alterar.TabIndex = 10;
@@ -273,6 +284,7 @@
             // 
             // tb_altAutor
             // 
+            this.tb_altAutor.BackColor = System.Drawing.SystemColors.Window;
             this.tb_altAutor.Location = new System.Drawing.Point(279, 37);
             this.tb_altAutor.Name = "tb_altAutor";
             this.tb_altAutor.Size = new System.Drawing.Size(265, 20);
@@ -307,8 +319,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 324);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(581, 349);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fm_AlterarMidia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alterar Midia";
@@ -344,6 +358,7 @@
         private System.Windows.Forms.TextBox tb_altInterprete;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel2;
 
     }
 }

@@ -60,6 +60,20 @@ namespace Controle_de_Midias.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap iCloud_256x256 {
+            get {
+                object obj = ResourceManager.GetObject("iCloud-256x256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ico_ferramentas_36 {
+            get {
+                object obj = ResourceManager.GetObject("ico-ferramentas-36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap icone_pesquisar {
             get {
                 object obj = ResourceManager.GetObject("icone_pesquisar", resourceCulture);
@@ -67,9 +81,58 @@ namespace Controle_de_Midias.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icone_usuario_novo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icone_usuario_novo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap iconePesquisar {
             get {
                 object obj = ResourceManager.GetObject("iconePesquisar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap lgn_usuario {
+            get {
+                object obj = ResourceManager.GetObject("lgn_usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap loja_virtual_instalacao_gratis {
+            get {
+                object obj = ResourceManager.GetObject("loja-virtual-instalacao-gratis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap musica {
+            get {
+                object obj = ResourceManager.GetObject("musica", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap musica__1_ {
+            get {
+                object obj = ResourceManager.GetObject("musica (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap musica1 {
+            get {
+                object obj = ResourceManager.GetObject("musica1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap user {
+            get {
+                object obj = ResourceManager.GetObject("user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

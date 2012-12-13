@@ -28,19 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bt_Alterar = new System.Windows.Forms.Button();
-            this.bt_Configurar = new System.Windows.Forms.Button();
-            this.bt_Devolver = new System.Windows.Forms.Button();
-            this.bt_Emprestar = new System.Windows.Forms.Button();
-            this.bt_Pesquisa = new System.Windows.Forms.Button();
-            this.bt_NovoAmigo = new System.Windows.Forms.Button();
-            this.bt_NovaMidia = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_Principal));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_Midias = new System.Windows.Forms.TabPage();
             this.img_Sucesso = new System.Windows.Forms.Panel();
@@ -63,98 +57,21 @@
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_Alterar = new System.Windows.Forms.Button();
+            this.bt_Configurar = new System.Windows.Forms.Button();
+            this.bt_Devolver = new System.Windows.Forms.Button();
+            this.bt_Emprestar = new System.Windows.Forms.Button();
+            this.bt_Pesquisa = new System.Windows.Forms.Button();
+            this.bt_NovoAmigo = new System.Windows.Forms.Button();
+            this.bt_NovaMidia = new System.Windows.Forms.Button();
+            this.tp_Imagem = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
             this.tp_Amigos.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.bt_Alterar);
-            this.groupBox1.Controls.Add(this.bt_Configurar);
-            this.groupBox1.Controls.Add(this.bt_Devolver);
-            this.groupBox1.Controls.Add(this.bt_Emprestar);
-            this.groupBox1.Controls.Add(this.bt_Pesquisa);
-            this.groupBox1.Controls.Add(this.bt_NovoAmigo);
-            this.groupBox1.Controls.Add(this.bt_NovaMidia);
-            this.groupBox1.Location = new System.Drawing.Point(8, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(84, 407);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Menu";
-            // 
-            // bt_Alterar
-            // 
-            this.bt_Alterar.Enabled = false;
-            this.bt_Alterar.Location = new System.Drawing.Point(3, 217);
-            this.bt_Alterar.Name = "bt_Alterar";
-            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Alterar.TabIndex = 5;
-            this.bt_Alterar.Text = "&Alterar";
-            this.bt_Alterar.UseVisualStyleBackColor = true;
-            this.bt_Alterar.Click += new System.EventHandler(this.bt_Alterar_Click);
-            // 
-            // bt_Configurar
-            // 
-            this.bt_Configurar.Location = new System.Drawing.Point(4, 256);
-            this.bt_Configurar.Name = "bt_Configurar";
-            this.bt_Configurar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Configurar.TabIndex = 6;
-            this.bt_Configurar.Text = "&Configurar";
-            this.bt_Configurar.UseVisualStyleBackColor = true;
-            this.bt_Configurar.Click += new System.EventHandler(this.bt_Configrar_Click);
-            // 
-            // bt_Devolver
-            // 
-            this.bt_Devolver.Location = new System.Drawing.Point(4, 178);
-            this.bt_Devolver.Name = "bt_Devolver";
-            this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
-            this.bt_Devolver.TabIndex = 4;
-            this.bt_Devolver.Text = "&Devolver";
-            this.bt_Devolver.UseVisualStyleBackColor = true;
-            this.bt_Devolver.Click += new System.EventHandler(this.bt_Devolver_Click);
-            // 
-            // bt_Emprestar
-            // 
-            this.bt_Emprestar.Location = new System.Drawing.Point(4, 139);
-            this.bt_Emprestar.Name = "bt_Emprestar";
-            this.bt_Emprestar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Emprestar.TabIndex = 3;
-            this.bt_Emprestar.Text = "&Emprestar";
-            this.bt_Emprestar.UseVisualStyleBackColor = true;
-            this.bt_Emprestar.Click += new System.EventHandler(this.bt_Emprestar_Click);
-            // 
-            // bt_Pesquisa
-            // 
-            this.bt_Pesquisa.Location = new System.Drawing.Point(3, 100);
-            this.bt_Pesquisa.Name = "bt_Pesquisa";
-            this.bt_Pesquisa.Size = new System.Drawing.Size(75, 23);
-            this.bt_Pesquisa.TabIndex = 2;
-            this.bt_Pesquisa.Text = "&Pesquisa";
-            this.bt_Pesquisa.UseVisualStyleBackColor = true;
-            this.bt_Pesquisa.Click += new System.EventHandler(this.bt_Pesquisa_Click);
-            // 
-            // bt_NovoAmigo
-            // 
-            this.bt_NovoAmigo.Location = new System.Drawing.Point(3, 61);
-            this.bt_NovoAmigo.Name = "bt_NovoAmigo";
-            this.bt_NovoAmigo.Size = new System.Drawing.Size(75, 23);
-            this.bt_NovoAmigo.TabIndex = 1;
-            this.bt_NovoAmigo.Text = "Novo &Amigo";
-            this.bt_NovoAmigo.UseVisualStyleBackColor = true;
-            this.bt_NovoAmigo.Click += new System.EventHandler(this.bt_NovoAmigo_Click);
-            // 
-            // bt_NovaMidia
-            // 
-            this.bt_NovaMidia.Location = new System.Drawing.Point(4, 22);
-            this.bt_NovaMidia.Name = "bt_NovaMidia";
-            this.bt_NovaMidia.Size = new System.Drawing.Size(75, 23);
-            this.bt_NovaMidia.TabIndex = 0;
-            this.bt_NovaMidia.Text = "Nova &Mídia";
-            this.bt_NovaMidia.UseVisualStyleBackColor = true;
-            this.bt_NovaMidia.Click += new System.EventHandler(this.bt_NovaMidia_Click);
             // 
             // tabControl1
             // 
@@ -165,6 +82,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(783, 423);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tp_Midias
             // 
@@ -186,6 +104,7 @@
             this.img_Sucesso.Name = "img_Sucesso";
             this.img_Sucesso.Size = new System.Drawing.Size(23, 18);
             this.img_Sucesso.TabIndex = 12;
+            this.tp_Imagem.SetToolTip(this.img_Sucesso, "Pesquisa Rápida");
             // 
             // tb_PesquisaParcialM
             // 
@@ -305,6 +224,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(23, 18);
             this.panel1.TabIndex = 13;
+            this.tp_Imagem.SetToolTip(this.panel1, "Pesquisa Rápida");
             // 
             // tb_PesquisaParcial
             // 
@@ -352,23 +272,121 @@
             this.cl_Obs.Text = "Observação";
             this.cl_Obs.Width = 257;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Controls.Add(this.bt_Alterar);
+            this.groupBox1.Controls.Add(this.bt_Configurar);
+            this.groupBox1.Controls.Add(this.bt_Devolver);
+            this.groupBox1.Controls.Add(this.bt_Emprestar);
+            this.groupBox1.Controls.Add(this.bt_Pesquisa);
+            this.groupBox1.Controls.Add(this.bt_NovoAmigo);
+            this.groupBox1.Controls.Add(this.bt_NovaMidia);
+            this.groupBox1.Location = new System.Drawing.Point(8, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(84, 407);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Menu";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
+            this.panel2.Location = new System.Drawing.Point(6, 364);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(33, 37);
+            this.panel2.TabIndex = 20;
+            // 
+            // bt_Alterar
+            // 
+            this.bt_Alterar.Enabled = false;
+            this.bt_Alterar.Location = new System.Drawing.Point(3, 217);
+            this.bt_Alterar.Name = "bt_Alterar";
+            this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Alterar.TabIndex = 5;
+            this.bt_Alterar.Text = "&Alterar";
+            this.bt_Alterar.UseVisualStyleBackColor = true;
+            this.bt_Alterar.Click += new System.EventHandler(this.bt_Alterar_Click);
+            // 
+            // bt_Configurar
+            // 
+            this.bt_Configurar.Location = new System.Drawing.Point(4, 256);
+            this.bt_Configurar.Name = "bt_Configurar";
+            this.bt_Configurar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Configurar.TabIndex = 6;
+            this.bt_Configurar.Text = "&Configurar";
+            this.bt_Configurar.UseVisualStyleBackColor = true;
+            this.bt_Configurar.Click += new System.EventHandler(this.bt_Configrar_Click);
+            // 
+            // bt_Devolver
+            // 
+            this.bt_Devolver.Location = new System.Drawing.Point(4, 178);
+            this.bt_Devolver.Name = "bt_Devolver";
+            this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
+            this.bt_Devolver.TabIndex = 4;
+            this.bt_Devolver.Text = "&Devolver";
+            this.bt_Devolver.UseVisualStyleBackColor = true;
+            this.bt_Devolver.Click += new System.EventHandler(this.bt_Devolver_Click);
+            // 
+            // bt_Emprestar
+            // 
+            this.bt_Emprestar.Location = new System.Drawing.Point(4, 139);
+            this.bt_Emprestar.Name = "bt_Emprestar";
+            this.bt_Emprestar.Size = new System.Drawing.Size(75, 23);
+            this.bt_Emprestar.TabIndex = 3;
+            this.bt_Emprestar.Text = "&Emprestar";
+            this.bt_Emprestar.UseVisualStyleBackColor = true;
+            this.bt_Emprestar.Click += new System.EventHandler(this.bt_Emprestar_Click);
+            // 
+            // bt_Pesquisa
+            // 
+            this.bt_Pesquisa.Location = new System.Drawing.Point(3, 100);
+            this.bt_Pesquisa.Name = "bt_Pesquisa";
+            this.bt_Pesquisa.Size = new System.Drawing.Size(75, 23);
+            this.bt_Pesquisa.TabIndex = 2;
+            this.bt_Pesquisa.Text = "&Pesquisa";
+            this.bt_Pesquisa.UseVisualStyleBackColor = true;
+            this.bt_Pesquisa.Click += new System.EventHandler(this.bt_Pesquisa_Click);
+            // 
+            // bt_NovoAmigo
+            // 
+            this.bt_NovoAmigo.Location = new System.Drawing.Point(3, 61);
+            this.bt_NovoAmigo.Name = "bt_NovoAmigo";
+            this.bt_NovoAmigo.Size = new System.Drawing.Size(75, 23);
+            this.bt_NovoAmigo.TabIndex = 1;
+            this.bt_NovoAmigo.Text = "Novo &Amigo";
+            this.bt_NovoAmigo.UseVisualStyleBackColor = true;
+            this.bt_NovoAmigo.Click += new System.EventHandler(this.bt_NovoAmigo_Click);
+            // 
+            // bt_NovaMidia
+            // 
+            this.bt_NovaMidia.Location = new System.Drawing.Point(4, 22);
+            this.bt_NovaMidia.Name = "bt_NovaMidia";
+            this.bt_NovaMidia.Size = new System.Drawing.Size(75, 23);
+            this.bt_NovaMidia.TabIndex = 0;
+            this.bt_NovaMidia.Text = "Nova &Mídia";
+            this.bt_NovaMidia.UseVisualStyleBackColor = true;
+            this.bt_NovaMidia.Click += new System.EventHandler(this.bt_NovaMidia_Click);
+            // 
             // fm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(882, 422);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Collectors medias";
             this.Load += new System.EventHandler(this.fm_Principal_Load);
-            this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tp_Midias.ResumeLayout(false);
             this.tp_Midias.PerformLayout();
             this.tp_Amigos.ResumeLayout(false);
             this.tp_Amigos.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -376,14 +394,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button bt_Emprestar;
-        private System.Windows.Forms.Button bt_Pesquisa;
-        private System.Windows.Forms.Button bt_NovoAmigo;
-        private System.Windows.Forms.Button bt_NovaMidia;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tp_Midias;
         private System.Windows.Forms.TabPage tp_Amigos;
-        private System.Windows.Forms.Button bt_Devolver;
         private System.Windows.Forms.ListView lv_Amigos;
         private System.Windows.Forms.ColumnHeader cl_Nome;
         private System.Windows.Forms.ColumnHeader cl_Telefone;
@@ -403,8 +416,15 @@
         private System.Windows.Forms.TextBox tb_PesquisaParcialM;
         private System.Windows.Forms.Panel img_Sucesso;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button bt_Configurar;
         private System.Windows.Forms.Button bt_Alterar;
+        private System.Windows.Forms.Button bt_Configurar;
+        private System.Windows.Forms.Button bt_Devolver;
+        private System.Windows.Forms.Button bt_Emprestar;
+        private System.Windows.Forms.Button bt_Pesquisa;
+        private System.Windows.Forms.Button bt_NovoAmigo;
+        private System.Windows.Forms.Button bt_NovaMidia;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolTip tp_Imagem;
 
     }
 }

@@ -27,21 +27,9 @@ namespace Controle_de_Midias
 
         public void EmprestarOuDevolverMidia(int idAmigo, List<string> DadosMidias, string Verificador)
         {
-
-
-
             int idMidia;
 
-            // Comando para obter o indificador da midia
-            cmdSQL = "SELECT Id_Midia                              " +
-                    " FROM   Midias                                " +
-                     "WHERE Nome_Album      = @Nome_Album        AND " +
-                           "Nome_Interprete = @Nome_Interprete   AND " +
-                           "Origem_Compra   = @Origem_Compra     AND " +
-                           "Nome_autor      = @Nome_autor        AND " +
-                           "Nome_Musica     = @Nome_Musica       AND " +
-                           "Observacao      = @Observacao        AND " +
-                           "Nota            = @Nota              ";
+            cmdSQL = "SELECT Id_Midia FROM   Midias WHERE Nome_Album      = @Nome_Album AND Nome_Interprete = @Nome_Interprete   AND Origem_Compra   = @Origem_Compra     AND  Nome_autor      = @Nome_Autor        AND Nome_Musica     = @Nome_Musica       AND  Observacao      = @Observacao        AND Nota            = @Nota";
 
             cmd = new SqlCommand(cmdSQL, conexao);
 
@@ -76,7 +64,7 @@ namespace Controle_de_Midias
         
         public bool AbrirConexao()
         {
-            conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\ProjetoFinalPJS\Controle_de_Midias\Base de dados\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
+            conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\ProjetoFinalPJS\Controle_de_Midias\teste imagem\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
 
             try
             {
@@ -157,12 +145,13 @@ namespace Controle_de_Midias
         public void InserirAmigo(Amigo novoAmigo)
         {
             // Faz a inserção do dados do novoAmigo para o banco de dados
-            string sql = "INSERT INTO Amigos([Nome],[Telefone],[Email],[Observacao]) VALUES(@nome,@telefone,@email,@observacao)";
+            string sql = "INSERT INTO Amigos([Nome],[Telefone],[Email],[Observacao],[Imagem]) VALUES(@nome,@telefone,@email,@observacao,@Imagem)";
             cmd = new SqlCommand(sql, conexao);
             cmd.Parameters.Add(new SqlParameter("@nome", novoAmigo.nome));
             cmd.Parameters.Add(new SqlParameter("@telefone", novoAmigo.telefone));
             cmd.Parameters.Add(new SqlParameter("@email", novoAmigo.email));
             cmd.Parameters.Add(new SqlParameter("@observacao", novoAmigo.observacao));
+            cmd.Parameters.Add(new SqlParameter("@Imagem", novoAmigo.imagem));
 
             cmd.ExecuteNonQuery();
         }
@@ -170,13 +159,14 @@ namespace Controle_de_Midias
         public void AlteraAmigo(Amigo altAmigo)
         {
             //Faz a atualização dos dados do amigo no banco de dados
-            cmdSQL = "UPDATE Amigos SET Nome = @nome,Telefone = @telefone, Email = @email, Observacao = @observacao WHERE Id_Amigo = @id";
+            cmdSQL = "UPDATE Amigos SET Nome = @nome,Telefone = @telefone, Email = @email, Observacao = @observacao,Imagem = @Imagem WHERE Id_Amigo = @id";
             cmd = new SqlCommand(cmdSQL, conexao);
             cmd.Parameters.Add(new SqlParameter("@nome", altAmigo.nome));
             cmd.Parameters.Add(new SqlParameter("@telefone", altAmigo.telefone));
             cmd.Parameters.Add(new SqlParameter("@email", altAmigo.email));
             cmd.Parameters.Add(new SqlParameter("@observacao", altAmigo.observacao));
             cmd.Parameters.Add(new SqlParameter("@id", altAmigo.id));
+            cmd.Parameters.Add(new SqlParameter("@Imagem", altAmigo.imagem));
 
             cmd.ExecuteNonQuery();
         }
@@ -228,6 +218,10 @@ namespace Controle_de_Midias
             {
                 item = new ListViewItem(Leitor["Nome"].ToString());
                 lv_Amigos.Items.Add(item);
+
+                //if (Leitor["Telefone"].ToString() == "(  ) -     -")
+                //    item.SubItems.Add("Não Consta");
+                //else
                 item.SubItems.Add(Leitor["Telefone"].ToString());
                 item.SubItems.Add(Leitor["Email"].ToString());
                 item.SubItems.Add(Leitor["Observacao"].ToString());
@@ -241,10 +235,11 @@ namespace Controle_de_Midias
 
         private void PreencherListView(ListView lv, SqlDataReader Leitor)
         {
+            string icone = "♫   ";
             while (Leitor.Read())
             {
 
-                item = new ListViewItem(Leitor["Nome_Album"].ToString());
+                item = new ListViewItem(icone + Leitor["Nome_Album"].ToString());
                 item.Group = lv.Groups[int.Parse(Leitor["Tipo_Midia"].ToString())];
                 lv.Items.Add(item);
                 item.SubItems.Add(Leitor["Nome_Interprete"].ToString());
@@ -267,7 +262,7 @@ namespace Controle_de_Midias
         {
             // Localiza o amigo retornando o id para o método que o chamou. 
             int id_amigo;
-
+        
             cmdSQL = "SELECT id_Amigo FROM Amigos WHERE Nome = @Nome AND Email = @Email AND Telefone = @Telefone AND Observacao = @Observacao";
 
             cmd = new SqlCommand(cmdSQL, conexao);
@@ -281,15 +276,30 @@ namespace Controle_de_Midias
 
         }
 
+        public string RetiraIcone(string album)
+        {
+            int cont = 0;
+
+            string semIcone = string.Empty;
+            while (cont <= album.Count() - 1)
+            {
+                if (cont > 3)
+                    semIcone += album[cont];
+                ++cont;
+            }
+
+            return semIcone;
+
+        }
+
         public int PegaIdentificadorMidias(Midia midia)
         {
             int id_midia;
 
             cmdSQL = "SELECT Id_Midia FROM Midias WHERE Nome_Album = @Nome_Album AND Nome_Interprete = @Nome_Interprete AND Origem_Compra =  @Origem_Compra AND Nome_autor = @Nome_autor AND Nome_Musica = @Nome_Musica AND Observacao = @Observacao AND Nota = @Nota AND Data_Compra = @Data_Compra AND Data_Album = @Data_Album";
-
             cmd = new SqlCommand(cmdSQL, conexao);
 
-            cmd.Parameters.Add(new SqlParameter("@Nome_Album", midia.album));
+            cmd.Parameters.Add(new SqlParameter("@Nome_Album", RetiraIcone(midia.album)));
             cmd.Parameters.Add(new SqlParameter("@Nome_Interprete", midia.interprete));
             cmd.Parameters.Add(new SqlParameter("@Origem_Compra", midia.compra));
             cmd.Parameters.Add(new SqlParameter("@Nome_Autor", midia.autor));
@@ -329,6 +339,7 @@ namespace Controle_de_Midias
                 DadosAmigos.Add(Leitor["Email"].ToString());
                 DadosAmigos.Add(Leitor["Observacao"].ToString());
                 DadosAmigos.Add(Leitor["Id_Amigo"].ToString());
+                DadosAmigos.Add(Leitor["Imagem"].ToString());
             }
             Leitor.Close();
             return DadosAmigos;
@@ -585,13 +596,13 @@ namespace Controle_de_Midias
             }
 
 
-            if (operacao == "DesabilitarLogin")
+            if (operacao == "DesabilitarBloqueio")
             {
                 cmdSQL = "UPDATE Usuario SET AbilitarLogin = @AbilitarLogin";
 
 
                 cmd = new SqlCommand(cmdSQL, conexao);
-                cmd.Parameters.Add(new SqlParameter("@AbilitarLogin", alteracao[4]));
+                cmd.Parameters.Add(new SqlParameter("@AbilitarLogin", alteracao[0]));
                 cmd.ExecuteNonQuery();
             }
             if (operacao == "AlterarQuantidadesDias")
@@ -613,7 +624,7 @@ namespace Controle_de_Midias
             {
                 cmdSQL = "UPDATE Usuario SET usuario = @usuario";
                 cmd = new SqlCommand(cmdSQL, conexao);
-                cmd.Parameters.Add(new SqlParameter("@usuario", alteracao[5]));
+                cmd.Parameters.Add(new SqlParameter("@usuario", alteracao[4]));
                 cmd.ExecuteNonQuery();
                 alteracao[0] = alteracao[5];
             }
@@ -667,6 +678,9 @@ namespace Controle_de_Midias
         }
 
         #endregion
+
+
+
 
     }
 }

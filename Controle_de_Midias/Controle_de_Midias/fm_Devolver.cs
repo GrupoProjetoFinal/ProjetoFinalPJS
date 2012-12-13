@@ -23,6 +23,7 @@ namespace Controle_de_Midias
         private int idAmigo;
         Amigo amigo = new Amigo();
         List<string> DadosMidia;
+        List<string> dadosAmigos;
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
        
         private void fm_Devolver_Load(object sender, EventArgs e)
@@ -57,12 +58,12 @@ namespace Controle_de_Midias
 
         private void bt_Devolver_Click(object sender, EventArgs e)
         {
-            
             foreach (ListViewItem item in lv_MidiasD.SelectedItems)
             {
                 DadosMidia = new List<string>();
-
-                for (int i = 0; i < 9; ++i)
+                
+                DadosMidia.Add(GBD.RetiraIcone(item.SubItems[0].Text));
+                for (int i = 1; i < 9; ++i)
                     DadosMidia.Add(item.SubItems[i].Text);
                 
                 GBD.AbrirConexao();
@@ -115,13 +116,28 @@ namespace Controle_de_Midias
 
             if (GBD.AbrirConexao())
             {
+                dadosAmigos = new List<string>();
+                dadosAmigos = GBD.ProcurarAmigo(amigo.nome,amigo.telefone, amigo.email, amigo.observacao);
                 idAmigo = GBD.PegarIdentificadorAmigo(amigo);
                 lv_MidiasD.Items.Clear();
                 GBD.PreencherLvMidias(lv_MidiasD, idAmigo);
                 GBD.FecharConexao();
+                if (dadosAmigos[5] == string.Empty)
+                    dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
+                
+                try
+                {
+                    pb_Amigo.Image = new Bitmap(dadosAmigos[5]);
+                }
+                catch (Exception err)
+                {
+                    pb_Amigo.Image = new Bitmap(Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png");
+                }
             }
             else
                 GBD.MensagemDeErro();
+
+
         }
     }
 }

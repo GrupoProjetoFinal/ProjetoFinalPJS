@@ -68,14 +68,16 @@ namespace Controle_de_Midias
                             tb_NovaSenha.Text = string.Empty;
                             tb_ConfirmaSenha.Text = string.Empty;
                             lb_SenhasDiferentes.Visible = true;
+                            GBD.FecharConexao();
+                            return;
                         }
+
                     System.Media.SystemSounds.Asterisk.Play();
                 }
                 else
                     lb_SenhaIncorreta.Visible = true;
 
-                GBD.Configurar(dadosAmigos, "DesabilitarLogin");
-
+                
                 GBD.FecharConexao();
             }
             else
@@ -95,20 +97,40 @@ namespace Controle_de_Midias
         private void bt_Confirma_Click(object sender, EventArgs e)
         {
 
+            if (tb_NovaSenha.Text.Count() < 6 && tb_NovaSenha.Text != string.Empty)
+            {
+                lb_SenhasDiferentes.Text = "✘ A senha deve conter 6 numeros";
+                lb_SenhasDiferentes.Visible = true;
+                return;
+            }
+            lb_SenhasDiferentes.Visible = false;
+            lb_SenhasDiferentes.Text = "✘ As senhas são Diferentes";
+            
             dadosAmigos = new List<string>();
             dadosAmigos.Add(lb_UsuarioAntigo.Text);
             dadosAmigos.Add(tb_SenhaAtual.Text);
             dadosAmigos.Add(tb_EmailPadrao.Text);
             dadosAmigos.Add(tb_qtdDias.Text);
             
+            
+
+            Alterar();
+            Close();
+        }
+
+        private void fm_Configurar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            dadosAmigos = new List<string>();
             // serve para armazanar no banco de dados caso estiver desabilitado seu valor sera 1 caso não sera 0
             if (ck_DesabilitaLogin.Checked)
                 dadosAmigos.Add("1");
             else
                 dadosAmigos.Add("0");
+            GBD.AbrirConexao();
+            GBD.Configurar(dadosAmigos, "DesabilitarBloqueio");
+            GBD.FecharConexao();
 
-            Alterar();
-            fm_Configurar_Load(null, null);
         }
+
     }
 }

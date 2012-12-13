@@ -31,11 +31,23 @@ namespace Controle_de_Midias
 
         private void bt_Adicionar_Click(object sender, EventArgs e)
         {
-
-
-            // ARRUMAR TRATAMENTO DE OBRIGATORIEDADE DOS CAMPOS
-            if (tb_Album.Text != string.Empty)
+            if (cb_Tipomidia.SelectedIndex != 4)
             {
+                if (tb_Album.Text == string.Empty)
+                {
+                    lb_InfoUsuario.Text = "O Campo Álbum e obrigatório";
+                    lb_InfoUsuario.Visible = true;
+                    erroP.SetError(lb_InfoUsuario, "O campo é obrigatório");
+                    return;
+                }
+            }
+            else if (tb_Nomemusica.Text == string.Empty)
+            {
+                lb_InfoUsuario.Text = "O Campo Nome Música e obrigatório";
+                lb_InfoUsuario.Visible = true;
+                erroP.SetError(lb_InfoUsuario, "O campo é obrigatório");
+                return;
+            }
 
                 if (GBD.AbrirConexao())
                 {
@@ -61,7 +73,7 @@ namespace Controle_de_Midias
                 //Adiciona a nova midia no ListView lvMidias.
                 ListViewItem item;
 
-                item = new ListViewItem(midia.album);
+                item = new ListViewItem("♫   "+midia.album);
                 item.Group = lvMidias.Groups[midia.tipo];
                 lvMidias.Items.Add(item);
                 item.SubItems.Add(midia.interprete);
@@ -75,16 +87,7 @@ namespace Controle_de_Midias
 
                 //Limpar campos apos a inserção
                 bt_Limpar_Click(sender, e);
-                System.Media.SystemSounds.Asterisk.Play();
-                
-            }
-            else
-            {
-                lb_InfoUsuario.Visible = true;
-                erroP.SetError(lb_InfoUsuario, "O campo é obrigatório");
-            }
-            
-           
+                System.Media.SystemSounds.Asterisk.Play();          
         }
 
         private void bt_Limpar_Click(object sender, EventArgs e)
@@ -97,6 +100,9 @@ namespace Controle_de_Midias
             cb_Nota.SelectedIndex = 0;
             cb_Tipomidia.SelectedIndex = 0;
             rtb_Observacao.Text = string.Empty;
-        }       
+        }
+
+
+    
     }
 }

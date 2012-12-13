@@ -109,7 +109,7 @@ namespace Controle_de_Midias
         {
             // Os dados selecionados no ListView são passados para o objeto Midia.
             Midia infMidia = new Midia();
-            
+           
             foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
                 infMidia.album = item.Text;
@@ -134,8 +134,10 @@ namespace Controle_de_Midias
             if (ModificarMidia.alterar)
                 foreach (ListViewItem item in lv_Midias.SelectedItems)
                 {
-                   
-                    item.Text = ModificarMidia.NovaMidia.album;
+
+                    string icone = "♫   ";
+
+                    item.Text = icone+ModificarMidia.NovaMidia.album;
                     item.Group = lv_Midias.Groups[ModificarMidia.NovaMidia.tipo];
                     item.SubItems[1].Text = ModificarMidia.NovaMidia.interprete;
                     item.SubItems[2].Text = ModificarMidia.NovaMidia.autor;
@@ -197,17 +199,19 @@ namespace Controle_de_Midias
             else
                 lvAtivado = false;
 
-            bt_Alterar.Enabled = true;
-
-            
+            bt_Alterar.Enabled = true;   
         }
-
         private void bt_Alterar_Click(object sender, EventArgs e)
         {
             if (lvAtivado)
                 lv_Midias_DoubleClick(sender, e);
             else
                 lv_Amigos_DoubleClick(sender, e);
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bt_Alterar.Enabled = false;
         }
 
     }

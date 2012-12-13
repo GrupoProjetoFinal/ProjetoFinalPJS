@@ -26,12 +26,21 @@ namespace Controle_de_Midias
 
         public void Preencher(Midia rescrever)
         {
+            int cont = 0;
+            string album = string.Empty;
+            while (cont <= rescrever.album.Count() - 1)
+            {
+                if (cont > 3)
+                    album += rescrever.album[cont];
+                ++cont;
+            }
+
             // Insere os atributos do objeto para os TextBox.
             tb_altAutor.Text = rescrever.autor;
             tb_altInterprete.Text = rescrever.interprete;
             tb_altOrigemcompra.Text = rescrever.compra;
             tb_altNomemusica.Text = rescrever.musica;
-            tb_altAlbum.Text = rescrever.album;
+            tb_altAlbum.Text = album;
             cb_altNota.Text = rescrever.nota;
             dtp_altDataAlbum.Value = rescrever.dataAlbum;
             dtp_altDataCompra.Value = rescrever.dataCompra;
@@ -95,5 +104,8 @@ namespace Controle_de_Midias
 
             this.Close();
         }
+
+
+      
     }
 }

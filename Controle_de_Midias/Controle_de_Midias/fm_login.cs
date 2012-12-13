@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 
 // Bibliotecas Adicionada
+
 using System.Net.Mail;
 using System.Drawing.Drawing2D;
 
@@ -149,6 +150,7 @@ namespace Controle_de_Midias
             if (tb_Senha.Text.Count() == 6)
                 VerificaSenha();
         }
+
         
     }
 }

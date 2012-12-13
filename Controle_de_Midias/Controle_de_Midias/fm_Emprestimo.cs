@@ -27,20 +27,35 @@ namespace Controle_de_Midias
         int qtd_AnteriorCaracter = 0;
 
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
-        List<string> DadosAmigos = new List<string>();
-        List<string> DadosMidias;
+        List<string> dadosAmigos = new List<string>();
+        List<string> dadosMidias;
 
 
         private void bt_Emprestar_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
+
+                dadosMidias = new List<string>();
+  
+                dadosMidias.Add(GBD.RetiraIcone(item.SubItems[0].Text));
+                dadosMidias.Add(item.SubItems[1].Text);
+                dadosMidias.Add(item.SubItems[2].Text);
+                dadosMidias.Add(item.SubItems[3].Text);
+                dadosMidias.Add(item.SubItems[4].Text);
+                dadosMidias.Add(item.SubItems[5].Text);
+                dadosMidias.Add(item.SubItems[6].Text);
+                dadosMidias.Add(item.SubItems[7].Text);
+                dadosMidias.Add(item.SubItems[8].Text);
+
                 if (GBD.AbrirConexao())
                 {
-                    GBD.EmprestarOuDevolverMidia(int.Parse(DadosAmigos[4]), DadosMidias, formulario);
+                   
+
+                    GBD.EmprestarOuDevolverMidia(int.Parse(dadosAmigos[4]), dadosMidias, formulario);
                     GBD.FecharConexao();
 
-                    DadosMidias = new List<string>();
+                    dadosMidias = new List<string>();
                     if (item.ForeColor == System.Drawing.Color.ForestGreen)
                     {
                         item.Remove();
@@ -49,7 +64,7 @@ namespace Controle_de_Midias
                     }
 
                     for (int i = 0; i < 9; ++i)
-                        DadosMidias.Add(item.SubItems[i].Text);
+                        dadosMidias.Add(item.SubItems[i].Text);
 
                     System.Media.SystemSounds.Asterisk.Play();
                     lb_MidiaEmprestada.Visible = false;
@@ -59,7 +74,10 @@ namespace Controle_de_Midias
                 }
                 else
                     GBD.MensagemDeErro();
+
+                return;
             }
+            lb_SelecioneMidia.Visible = true;
            }
 
         private void bt_Voltar_Click(object sender, EventArgs e)
@@ -83,7 +101,7 @@ namespace Controle_de_Midias
             lv_Midias.Visible = false;
   
 
-            DadosAmigos.Clear();
+            dadosAmigos.Clear();
 
             if (GBD.AbrirConexao())
             {
@@ -100,7 +118,7 @@ namespace Controle_de_Midias
         {
             tb_PesquisaParcial.Text = string.Empty;
             lvAmigoVisivel = false;
-            DadosAmigos.Clear();
+            dadosAmigos.Clear();
             
             string nome= string.Empty, tel= string.Empty, email= string.Empty, obs= string.Empty;
 
@@ -116,16 +134,32 @@ namespace Controle_de_Midias
             gr_AmigoE.Visible = true;
             if (GBD.AbrirConexao())
             {
-                DadosAmigos = GBD.ProcurarAmigo(nome, tel, email, obs);
+                dadosAmigos = GBD.ProcurarAmigo(nome, tel, email, obs);
                 GBD.FecharConexao();
             }
             else
                 GBD.MensagemDeErro();
 
-            lb_nomeP.Text = DadosAmigos[0];
-            lb_TelP.Text = DadosAmigos[1];
-            lb_EmailP.Text = DadosAmigos[2];
-            lb_ObsP.Text = DadosAmigos[3];
+            lb_nomeP.Text = dadosAmigos[0];
+            lb_TelP.Text = dadosAmigos[1];
+            lb_EmailP.Text = dadosAmigos[2];
+            lb_ObsP.Text = dadosAmigos[3];
+            if(dadosAmigos[5] == string.Empty)
+                dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
+            try
+            {
+                pb_Amigo.Image = new Bitmap(dadosAmigos[5]);
+            }
+            catch (Exception err)
+            {
+                pb_Amigo.Image = new Bitmap(Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png");
+                dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
+            }
+
+            Bitmap btm = new Bitmap(dadosAmigos[5]);
+            Bitmap imagem = new Bitmap(btm, pb_Amigo.Size);
+            pb_Amigo.Image = imagem;
+            
              
         }
 

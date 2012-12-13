@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Vinil", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("K7", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_Pesquisa));
             this.lv_MidiasP = new System.Windows.Forms.ListView();
             this.cl_Album = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Interprete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -73,6 +75,7 @@
             this.lb_Album = new System.Windows.Forms.Label();
             this.tb_Interprete = new System.Windows.Forms.TextBox();
             this.lb_Interprete = new System.Windows.Forms.Label();
+            this.tp_mensagem = new System.Windows.Forms.ToolTip(this.components);
             this.gb_Midias.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -299,6 +302,7 @@
             this.bt_Limpar.TabIndex = 28;
             this.bt_Limpar.Text = "&Limpar";
             this.bt_Limpar.UseVisualStyleBackColor = true;
+            this.bt_Limpar.Click += new System.EventHandler(this.bt_Limpar_Click);
             // 
             // tb_Autor
             // 
@@ -473,8 +477,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(765, 464);
             this.Controls.Add(this.gb_Midias);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fm_Pesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa";
@@ -527,5 +533,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox ckb_QualquerData;
+        private System.Windows.Forms.ToolTip tp_mensagem;
     }
 }

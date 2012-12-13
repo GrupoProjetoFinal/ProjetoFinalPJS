@@ -12,5 +12,6 @@ namespace Controle_de_Midias
         public string telefone;
         public string email;
         public string observacao;
+        public string imagem;
     }
 }
