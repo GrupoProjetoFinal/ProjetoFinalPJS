@@ -16,7 +16,7 @@ namespace Controle_de_Midias
             InitializeComponent();
         }
 
-        // Quando atualizaLV for verdadeiro é porque a necessida de atualizar o listview Amigos, pois, a quantidade de dias foi alterada então deve verificar se a usuarios com midias em atrazo, porém, com a nova quantidades de dias.
+        // Quando atualizaLV for verdadeiro é porque a necessida de atualizar o listview Amigos, pois, a quantidade de dias foi alterada então deve verificar se a usuarios com midias em atrazo, porém, com a nova quantidades de dias
         public bool atualizaLV = false;
 
         List<string> dadosAmigos;
@@ -24,7 +24,6 @@ namespace Controle_de_Midias
 
         private void fm_Configurar_Load(object sender, EventArgs e)
         {
-
             if (GBD.AbrirConexao())
             {
                 GBD.PreencherConfiguracoes(lb_qtdDias, lb_emailAntigo, lb_UsuarioAntigo, ck_DesabilitaLogin);
@@ -35,13 +34,10 @@ namespace Controle_de_Midias
         }
 
         //Verifica quais dados foram alterados e chama seu respectivo método na classe GBD passando por parâmetro em uma lista os dados para serem tratados e verificados. 
-        private void Alterar()
+        private bool Alterar()
         {
-
             if (GBD.AbrirConexao())
             {
-
-  
                 dadosAmigos.Add(tb_nomeUsuario.Text);
                 dadosAmigos.Add(tb_NovaSenha.Text);
 
@@ -60,28 +56,21 @@ namespace Controle_de_Midias
                         GBD.Configurar(dadosAmigos, "AlterarUsuario");
 
                     if (tb_NovaSenha.Text != string.Empty)
-                        if (tb_NovaSenha.Text == tb_ConfirmaSenha.Text)
-                            GBD.Configurar(dadosAmigos, "TrocarSenha");
-                        else
-                        {
-                            // se senhas não se coincidirem os campos são limpos
-                            tb_NovaSenha.Text = string.Empty;
-                            tb_ConfirmaSenha.Text = string.Empty;
-                            lb_SenhasDiferentes.Visible = true;
-                            GBD.FecharConexao();
-                            return;
-                        }
+                        GBD.Configurar(dadosAmigos, "TrocarSenha");
 
                     System.Media.SystemSounds.Asterisk.Play();
+
+
+                    GBD.FecharConexao();
+                    return true;
                 }
                 else
                     lb_SenhaIncorreta.Visible = true;
-
-                
-                GBD.FecharConexao();
             }
             else
                 GBD.MensagemDeErro();
+            GBD.FecharConexao();
+            return false;
         }
 
         private void bt_Cancelar_Click(object sender, EventArgs e)
@@ -93,29 +82,31 @@ namespace Controle_de_Midias
         {
             lb_SenhaIncorreta.Visible = false;
         }
-
         private void bt_Confirma_Click(object sender, EventArgs e)
         {
-
-            if (tb_NovaSenha.Text.Count() < 6 && tb_NovaSenha.Text != string.Empty)
+            if (tb_NovaSenha.Text != string.Empty && tb_NovaSenha.Text != tb_ConfirmaSenha.Text)
             {
-                lb_SenhasDiferentes.Text = "✘ A senha deve conter 6 numeros";
+                // se senhas não se coincidirem os campos são limpos
+                tb_NovaSenha.Text = string.Empty;
+                tb_ConfirmaSenha.Text = string.Empty;
+                lb_SenhasDiferentes.Visible = true;
+                return;
+            }
+            if (tb_NovaSenha.Text.Count() != 6 && tb_NovaSenha.Text != string.Empty)
+            {
+                lb_SenhasDiferentes.Text = "✘ A senha deve conter 6 Carácter";
                 lb_SenhasDiferentes.Visible = true;
                 return;
             }
             lb_SenhasDiferentes.Visible = false;
             lb_SenhasDiferentes.Text = "✘ As senhas são Diferentes";
-            
-            dadosAmigos = new List<string>();
-            dadosAmigos.Add(lb_UsuarioAntigo.Text);
-            dadosAmigos.Add(tb_SenhaAtual.Text);
-            dadosAmigos.Add(tb_EmailPadrao.Text);
-            dadosAmigos.Add(tb_qtdDias.Text);
-            
-            
 
-            Alterar();
-            Close();
+            Height = 173;
+            panel1.Visible = true;
+            tb_ConfirmaSenha.Visible = false;
+            tb_NovaSenha.Visible = false;
+            tb_SenhaAtual.Select();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void fm_Configurar_FormClosed(object sender, FormClosedEventArgs e)
@@ -132,5 +123,25 @@ namespace Controle_de_Midias
 
         }
 
+        private void tb_SenhaAtual_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_SenhaAtual.Text.Count() == 6)
+            {
+                dadosAmigos = new List<string>();
+                dadosAmigos.Add(lb_UsuarioAntigo.Text);
+                dadosAmigos.Add(tb_SenhaAtual.Text);
+                dadosAmigos.Add(tb_EmailPadrao.Text);
+                dadosAmigos.Add(tb_qtdDias.Text);
+
+                if (Alterar())
+                    Close();
+                else
+                {
+                    tb_SenhaAtual.Text = string.Empty;
+                    erroP.SetError(tb_SenhaAtual, "Senha Incorreta");
+                }
+            }
+                
+        }
     }
 }

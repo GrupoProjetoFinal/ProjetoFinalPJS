@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_AlterarMidia));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,11 +55,16 @@
             this.tb_altInterprete = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.erroP = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erroP)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.lb_InfoUsuario);
@@ -86,24 +92,26 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 325);
+            this.groupBox1.Size = new System.Drawing.Size(552, 319);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Midia";
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
-            this.panel2.Location = new System.Drawing.Point(6, 282);
+            this.panel2.Location = new System.Drawing.Point(6, 276);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(33, 37);
             this.panel2.TabIndex = 32;
             // 
             // lb_InfoUsuario
             // 
+            this.lb_InfoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_InfoUsuario.AutoSize = true;
             this.lb_InfoUsuario.ForeColor = System.Drawing.Color.Red;
-            this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 296);
+            this.lb_InfoUsuario.Location = new System.Drawing.Point(327, 290);
             this.lb_InfoUsuario.Name = "lb_InfoUsuario";
             this.lb_InfoUsuario.Size = new System.Drawing.Size(138, 13);
             this.lb_InfoUsuario.TabIndex = 31;
@@ -121,15 +129,18 @@
             // 
             // rtb_altObservacao
             // 
+            this.rtb_altObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_altObservacao.Location = new System.Drawing.Point(9, 199);
             this.rtb_altObservacao.Name = "rtb_altObservacao";
-            this.rtb_altObservacao.Size = new System.Drawing.Size(289, 70);
+            this.rtb_altObservacao.Size = new System.Drawing.Size(283, 70);
             this.rtb_altObservacao.TabIndex = 9;
             this.rtb_altObservacao.Text = "";
             // 
             // bt_Apagar
             // 
-            this.bt_Apagar.Location = new System.Drawing.Point(396, 270);
+            this.bt_Apagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Apagar.Location = new System.Drawing.Point(390, 264);
             this.bt_Apagar.Name = "bt_Apagar";
             this.bt_Apagar.Size = new System.Drawing.Size(75, 23);
             this.bt_Apagar.TabIndex = 11;
@@ -138,7 +149,8 @@
             // 
             // bt_Alterar
             // 
-            this.bt_Alterar.Location = new System.Drawing.Point(477, 270);
+            this.bt_Alterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Alterar.Location = new System.Drawing.Point(471, 264);
             this.bt_Alterar.Name = "bt_Alterar";
             this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
             this.bt_Alterar.TabIndex = 10;
@@ -181,29 +193,33 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 23;
-            this.label4.Text = "Origim da compra";
+            this.label4.Text = "Origem da compra";
             // 
             // tb_altOrigemcompra
             // 
+            this.tb_altOrigemcompra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_altOrigemcompra.Location = new System.Drawing.Point(9, 115);
             this.tb_altOrigemcompra.Name = "tb_altOrigemcompra";
-            this.tb_altOrigemcompra.Size = new System.Drawing.Size(321, 20);
+            this.tb_altOrigemcompra.Size = new System.Drawing.Size(315, 20);
             this.tb_altOrigemcompra.TabIndex = 4;
             // 
             // dtp_altDataAlbum
             // 
+            this.dtp_altDataAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_altDataAlbum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_altDataAlbum.Location = new System.Drawing.Point(443, 115);
+            this.dtp_altDataAlbum.Location = new System.Drawing.Point(437, 115);
             this.dtp_altDataAlbum.Name = "dtp_altDataAlbum";
             this.dtp_altDataAlbum.Size = new System.Drawing.Size(101, 20);
             this.dtp_altDataAlbum.TabIndex = 6;
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(438, 99);
+            this.label5.Location = new System.Drawing.Point(432, 99);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 20;
@@ -235,8 +251,9 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(333, 98);
+            this.label7.Location = new System.Drawing.Point(327, 98);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 17;
@@ -244,30 +261,31 @@
             // 
             // dtp_altDataCompra
             // 
+            this.dtp_altDataCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_altDataCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_altDataCompra.Location = new System.Drawing.Point(336, 115);
+            this.dtp_altDataCompra.Location = new System.Drawing.Point(330, 115);
             this.dtp_altDataCompra.Name = "dtp_altDataCompra";
             this.dtp_altDataCompra.Size = new System.Drawing.Size(99, 20);
             this.dtp_altDataCompra.TabIndex = 5;
             // 
             // tb_altNomemusica
             // 
-            this.tb_altNomemusica.Location = new System.Drawing.Point(230, 75);
+            this.tb_altNomemusica.Location = new System.Drawing.Point(10, 75);
             this.tb_altNomemusica.Name = "tb_altNomemusica";
-            this.tb_altNomemusica.Size = new System.Drawing.Size(314, 20);
-            this.tb_altNomemusica.TabIndex = 3;
+            this.tb_altNomemusica.Size = new System.Drawing.Size(285, 20);
+            this.tb_altNomemusica.TabIndex = 2;
             // 
             // tb_altAlbum
             // 
-            this.tb_altAlbum.Location = new System.Drawing.Point(10, 75);
+            this.tb_altAlbum.Location = new System.Drawing.Point(10, 37);
             this.tb_altAlbum.Name = "tb_altAlbum";
             this.tb_altAlbum.Size = new System.Drawing.Size(214, 20);
-            this.tb_altAlbum.TabIndex = 2;
+            this.tb_altAlbum.TabIndex = 0;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(227, 59);
+            this.label8.Location = new System.Drawing.Point(7, 59);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 13;
@@ -276,7 +294,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 58);
+            this.label9.Location = new System.Drawing.Point(7, 20);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 12;
@@ -284,23 +302,27 @@
             // 
             // tb_altAutor
             // 
+            this.tb_altAutor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_altAutor.BackColor = System.Drawing.SystemColors.Window;
-            this.tb_altAutor.Location = new System.Drawing.Point(279, 37);
+            this.tb_altAutor.Location = new System.Drawing.Point(230, 37);
             this.tb_altAutor.Name = "tb_altAutor";
-            this.tb_altAutor.Size = new System.Drawing.Size(265, 20);
+            this.tb_altAutor.Size = new System.Drawing.Size(316, 20);
             this.tb_altAutor.TabIndex = 1;
             // 
             // tb_altInterprete
             // 
-            this.tb_altInterprete.Location = new System.Drawing.Point(10, 37);
+            this.tb_altInterprete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_altInterprete.Location = new System.Drawing.Point(301, 75);
             this.tb_altInterprete.Name = "tb_altInterprete";
-            this.tb_altInterprete.Size = new System.Drawing.Size(263, 20);
-            this.tb_altInterprete.TabIndex = 0;
+            this.tb_altInterprete.Size = new System.Drawing.Size(245, 20);
+            this.tb_altInterprete.TabIndex = 3;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(276, 21);
+            this.label10.Location = new System.Drawing.Point(227, 21);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 1;
@@ -309,25 +331,32 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 20);
+            this.label11.Location = new System.Drawing.Point(298, 59);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Intérprete";
+            // 
+            // erroP
+            // 
+            this.erroP.ContainerControl = this;
             // 
             // fm_AlterarMidia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(581, 349);
+            this.ClientSize = new System.Drawing.Size(575, 343);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(898, 460);
+            this.MinimumSize = new System.Drawing.Size(538, 381);
             this.Name = "fm_AlterarMidia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alterar Midia";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erroP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,6 +388,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ErrorProvider erroP;
 
     }
 }

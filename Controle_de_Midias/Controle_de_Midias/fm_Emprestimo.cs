@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.IO;
 namespace Controle_de_Midias
 {
     public partial class fm_Emprestimo : Form
@@ -24,6 +24,7 @@ namespace Controle_de_Midias
         //essa constante é passada por paramentro para o método na classe GBD assim verifica qual ação deve ser tomada
         const string formulario = "fm_Emprestimos";
 
+        //usado para controlar a pesquisa parcial sua finalidade é verificar se o usuario apagou uma tecla
         int qtd_AnteriorCaracter = 0;
 
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
@@ -35,22 +36,13 @@ namespace Controle_de_Midias
         {
             foreach (ListViewItem item in lv_Midias.SelectedItems)
             {
-
                 dadosMidias = new List<string>();
-  
                 dadosMidias.Add(GBD.RetiraIcone(item.SubItems[0].Text));
-                dadosMidias.Add(item.SubItems[1].Text);
-                dadosMidias.Add(item.SubItems[2].Text);
-                dadosMidias.Add(item.SubItems[3].Text);
-                dadosMidias.Add(item.SubItems[4].Text);
-                dadosMidias.Add(item.SubItems[5].Text);
-                dadosMidias.Add(item.SubItems[6].Text);
-                dadosMidias.Add(item.SubItems[7].Text);
-                dadosMidias.Add(item.SubItems[8].Text);
-
+                for (int i = 1; i < 9; ++i)
+                    dadosMidias.Add(item.SubItems[i].Text);
+            
                 if (GBD.AbrirConexao())
                 {
-                   
 
                     GBD.EmprestarOuDevolverMidia(int.Parse(dadosAmigos[4]), dadosMidias, formulario);
                     GBD.FecharConexao();
@@ -86,7 +78,6 @@ namespace Controle_de_Midias
             foreach (ListViewItem item in lv_Midias.SelectedItems)
                 if (item.ForeColor == System.Drawing.Color.ForestGreen)
                     item.Remove();            
-            lv_AmigosE.Dock = System.Windows.Forms.DockStyle.Bottom;
             lv_AmigosE.Visible = true;
             lv_Midias.Visible = false;
             gr_AmigoE.Visible = false;
@@ -96,8 +87,8 @@ namespace Controle_de_Midias
 
         private void fm_Emprestimo_Load(object sender, EventArgs e)
         {
+           
             gr_AmigoE.Visible = false;
-            lv_AmigosE.Dock = System.Windows.Forms.DockStyle.Bottom;
             lv_Midias.Visible = false;
   
 
@@ -146,11 +137,9 @@ namespace Controle_de_Midias
             lb_ObsP.Text = dadosAmigos[3];
             if(dadosAmigos[5] == string.Empty)
                 dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
-            try
-            {
+            if(File.Exists(dadosAmigos[5]))
                 pb_Amigo.Image = new Bitmap(dadosAmigos[5]);
-            }
-            catch (Exception err)
+            else
             {
                 pb_Amigo.Image = new Bitmap(Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png");
                 dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";

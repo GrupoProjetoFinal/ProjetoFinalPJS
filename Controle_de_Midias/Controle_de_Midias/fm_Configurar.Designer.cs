@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_Configurar));
             this.label1 = new System.Windows.Forms.Label();
             this.lb_qtdDias = new System.Windows.Forms.Label();
@@ -35,7 +36,6 @@
             this.lb_UsuarioAntigo = new System.Windows.Forms.Label();
             this.lb_emailAntigo = new System.Windows.Forms.Label();
             this.tb_nomeUsuario = new System.Windows.Forms.TextBox();
-            this.lb_SenhaAtual = new System.Windows.Forms.Label();
             this.lb_NovaSenha = new System.Windows.Forms.Label();
             this.lb_ConfirmaSenha = new System.Windows.Forms.Label();
             this.tb_EmailPadrao = new System.Windows.Forms.TextBox();
@@ -46,10 +46,16 @@
             this.lb_SenhasDiferentes = new System.Windows.Forms.Label();
             this.lb_SenhaIncorreta = new System.Windows.Forms.Label();
             this.tb_qtdDias = new System.Windows.Forms.MaskedTextBox();
-            this.tb_ConfirmaSenha = new System.Windows.Forms.MaskedTextBox();
-            this.tb_SenhaAtual = new System.Windows.Forms.MaskedTextBox();
-            this.tb_NovaSenha = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bt_Cancelar2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_SenhaAtual = new System.Windows.Forms.TextBox();
+            this.erroP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tb_NovaSenha = new System.Windows.Forms.TextBox();
+            this.tb_ConfirmaSenha = new System.Windows.Forms.TextBox();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erroP)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,15 +113,6 @@
             this.tb_nomeUsuario.Size = new System.Drawing.Size(113, 20);
             this.tb_nomeUsuario.TabIndex = 0;
             // 
-            // lb_SenhaAtual
-            // 
-            this.lb_SenhaAtual.AutoSize = true;
-            this.lb_SenhaAtual.Location = new System.Drawing.Point(12, 252);
-            this.lb_SenhaAtual.Name = "lb_SenhaAtual";
-            this.lb_SenhaAtual.Size = new System.Drawing.Size(182, 13);
-            this.lb_SenhaAtual.TabIndex = 10;
-            this.lb_SenhaAtual.Text = "Digite sua senha atual para confirmar";
-            // 
             // lb_NovaSenha
             // 
             this.lb_NovaSenha.AutoSize = true;
@@ -128,7 +125,7 @@
             // lb_ConfirmaSenha
             // 
             this.lb_ConfirmaSenha.AutoSize = true;
-            this.lb_ConfirmaSenha.Location = new System.Drawing.Point(12, 196);
+            this.lb_ConfirmaSenha.Location = new System.Drawing.Point(8, 196);
             this.lb_ConfirmaSenha.Name = "lb_ConfirmaSenha";
             this.lb_ConfirmaSenha.Size = new System.Drawing.Size(82, 13);
             this.lb_ConfirmaSenha.TabIndex = 12;
@@ -162,7 +159,7 @@
             // 
             // bt_Confirma
             // 
-            this.bt_Confirma.Location = new System.Drawing.Point(240, 316);
+            this.bt_Confirma.Location = new System.Drawing.Point(224, 280);
             this.bt_Confirma.Name = "bt_Confirma";
             this.bt_Confirma.Size = new System.Drawing.Size(75, 23);
             this.bt_Confirma.TabIndex = 7;
@@ -172,7 +169,7 @@
             // 
             // bt_Cancelar
             // 
-            this.bt_Cancelar.Location = new System.Drawing.Point(159, 316);
+            this.bt_Cancelar.Location = new System.Drawing.Point(143, 280);
             this.bt_Cancelar.Name = "bt_Cancelar";
             this.bt_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.bt_Cancelar.TabIndex = 8;
@@ -183,7 +180,7 @@
             // lb_SenhasDiferentes
             // 
             this.lb_SenhasDiferentes.AutoSize = true;
-            this.lb_SenhasDiferentes.BackColor = System.Drawing.SystemColors.Control;
+            this.lb_SenhasDiferentes.BackColor = System.Drawing.SystemColors.Window;
             this.lb_SenhasDiferentes.ForeColor = System.Drawing.Color.Red;
             this.lb_SenhasDiferentes.Location = new System.Drawing.Point(8, 235);
             this.lb_SenhasDiferentes.Name = "lb_SenhasDiferentes";
@@ -197,7 +194,7 @@
             this.lb_SenhaIncorreta.AutoSize = true;
             this.lb_SenhaIncorreta.BackColor = System.Drawing.SystemColors.Control;
             this.lb_SenhaIncorreta.ForeColor = System.Drawing.Color.Red;
-            this.lb_SenhaIncorreta.Location = new System.Drawing.Point(12, 291);
+            this.lb_SenhaIncorreta.Location = new System.Drawing.Point(12, 144);
             this.lb_SenhaIncorreta.Name = "lb_SenhaIncorreta";
             this.lb_SenhaIncorreta.Size = new System.Drawing.Size(95, 13);
             this.lb_SenhaIncorreta.TabIndex = 17;
@@ -212,53 +209,88 @@
             this.tb_qtdDias.Size = new System.Drawing.Size(31, 20);
             this.tb_qtdDias.TabIndex = 2;
             // 
-            // tb_ConfirmaSenha
-            // 
-            this.tb_ConfirmaSenha.Location = new System.Drawing.Point(12, 212);
-            this.tb_ConfirmaSenha.Mask = "000000";
-            this.tb_ConfirmaSenha.Name = "tb_ConfirmaSenha";
-            this.tb_ConfirmaSenha.PasswordChar = '●';
-            this.tb_ConfirmaSenha.Size = new System.Drawing.Size(52, 20);
-            this.tb_ConfirmaSenha.TabIndex = 4;
-            // 
-            // tb_SenhaAtual
-            // 
-            this.tb_SenhaAtual.Location = new System.Drawing.Point(15, 268);
-            this.tb_SenhaAtual.Mask = "000000";
-            this.tb_SenhaAtual.Name = "tb_SenhaAtual";
-            this.tb_SenhaAtual.PasswordChar = '●';
-            this.tb_SenhaAtual.Size = new System.Drawing.Size(52, 20);
-            this.tb_SenhaAtual.TabIndex = 5;
-            // 
-            // tb_NovaSenha
-            // 
-            this.tb_NovaSenha.Location = new System.Drawing.Point(11, 173);
-            this.tb_NovaSenha.Mask = "000000";
-            this.tb_NovaSenha.Name = "tb_NovaSenha";
-            this.tb_NovaSenha.PasswordChar = '●';
-            this.tb_NovaSenha.Size = new System.Drawing.Size(52, 20);
-            this.tb_NovaSenha.TabIndex = 3;
-            // 
             // panel2
             // 
             this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.ico_ferramentas_36;
-            this.panel2.Location = new System.Drawing.Point(11, 316);
+            this.panel2.Location = new System.Drawing.Point(12, 280);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(38, 32);
             this.panel2.TabIndex = 20;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.bt_Cancelar2);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.tb_SenhaAtual);
+            this.panel1.Controls.Add(this.lb_SenhaIncorreta);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(316, 330);
+            this.panel1.TabIndex = 21;
+            this.panel1.Visible = false;
+            // 
+            // bt_Cancelar2
+            // 
+            this.bt_Cancelar2.Location = new System.Drawing.Point(127, 113);
+            this.bt_Cancelar2.Name = "bt_Cancelar2";
+            this.bt_Cancelar2.Size = new System.Drawing.Size(75, 23);
+            this.bt_Cancelar2.TabIndex = 22;
+            this.bt_Cancelar2.Text = "&Cancelar";
+            this.bt_Cancelar2.UseVisualStyleBackColor = true;
+            this.bt_Cancelar2.Click += new System.EventHandler(this.bt_Cancelar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(82, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 31);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Senha atual";
+            // 
+            // tb_SenhaAtual
+            // 
+            this.tb_SenhaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_SenhaAtual.Location = new System.Drawing.Point(88, 57);
+            this.tb_SenhaAtual.Name = "tb_SenhaAtual";
+            this.tb_SenhaAtual.PasswordChar = '●';
+            this.tb_SenhaAtual.Size = new System.Drawing.Size(141, 47);
+            this.tb_SenhaAtual.TabIndex = 10;
+            this.tb_SenhaAtual.TextChanged += new System.EventHandler(this.tb_SenhaAtual_TextChanged);
+            // 
+            // erroP
+            // 
+            this.erroP.ContainerControl = this;
+            // 
+            // tb_NovaSenha
+            // 
+            this.tb_NovaSenha.Location = new System.Drawing.Point(11, 171);
+            this.tb_NovaSenha.Name = "tb_NovaSenha";
+            this.tb_NovaSenha.PasswordChar = '●';
+            this.tb_NovaSenha.Size = new System.Drawing.Size(100, 20);
+            this.tb_NovaSenha.TabIndex = 22;
+            // 
+            // tb_ConfirmaSenha
+            // 
+            this.tb_ConfirmaSenha.Location = new System.Drawing.Point(12, 212);
+            this.tb_ConfirmaSenha.Name = "tb_ConfirmaSenha";
+            this.tb_ConfirmaSenha.PasswordChar = '●';
+            this.tb_ConfirmaSenha.Size = new System.Drawing.Size(100, 20);
+            this.tb_ConfirmaSenha.TabIndex = 23;
             // 
             // fm_Configurar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(322, 353);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.tb_NovaSenha);
-            this.Controls.Add(this.tb_SenhaAtual);
+            this.ClientSize = new System.Drawing.Size(317, 328);
             this.Controls.Add(this.tb_ConfirmaSenha);
+            this.Controls.Add(this.tb_NovaSenha);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tb_qtdDias);
-            this.Controls.Add(this.lb_SenhaIncorreta);
             this.Controls.Add(this.lb_SenhasDiferentes);
             this.Controls.Add(this.bt_Cancelar);
             this.Controls.Add(this.bt_Confirma);
@@ -267,19 +299,24 @@
             this.Controls.Add(this.tb_EmailPadrao);
             this.Controls.Add(this.lb_ConfirmaSenha);
             this.Controls.Add(this.lb_NovaSenha);
-            this.Controls.Add(this.lb_SenhaAtual);
             this.Controls.Add(this.tb_nomeUsuario);
             this.Controls.Add(this.lb_emailAntigo);
             this.Controls.Add(this.lb_UsuarioAntigo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lb_qtdDias);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(333, 362);
+            this.MinimumSize = new System.Drawing.Size(333, 173);
             this.Name = "fm_Configurar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fm_Configurar_FormClosed);
             this.Load += new System.EventHandler(this.fm_Configurar_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erroP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +330,6 @@
         private System.Windows.Forms.Label lb_UsuarioAntigo;
         private System.Windows.Forms.Label lb_emailAntigo;
         private System.Windows.Forms.TextBox tb_nomeUsuario;
-        private System.Windows.Forms.Label lb_SenhaAtual;
         private System.Windows.Forms.Label lb_NovaSenha;
         private System.Windows.Forms.Label lb_ConfirmaSenha;
         private System.Windows.Forms.TextBox tb_EmailPadrao;
@@ -304,9 +340,13 @@
         private System.Windows.Forms.Label lb_SenhasDiferentes;
         private System.Windows.Forms.Label lb_SenhaIncorreta;
         private System.Windows.Forms.MaskedTextBox tb_qtdDias;
-        private System.Windows.Forms.MaskedTextBox tb_ConfirmaSenha;
-        private System.Windows.Forms.MaskedTextBox tb_SenhaAtual;
-        private System.Windows.Forms.MaskedTextBox tb_NovaSenha;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox tb_SenhaAtual;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bt_Cancelar2;
+        private System.Windows.Forms.ErrorProvider erroP;
+        private System.Windows.Forms.TextBox tb_ConfirmaSenha;
+        private System.Windows.Forms.TextBox tb_NovaSenha;
     }
 }

@@ -50,6 +50,18 @@
             this.cl_Origem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tp_Amigos = new System.Windows.Forms.TabPage();
+            this.rb_Individual = new System.Windows.Forms.RadioButton();
+            this.rb_Lista = new System.Windows.Forms.RadioButton();
+            this.pn_Amigo = new System.Windows.Forms.Panel();
+            this.bt_Anterior = new System.Windows.Forms.Button();
+            this.bt_Proximo = new System.Windows.Forms.Button();
+            this.gb_menu = new System.Windows.Forms.GroupBox();
+            this.pb_Amigo = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lb_Nome = new System.Windows.Forms.Label();
+            this.lb_Telefone = new System.Windows.Forms.Label();
+            this.lb_observacao = new System.Windows.Forms.Label();
+            this.lb_email = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tb_PesquisaParcial = new System.Windows.Forms.TextBox();
             this.lv_Amigos = new System.Windows.Forms.ListView();
@@ -70,11 +82,17 @@
             this.tabControl1.SuspendLayout();
             this.tp_Midias.SuspendLayout();
             this.tp_Amigos.SuspendLayout();
+            this.pn_Amigo.SuspendLayout();
+            this.gb_menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Amigo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tp_Midias);
             this.tabControl1.Controls.Add(this.tp_Amigos);
             this.tabControl1.Location = new System.Drawing.Point(98, 1);
@@ -99,6 +117,7 @@
             // 
             // img_Sucesso
             // 
+            this.img_Sucesso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.img_Sucesso.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
             this.img_Sucesso.Location = new System.Drawing.Point(748, 6);
             this.img_Sucesso.Name = "img_Sucesso";
@@ -108,6 +127,7 @@
             // 
             // tb_PesquisaParcialM
             // 
+            this.tb_PesquisaParcialM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_PesquisaParcialM.Location = new System.Drawing.Point(637, 6);
             this.tb_PesquisaParcialM.Name = "tb_PesquisaParcialM";
             this.tb_PesquisaParcialM.Size = new System.Drawing.Size(110, 20);
@@ -116,6 +136,9 @@
             // 
             // lv_Midias
             // 
+            this.lv_Midias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lv_Midias.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cl_Album,
             this.cl_Interprete,
@@ -144,9 +167,9 @@
             listViewGroup3,
             listViewGroup4,
             listViewGroup5});
-            this.lv_Midias.Location = new System.Drawing.Point(3, 30);
+            this.lv_Midias.Location = new System.Drawing.Point(3, 28);
             this.lv_Midias.Name = "lv_Midias";
-            this.lv_Midias.Size = new System.Drawing.Size(769, 366);
+            this.lv_Midias.Size = new System.Drawing.Size(765, 366);
             this.lv_Midias.TabIndex = 2;
             this.lv_Midias.UseCompatibleStateImageBehavior = false;
             this.lv_Midias.View = System.Windows.Forms.View.Details;
@@ -156,30 +179,30 @@
             // cl_Album
             // 
             this.cl_Album.Text = "Álbum";
-            this.cl_Album.Width = 80;
+            this.cl_Album.Width = 195;
             // 
             // cl_Interprete
             // 
             this.cl_Interprete.Text = "Intérprete";
-            this.cl_Interprete.Width = 91;
+            this.cl_Interprete.Width = 133;
             // 
             // cl_Autor
             // 
             this.cl_Autor.DisplayIndex = 3;
             this.cl_Autor.Text = "Autor";
-            this.cl_Autor.Width = 102;
+            this.cl_Autor.Width = 149;
             // 
             // cl_Música
             // 
             this.cl_Música.DisplayIndex = 4;
             this.cl_Música.Text = "Música";
-            this.cl_Música.Width = 137;
+            this.cl_Música.Width = 160;
             // 
             // cl_Nota
             // 
             this.cl_Nota.DisplayIndex = 5;
             this.cl_Nota.Text = "Nota";
-            this.cl_Nota.Width = 117;
+            this.cl_Nota.Width = 41;
             // 
             // cl_DataAlbum
             // 
@@ -197,15 +220,18 @@
             // 
             this.cl_Origem.DisplayIndex = 2;
             this.cl_Origem.Text = "Origem";
-            this.cl_Origem.Width = 94;
+            this.cl_Origem.Width = 96;
             // 
             // cl_Observacao
             // 
             this.cl_Observacao.Text = "Observação";
-            this.cl_Observacao.Width = 116;
+            this.cl_Observacao.Width = 156;
             // 
             // tp_Amigos
             // 
+            this.tp_Amigos.Controls.Add(this.rb_Individual);
+            this.tp_Amigos.Controls.Add(this.rb_Lista);
+            this.tp_Amigos.Controls.Add(this.pn_Amigo);
             this.tp_Amigos.Controls.Add(this.panel1);
             this.tp_Amigos.Controls.Add(this.tb_PesquisaParcial);
             this.tp_Amigos.Controls.Add(this.lv_Amigos);
@@ -217,8 +243,148 @@
             this.tp_Amigos.Text = "Amigos";
             this.tp_Amigos.UseVisualStyleBackColor = true;
             // 
+            // rb_Individual
+            // 
+            this.rb_Individual.AutoSize = true;
+            this.rb_Individual.Location = new System.Drawing.Point(94, 7);
+            this.rb_Individual.Name = "rb_Individual";
+            this.rb_Individual.Size = new System.Drawing.Size(70, 17);
+            this.rb_Individual.TabIndex = 18;
+            this.rb_Individual.TabStop = true;
+            this.rb_Individual.Text = "Individual";
+            this.rb_Individual.UseVisualStyleBackColor = true;
+            this.rb_Individual.Click += new System.EventHandler(this.rb_Individual_Click);
+            // 
+            // rb_Lista
+            // 
+            this.rb_Lista.AutoSize = true;
+            this.rb_Lista.Location = new System.Drawing.Point(3, 7);
+            this.rb_Lista.Name = "rb_Lista";
+            this.rb_Lista.Size = new System.Drawing.Size(47, 17);
+            this.rb_Lista.TabIndex = 17;
+            this.rb_Lista.TabStop = true;
+            this.rb_Lista.Text = "Lista";
+            this.rb_Lista.UseVisualStyleBackColor = true;
+            this.rb_Lista.Click += new System.EventHandler(this.rb_Lista_Click);
+            // 
+            // pn_Amigo
+            // 
+            this.pn_Amigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pn_Amigo.Controls.Add(this.bt_Anterior);
+            this.pn_Amigo.Controls.Add(this.bt_Proximo);
+            this.pn_Amigo.Controls.Add(this.gb_menu);
+            this.pn_Amigo.Location = new System.Drawing.Point(1, 30);
+            this.pn_Amigo.Name = "pn_Amigo";
+            this.pn_Amigo.Size = new System.Drawing.Size(768, 367);
+            this.pn_Amigo.TabIndex = 14;
+            this.pn_Amigo.Visible = false;
+            // 
+            // bt_Anterior
+            // 
+            this.bt_Anterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bt_Anterior.Location = new System.Drawing.Point(70, 139);
+            this.bt_Anterior.Name = "bt_Anterior";
+            this.bt_Anterior.Size = new System.Drawing.Size(50, 59);
+            this.bt_Anterior.TabIndex = 12;
+            this.bt_Anterior.Text = "<<";
+            this.bt_Anterior.UseVisualStyleBackColor = true;
+            this.bt_Anterior.Click += new System.EventHandler(this.bt_Anterior_Click);
+            // 
+            // bt_Proximo
+            // 
+            this.bt_Proximo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Proximo.Location = new System.Drawing.Point(651, 139);
+            this.bt_Proximo.Name = "bt_Proximo";
+            this.bt_Proximo.Size = new System.Drawing.Size(50, 59);
+            this.bt_Proximo.TabIndex = 11;
+            this.bt_Proximo.Text = ">>";
+            this.bt_Proximo.UseVisualStyleBackColor = true;
+            this.bt_Proximo.Click += new System.EventHandler(this.bt_Proximo_Click);
+            // 
+            // gb_menu
+            // 
+            this.gb_menu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_menu.Controls.Add(this.pb_Amigo);
+            this.gb_menu.Controls.Add(this.panel4);
+            this.gb_menu.Controls.Add(this.lb_Nome);
+            this.gb_menu.Controls.Add(this.lb_Telefone);
+            this.gb_menu.Controls.Add(this.lb_observacao);
+            this.gb_menu.Controls.Add(this.lb_email);
+            this.gb_menu.Location = new System.Drawing.Point(145, 20);
+            this.gb_menu.Name = "gb_menu";
+            this.gb_menu.Size = new System.Drawing.Size(482, 326);
+            this.gb_menu.TabIndex = 10;
+            this.gb_menu.TabStop = false;
+            this.gb_menu.Text = "Amigo";
+            // 
+            // pb_Amigo
+            // 
+            this.pb_Amigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pb_Amigo.Location = new System.Drawing.Point(16, 19);
+            this.pb_Amigo.Name = "pb_Amigo";
+            this.pb_Amigo.Size = new System.Drawing.Size(270, 230);
+            this.pb_Amigo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Amigo.TabIndex = 22;
+            this.pb_Amigo.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.BackgroundImage = global::Controle_de_Midias.Properties.Resources.lgn_usuario;
+            this.panel4.Location = new System.Drawing.Point(6, 272);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(49, 47);
+            this.panel4.TabIndex = 21;
+            // 
+            // lb_Nome
+            // 
+            this.lb_Nome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Nome.AutoSize = true;
+            this.lb_Nome.Location = new System.Drawing.Point(292, 41);
+            this.lb_Nome.Name = "lb_Nome";
+            this.lb_Nome.Size = new System.Drawing.Size(35, 13);
+            this.lb_Nome.TabIndex = 0;
+            this.lb_Nome.Text = "Nome";
+            // 
+            // lb_Telefone
+            // 
+            this.lb_Telefone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Telefone.AutoSize = true;
+            this.lb_Telefone.Location = new System.Drawing.Point(292, 119);
+            this.lb_Telefone.Name = "lb_Telefone";
+            this.lb_Telefone.Size = new System.Drawing.Size(49, 13);
+            this.lb_Telefone.TabIndex = 2;
+            this.lb_Telefone.Text = "Telefone";
+            // 
+            // lb_observacao
+            // 
+            this.lb_observacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_observacao.AutoSize = true;
+            this.lb_observacao.Location = new System.Drawing.Point(292, 164);
+            this.lb_observacao.Name = "lb_observacao";
+            this.lb_observacao.Size = new System.Drawing.Size(65, 13);
+            this.lb_observacao.TabIndex = 6;
+            this.lb_observacao.Text = "Observação";
+            // 
+            // lb_email
+            // 
+            this.lb_email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_email.AutoSize = true;
+            this.lb_email.Location = new System.Drawing.Point(292, 80);
+            this.lb_email.Name = "lb_email";
+            this.lb_email.Size = new System.Drawing.Size(35, 13);
+            this.lb_email.TabIndex = 4;
+            this.lb_email.Text = "E-mail";
+            // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::Controle_de_Midias.Properties.Resources.iconePesquisar;
             this.panel1.Location = new System.Drawing.Point(748, 6);
             this.panel1.Name = "panel1";
@@ -228,6 +394,7 @@
             // 
             // tb_PesquisaParcial
             // 
+            this.tb_PesquisaParcial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_PesquisaParcial.Location = new System.Drawing.Point(637, 6);
             this.tb_PesquisaParcial.Name = "tb_PesquisaParcial";
             this.tb_PesquisaParcial.Size = new System.Drawing.Size(110, 20);
@@ -236,13 +403,15 @@
             // 
             // lv_Amigos
             // 
+            this.lv_Amigos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lv_Amigos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cl_Nome,
             this.cl_Telefone,
             this.cl_Email,
             this.cl_Obs});
             this.lv_Amigos.FullRowSelect = true;
-            this.lv_Amigos.GridLines = true;
             this.lv_Amigos.Location = new System.Drawing.Point(3, 30);
             this.lv_Amigos.Name = "lv_Amigos";
             this.lv_Amigos.Size = new System.Drawing.Size(770, 366);
@@ -274,6 +443,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.bt_Alterar);
             this.groupBox1.Controls.Add(this.bt_Configurar);
@@ -291,6 +462,7 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
             this.panel2.Location = new System.Drawing.Point(6, 364);
             this.panel2.Name = "panel2";
@@ -386,6 +558,10 @@
             this.tp_Midias.PerformLayout();
             this.tp_Amigos.ResumeLayout(false);
             this.tp_Amigos.PerformLayout();
+            this.pn_Amigo.ResumeLayout(false);
+            this.gb_menu.ResumeLayout(false);
+            this.gb_menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Amigo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -425,6 +601,18 @@
         private System.Windows.Forms.Button bt_NovaMidia;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolTip tp_Imagem;
+        private System.Windows.Forms.Panel pn_Amigo;
+        private System.Windows.Forms.Button bt_Anterior;
+        private System.Windows.Forms.Button bt_Proximo;
+        private System.Windows.Forms.GroupBox gb_menu;
+        private System.Windows.Forms.PictureBox pb_Amigo;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lb_Nome;
+        private System.Windows.Forms.Label lb_Telefone;
+        private System.Windows.Forms.Label lb_observacao;
+        private System.Windows.Forms.Label lb_email;
+        private System.Windows.Forms.RadioButton rb_Individual;
+        private System.Windows.Forms.RadioButton rb_Lista;
 
     }
 }

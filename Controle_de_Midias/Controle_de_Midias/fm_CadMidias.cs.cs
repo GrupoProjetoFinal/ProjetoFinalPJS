@@ -12,14 +12,11 @@ namespace Controle_de_Midias
     public partial class fm_CadMidias : Form
     {
         ListView lvMidias;
-
+        
         //recebe o ListView do fm_principal por parâmetro assim ele é atualizado quando for adicionado uma nova mida.
-
         public fm_CadMidias(ListView fmMidiasLista)
         {
-
             InitializeComponent();
-            
             //lvMidias pega a referência do Listview do formulário principal;
             lvMidias = fmMidiasLista;
             cb_Nota.SelectedIndex = 0;
@@ -31,6 +28,7 @@ namespace Controle_de_Midias
 
         private void bt_Adicionar_Click(object sender, EventArgs e)
         {
+            // verifica se os campos  obrigatórios estão preenchidos
             if (cb_Tipomidia.SelectedIndex != 4)
             {
                 if (tb_Album.Text == string.Empty)

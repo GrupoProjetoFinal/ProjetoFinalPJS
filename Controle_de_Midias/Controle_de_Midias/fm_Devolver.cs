@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Controle_de_Midias
 {
-    public partial class fm_Devolver : Form
+    public partial class Devolver : Form
     {
-        public fm_Devolver()
+        public Devolver()
         {
             InitializeComponent();
         }
@@ -22,7 +23,7 @@ namespace Controle_de_Midias
         const string formulario = "fm_Devolver";
         private int idAmigo;
         Amigo amigo = new Amigo();
-        List<string> DadosMidia;
+        List<string> dadosMidia;
         List<string> dadosAmigos;
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
        
@@ -60,14 +61,14 @@ namespace Controle_de_Midias
         {
             foreach (ListViewItem item in lv_MidiasD.SelectedItems)
             {
-                DadosMidia = new List<string>();
+                dadosMidia = new List<string>();
                 
-                DadosMidia.Add(GBD.RetiraIcone(item.SubItems[0].Text));
+                dadosMidia.Add(GBD.RetiraIcone(item.SubItems[0].Text));
                 for (int i = 1; i < 9; ++i)
-                    DadosMidia.Add(item.SubItems[i].Text);
+                    dadosMidia.Add(item.SubItems[i].Text);
                 
                 GBD.AbrirConexao();
-                GBD.EmprestarOuDevolverMidia(idAmigo, DadosMidia, null);
+                GBD.EmprestarOuDevolverMidia(idAmigo, dadosMidia, null);
                 GBD.FecharConexao();
 
                 item.Remove();
@@ -96,8 +97,6 @@ namespace Controle_de_Midias
         //Quando esse evento for disparado o Listview Midias e preenchido coma as Midias emprestadas pelo amigo selecionado.
         private void lv_AmigosD_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //O listView Midias volta ao seu tamanho original a direita e fica visivel 
-            lv_MidiasD.Dock = System.Windows.Forms.DockStyle.Right;
             lv_MidiasD.Visible = true;
             lv_AmigosD.Visible = false;
             gr_AmigoE.Visible = true;
@@ -125,14 +124,10 @@ namespace Controle_de_Midias
                 if (dadosAmigos[5] == string.Empty)
                     dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
                 
-                try
-                {
+                if(File.Exists(dadosAmigos[5]))
                     pb_Amigo.Image = new Bitmap(dadosAmigos[5]);
-                }
-                catch (Exception err)
-                {
+                else
                     pb_Amigo.Image = new Bitmap(Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png");
-                }
             }
             else
                 GBD.MensagemDeErro();

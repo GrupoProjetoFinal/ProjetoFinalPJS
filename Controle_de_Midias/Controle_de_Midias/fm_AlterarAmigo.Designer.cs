@@ -46,7 +46,6 @@
             this.lb_observacao = new System.Windows.Forms.Label();
             this.tb_EmailAlt = new System.Windows.Forms.TextBox();
             this.lb_email = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.erroP)).BeginInit();
             this.gb_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Amigo)).BeginInit();
@@ -54,20 +53,22 @@
             // 
             // bt_Excluir
             // 
-            this.bt_Excluir.Location = new System.Drawing.Point(265, 257);
+            this.bt_Excluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Excluir.Location = new System.Drawing.Point(271, 267);
             this.bt_Excluir.Name = "bt_Excluir";
             this.bt_Excluir.Size = new System.Drawing.Size(75, 23);
-            this.bt_Excluir.TabIndex = 6;
+            this.bt_Excluir.TabIndex = 7;
             this.bt_Excluir.Text = "&Apagar";
             this.bt_Excluir.UseVisualStyleBackColor = true;
             this.bt_Excluir.Click += new System.EventHandler(this.bt_Excluir_Click);
             // 
             // bt_Alterar
             // 
-            this.bt_Alterar.Location = new System.Drawing.Point(346, 257);
+            this.bt_Alterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Alterar.Location = new System.Drawing.Point(352, 267);
             this.bt_Alterar.Name = "bt_Alterar";
             this.bt_Alterar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Alterar.TabIndex = 5;
+            this.bt_Alterar.TabIndex = 6;
             this.bt_Alterar.Text = "&Alterar";
             this.bt_Alterar.UseVisualStyleBackColor = true;
             this.bt_Alterar.Click += new System.EventHandler(this.bt_Alterar_Click);
@@ -78,6 +79,9 @@
             // 
             // gb_menu
             // 
+            this.gb_menu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.gb_menu.Controls.Add(this.pb_Amigo);
             this.gb_menu.Controls.Add(this.bt_InserirImagem);
             this.gb_menu.Controls.Add(this.bt_Excluir);
@@ -94,15 +98,16 @@
             this.gb_menu.Controls.Add(this.lb_email);
             this.gb_menu.Location = new System.Drawing.Point(3, 3);
             this.gb_menu.Name = "gb_menu";
-            this.gb_menu.Size = new System.Drawing.Size(427, 311);
+            this.gb_menu.Size = new System.Drawing.Size(433, 321);
             this.gb_menu.TabIndex = 11;
             this.gb_menu.TabStop = false;
             this.gb_menu.Text = "Amigo";
             // 
             // pb_Amigo
             // 
+            this.pb_Amigo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Amigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb_Amigo.Location = new System.Drawing.Point(292, 16);
+            this.pb_Amigo.Location = new System.Drawing.Point(298, 16);
             this.pb_Amigo.Name = "pb_Amigo";
             this.pb_Amigo.Size = new System.Drawing.Size(123, 131);
             this.pb_Amigo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -111,18 +116,20 @@
             // 
             // bt_InserirImagem
             // 
-            this.bt_InserirImagem.Location = new System.Drawing.Point(340, 153);
+            this.bt_InserirImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_InserirImagem.Location = new System.Drawing.Point(346, 153);
             this.bt_InserirImagem.Name = "bt_InserirImagem";
             this.bt_InserirImagem.Size = new System.Drawing.Size(75, 23);
-            this.bt_InserirImagem.TabIndex = 10;
+            this.bt_InserirImagem.TabIndex = 5;
             this.bt_InserirImagem.Text = "&Escolher";
             this.bt_InserirImagem.UseVisualStyleBackColor = true;
             this.bt_InserirImagem.Click += new System.EventHandler(this.bt_InserirImagem_Click);
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackgroundImage = global::Controle_de_Midias.Properties.Resources.lgn_usuario;
-            this.panel1.Location = new System.Drawing.Point(6, 257);
+            this.panel1.Location = new System.Drawing.Point(6, 267);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(49, 47);
             this.panel1.TabIndex = 21;
@@ -148,9 +155,11 @@
             // 
             // rtb_ObservacaoAlt
             // 
+            this.rtb_ObservacaoAlt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_ObservacaoAlt.Location = new System.Drawing.Point(6, 155);
             this.rtb_ObservacaoAlt.Name = "rtb_ObservacaoAlt";
-            this.rtb_ObservacaoAlt.Size = new System.Drawing.Size(207, 71);
+            this.rtb_ObservacaoAlt.Size = new System.Drawing.Size(213, 71);
             this.rtb_ObservacaoAlt.TabIndex = 4;
             this.rtb_ObservacaoAlt.Text = "";
             // 
@@ -165,9 +174,11 @@
             // 
             // tb_NomeAlt
             // 
+            this.tb_NomeAlt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_NomeAlt.Location = new System.Drawing.Point(6, 32);
             this.tb_NomeAlt.Name = "tb_NomeAlt";
-            this.tb_NomeAlt.Size = new System.Drawing.Size(266, 20);
+            this.tb_NomeAlt.Size = new System.Drawing.Size(272, 20);
             this.tb_NomeAlt.TabIndex = 1;
             // 
             // lb_Telefone
@@ -190,9 +201,11 @@
             // 
             // tb_EmailAlt
             // 
+            this.tb_EmailAlt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_EmailAlt.Location = new System.Drawing.Point(6, 71);
             this.tb_EmailAlt.Name = "tb_EmailAlt";
-            this.tb_EmailAlt.Size = new System.Drawing.Size(266, 20);
+            this.tb_EmailAlt.Size = new System.Drawing.Size(272, 20);
             this.tb_EmailAlt.TabIndex = 2;
             // 
             // lb_email
@@ -204,18 +217,16 @@
             this.lb_email.TabIndex = 4;
             this.lb_email.Text = "E-mail";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // fm_AlterarAmigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(434, 318);
+            this.ClientSize = new System.Drawing.Size(440, 327);
             this.Controls.Add(this.gb_menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(898, 460);
+            this.MinimumSize = new System.Drawing.Size(420, 340);
             this.Name = "fm_AlterarAmigo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alterar dados do amigo";
@@ -241,11 +252,10 @@
         private System.Windows.Forms.MaskedTextBox tb_TelefoneAlt;
         private System.Windows.Forms.RichTextBox rtb_ObservacaoAlt;
         private System.Windows.Forms.Label lb_Nome;
-        private System.Windows.Forms.TextBox tb_NomeAlt;
         private System.Windows.Forms.Label lb_Telefone;
         private System.Windows.Forms.Label lb_observacao;
         private System.Windows.Forms.TextBox tb_EmailAlt;
         private System.Windows.Forms.Label lb_email;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox tb_NomeAlt;
     }
 }

@@ -14,9 +14,8 @@ namespace Controle_de_Midias
         private SqlDataReader Leitor;
         public SqlConnection conexao = new SqlConnection();
         private SqlCommand cmd;
-        private List<string> DadosAmigos = new List<string>();
+        private List<string> dadosAmigos = new List<string>();
         private ListViewItem item = new ListViewItem();
-
         private string cmdSQL;
 
         //Listas de dados
@@ -60,11 +59,12 @@ namespace Controle_de_Midias
 
         }
 
-        #region Controle de acesso ao Banco de dados
-        
+
+        #region Métodos de Abrir e fechar a conexão com o banco de dados
+
         public bool AbrirConexao()
         {
-            conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\ProjetoFinalPJS\Controle_de_Midias\teste imagem\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
+            conexao.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\ProjetoFinalPJS\Controle_de_Midias\DataBase\ControleDeMidias.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
 
             try
             {
@@ -218,10 +218,6 @@ namespace Controle_de_Midias
             {
                 item = new ListViewItem(Leitor["Nome"].ToString());
                 lv_Amigos.Items.Add(item);
-
-                //if (Leitor["Telefone"].ToString() == "(  ) -     -")
-                //    item.SubItems.Add("Não Consta");
-                //else
                 item.SubItems.Add(Leitor["Telefone"].ToString());
                 item.SubItems.Add(Leitor["Email"].ToString());
                 item.SubItems.Add(Leitor["Observacao"].ToString());
@@ -235,10 +231,13 @@ namespace Controle_de_Midias
 
         private void PreencherListView(ListView lv, SqlDataReader Leitor)
         {
+            string dataAlbum = null;
+            string dataCompra = null;
+            int contador = 0;
             string icone = "♫   ";
             while (Leitor.Read())
             {
-
+                contador=0;
                 item = new ListViewItem(icone + Leitor["Nome_Album"].ToString());
                 item.Group = lv.Groups[int.Parse(Leitor["Tipo_Midia"].ToString())];
                 lv.Items.Add(item);
@@ -250,6 +249,17 @@ namespace Controle_de_Midias
                 item.SubItems.Add(Leitor["Data_Album"].ToString());
                 item.SubItems.Add(Leitor["Origem_Compra"].ToString());
                 item.SubItems.Add(Leitor["Observacao"].ToString());
+                while (contador <= 9)
+                {
+                    dataAlbum += item.SubItems[6].Text[contador];
+                    dataCompra += item.SubItems[5].Text[contador];
+                    ++contador;
+                }
+                item.SubItems[6].Text = dataAlbum;
+                item.SubItems[5].Text = dataCompra;
+                dataCompra = string.Empty;
+                dataAlbum = string.Empty;
+
             }
             Leitor.Close();
         }
@@ -273,22 +283,6 @@ namespace Controle_de_Midias
             cmd.Parameters.Add(new SqlParameter("@Observacao", amigo.observacao));
 
             return id_amigo = (int)cmd.ExecuteScalar();
-
-        }
-
-        public string RetiraIcone(string album)
-        {
-            int cont = 0;
-
-            string semIcone = string.Empty;
-            while (cont <= album.Count() - 1)
-            {
-                if (cont > 3)
-                    semIcone += album[cont];
-                ++cont;
-            }
-
-            return semIcone;
 
         }
 
@@ -319,8 +313,8 @@ namespace Controle_de_Midias
 
         public List<string> ProcurarAmigo(string Nome, string tel,string email,string obs)
         {
-            DadosAmigos.Clear();
-
+            dadosAmigos.Clear();
+            
             cmdSQL = "SELECT * FROM Amigos WHERE Nome = @Nome AND Telefone = @Telefone AND Email = @Email AND Observacao = @Observacao ";
 
             cmd = new SqlCommand(cmdSQL, conexao);
@@ -334,20 +328,20 @@ namespace Controle_de_Midias
 
             while (Leitor.Read())
             {
-                DadosAmigos.Add(Leitor["Nome"].ToString());
-                DadosAmigos.Add(Leitor["Telefone"].ToString());
-                DadosAmigos.Add(Leitor["Email"].ToString());
-                DadosAmigos.Add(Leitor["Observacao"].ToString());
-                DadosAmigos.Add(Leitor["Id_Amigo"].ToString());
-                DadosAmigos.Add(Leitor["Imagem"].ToString());
+                dadosAmigos.Add(Leitor["Nome"].ToString());
+                dadosAmigos.Add(Leitor["Telefone"].ToString());
+                dadosAmigos.Add(Leitor["Email"].ToString());
+                dadosAmigos.Add(Leitor["Observacao"].ToString());
+                dadosAmigos.Add(Leitor["Id_Amigo"].ToString());
+                dadosAmigos.Add(Leitor["Imagem"].ToString());
             }
             Leitor.Close();
-            return DadosAmigos;
+            return dadosAmigos;
         }
 
         public void ProcurarMidia(ListView lv_Midias, Midia midia, DateTime dataCompraFIM, DateTime dataAlbumFIM,bool qualquerData)
         {
-
+            // caso qualquer data for falso é contatenado mais duas condições no SELECT
             if(qualquerData)
                 cmdSQL = "SELECT * FROM Midias  " +
                          "WHERE    (Nome_Interprete  LIKE(@interprete))                                 AND" +
@@ -388,10 +382,13 @@ namespace Controle_de_Midias
 
             string parcialMaiusculo = tb_PesquisaParcial.ToUpper();
 
+            // caso a quantidade de caracter anterior for maior que a atual o usuario apagou uma tecla 
             if (qtd_AnteriorCaracter > tb_PesquisaParcial.Count())
             {
+                //criada para remover os items da lista amigos, pois não é possivel alterar uma estrutura dentro do forech 
                 List<ListViewItem> lixeira = new List<ListViewItem>();
                 foreach (ListViewItem item in amigos)
+                    //adiciona no lv_Amigos os items que foram retirados anteriormente e que atedenderem a condição
                     if (item.Text.ToUpper().Contains(parcialMaiusculo))
                     {
                         lv_Amigos.Items.Add(item);
@@ -402,26 +399,27 @@ namespace Controle_de_Midias
             }
             else
                 foreach (ListViewItem item in lv_Amigos.Items)
+                    //remove os items do listview que não atenderem a condição 
                     if (!item.Text.ToUpper().Contains(parcialMaiusculo))
                     {
                         amigos.Add(item);
                         item.Remove();
                     }
-
+            //retorna a qtd_AnteriorCaracter para não perder o valor
             return qtd_AnteriorCaracter = tb_PesquisaParcial.Count();
         }
 
         public int PesquisaParcialMidia(ListView lv_Midias, string tb_PesquisaParcial, int qtd_AnteriorCaracter)
         {
-            //Se quantidade anterior de caracter for maior que a atual o usuário apertou Backspace
-
             string parcialMaiusculo = tb_PesquisaParcial.ToUpper();
-
+            // caso a quantidade de caracter anterior for maior que a atual o usuario apagou uma tecla 
             if (qtd_AnteriorCaracter > tb_PesquisaParcial.Count())
             {
+                //criada para remover os items da lista amigos, pois não é possivel alterar uma estrutura dentro do forech 
                 List<ListViewItem> lixeira = new List<ListViewItem>();
 
                 foreach (ListViewItem item in midias)
+                    //adiciona no lv_Midias os items que foram retirados anteriormente e que atedenderem a condição
                     if (
                         item.SubItems[0].Text.ToUpper().Contains(parcialMaiusculo) ||
                         item.SubItems[1].Text.ToUpper().Contains(parcialMaiusculo) ||
@@ -437,17 +435,14 @@ namespace Controle_de_Midias
                         lv_Midias.Items.Add(item);
                         lixeira.Add(item);
                     }
-
-
                 foreach (ListViewItem item in lixeira)
-                {
                     midias.Remove(item);
-                }
             }
             else
             {
                 foreach (ListViewItem item in lv_Midias.Items)
                 {
+                    //remove os items do listview que não atenderem a condição
                     if (
                            !(
                                 item.Group.Name.ToUpper().Contains(parcialMaiusculo) ||
@@ -469,6 +464,8 @@ namespace Controle_de_Midias
                     }
                 }
             }
+
+            //retorna a qtd_AnteriorCaracter para não perder o valor
             return qtd_AnteriorCaracter = tb_PesquisaParcial.Count();
 
         }
@@ -591,7 +588,7 @@ namespace Controle_de_Midias
             {
                 cmdSQL = "UPDATE Usuario SET Senha = @NovaSenha";
                 cmd = new SqlCommand(cmdSQL, conexao);
-                cmd.Parameters.Add(new SqlParameter("@NovaSenha", alteracao[6]));
+                cmd.Parameters.Add(new SqlParameter("@NovaSenha", alteracao[5]));
                 cmd.ExecuteNonQuery();
             }
 
@@ -653,8 +650,23 @@ namespace Controle_de_Midias
         #endregion
 
         #region Outros
+        public string RetiraIcone(string album)
+        {
+            int cont = 0;
 
-        public void AcrecentaDias()
+            string semIcone = string.Empty;
+            while (cont <= album.Count() - 1)
+            {
+                if (cont > 3)
+                    semIcone += album[cont];
+                ++cont;
+            }
+
+            return semIcone;
+
+        }
+
+        public void AtualizaDias()
         {
 
             cmdSQL = "UPDATE Emprestimos SET Quantidade_Dias =  DATEDIFF ( DAY , Data_Emprestimo , GETDATE()) from Emprestimos ";
@@ -678,9 +690,5 @@ namespace Controle_de_Midias
         }
 
         #endregion
-
-
-
-
     }
 }

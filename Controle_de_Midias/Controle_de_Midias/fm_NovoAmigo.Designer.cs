@@ -64,6 +64,8 @@
             // 
             // tb_Nome
             // 
+            this.tb_Nome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Nome.Location = new System.Drawing.Point(6, 32);
             this.tb_Nome.Name = "tb_Nome";
             this.tb_Nome.Size = new System.Drawing.Size(266, 20);
@@ -81,6 +83,8 @@
             // 
             // tb_Email
             // 
+            this.tb_Email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Email.Location = new System.Drawing.Point(6, 71);
             this.tb_Email.Name = "tb_Email";
             this.tb_Email.Size = new System.Drawing.Size(266, 20);
@@ -106,6 +110,8 @@
             // 
             // rtb_Observacao
             // 
+            this.rtb_Observacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_Observacao.Location = new System.Drawing.Point(6, 155);
             this.rtb_Observacao.Name = "rtb_Observacao";
             this.rtb_Observacao.Size = new System.Drawing.Size(207, 71);
@@ -114,6 +120,9 @@
             // 
             // gb_menu
             // 
+            this.gb_menu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.gb_menu.Controls.Add(this.pn_imgDesconecido);
             this.gb_menu.Controls.Add(this.pb_Amigo);
             this.gb_menu.Controls.Add(this.bt_InserirImagem);
@@ -138,6 +147,7 @@
             // 
             // pn_imgDesconecido
             // 
+            this.pn_imgDesconecido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pn_imgDesconecido.BackgroundImage = global::Controle_de_Midias.Properties.Resources.user;
             this.pn_imgDesconecido.Location = new System.Drawing.Point(292, 16);
             this.pn_imgDesconecido.Name = "pn_imgDesconecido";
@@ -146,6 +156,7 @@
             // 
             // pb_Amigo
             // 
+            this.pb_Amigo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Amigo.Location = new System.Drawing.Point(292, 16);
             this.pb_Amigo.Name = "pb_Amigo";
             this.pb_Amigo.Size = new System.Drawing.Size(123, 131);
@@ -155,6 +166,7 @@
             // 
             // bt_InserirImagem
             // 
+            this.bt_InserirImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_InserirImagem.Location = new System.Drawing.Point(340, 153);
             this.bt_InserirImagem.Name = "bt_InserirImagem";
             this.bt_InserirImagem.Size = new System.Drawing.Size(75, 23);
@@ -165,6 +177,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackgroundImage = global::Controle_de_Midias.Properties.Resources.lgn_usuario;
             this.panel1.Location = new System.Drawing.Point(6, 257);
             this.panel1.Name = "panel1";
@@ -184,6 +197,7 @@
             // 
             // bt_Limpar
             // 
+            this.bt_Limpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_Limpar.Location = new System.Drawing.Point(259, 257);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
@@ -194,6 +208,7 @@
             // 
             // bt_Adicionar
             // 
+            this.bt_Adicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_Adicionar.Location = new System.Drawing.Point(340, 256);
             this.bt_Adicionar.Name = "bt_Adicionar";
             this.bt_Adicionar.Size = new System.Drawing.Size(75, 23);
@@ -226,6 +241,8 @@
             this.ClientSize = new System.Drawing.Size(440, 327);
             this.Controls.Add(this.gb_menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(898, 460);
+            this.MinimumSize = new System.Drawing.Size(420, 340);
             this.Name = "fm_NovoAmigo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novo Amigo";

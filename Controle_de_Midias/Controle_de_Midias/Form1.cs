@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace Controle_de_Midias
@@ -18,12 +19,18 @@ namespace Controle_de_Midias
             InitializeComponent();
         }
 
+        //usado para controlar a visualização da imagem dos amigos 
+        private int contador = 0;
+        private int inicio = 0;
 
+        //usado para verificar se a algum item selecionado tanto no Lv_Amigo quanto no Lv_Midias
         private bool lvAtivado;
         private int qtd_AnteriorCaracter = 0;
+        private const string formulario = "fm_Principal";
+        List<string> dadosAmigos = new List<string>();
         List<ListViewItem> amigos = new List<ListViewItem>();
         List<ListViewItem> midias = new List<ListViewItem>();
-        const string formulario = "fm_Principal";
+        Amigo amigo = new Amigo();
         GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         
         private void fm_Principal_Load(object sender, EventArgs e)
@@ -35,7 +42,8 @@ namespace Controle_de_Midias
                 contador = GBD.ContarRegistros();
                 GBD.PreencherLvMidias(lv_Midias, 0);
                 GBD.PreecherLvAmigos(lv_Amigos, formulario);
-                GBD.AcrecentaDias();
+                //Atualiza dias que a midia esta emprestada
+                GBD.AtualizaDias();
                 GBD.FecharConexao();
                 if (contador == 0)
                     bt_Devolver.Enabled = false;
@@ -92,7 +100,7 @@ namespace Controle_de_Midias
 
         private void bt_Devolver_Click(object sender, EventArgs e)
         {
-            fm_Devolver devolver = new fm_Devolver();
+            Devolver devolver = new Devolver();
             devolver.ShowDialog();
 
             if (devolver.LvVazio)
@@ -168,7 +176,6 @@ namespace Controle_de_Midias
 
         private void tb_PesquisaParcialM_TextChanged(object sender, EventArgs e)
         {
-            //Se quantidade anterior de caracter for maior que a atual o usuário apertou Backspace
             qtd_AnteriorCaracter = GBD.PesquisaParcialMidia(lv_Midias, tb_PesquisaParcialM.Text, qtd_AnteriorCaracter);
         }
         
@@ -192,8 +199,7 @@ namespace Controle_de_Midias
         }
 
         private void lv_Midias_MouseClick(object sender, MouseEventArgs e)
-        {
-            
+        { 
             if (sender == lv_Midias)
                 lvAtivado = true;
             else
@@ -201,6 +207,7 @@ namespace Controle_de_Midias
 
             bt_Alterar.Enabled = true;   
         }
+
         private void bt_Alterar_Click(object sender, EventArgs e)
         {
             if (lvAtivado)
@@ -214,5 +221,78 @@ namespace Controle_de_Midias
             bt_Alterar.Enabled = false;
         }
 
+        private void bt_Proximo_Click(object sender, EventArgs e)
+        {
+            ++contador;
+            rb_Individual_Click(null, null);
+        }
+
+        private void bt_Anterior_Click(object sender, EventArgs e)
+        {
+            --contador;
+            rb_Individual_Click(null, null);
+
+        }
+
+        private void rb_Lista_Click(object sender, EventArgs e)
+        {
+            if(pb_Amigo.Image != null)
+                pb_Amigo.Image.Dispose();
+            pn_Amigo.Visible = false;
+            lv_Amigos.Visible = true;
+        }
+
+        private void rb_Individual_Click(object sender, EventArgs e)
+        {
+            if (contador < 0)
+                contador = 0;
+            inicio = 0;
+            lv_Amigos.Visible = false;
+            pn_Amigo.Visible = true;
+            // percorre todos os item do lv_amigos paralelamente com a variavél inicio, exemplo se o usuario estiver no amigo 10, quando inicio for igual a contador ele pega os dados do item vai no banco de dados pega o caminho da imagem e coloca no picturebox
+            foreach (ListViewItem item in lv_Amigos.Items)
+            {
+
+                lb_Nome.Text = item.SubItems[0].Text;
+                lb_Telefone.Text = item.SubItems[1].Text;
+                lb_email.Text = item.SubItems[2].Text;
+                lb_observacao.Text = item.SubItems[3].Text;
+                if (inicio == contador)
+                {
+                    amigo.nome = item.Text;
+                    amigo.telefone = item.SubItems[1].Text;
+                    amigo.email = item.SubItems[2].Text;
+                    amigo.observacao = item.SubItems[3].Text;
+                    if(pb_Amigo.Image != null)
+                        pb_Amigo.Image.Dispose();
+
+                    pb_Amigo.Image = new Bitmap(ObterImagem());
+                    return;
+                }
+                inicio++;
+            }
+            //caso essa linha for executada é porque o usuário chegou no ultimo amigo, assim o contador e direcionado ao primeiro amigo
+            contador = 0;
+        }
+
+        public string ObterImagem()
+        {
+            string endImagem;
+            GBD.AbrirConexao();
+            dadosAmigos = GBD.ProcurarAmigo(amigo.nome, amigo.telefone, amigo.email, amigo.observacao);
+            GBD.FecharConexao();
+
+            
+            if (dadosAmigos[5] == string.Empty)
+                dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
+
+            // Caso o usuario de algum modo excluir a imagem ele volta a imagem DESCONHECIDO
+
+            if(!File.Exists(dadosAmigos[5]))
+            {
+                dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
+            }
+            return endImagem = dadosAmigos[5];
+        }
     }
  }

@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_CadMidias));
             this.gb_Midias = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tb_Autor = new System.Windows.Forms.TextBox();
+            this.lb_Autor = new System.Windows.Forms.Label();
+            this.tb_Album = new System.Windows.Forms.TextBox();
+            this.lb_Album = new System.Windows.Forms.Label();
             this.lb_InfoUsuario = new System.Windows.Forms.Label();
             this.lb_Observacao = new System.Windows.Forms.Label();
             this.rtb_Observacao = new System.Windows.Forms.RichTextBox();
@@ -48,12 +52,8 @@
             this.lb_Datacompra = new System.Windows.Forms.Label();
             this.dtp_DataCompra = new System.Windows.Forms.DateTimePicker();
             this.tb_Nomemusica = new System.Windows.Forms.TextBox();
-            this.tb_Album = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lb_Album = new System.Windows.Forms.Label();
-            this.tb_Autor = new System.Windows.Forms.TextBox();
             this.tb_Interprete = new System.Windows.Forms.TextBox();
-            this.lb_Autor = new System.Windows.Forms.Label();
             this.lb_Interprete = new System.Windows.Forms.Label();
             this.erroP = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuOption1 = new CircularMenu.MenuOption();
@@ -63,6 +63,9 @@
             // 
             // gb_Midias
             // 
+            this.gb_Midias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.gb_Midias.BackColor = System.Drawing.Color.Transparent;
             this.gb_Midias.Controls.Add(this.panel2);
             this.gb_Midias.Controls.Add(this.tb_Autor);
@@ -90,7 +93,7 @@
             this.gb_Midias.Controls.Add(this.lb_Interprete);
             this.gb_Midias.Location = new System.Drawing.Point(4, 6);
             this.gb_Midias.Name = "gb_Midias";
-            this.gb_Midias.Size = new System.Drawing.Size(566, 328);
+            this.gb_Midias.Size = new System.Drawing.Size(566, 325);
             this.gb_Midias.TabIndex = 3;
             this.gb_Midias.TabStop = false;
             this.gb_Midias.Text = "Midia";
@@ -103,8 +106,43 @@
             this.panel2.Size = new System.Drawing.Size(33, 37);
             this.panel2.TabIndex = 32;
             // 
+            // tb_Autor
+            // 
+            this.tb_Autor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_Autor.Location = new System.Drawing.Point(285, 75);
+            this.tb_Autor.Name = "tb_Autor";
+            this.tb_Autor.Size = new System.Drawing.Size(259, 20);
+            this.tb_Autor.TabIndex = 3;
+            // 
+            // lb_Autor
+            // 
+            this.lb_Autor.AutoSize = true;
+            this.lb_Autor.Location = new System.Drawing.Point(282, 59);
+            this.lb_Autor.Name = "lb_Autor";
+            this.lb_Autor.Size = new System.Drawing.Size(32, 13);
+            this.lb_Autor.TabIndex = 1;
+            this.lb_Autor.Text = "Autor";
+            // 
+            // tb_Album
+            // 
+            this.tb_Album.Location = new System.Drawing.Point(10, 36);
+            this.tb_Album.Name = "tb_Album";
+            this.tb_Album.Size = new System.Drawing.Size(214, 20);
+            this.tb_Album.TabIndex = 0;
+            // 
+            // lb_Album
+            // 
+            this.lb_Album.AutoSize = true;
+            this.lb_Album.Location = new System.Drawing.Point(7, 19);
+            this.lb_Album.Name = "lb_Album";
+            this.lb_Album.Size = new System.Drawing.Size(36, 13);
+            this.lb_Album.TabIndex = 12;
+            this.lb_Album.Text = "Álbum";
+            // 
             // lb_InfoUsuario
             // 
+            this.lb_InfoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_InfoUsuario.AutoSize = true;
             this.lb_InfoUsuario.ForeColor = System.Drawing.Color.Red;
             this.lb_InfoUsuario.Location = new System.Drawing.Point(333, 303);
@@ -125,6 +163,8 @@
             // 
             // rtb_Observacao
             // 
+            this.rtb_Observacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_Observacao.Location = new System.Drawing.Point(9, 199);
             this.rtb_Observacao.Name = "rtb_Observacao";
             this.rtb_Observacao.Size = new System.Drawing.Size(289, 70);
@@ -133,6 +173,7 @@
             // 
             // bt_Limpar
             // 
+            this.bt_Limpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_Limpar.Location = new System.Drawing.Point(396, 268);
             this.bt_Limpar.Name = "bt_Limpar";
             this.bt_Limpar.Size = new System.Drawing.Size(75, 23);
@@ -143,6 +184,7 @@
             // 
             // bt_Salvar
             // 
+            this.bt_Salvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_Salvar.Location = new System.Drawing.Point(477, 268);
             this.bt_Salvar.Name = "bt_Salvar";
             this.bt_Salvar.Size = new System.Drawing.Size(75, 23);
@@ -186,12 +228,14 @@
             this.lb_Origemcompra.AutoSize = true;
             this.lb_Origemcompra.Location = new System.Drawing.Point(6, 98);
             this.lb_Origemcompra.Name = "lb_Origemcompra";
-            this.lb_Origemcompra.Size = new System.Drawing.Size(89, 13);
+            this.lb_Origemcompra.Size = new System.Drawing.Size(93, 13);
             this.lb_Origemcompra.TabIndex = 23;
-            this.lb_Origemcompra.Text = "Origim da compra";
+            this.lb_Origemcompra.Text = "Origem da compra";
             // 
             // tb_Origemcompra
             // 
+            this.tb_Origemcompra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Origemcompra.Location = new System.Drawing.Point(9, 115);
             this.tb_Origemcompra.Name = "tb_Origemcompra";
             this.tb_Origemcompra.Size = new System.Drawing.Size(321, 20);
@@ -199,6 +243,7 @@
             // 
             // dtp_DataAlbum
             // 
+            this.dtp_DataAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_DataAlbum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_DataAlbum.Location = new System.Drawing.Point(443, 115);
             this.dtp_DataAlbum.Name = "dtp_DataAlbum";
@@ -207,6 +252,7 @@
             // 
             // lb_Dataalbum
             // 
+            this.lb_Dataalbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Dataalbum.AutoSize = true;
             this.lb_Dataalbum.Location = new System.Drawing.Point(438, 99);
             this.lb_Dataalbum.Name = "lb_Dataalbum";
@@ -240,6 +286,7 @@
             // 
             // lb_Datacompra
             // 
+            this.lb_Datacompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Datacompra.AutoSize = true;
             this.lb_Datacompra.Location = new System.Drawing.Point(333, 98);
             this.lb_Datacompra.Name = "lb_Datacompra";
@@ -249,6 +296,7 @@
             // 
             // dtp_DataCompra
             // 
+            this.dtp_DataCompra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_DataCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_DataCompra.Location = new System.Drawing.Point(336, 115);
             this.dtp_DataCompra.Name = "dtp_DataCompra";
@@ -260,14 +308,7 @@
             this.tb_Nomemusica.Location = new System.Drawing.Point(10, 75);
             this.tb_Nomemusica.Name = "tb_Nomemusica";
             this.tb_Nomemusica.Size = new System.Drawing.Size(269, 20);
-            this.tb_Nomemusica.TabIndex = 3;
-            // 
-            // tb_Album
-            // 
-            this.tb_Album.Location = new System.Drawing.Point(10, 36);
-            this.tb_Album.Name = "tb_Album";
-            this.tb_Album.Size = new System.Drawing.Size(214, 20);
-            this.tb_Album.TabIndex = 2;
+            this.tb_Nomemusica.TabIndex = 2;
             // 
             // label1
             // 
@@ -278,37 +319,14 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Nome música";
             // 
-            // lb_Album
-            // 
-            this.lb_Album.AutoSize = true;
-            this.lb_Album.Location = new System.Drawing.Point(7, 19);
-            this.lb_Album.Name = "lb_Album";
-            this.lb_Album.Size = new System.Drawing.Size(36, 13);
-            this.lb_Album.TabIndex = 12;
-            this.lb_Album.Text = "Álbum";
-            // 
-            // tb_Autor
-            // 
-            this.tb_Autor.Location = new System.Drawing.Point(285, 75);
-            this.tb_Autor.Name = "tb_Autor";
-            this.tb_Autor.Size = new System.Drawing.Size(259, 20);
-            this.tb_Autor.TabIndex = 1;
-            // 
             // tb_Interprete
             // 
+            this.tb_Interprete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Interprete.Location = new System.Drawing.Point(230, 36);
             this.tb_Interprete.Name = "tb_Interprete";
             this.tb_Interprete.Size = new System.Drawing.Size(314, 20);
-            this.tb_Interprete.TabIndex = 0;
-            // 
-            // lb_Autor
-            // 
-            this.lb_Autor.AutoSize = true;
-            this.lb_Autor.Location = new System.Drawing.Point(282, 59);
-            this.lb_Autor.Name = "lb_Autor";
-            this.lb_Autor.Size = new System.Drawing.Size(32, 13);
-            this.lb_Autor.TabIndex = 1;
-            this.lb_Autor.Text = "Autor";
+            this.tb_Interprete.TabIndex = 1;
             // 
             // lb_Interprete
             // 
@@ -343,9 +361,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(575, 339);
+            this.ClientSize = new System.Drawing.Size(575, 343);
             this.Controls.Add(this.gb_Midias);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(898, 460);
+            this.MinimumSize = new System.Drawing.Size(538, 381);
             this.Name = "fm_CadMidias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nova mídia";

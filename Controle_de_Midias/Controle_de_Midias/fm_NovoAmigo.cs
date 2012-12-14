@@ -15,7 +15,7 @@ namespace Controle_de_Midias
         private bool salvarImagem = false;
         public fm_NovoAmigo(ListView fmAmigoLista)
         {
-            //Recebe a referencia do listView vinda do fm_pricipal e passa para o listview lvMidias
+            //Recebe a referência do listView vinda do fm_pricipal e passa para o listview lvMidias
             lvAmigo = fmAmigoLista;
             InitializeComponent();
         }
@@ -90,16 +90,9 @@ namespace Controle_de_Midias
             {
                 salvarImagem = true;
                 pn_imgDesconecido.Visible = false;
-                try
-                {
-                    Bitmap imagem = new Bitmap(openFileDialog1.FileName);
-                    pb_Amigo.Image = imagem;
-                }
-                catch
-                {
-                    salvarImagem = false;
-                    pn_imgDesconecido.Visible = true;
-                }
+                Bitmap imagem = new Bitmap(openFileDialog1.FileName);
+                pb_Amigo.Image = imagem;
+                
             }
         }
 

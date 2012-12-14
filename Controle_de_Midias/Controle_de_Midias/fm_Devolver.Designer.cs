@@ -1,6 +1,6 @@
 ﻿namespace Controle_de_Midias
 {
-    partial class fm_Devolver
+    partial class Devolver
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("CD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("DVD", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Digital", System.Windows.Forms.HorizontalAlignment.Left);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_Devolver));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devolver));
             this.lv_AmigosD = new System.Windows.Forms.ListView();
             this.cl_Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cl_Telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -101,6 +101,8 @@
             // 
             // gr_AmigoE
             // 
+            this.gr_AmigoE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gr_AmigoE.Controls.Add(this.pb_Amigo);
             this.gr_AmigoE.Controls.Add(this.panel2);
             this.gr_AmigoE.Controls.Add(this.lb_ObsD);
@@ -112,13 +114,14 @@
             this.gr_AmigoE.Controls.Add(this.lb_TelD);
             this.gr_AmigoE.Location = new System.Drawing.Point(2, 0);
             this.gr_AmigoE.Name = "gr_AmigoE";
-            this.gr_AmigoE.Size = new System.Drawing.Size(203, 373);
+            this.gr_AmigoE.Size = new System.Drawing.Size(203, 423);
             this.gr_AmigoE.TabIndex = 11;
             this.gr_AmigoE.TabStop = false;
             this.gr_AmigoE.Text = "Amigo";
             // 
             // pb_Amigo
             // 
+            this.pb_Amigo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Amigo.Location = new System.Drawing.Point(74, 12);
             this.pb_Amigo.Name = "pb_Amigo";
             this.pb_Amigo.Size = new System.Drawing.Size(123, 131);
@@ -128,8 +131,9 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackgroundImage = global::Controle_de_Midias.Properties.Resources.musica1;
-            this.panel2.Location = new System.Drawing.Point(6, 328);
+            this.panel2.Location = new System.Drawing.Point(6, 378);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(33, 37);
             this.panel2.TabIndex = 20;
@@ -144,7 +148,8 @@
             // 
             // bt_CancelarE
             // 
-            this.bt_CancelarE.Location = new System.Drawing.Point(43, 287);
+            this.bt_CancelarE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_CancelarE.Location = new System.Drawing.Point(43, 337);
             this.bt_CancelarE.Name = "bt_CancelarE";
             this.bt_CancelarE.Size = new System.Drawing.Size(75, 23);
             this.bt_CancelarE.TabIndex = 0;
@@ -163,7 +168,8 @@
             // 
             // bt_Devolver
             // 
-            this.bt_Devolver.Location = new System.Drawing.Point(124, 287);
+            this.bt_Devolver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_Devolver.Location = new System.Drawing.Point(124, 337);
             this.bt_Devolver.Name = "bt_Devolver";
             this.bt_Devolver.Size = new System.Drawing.Size(75, 23);
             this.bt_Devolver.TabIndex = 1;
@@ -199,6 +205,9 @@
             // 
             // lv_MidiasD
             // 
+            this.lv_MidiasD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lv_MidiasD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cl_Album,
             this.cl_Interprete,
@@ -228,7 +237,7 @@
             listViewGroup5});
             this.lv_MidiasD.Location = new System.Drawing.Point(207, 0);
             this.lv_MidiasD.Name = "lv_MidiasD";
-            this.lv_MidiasD.Size = new System.Drawing.Size(526, 373);
+            this.lv_MidiasD.Size = new System.Drawing.Size(677, 423);
             this.lv_MidiasD.TabIndex = 12;
             this.lv_MidiasD.UseCompatibleStateImageBehavior = false;
             this.lv_MidiasD.View = System.Windows.Forms.View.Details;
@@ -284,17 +293,18 @@
             this.cl_Observacao.Text = "Observação";
             this.cl_Observacao.Width = 116;
             // 
-            // fm_Devolver
+            // Devolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(731, 372);
+            this.ClientSize = new System.Drawing.Size(882, 422);
             this.Controls.Add(this.lv_MidiasD);
             this.Controls.Add(this.gr_AmigoE);
             this.Controls.Add(this.lv_AmigosD);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "fm_Devolver";
+            this.MinimumSize = new System.Drawing.Size(773, 425);
+            this.Name = "Devolver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fm_Devolver";
             this.Load += new System.EventHandler(this.fm_Devolver_Load);

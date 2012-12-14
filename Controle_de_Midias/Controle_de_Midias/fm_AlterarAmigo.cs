@@ -17,35 +17,43 @@ namespace Controle_de_Midias
             InitializeComponent();
         }
 
-        public bool alterarImagem = false;
-        public bool alterar = false;
-        public bool excluir = false;
         private GerenciadorDeBanco GBD = new GerenciadorDeBanco();
         public Amigo NovoAmigo = new Amigo();
+
+        //Usado para nome da imagem para que ela seja univca  
         private int idAmigo;
+        //Verifica se  o usuário trocou a imagem original
+        public bool alterarImagem = false;
+
+        //Retorna para o fm_principal atualizar o Listview
+        public bool alterar = false;
+        public bool excluir = false;
+
+        //usado para armazenar o nome inicial do amigo antes da alteração
+        public string nomeAntigo;
+
         List<string> dadosAmigos = new List<string>();
 
         //Preenche os TextBox com o item selecionado no ListView do fm_Principal.
-        public void Preencher(Amigo rescrever)
+        public string Preencher(Amigo amigo)
         {
             GBD.AbrirConexao();
-            dadosAmigos = GBD.ProcurarAmigo(rescrever.nome,rescrever.telefone,rescrever.email,rescrever.observacao);
+            dadosAmigos = GBD.ProcurarAmigo(amigo.nome,amigo.telefone,amigo.email,amigo.observacao);
             GBD.FecharConexao();
 
-            tb_NomeAlt.Text = rescrever.nome;
-            tb_TelefoneAlt.Text = rescrever.telefone;
-            tb_EmailAlt.Text = rescrever.email;
-            rtb_ObservacaoAlt.Text = rescrever.observacao;
+            tb_NomeAlt.Text = amigo.nome;
+            tb_TelefoneAlt.Text = amigo.telefone;
+            tb_EmailAlt.Text = amigo.email;
+            rtb_ObservacaoAlt.Text = amigo.observacao;
 
+            //caso o campo do caminho da imagem dadosAmigos[5] seja vazio ele é atribuido ao caminho da imagem desconhecido 
             if (dadosAmigos[5] == string.Empty)
                 dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
 
-            // Caso o usuario de algum modo excluir a imagem ele volta a imagem DESCONHECIDO
-            try
-            {
+            // Caso o usuario de algum modo excluir a imagem ela volta a ser imagem DESCONHECIDO
+            if(File.Exists(dadosAmigos[5]))
                 pb_Amigo.Image = new Bitmap(dadosAmigos[5]);
-            }
-            catch (Exception err)
+            else
             {
                 pb_Amigo.Image = new Bitmap(Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png");
                 dadosAmigos[5] = Application.StartupPath.ToString() + "\\FotosAmigos\\Desconhecido.png";
@@ -53,21 +61,23 @@ namespace Controle_de_Midias
 
             if (GBD.AbrirConexao())
             {
-                idAmigo = GBD.PegarIdentificadorAmigo(rescrever);
+                idAmigo = GBD.PegarIdentificadorAmigo(amigo);
                 GBD.FecharConexao();
             }
             else
                 GBD.MensagemDeErro();
+
+            return dadosAmigos[5];
         }
 
         private void bt_Alterar_Click(object sender, EventArgs e)
         {
-           
-            //verifica se a conecção foi aberta, se sim executa o comando SQL no GErenciadorDeBAnco.
+            // o campo nome do amigo é obrigatório
             if (tb_NomeAlt.Text != string.Empty)
             {
                 if (GBD.AbrirConexao())
                 {
+                    //altera o caminho da imagem no banco de dados caso houver a troca da imagem original ou do nome do usuário que é usado para nomear a imagem
                     GBD.AlteraAmigo(InserirDados());
                     if (alterarImagem || nomeAntigo != tb_NomeAlt.Text)
                     {
@@ -76,6 +86,7 @@ namespace Controle_de_Midias
                         GBD.FecharConexao();
                     }
 
+                    //usado para atualizar o listview do formulário principal 
                     alterar = true;
                 }
                 else
@@ -104,9 +115,7 @@ namespace Controle_de_Midias
             NovoAmigo.email = tb_EmailAlt.Text;
             NovoAmigo.observacao = rtb_ObservacaoAlt.Text;
             NovoAmigo.id = idAmigo;
-            
-            // O conteúdo dos TextBox são passados para o objeto Amigo.
-            
+
             return NovoAmigo;
         }
 
@@ -117,6 +126,7 @@ namespace Controle_de_Midias
             {
                 GBD.Remover(InserirDados());
                 GBD.FecharConexao();
+                //usado para atualizar o listview do formulário principal
                 excluir = true;
             }
             else
@@ -133,7 +143,10 @@ namespace Controle_de_Midias
         private void bt_InserirImagem_Click(object sender, EventArgs e)
         {
             OpenFileDialog Dialogo = new OpenFileDialog();
+
+            //Faz o filtro somente por imagens evitando a escolha de outros arquivos não suportados pelo picturebox
             Dialogo.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "jpeg (*.jpeg*)|*.jpeg*";
+
             // Abre caixa de dialogo para o usuáio escolher a imagem
             if (Dialogo.ShowDialog() == DialogResult.OK)
             {
@@ -143,7 +156,6 @@ namespace Controle_de_Midias
                 pb_Amigo.Image = new Bitmap(dadosAmigos[5]);
             }
         }
-        public string nomeAntigo;
         private void fm_AlterarAmigo_Load(object sender, EventArgs e)
         {
             nomeAntigo = tb_NomeAlt.Text;

@@ -145,6 +145,7 @@ namespace Controle_de_Midias
             VerificaSenha();
         }
 
+        // A senha só sera verificada quando o usuário preencher os 6 caracteres
         private void tb_Senha_TextChanged(object sender, EventArgs e)
         {
             if (tb_Senha.Text.Count() == 6)
